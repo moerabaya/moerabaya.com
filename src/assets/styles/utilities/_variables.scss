@@ -1,0 +1,30 @@
+/* Variables */
+
+$base-font-family: 'Poppins', Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  calc(#{$base-font-size} * .875);
+$base-line-height: 1.5;
+
+$spacing-unit: 30px;
+
+$text-color: #5E6C84;
+$background-color: #FFF8F7;
+$brand-color: #FF7C7C;
+
+$grey-color: #828282;
+$grey-color-light: color-mod($grey-color lightness($grey-color));
+$grey-color-dark: color-mod($grey-color shade(40%));
+
+$on-palm: 500px;
+$on-laptop: 800px;
+
+$dot-width: 8px;
+$dot-height: 8px;
+$dot-radius: $dot-width/2;
+
+$dot-color: #FF7C7C;
+$dot-bg-color: $dot-color;
+$dot-before-color: $dot-color;
+$dot-after-color: $dot-color;
+
+$dot-spacing: $dot-width + $dot-width/1.65;

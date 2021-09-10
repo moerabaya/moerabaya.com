@@ -1,0 +1,20 @@
+/* Page content */
+.page-content {
+  // padding: 0 0 $spacing-unit;
+  height: calc(100vh - 84px);
+  overflow: hidden;
+
+  
+}
+
+@media screen and (max-width: 1100px) {
+  .page-content {
+    height: calc(100vh - 99px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .page-content {
+    height: auto;
+  }
+}

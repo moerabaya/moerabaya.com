@@ -1,0 +1,23 @@
+.loading-container, .notfound-container {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.loading-title, .notfound-title {
+		text-align: center;
+		font-size: 2em;
+		font-weight: bold;
+		color: #FF9B23;
+		background: #FF9B23;
+		background: -webkit-linear-gradient(to bottom right, #FF9B23 0%, #FF875D 100%);
+		background: -moz-linear-gradient(to bottom right, #FF9B23 0%, #FF875D 100%);
+		background: linear-gradient(to bottom right, #FF9B23 0%, #FF875D 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	.dot-flashing {
+		display: inline-block;
+		margin-left: 19px;
+	}
+}

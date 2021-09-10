@@ -1,0 +1,74 @@
+{
+  "prefetchRate": 5,
+  "maxThreads": null,
+  "disableRoutePrefixing": false,
+  "outputFileRate": 100,
+  "extensions": [
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx"
+  ],
+  "minLoadTime": 200,
+  "disablePreload": false,
+  "disableRuntime": false,
+  "preloadPollInterval": 300,
+  "productionSourceMaps": false,
+  "silent": false,
+  "entry": "/Users/curauser/Projects/react-portfolio/src/index.tsx",
+  "plugins": [
+    "react-static-plugin-typescript",
+    "react-static-plugin-metadata",
+    [
+      "react-static-plugin-sass",
+      {
+        "includePaths": [
+          "..."
+        ]
+      }
+    ],
+    [
+      "/Users/curauser/Projects/react-portfolio/node_modules/react-static-plugin-source-filesystem/node.api.js",
+      {
+        "location": "/Users/curauser/Projects/react-portfolio/src/pages"
+      }
+    ],
+    "/Users/curauser/Projects/react-portfolio/node_modules/react-static-plugin-reach-router/browser.api.js",
+    "/Users/curauser/Projects/react-portfolio/node_modules/react-static-plugin-sitemap/dist/node.api.js",
+    "/Users/curauser/Projects/react-portfolio"
+  ],
+  "paths": {
+    "ROOT": "/Users/curauser/Projects/react-portfolio",
+    "SRC": "/Users/curauser/Projects/react-portfolio/src",
+    "DIST": "/Users/curauser/Projects/react-portfolio/dist",
+    "ASSETS": "/Users/curauser/Projects/react-portfolio/dist",
+    "PLUGINS": "/Users/curauser/Projects/react-portfolio/plugins",
+    "TEMP": "/Users/curauser/Projects/react-portfolio/tmp",
+    "ARTIFACTS": "/Users/curauser/Projects/react-portfolio/artifacts",
+    "PUBLIC": "/Users/curauser/Projects/react-portfolio/public",
+    "NODE_MODULES": "/Users/curauser/Projects/react-portfolio/node_modules",
+    "EXCLUDE_MODULES": "/Users/curauser/Projects/react-portfolio/node_modules",
+    "PACKAGE": "/Users/curauser/Projects/react-portfolio/package.json",
+    "HTML_TEMPLATE": "/Users/curauser/Projects/react-portfolio/dist/index.html",
+    "STATIC_DATA": "/Users/curauser/Projects/react-portfolio/dist/staticData"
+  },
+  "siteRoot": "/",
+  "basePath": "",
+  "publicPath": "/",
+  "assetsPath": "",
+  "extractCssChunks": false,
+  "inlineCss": false,
+  "babelExcludes": [],
+  "devServer": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "terser": {
+    "terserOptions": {
+      "mangle": {},
+      "parse": {},
+      "compress": {},
+      "output": {}
+    }
+  }
+}
