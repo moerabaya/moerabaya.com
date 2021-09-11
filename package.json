@@ -1,6 +1,6 @@
 {
   "name": "moerabaya",
-  "homepage": "http://moerabaya.github.io/",
+  "homepage": "http://moerabaya.com/",
   "private": true,
   "scripts": {
     "start": "react-static start",
@@ -10,7 +10,7 @@
     "export": "react-static export",
     "serve": "serve dist -p 3000 -s",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reach/router": "^1.3.4",

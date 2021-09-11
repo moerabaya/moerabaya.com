@@ -117,7 +117,7 @@ export default () => {
                 <div className="grid work-posts-wrapper">
                   <div className="grid-item work-post grid-item--x2 coming-soon">
                     <a className="work-link" target="_blank">
-                      <video onMouseEnter={(e) => playVideo(e)} onMouseLeave={(e) => stopVideo(e)} src={require("../assets/videos/veni/1.mp4")} />
+                      <video poster={require('../assets/images/projects/veni/1.jpg')} onMouseEnter={(e) => playVideo(e)} onMouseLeave={(e) => stopVideo(e)} src={require("../assets/videos/veni/1.mp4")} />
                     </a>
                   </div>
                   <div className="grid-item work-post">

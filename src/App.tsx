@@ -6,7 +6,7 @@ import './app.scss'
 import { Helmet } from 'react-helmet';
 
 // Any routes that start with 'dynamic' will be treated as non-static routes
-addPrefetchExcludes(['dynamic'])
+// addPrefetchExcludes(['dynamic'])
 
 function App() {
   return (
