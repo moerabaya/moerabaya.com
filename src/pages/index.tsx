@@ -2,15 +2,19 @@ import Footer from 'components/Footer'
 import React, { useEffect } from 'react'
 import ScrollBooster from 'scrollbooster'
 import {Helmet} from "react-helmet";
+import { useLocation } from '@reach/router';
 var Isotope = require('isotope-layout');
 require('isotope-masonry-horizontal');
 
 export default () => {
+  const location = useLocation();
   var SBRef: any = null;
   var grid: any = null;
   useEffect(() => {
     handleResize();
     var resizedUp = false;
+
+    console.log(location);
     
     function handleResize() {
       if(grid) {
@@ -89,6 +93,27 @@ export default () => {
       // cleanup
     }
   }, [])
+
+  function renderTitle(){
+    let params = new URLSearchParams(location.search);
+    let title = params.get('title');
+    switch(title) {
+      case "frontend-engineer":
+        return "Frontend Engineer"
+        break;
+      case "ux-ui-designer":
+        return "Ux/Ui Designer"
+        break;
+      case "full-process-designer":
+        return "Full Process Designer"
+        break;
+      case "visual-product-engineer":
+        return "Visual Product Engineer"
+        break;
+    }
+
+    return "Visual Product Designer";
+  }
   return (
     <div>
       
@@ -106,7 +131,9 @@ export default () => {
                       Mohammed<br /> A. Rabaya
                     </h1>
                     <h2 className="portfolio-section-subtitle">
-                      Visual Product Designer
+
+                      {renderTitle()}
+                      
                     </h2>
                   </div>
                 </div>
