@@ -1,199 +1,81 @@
 import Footer from 'components/Footer'
-import React, { useEffect } from 'react'
-import ScrollBooster from 'scrollbooster'
-import {Helmet} from "react-helmet";
-import { useLocation } from '@reach/router';
-var Isotope = require('isotope-layout');
-require('isotope-masonry-horizontal');
-
+import React, { useEffect, useState } from 'react'
+// import ScrollBooster from 'scrollbooster'
+// import {Helmet} from "react-helmet";
+// var Isotope = require('isotope-layout');
+// require('isotope-masonry-horizontal');
+type DF = React.FC<{ path?: String }>
 export default () => {
-  const location = useLocation();
   var SBRef: any = null;
   var grid: any = null;
+  
   useEffect(() => {
-    handleResize();
-    var resizedUp = false;
-
-    console.log(location);
     
-    function handleResize() {
-      if(grid) {
-        grid.layout();
-      } else {
-        setupIsotope();
-      }
-      
-      if(window.innerHeight > 700 && window.innerWidth > 650) {
-        if(!resizedUp){
-          console.log("break up");
-          grid.destroy();
-          grid = null;
-          setupIsotope();
-        }
-        resizedUp = true;
-      } else {
-        if(resizedUp){
-          console.log("break down");
-          grid.destroy();
-          grid = null;
-          setupIsotope();
-        }
-        resizedUp = false;
-      }
-      if(window.innerWidth > 650) {
-        if(SBRef){
-          console.log("sbref");
-          SBRef.updateMetrics();
-        } else {
-          setupSB();
-        }
-      } else {
-        if(SBRef){
-          SBRef.destroy();
-          SBRef = null;
-        }
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    function setupIsotope(){
-      grid = new Isotope( '.work-posts-wrapper', {
-        layoutMode: 'masonryHorizontal',
-        itemSeletor: '.grid-item',
-        masonryHorizontal: {
-            rowHeight: window.innerHeight > 700 && window.innerWidth > 650 ? 235 : 167,
-            gutter: window.innerHeight > 700 && window.innerWidth > 650 ? 20 : 10
-        }
-      });
-    }
-    function setupSB(){
-      var viewport: any = document.querySelector('.scroll-wrapper');
-      var content: any = document.querySelector(".scroll-wrapper > .scroll-content");
-
-      SBRef = new ScrollBooster({
-        viewport,
-        content,
-        direction: "horizontal",
-        scrollMode: 'transform',
-        preventDefaultOnEmulateScroll: true,
-        textSelection: false,
-        emulateScroll: true,
-        onWheel: (state: any, event: any) => {
-            let offsetX = 0
-            if (event.deltaY >= 0 && event.deltaX >= 0)
-              offsetX = Math.max(event.deltaY, event.deltaX)
-            if (event.deltaY <= 0 && event.deltaX <= 0)
-              offsetX = Math.min(event.deltaY, event.deltaX)
-            SBRef.scrollOffset.x = -offsetX
-            SBRef.scrollOffset.y = -event.deltaY
-            // console.log(SBRef);
-        }
-      })
-    }
     return () => {
       // cleanup
     }
   }, [])
-
-  function renderTitle(){
-    let params = new URLSearchParams(location.search);
-    let title = params.get('title');
-    switch(title) {
-      case "frontend-engineer":
-        return "Frontend Engineer"
-        break;
-      case "ux-ui-designer":
-        return "Ux/Ui Designer"
-        break;
-      case "full-process-designer":
-        return "Full Process Designer"
-        break;
-      case "visual-product-engineer":
-        return "Visual Product Engineer"
-        break;
-    }
-
-    return "Visual Product Designer";
-  }
   return (
-    <div>
-      
-      <div className="page-content">
-        <div className="scroll-wrapper">
-          <div className="scroll-content">
-            <div className="content-inner">
-              <div className="portfolio-section-wrapper" id="about">
-                <div className="portfolio-section">
-                  <div className="portfolio-section-img">
-                    <img src={require("../assets/images/portrait.jpg")} alt="" />
-                  </div> 
-                  <div className="portfolio-section-content">
-                    <h1 className="portfolio-section-title">
-                      Mohammed<br /> A. Rabaya
-                    </h1>
-                    <h2 className="portfolio-section-subtitle">
-
-                      {renderTitle()}
-                      
-                    </h2>
-                  </div>
-                </div>
-                <h2 className="portfolio-section-description">I design/develop user inter­­&shy;faces and engaging product experiences for humans.</h2>
-              </div>
-              <div className="work-section" id="work">
-                <h4 className="work-title">Work</h4>
-                <div className="grid work-posts-wrapper">
-                  <div className="grid-item work-post grid-item--x2 coming-soon">
-                    <a className="work-link" target="_blank">
-                      <video poster={require('../assets/images/projects/veni/1.jpg')} onMouseEnter={(e) => playVideo(e)} onMouseLeave={(e) => stopVideo(e)} src={require("../assets/videos/veni/1.mp4")} />
-                    </a>
-                  </div>
-                  <div className="grid-item work-post">
-                    <a href="https://www.behance.net/gallery/107017279/Cura-Healthcare" className="work-link" target="_blank">
-                      <img className="img-loop"  src={require('../assets/images/projects/cura/1/1.jpg')} onMouseEnter={(e) => loopImages(e, "cura")} onMouseLeave={(e) => clearImages(e)} alt="" />
-                    </a>
-                  </div>
-                  <div className="grid-item work-post grid-item--width2">
-                    <a href="https://dribbble.com/shots/6010110-Sitatbyoot" className="work-link" target="_blank">
-                      <img src={require("../assets/images/projects/sitatbyoot/2/1.jpg")} alt="" />
-                    </a>
-                  </div>
-                  <div className="grid-item work-post">
-                    <a href="https://www.behance.net/gallery/67105083/SitatByoot" className="work-link view-project" target="_blank">
-                      <img className="img-loop" src={require("../assets/images/projects/sitatbyoot/1/1.jpg")} onMouseEnter={(e) => loopImages(e, "sitatbyoot")} onMouseLeave={(e) => clearImages(e)} alt="" />
-                    </a>
-                  </div>
-                  <div className="grid-item work-post grid-item--width2 view-site">
-                    <a href="https://cura.healthcare/" className="work-link" target="_blank">
-                      <img src={require("../assets/images/projects/cura/2/1.jpg")} alt="" />
-                    </a>
-                  </div>
-                  
-                  <div className="grid-item work-post grid-item--height2 coming-soon">
-                    <a className="work-link">
-                      <img src={require("../assets/images/projects/jewemall/1.jpg")} alt="" />
-                    </a>
-                  </div>
-                  <div className="grid-item grid-item--height2 side-work">
-                    <h3 className="side-work-title">SIDE WORK</h3>
-                  </div>
-                  <div className="grid-item work-post view">
-                    <a href="https://dribbble.com/shots/6197132-Simple-Messages-App" target="_blank" className="work-link">
-                      <img src={require("../assets/images/projects/messaging-app/1.jpg")} alt="" /> 
-                    </a>
-                  </div>
-                  <div className="grid-item work-post view">
-                    <a href="https://dribbble.com/shots/10724795-Tiger-Mask" target="_blank" className="work-link">
-                      <img src={require("../assets/images/projects/masked-tiger/1.jpg")} alt="" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+    <div className="page-content">
+      <header>
+        <div className="container">
+          <div className="flex-grid">
+            <div className="col contact-details">
+              <a className="animated" href="mailto:rabaya.moe@gmail.com"><h4>rabaya.moe[at]gmail.com</h4></a>
+              <br/>
+              <a className="animated" href="tel:00962799127281"><h4>(962) 799 127 281</h4></a>
+              &nbsp; &nbsp;
+              <a className="animated" target="_blank" href="https://www.google.com/search?q=Amman%2C+Jordan"><h4>Amman, Jordan</h4></a>
+            </div>
+            <div className="col">
+              <h1 className="portfolio-section-description">I design/develop user inter­­&shy;faces and engaging product experiences for humans.</h1>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </div>
+      </header>
+      <section className="work-section">
+        <div className="container">
+          <div className="content">
+            <h4 className="work-title">Work</h4>
+            <ul className="work-list">
+              <li className="work-item">
+                <h3>
+                  <a href="https://www.behance.net/gallery/136477127/VENI" target="_blank">
+                    Veni Marketplace
+                    <span className="work-item-divider"><span className="work-item-divider-text">Veni Marketplace</span></span>
+                  </a>
+                </h3>
+              </li>
+              <li className="work-item">
+                <h3>
+                  <a href="https://www.behance.net/gallery/67105083/SitatByoot" target="_blank">
+                    Sitatbyoot
+                    <span className="work-item-divider"><span className="work-item-divider-text">Sitatbyoot</span></span>
+                  </a>
+                </h3>
+              </li>
+              <li className="work-item">
+                <h3>
+                  <a href="http://jewemall.com/" target="_blank">
+                    Jewemall
+                    <span className="work-item-divider"><span className="work-item-divider-text">Jewemall</span></span>
+                  </a>
+                </h3>
+              </li>
+              <li className="work-item">
+                <h3>
+                  <a href="https://www.behance.net/gallery/107017279/Cura-Healthcare" target="_blank">
+                    Cura Healthcare
+                    <span className="work-item-divider"><span className="work-item-divider-text">Cura Healthcare</span></span>
+                  </a>
+                </h3>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>      
+
   )
 }
 var myInterval;
@@ -261,3 +143,4 @@ function stopVideo(e: React.MouseEvent<HTMLVideoElement, MouseEvent>): void {
   myVideo.currentTime = 0;
 }
 
+// export default Home;

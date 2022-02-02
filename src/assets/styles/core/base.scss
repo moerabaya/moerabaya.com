@@ -78,9 +78,9 @@ h6 {
 /* Links */
 a {
   text-decoration: none;
-  color: $brand-color;
+  color: $text-color;
   &:visited {
-    color: color-mod($brand-color shade(15%));
+    color: color-mod($text-color shade(15%));
   }
   &:hover {
     text-decoration: underline;

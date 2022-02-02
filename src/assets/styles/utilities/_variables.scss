@@ -1,15 +1,18 @@
 /* Variables */
 
 $base-font-family: 'Poppins', Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$base-font-size:   18px;
+$mobile-font-size:   16px;
 $small-font-size:  calc(#{$base-font-size} * .875);
 $base-line-height: 1.5;
 
 $spacing-unit: 30px;
 
-$text-color: #5E6C84;
-$background-color: #FFF8F7;
-$brand-color: #FF7C7C;
+$text-color: #DAC6A6;
+$background-color: #000000;
+$brand-color: #415144;
+$selection-color: $text-color;
+$selection-background-color: #9B6A83;
 
 $grey-color: #828282;
 $grey-color-light: color-mod($grey-color lightness($grey-color));
@@ -20,11 +23,11 @@ $on-laptop: 800px;
 
 $dot-width: 8px;
 $dot-height: 8px;
-$dot-radius: $dot-width/2;
+$dot-radius: calc($dot-width/2);
 
-$dot-color: #FF7C7C;
+$dot-color: #DAC6A6;
 $dot-bg-color: $dot-color;
 $dot-before-color: $dot-color;
 $dot-after-color: $dot-color;
 
-$dot-spacing: $dot-width + $dot-width/1.65;
+$dot-spacing: calc($dot-width + $dot-width/1.65);

@@ -1,20 +1,255 @@
+/* Global */
+.align-right {
+  text-align: right;
+}
+
+html, body {
+  min-height: 100vh;
+  @media screen and (max-width: 650px) {
+    height: auto;
+    overflow: auto;
+    cursor: unset;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* Grid */
+.flex-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .col {
+    // flex: 1;
+    width: 50%;
+  }
+}
+
+/* Nav */
+.main-nav {
+  // background-color: rgba(0,0,0,0.75);
+  -webkit-backdrop-filter: blur(20px);backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: 45px + 50px;
+  overflow: hidden;
+  transition: 0.25s ease;
+  background-color: rgba(0,0,0,0.4);
+  @media (max-width: $on-laptop) {
+    height: 45px + 25px;
+  }
+  &.open {
+    height: 100%;
+  }
+
+  .container {
+    padding: 25px 20px 15px;
+    @media (max-width: $on-laptop) {
+      padding: 15px 20px 10px;
+    }
+  }
+  .nav-icon {
+    margin: 0;
+    height: 45px;
+    width: 45px;
+  }
+  .navigation-list {
+    margin: 0;
+    font-size: 50px;
+    padding: 50px 0;
+    @media (max-width: $on-laptop) {
+      font-size: 42px;
+    }
+
+    li {
+      margin-bottom: 0.75em;
+      a {
+        font-size: 1em;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-left: 20px
+  }
+  
+  /* Hamburger Menu */
+  .McButton {
+    $bar-w: 40px;
+    $bar-w-sm: 35px;
+    $bar-h: 3px;
+    $bar-color: $text-color;
+    position: relative;
+    display: inline-block;
+    width: $bar-w;
+    
+    height: 45px;
+    cursor: crosshair;
+    @media (max-width: $on-laptop) {
+      width: $bar-w-sm;
+    }
+    b {
+      // position: absolute;
+      // left: 0;
+      position: relative;
+      display: block;
+      width: $bar-w;
+      height: $bar-h;
+      background-color: $bar-color;
+      transition: 0.5s ease;
+      @media (max-width: $on-laptop) {
+        width: $bar-w-sm;
+      }
+      &:nth-child(1) {
+        top: 30%;
+      }
+      &:nth-child(2) {
+        top: 50%;
+      }
+    }
+    &.active {
+      b {
+        &:nth-child(1) {
+          transform: rotateZ(45deg) scale(0.9) translate(6px, 6.5px);
+        }
+        &:nth-child(2) {
+          transform: rotateZ(-45deg) scale(0.9) translate(4px, -3px);
+        }
+      }
+    }
+  }/* McButton */
+}
+
+.container {
+  max-width: 1210px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  .contact-details {
+    a {
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 10px;
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+  .flex-grid .col {
+    @media (max-width: $on-laptop) {
+      width: 100%;
+      margin-bottom: 30px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @media (max-width: $on-palm) {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
 /* Page content */
 .page-content {
-  // padding: 0 0 $spacing-unit;
-  height: calc(100vh - 84px);
-  overflow: hidden;
-
-  
-}
-
-@media screen and (max-width: 1100px) {
-  .page-content {
-    height: calc(100vh - 99px);
+  padding-top: 95px;
+  min-height: calc(100vh - 107px);
+  @media (max-width: $on-laptop) {
+    min-height: calc(100vh - 90px);
+  }
+  @media (max-width: $on-palm) {
+    padding-top: 85px;
   }
 }
 
-@media screen and (max-width: 650px) {
-  .page-content {
-    height: auto;
+/* Work section */
+.work-section {
+  margin-top: 50px;
+  @media (max-width: $on-laptop) {
+    margin-top: 30px;
   }
+  .content {
+    background-color: $brand-color;
+    padding: 25px;
+    @media (max-width: $on-palm) {
+      padding: 25px 15px;
+    }
+  }
+  .work-list {
+    margin: 0;
+  }
+  .work-item {
+    position: relative;
+    cursor: crosshair;
+    h3 {
+      margin: 0;
+    }
+    a {
+      position: relative;
+    }
+    a, .work-item-divider-text {
+      padding: 25px 10px;
+      font-size: 26px;
+      text-decoration: none;
+      display: block;
+      font-weight: 400;
+    }
+    .work-item-divider {
+      // height: 1px;
+      // display: block;
+      background-color: $text-color;
+      overflow: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      padding: 0;
+      width: 100%;
+      transition: 0.5s ease-in-out;
+      transition-timing-function: ease;
+    }
+    .work-item-divider-text {
+      position: absolute;
+      bottom: 0;
+      color: $brand-color;
+      // top: 50%;
+    }
+    &:hover {
+      .work-item-divider {
+        height: 100%;
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 1100px) {
+//   .page-content {
+//     height: calc(100vh - 99px);
+//   }
+// }
+
+// @media screen and (max-width: 650px) {
+//   .page-content {
+//     height: auto;
+//   }
+// }
+
+/* Coming soon */
+.coming-soon-container  {
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
