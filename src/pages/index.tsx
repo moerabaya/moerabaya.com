@@ -28,7 +28,7 @@ export default () => {
               <a className="animated" target="_blank" href="https://www.google.com/search?q=Amman%2C+Jordan"><h4>Amman, Jordan</h4></a>
             </div>
             <div className="col">
-              <h1 className="portfolio-section-description">I design/develop user inter­­&shy;faces and engaging product experiences for humans.</h1>
+              <h1 className="portfolio-section-description">I design/develop user inter­­&shy;faces and engaging product experi­­en­­&shy;ces for humans.</h1>
             </div>
           </div>
         </div>

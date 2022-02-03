@@ -2,7 +2,7 @@
 
 $base-font-family: 'Poppins', Helvetica, Arial, sans-serif;
 $base-font-size:   18px;
-$mobile-font-size:   16px;
+$mobile-font-size:   17px;
 $small-font-size:  calc(#{$base-font-size} * .875);
 $base-line-height: 1.5;
 
@@ -21,13 +21,13 @@ $grey-color-dark: color-mod($grey-color shade(40%));
 $on-palm: 500px;
 $on-laptop: 800px;
 
-$dot-width: 8px;
-$dot-height: 8px;
-$dot-radius: calc($dot-width/2);
+$dot-width: 10px;
+$dot-height: 10px;
+$dot-radius: $dot-width/2;
 
 $dot-color: #DAC6A6;
 $dot-bg-color: $dot-color;
 $dot-before-color: $dot-color;
 $dot-after-color: $dot-color;
 
-$dot-spacing: calc($dot-width + $dot-width/1.65);
+$dot-spacing: $dot-width + $dot-width/2;

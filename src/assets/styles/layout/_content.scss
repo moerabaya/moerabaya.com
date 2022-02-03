@@ -134,6 +134,10 @@ html, body {
 /* Header */
 header {
   .contact-details {
+    padding-top: 10px;
+    @media (max-width: $on-laptop) {
+      padding-top: 0;
+    }
     a {
       text-decoration: none;
       display: inline-block;
@@ -146,7 +150,7 @@ header {
   .flex-grid .col {
     @media (max-width: $on-laptop) {
       width: 100%;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       &:last-child {
         margin-bottom: 0;
       }
@@ -200,10 +204,13 @@ header {
     }
     a, .work-item-divider-text {
       padding: 25px 10px;
-      font-size: 26px;
+      font-size: 1em;
       text-decoration: none;
       display: block;
       font-weight: 400;
+      @media (max-width: $on-palm) {
+        padding: 20px 5px;
+      }
     }
     .work-item-divider {
       // height: 1px;

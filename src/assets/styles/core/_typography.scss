@@ -37,7 +37,10 @@ h1 {
   font-size: 38px;
   line-height: 1.4em;
   @media screen and (max-width: $on-laptop) {
-    font-size: 28px;
+    font-size: 32px;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 27px;
   }
 }
 
@@ -46,6 +49,9 @@ h2 {
   font-size: 30px;
   line-height: 1.4em;
   @media screen and (max-width: $on-laptop) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: $on-palm) {
     font-size: 24px;
   }
 }
@@ -54,15 +60,21 @@ h3 {
   font-size: 26px;
   line-height: 1.2em;
   @media screen and (max-width: $on-laptop) {
+    font-size: 24px;
+  }
+  @media screen and (max-width: $on-palm) {
     font-size: 20px;
   }
 }
 
 h4 {
   font-size: 19px;
-  line-height: 1.2em;
+  line-height: 1.3em;
   @media screen and (max-width: $on-laptop) {
-    font-size: 17px;
+    font-size: 19;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 18px;
   }
 }
 

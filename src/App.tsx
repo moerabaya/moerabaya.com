@@ -19,15 +19,14 @@ function App() {
           {HelmetData()}
           <React.Suspense fallback={
           <div className="loading-container">
-            <h1 className="loading-title">Loading<div className="dot-flashing"></div></h1>
+            <h1 className="loading-title"><div className="dot-windmill"></div></h1>
           </div>}>
+
+          
             
           <Menu />
           <Router>
             {/* <Dynamic path="dynamic" /> */}
-            {/* <Home path="/" /> */}
-            {/* <About path="/about" /> */}
-            {/* <Blog path="/blog" /> */}
             <Routes path="*" />
           </Router>
           <Footer />
