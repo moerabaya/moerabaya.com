@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Root, Routes, addPrefetchExcludes } from 'react-static'
+import { Root, Routes, addPrefetchExcludes, Head } from 'react-static'
 import { Router } from '@reach/router'
 import Dynamic from 'containers/Dynamic'
 import './app.scss'
@@ -38,7 +38,7 @@ function App() {
 }
 
 const HelmetData = () => (
-  <Helmet>
+  <Head>
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -83,7 +83,7 @@ const HelmetData = () => (
     <link rel="shortcut icon" href={require("./assets/images/site/favicon.ico?v=1.1")} />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#000000"></meta>
-  </Helmet>
+  </Head>
 )
 
 export default App
