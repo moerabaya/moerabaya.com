@@ -6,11 +6,13 @@ import { Post } from '../../types'
 export default () => {
   const { post }: { post: Post } = useRouteData()
   return (
-    <div>
-      <Link to="/blog/">{'<'} Back</Link>
-      <br />
-      <h3>{post.title}</h3>
-      <p>{post.body}</p>
+    <div className="page-content">
+      <div className="container">
+        <Link to="/blog/">{'<'} Back</Link>
+        <br />
+        <h1>{post.title}</h1>
+        <p>{post.body}</p>
+      </div>
     </div>
   )
 }

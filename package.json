@@ -23,6 +23,7 @@
     "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.13.0",
     "react-static": "^7.5.1",
+    "react-static-plugin-md-pages": "^0.3.2",
     "react-static-plugin-metadata": "^0.0.2",
     "react-static-plugin-reach-router": "^7.5.1",
     "react-static-plugin-sass": "^7.6.2",

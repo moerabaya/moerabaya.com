@@ -1,5 +1,6 @@
 import Footer from 'components/Footer'
 import React, { useEffect, useState } from 'react'
+import { Head } from 'react-static';
 // import ScrollBooster from 'scrollbooster'
 // import {Helmet} from "react-helmet";
 // var Isotope = require('isotope-layout');
@@ -10,13 +11,34 @@ export default () => {
   var grid: any = null;
   
   useEffect(() => {
-    
     return () => {
       // cleanup
     }
   }, [])
   return (
     <div className="page-content">
+      <Head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Mohammed Rabay'a — UX, Product Designer | Senior Engineer</title>
+        
+        {/* <!-- Primary Meta Tags --> */}
+        <meta name="title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta name="description" content="I'm a full process-product designer based in Amman, Jordan. Specialized in creating seamless interactive experiences for web/mobile apps" />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:url" content="https://moerabaya.com/" />
+        <meta property="og:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta property="og:description" content="I'm a full process-product designer based in Amman, Jordan. Specialized in creating seamless interactive experiences for web/mobile apps" />
+        <meta property="og:image" content={require('../assets/images/metaimage.png')} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:url" content="https://moerabaya.com/" />
+        <meta property="twitter:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta property="twitter:description" content="I'm a full process-product designer based in Amman, Jordan. Specialized in creating seamless interactive experiences for web/mobile apps" />
+        <meta property="twitter:image" content={require('../assets/images/metaimage.png')} />
+      </Head>
       <header>
         <div className="container">
           <div className="flex-grid">
@@ -40,7 +62,7 @@ export default () => {
             <ul className="work-list">
               <li className="work-item">
                 <h3>
-                  <a href="https://www.behance.net/gallery/136477127/VENI" target="_blank">
+                  <a href="https://www.behance.net/gallery/136725993/Veni-Furniture-marketplace" target="_blank">
                     Veni Marketplace
                     <span className="work-item-divider"><span className="work-item-divider-text">Veni Marketplace</span></span>
                   </a>
@@ -78,69 +100,3 @@ export default () => {
 
   )
 }
-var myInterval;
-
-var sitatbyoot = [
-  require("../assets/images/projects/sitatbyoot/1/2.jpg"),
-  require("../assets/images/projects/sitatbyoot/1/3.jpg")
-]
-var cura = [
-  require("../assets/images/projects/cura/1/2.jpg"),
-  require("../assets/images/projects/cura/1/3.jpg"),
-  require("../assets/images/projects/cura/1/4.jpg")
-]
-
-function loopImages(e: React.MouseEvent<HTMLImageElement, MouseEvent>, type): void {
-  var image = e.currentTarget;
-
-  var images = image.getAttribute("data-alt-src");
-  
-  image.setAttribute('old-src', image.getAttribute("src"));
-  
-  var alt_src;
-  if(type == "sitatbyoot") {
-    alt_src = sitatbyoot;
-  } else if (type == "cura") {
-    alt_src = cura;
-  }
-
-  var that = image;
-  var i=0;
-  if(alt_src && alt_src.length > 0){
-    myInterval = setInterval(function(){  // Set an interval
-        if(i==alt_src.length){
-            i=0;
-            that.setAttribute("src", that.getAttribute('old-src'));
-        }else{
-            that.setAttribute('src', alt_src[i]);
-            i++;
-        }
-    },1000);
-  }
-}
-function clearImages(e: React.MouseEvent<HTMLImageElement, MouseEvent>): void {
-  var image = e.currentTarget;
-  clearInterval(myInterval);  // Clear the interval
-  image.setAttribute('src', image.getAttribute("old-src"));
-}
-
-function playVideo(e: React.MouseEvent<HTMLVideoElement, MouseEvent>): void {
-  var myVideo = e.currentTarget;
-  if (typeof myVideo.loop == 'boolean') { // loop supported
-    myVideo.loop = true;
-  } else { // loop property not supported
-    myVideo.addEventListener('ended', function () {
-      this.currentTime = 0;
-      this.play();
-    }, false);
-  }
-  myVideo.play();
-}
-
-function stopVideo(e: React.MouseEvent<HTMLVideoElement, MouseEvent>): void {
-  var myVideo = e.currentTarget;
-  myVideo.pause();
-  myVideo.currentTime = 0;
-}
-
-// export default Home;
