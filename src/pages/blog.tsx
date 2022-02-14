@@ -7,8 +7,8 @@ export default () => {
   const { posts }: { posts: Post[] } = useRouteData()
 
   return (
-    <div className='page-content coming-soon-container'>
-    {/* <div className='page-content'> */}
+    // <div className='page-content coming-soon-container'>
+    <div className='page-content'>
       <Head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,16 +32,16 @@ export default () => {
         <meta property="twitter:image" content={require('../assets/images/metaimage.png')} />
       </Head>
       <div className="container">
-        <h2>Coming soon</h2>
-        {/* <br />
-        All Posts:
-        <ul>
+        {/* <h2>Coming soon</h2> */}
+        <br />
+        <h5><strong>Articles</strong></h5>
+        <ul className="posts-list">
           {posts?.map(post => (
-            <li key={post.id}>
-              <Link to={`/blog/post/${post.id}/`}>{post.title}</Link>
+            <li key={post.slug}>
+              <Link className="animated" to={`/blog/post/${post.slug}/`}>{post.title}</Link>
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     </div>
   )

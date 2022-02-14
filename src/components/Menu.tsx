@@ -36,16 +36,13 @@ const Menu: DF = ({title}) => {
 }
 export default Menu;
 function renderPageTitle(pathname: string): React.ReactNode {
-  switch (pathname) {
-    case "/":
-      return "";
-      break;
-    case "/about":
-      return "About";
-      break;
-    case "/blog":
-      return "Blog";
-      break;
+  if(pathname == "/") {
+    return "";
+  } else if (pathname == "/about") {
+    return "About";
+  } else if (pathname.includes("/blog")) {
+    return "Blog";
   }
+  return "";
 }
 

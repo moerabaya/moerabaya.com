@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Root, Routes, addPrefetchExcludes, Head } from 'react-static'
 import { Router } from '@reach/router'
 import Dynamic from 'containers/Dynamic'

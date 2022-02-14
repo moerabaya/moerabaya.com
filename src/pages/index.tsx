@@ -63,7 +63,9 @@ export default () => {
               <li className="work-item">
                 <h3>
                   <a href="https://www.behance.net/gallery/136725993/Veni-Furniture-marketplace" target="_blank">
-                    Veni Marketplace
+                    <span className="text">
+                      Veni Marketplace
+                    </span>
                     <span className="work-item-divider"><span className="work-item-divider-text">Veni Marketplace</span></span>
                   </a>
                 </h3>
@@ -71,7 +73,9 @@ export default () => {
               <li className="work-item">
                 <h3>
                   <a href="https://www.behance.net/gallery/67105083/SitatByoot" target="_blank">
-                    Sitatbyoot
+                    <span className="text">
+                      Sitatbyoot
+                    </span>
                     <span className="work-item-divider"><span className="work-item-divider-text">Sitatbyoot</span></span>
                   </a>
                 </h3>
@@ -79,7 +83,9 @@ export default () => {
               <li className="work-item">
                 <h3>
                   <a href="http://jewemall.com/" target="_blank">
-                    Jewemall
+                    <span className="text">
+                      Jewemall
+                    </span>
                     <span className="work-item-divider"><span className="work-item-divider-text">Jewemall</span></span>
                   </a>
                 </h3>
@@ -87,7 +93,9 @@ export default () => {
               <li className="work-item">
                 <h3>
                   <a href="https://www.behance.net/gallery/107017279/Cura-Healthcare" target="_blank">
-                    Cura Healthcare
+                    <span className="text">
+                      Cura Healthcare
+                    </span>
                     <span className="work-item-divider"><span className="work-item-divider-text">Cura Healthcare</span></span>
                   </a>
                 </h3>
