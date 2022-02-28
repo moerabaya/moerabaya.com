@@ -3,7 +3,6 @@ import { Root, Routes, addPrefetchExcludes, Head } from 'react-static'
 import { Router } from '@reach/router'
 import Dynamic from 'containers/Dynamic'
 import './app.scss'
-import { Helmet } from 'react-helmet';
 import Home from "./pages";
 import About from './pages/about'
 import Menu from 'components/Menu';

@@ -2,7 +2,6 @@ import Footer from 'components/Footer'
 import React, { useEffect, useState } from 'react'
 import { Head } from 'react-static';
 // import ScrollBooster from 'scrollbooster'
-// import {Helmet} from "react-helmet";
 // var Isotope = require('isotope-layout');
 // require('isotope-masonry-horizontal');
 type DF = React.FC<{ path?: String }>
