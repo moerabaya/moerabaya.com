@@ -9,7 +9,7 @@ import jdown from 'jdown';
 // Typescript support in static.config.js is not yet supported, but is coming in a future update!
 let isReady = false
 
-chokidar.watch('content').on('all', () => isReady  && rebuildRoutes())
+// chokidar.watch('content').on('all', () => isReady  && rebuildRoutes())
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),

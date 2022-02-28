@@ -1,14 +1,6 @@
-import Footer from 'components/Footer'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Head } from 'react-static';
-// import ScrollBooster from 'scrollbooster'
-// var Isotope = require('isotope-layout');
-// require('isotope-masonry-horizontal');
-type DF = React.FC<{ path?: String }>
 export default () => {
-  var SBRef: any = null;
-  var grid: any = null;
-  
   useEffect(() => {
     return () => {
       // cleanup

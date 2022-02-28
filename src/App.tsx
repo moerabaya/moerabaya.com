@@ -1,10 +1,7 @@
 import React from 'react'
 import { Root, Routes, addPrefetchExcludes, Head } from 'react-static'
 import { Router } from '@reach/router'
-import Dynamic from 'containers/Dynamic'
 import './app.scss'
-import Home from "./pages";
-import About from './pages/about'
 import Menu from 'components/Menu';
 import Footer from 'components/Footer'
 

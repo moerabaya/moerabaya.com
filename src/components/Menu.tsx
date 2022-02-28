@@ -1,9 +1,8 @@
 import { Link, useLocation } from '@reach/router';
 import React, { useEffect, useState } from 'react'
 type DF = React.FC<{ title?: String }>
-const Menu: DF = ({title}) => {
+const Menu: DF = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
-  const [pageTitle, setPageTitle] = useState("");
   const location = useLocation();
   useEffect(() => {
     

@@ -3,7 +3,6 @@ import { Head, useRouteData } from 'react-static'
 import { Link, useLocation } from '@reach/router';
 import { Post } from '../../types'
 import parse from 'html-react-parser';
-import hljs from 'highlight.js';
 
 export default () => {
   const { post }: { post: Post } = useRouteData();
