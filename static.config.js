@@ -7,11 +7,14 @@ import { rebuildRoutes } from 'react-static/node';
 import jdown from 'jdown';
 
 // Typescript support in static.config.js is not yet supported, but is coming in a future update!
-chokidar.watch('content').on('all', () => rebuildRoutes())
+let isReady = false
+
+chokidar.watch('content').on('all', () => isReady  && rebuildRoutes())
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   getRoutes: async () => {
+    isReady = true;
     const { posts } = await jdown('content')
     return [
       {
