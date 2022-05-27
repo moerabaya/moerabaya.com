@@ -1,0 +1,62 @@
+---
+title: Sitatbyoot
+slug: sitatbyoot
+type: type-1
+description: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
+tags: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
+metaimage: ''
+color: "#FFE9C2"
+author: Mohammed Rabay'a
+date: Feb 9th 2022
+project_type: UX, UI Design
+cover_placeholder_photo: sitatbyoot.jpg
+cover_photo: sitatbyoot@2x.jpg
+index: 4
+---
+
+Everytime I try to open any storyboard or nib files using Xcode through Visual Studio for Mac by right-clicking the file and choosing `Open With|Xcode Interface Builder` I keep getting this error `Error updating xcode project` which is really getting on my nerve lately.
+
+I looked it up in `Ide.log` from `Help|Open Log Directory` and the issue was I needed to add an attribute:
+
+```
+Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780 
+ERROR [2022-02-09 09:52:36Z]: Error updating Xcode project
+Xamarin.Designer.iOS.XcodeIntegration.ObjCIntegration.ObjectiveCGenerationException: Could not generate outlet 'UsecasesTextField' in class 'Sample.iOS.Core.UsecasesAddController' as its type 'Sample.iOS.Core.PaddingTextField' could not be resolved to Objective-C.
+
+Hint: Try adding [Register ("PaddingTextField")] to the class definition for Sample.iOS.Core.PaddingTextField.
+```
+
+Look through the file and find the most recent `Error updating Xcode project`. I fixed mine by adding `[Register ("PaddingTextField")]` to a class I had.
+
+<br />
+Before:
+
+```csharp
+namespace Sample.iOS.Core
+{
+    public partial class PaddingTextField : UITextField
+    {
+        public PaddingTextField(IntPtr handle) : base (handle)
+        {
+
+        }
+```
+<br />
+After:
+
+
+```csharp
+namespace Sample.iOS.Core
+{
+    [Register("PaddingTextField")]
+    public partial class PaddingTextField : UITextField
+    {
+        public PaddingTextField(IntPtr handle) : base (handle)
+        {
+
+        }
+```
+
+
+<br />
+Voilà now i'm able to use Xcode again with Visual Studio. 😬

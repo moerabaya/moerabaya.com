@@ -1,0 +1,33 @@
+
+
+/* Grid */
+.flex-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .col {
+    // flex: 1;
+    width: 50%;
+  }
+}
+
+/* Page content */
+.page-content, .post-content, .project-content {
+  padding-top: 95px;
+  min-height: calc(100vh - 107px);
+  @media (max-width: $on-laptop) {
+    min-height: calc(100vh - 90px);
+  }
+  @media (max-width: $on-palm) {
+    padding-top: 85px;
+  }
+}
+
+/* Coming soon */
+.coming-soon-container  {
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

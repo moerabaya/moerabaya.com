@@ -1,0 +1,164 @@
+/* Nav */
+.main-nav {
+  // background-color: rgba(0,0,0,0.75);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: 45px + 50px;
+  overflow: hidden;
+  transition: 0.25s ease;
+  background-color: var(--nav-background-color);
+  @media (max-width: $on-laptop) {
+    height: 45px + 25px;
+  }
+  &.open {
+    height: 100%;
+  }
+
+  .flex-grid {
+    align-items: center;
+  }
+
+  .col {
+    width: auto;
+    &:first-child {
+      flex: 1;
+      > span {
+        vertical-align: middle;
+        display: inline-block;
+        display: inline-flex;
+      }
+    }
+  }
+
+  .container {
+    padding: 25px 20px 15px;
+    @media (max-width: $on-laptop) {
+      padding: 15px 20px 10px;
+    }
+  }
+  .nav-icon {
+    margin: 0;
+    height: 45px;
+    width: 45px;
+  }
+  .navigation-list {
+    margin: 0;
+    font-size: 50px;
+    padding: 50px 0;
+    @media (max-width: $on-laptop) {
+      font-size: 42px;
+    }
+
+    li {
+      margin-bottom: 0.75em;
+      a {
+        font-size: 1em;
+        text-decoration: none;
+      }
+    }
+  }
+  
+  .nav-icon-link {
+    display: inline-block;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-left: 20px;
+    vertical-align: middle;
+    &:only-child {
+      margin: 0;
+    }
+    @media (max-width: $on-palm) {
+      font-size: 17px;
+    }
+  }
+  
+  /* Hamburger Menu */
+  .McButton {
+    $bar-w: 40px;
+    $bar-w-sm: 35px;
+    $bar-h: 3px;
+    $bar-color: var(--text-color);
+    position: relative;
+    display: inline-block;
+    width: $bar-w;
+    vertical-align: middle;
+    height: 45px;
+    cursor: crosshair;
+    @media (max-width: $on-laptop) {
+      width: $bar-w-sm;
+    }
+    b {
+      // position: absolute;
+      // left: 0;
+      position: relative;
+      display: block;
+      width: $bar-w;
+      height: $bar-h;
+      background-color: $bar-color;
+      transition: 0.5s ease;
+      @media (max-width: $on-laptop) {
+        width: $bar-w-sm;
+      }
+      &:nth-child(1) {
+        top: 30%;
+      }
+      &:nth-child(2) {
+        top: 50%;
+      }
+    }
+    &.active {
+      b {
+        &:nth-child(1) {
+          transform: rotateZ(45deg) scale(0.9) translate(6px, 6.5px);
+        }
+        &:nth-child(2) {
+          transform: rotateZ(-45deg) scale(0.9) translate(4px, -3px);
+        }
+      }
+    }
+  }/* McButton */
+}
+
+.container {
+  max-width: 1210px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  .contact-details {
+    padding-top: 10px;
+    @media (max-width: $on-laptop) {
+      padding-top: 0;
+    }
+    a {
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 10px;
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+  .flex-grid .col {
+    @media (max-width: $on-laptop) {
+      width: 100%;
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @media (max-width: $on-palm) {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

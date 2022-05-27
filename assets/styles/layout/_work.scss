@@ -1,0 +1,105 @@
+/* Work section */
+.work-section {
+  padding-top: 2.5rem;
+  @media (max-width: $on-laptop) {
+    padding-top: 1rem;
+  }
+
+  
+
+  .work-title {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    margin: 0;
+    padding: 0;
+  }
+  .work-list {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #CECECE;
+    border-bottom: 1px solid #CECECE;
+  }
+  .work-item {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    // max-height: 495px;
+    overflow: hidden;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    > div {
+      width: 50%;
+    }
+    a {
+      display: block;
+      text-decoration: none;
+    }
+    img {
+      width: 100%;
+      margin: 0;
+    }
+    h2, h3, h4 {
+      margin: 0;
+    }
+  }
+  .content-wrapper {
+    padding: 0 7.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: unset;
+    min-height: 33.8vw;
+    .project-name {
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .project-type {
+      font-weight: 400;
+      opacity: 75%;
+    }
+    .project-link {
+      margin-top: 1em;
+      padding: 0.6em 2.5em;
+      border: 1px solid var(--text-color);
+      display: inline-block;
+      align-self: flex-start;
+      // background-color: #fff;
+      &:hover {
+        background-color: var(--text-color);
+        color: var(--background-color);
+      }
+    }
+  }
+  .veni-marketplace .content-wrapper {
+    background-color: #FFF8EF;
+    .project-link:hover {
+      color: #FFF8EF;
+    }
+  }
+  .cura-healthcare .content-wrapper {
+    background-color: #ECFCFF;
+    .project-link:hover {
+      color: #ECFCFF;
+    }
+  }
+  .jewemall .content-wrapper {
+    background-color: #F1FEF9;
+    .project-link:hover {
+      color: #F1FEF9;
+    }
+  }
+  .sitatbyoot .content-wrapper {
+    background-color: #FFE9C2;
+    .project-link:hover {
+      color: #FFE9C2;
+    }
+  }
+  .arrow-link {
+    font-size: 0.75em;
+    margin-left: 0.5em;
+  }
+}

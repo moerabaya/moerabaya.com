@@ -1,0 +1,28 @@
+/* Global */
+.align-right {
+  text-align: right;
+}
+
+html, body {
+  min-height: 100vh;
+  @media screen and (max-width: 650px) {
+    height: auto;
+    overflow: auto;
+    cursor: unset;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+hr {
+	border-color: var(--text-color);
+	margin: 1em 0;
+}
+
+.arrow-link {
+  path {
+    fill: var(--text-color);
+  }
+}
