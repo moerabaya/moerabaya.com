@@ -60,7 +60,6 @@ export async function getStaticProps() {
     const filePath = path.join(postsDirectory, filename);
     const content = await fs.readFile(filePath, 'utf8');
     const matter = grayMatter(content);
-    console.log(matter);
     return {
       filename, matter
     }
