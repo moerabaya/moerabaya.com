@@ -15,8 +15,8 @@
 .page-content, .post-content, .project-content {
   padding-top: 95px;
   min-height: calc(100vh - 107px);
-  @media (max-width: $on-laptop) {
-    min-height: calc(100vh - 90px);
+  @media (max-width: $screen-sm-max) {
+    min-height: calc(100vh - 126px);
   }
   @media (max-width: $on-palm) {
     padding-top: 85px;

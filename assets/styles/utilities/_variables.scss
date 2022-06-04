@@ -32,6 +32,15 @@ $dot-after-color: $dot-color;
 
 $dot-spacing: $dot-width + $dot-width/2;
 
+$screen-sm-min: 500px;
+$screen-sm-max: 600px;
+$screen-md-min: 700px;
+$screen-md-max: 768px;
+$screen-lg-min: 1100px;
+$screen-lg-max: 1280px;
+$screen-xl-min: 1368px;
+$screen-xl-max: 1440px;
+
 
 :root {
 	--background-color: #FFFFFF;
@@ -39,17 +48,16 @@ $dot-spacing: $dot-width + $dot-width/2;
 	--alternate-background-color: #f1f1f1;
 	--nav-background-color: rgba(255, 255, 255, 0.9);
 	--text-color: #000000;
-	--text-color-light: #2a2a2a;
+	--text-color-light: #bebdbd;
 	--alternate-text-color: #2a2a2a;
-	--selection-color: var(--text-color);
-	--selection-background-color: #ffc6c7;
 	--link-color: #DAC6A6;
 	--brand-color: #415144;
 	--selection-color: var(--text-color);
 	--selection-background-color: #EBD4F1;
 	--masthead-color: #543fd7;
 	--masthead-text: #fff;
-	--button-color: #263238;
+	--button-color: #3B60E4;
+	--button-color-darken: hsl(227, 76%, 45%);
 	--button-text: #fff;
 	// --letter-spacing: 0;
 	// --bs-font-sans-serif: 'Aeonik', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -66,6 +74,16 @@ $dot-spacing: $dot-width + $dot-width/2;
 	// --text-color: #000000;
 	// --selection-color: var(--text-color);
 	// --selection-background-color: #ffc6c7;
+
+
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 
@@ -85,8 +103,6 @@ html[data-theme='dark'] {
 	--nav-background-color: rgba(0, 0, 0, 0.4);
 	--text-color: #DAC6A6;
 	--text-color-light: #f5e5ca;
-	--selection-color: var(--text-color);
-	--selection-background-color: #ffc6c7;
 	--link-color: #DAC6A6;
 	--brand-color: #415144;
 	--selection-color: var(--text-color);

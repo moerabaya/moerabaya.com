@@ -8,6 +8,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import Image from 'next/image';
 import rehypeImgSize from 'rehype-img-size';
+import Login from 'components/Login';
 
 
 const components = {
@@ -17,11 +18,17 @@ const components = {
     <Image layout="responsive" src={src} height={height} width={width} {...rest} />
   ),
 }
-const Project = ({ mdxSource, meta }: any) => {
-  const {pathname} = useRouter();
+const Project = ({ mdxSource, meta, hasReadPermission }: any) => {
+  const {pathname, asPath} = useRouter();
   useEffect(() => {
     
   }, [])
+
+  if (!hasReadPermission) {
+    return <Login redirectPath={asPath} />
+  }
+
+
   return (
     <div className="project-content">
       <Head>

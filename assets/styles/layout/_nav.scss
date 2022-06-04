@@ -34,7 +34,10 @@
   }
 
   .container {
+    height: 100%;
     padding: 25px 20px 15px;
+    display: flex;
+    flex-direction: column;
     @media (max-width: $on-laptop) {
       padding: 15px 20px 10px;
     }
@@ -48,7 +51,10 @@
     margin: 0;
     font-size: 50px;
     padding: 50px 0;
-    @media (max-width: $on-laptop) {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $screen-md-max) {
       font-size: 42px;
     }
 
@@ -57,7 +63,16 @@
       a {
         font-size: 1em;
         text-decoration: none;
+        @media (max-width: $screen-md-max) {
+          font-size: 0.7em;
+        }
       }
+    }
+
+    li.logout {
+      margin-top: auto;
+      border-top: 1px solid var(--text-color-light);
+      padding-top: 0.5em;
     }
   }
   
@@ -80,8 +95,9 @@
   /* Hamburger Menu */
   .McButton {
     $bar-w: 40px;
-    $bar-w-sm: 35px;
+    $bar-w-sm: 25px;
     $bar-h: 3px;
+    $bar-h-sm: 2.5px;
     $bar-color: var(--text-color);
     position: relative;
     display: inline-block;
@@ -89,7 +105,7 @@
     vertical-align: middle;
     height: 45px;
     cursor: crosshair;
-    @media (max-width: $on-laptop) {
+    @media (max-width: $screen-md-max) {
       width: $bar-w-sm;
     }
     b {
@@ -101,14 +117,21 @@
       height: $bar-h;
       background-color: $bar-color;
       transition: 0.5s ease;
-      @media (max-width: $on-laptop) {
+      @media (max-width: $screen-md-max) {
         width: $bar-w-sm;
+        height: $bar-h-sm;
       }
       &:nth-child(1) {
         top: 30%;
+        @media (max-width: $screen-md-max) {
+          top: 30%;
+        }
       }
       &:nth-child(2) {
         top: 50%;
+        @media (max-width: $screen-md-max) {
+          top: 45%;
+        }
       }
     }
     &.active {
@@ -118,6 +141,9 @@
         }
         &:nth-child(2) {
           transform: rotateZ(-45deg) scale(0.9) translate(4px, -3px);
+          @media (max-width: $on-laptop) {
+            transform: rotateZ(-45deg) scale(0.9) translate(2px, -1.5px)
+          }
         }
       }
     }

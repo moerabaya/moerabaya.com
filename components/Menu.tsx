@@ -4,15 +4,15 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import styles from "../styles/components/Menu.module.scss";
 import { Project } from '../types';
+import Cookies from 'universal-cookie';
+import consts from "consts"
 
-type DF = React.FC<{ title?: String }>
-const Menu: DF = () => {
+// type DF = React.FC<{ title?: String }>
+const Menu = ({hasReadPermission}: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
   const projects: Project[] = [];
-  const { pathname } = useRouter();
-  useEffect(() => {
-    
-  }, [])
+  const { pathname, asPath } = useRouter();
+
   return (
     <nav className={"main-nav" + (isMenuOpen ? " open" : "")}>
       <div className="container">
@@ -34,6 +34,12 @@ const Menu: DF = () => {
           <li onClick={() => setIsMenuOpen(false)}><Link href="/" className="animated">Home</Link></li>
           <li onClick={() => setIsMenuOpen(false)}><Link href="/about" className="animated">About</Link></li>
           <li onClick={() => setIsMenuOpen(false)}><Link href="/blog" className="animated">Blog</Link></li>
+          {hasReadPermission && <li className="logout"><a onClick={(e) => {
+            e.preventDefault()
+            const cookies = new Cookies()
+            cookies.remove(consts.SiteReadCookie, { path: "/" })
+            window.location.href = asPath ?? "/"
+          }} className="animated">Logout</a></li>}
         </ul>
       </div>
     </nav>

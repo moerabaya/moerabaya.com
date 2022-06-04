@@ -8,3 +8,10 @@ const NotFound = () => (
 NotFound.displayName = 'NotFound';
 
 export default NotFound;
+
+export async function getStaticProps() {
+  return {
+    props: {
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "moerabaya.github.io",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
     "file-loader": "^6.2.0",
+    "framer-motion": "^6.3.5",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
     "next": "12.1.6",
@@ -18,7 +20,8 @@
     "path": "^0.12.7",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "rehype-img-size": "^1.0.1"
+    "rehype-img-size": "^1.0.1",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
