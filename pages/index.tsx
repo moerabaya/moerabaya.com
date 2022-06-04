@@ -36,7 +36,7 @@ const Home: NextPage<Props> = ({projects}: Props) => {
             <h3 className='project-name'>{project.title}</h3>
             <h4 className='project-type'>{project.project_type}</h4>
             <Link href={project.path}>
-              <a className='project-link'>View Study Case</a>
+              <a className='project-link'>View Case Study</a>
             </Link>
           </div>
         </li>
