@@ -18,7 +18,7 @@ interface Props {
 const Home: NextPage<Props> = ({projects}: Props) => {
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_LOGIN_CREDENTIALS);
+    console.log(process.env.NEXT_PUBLIC_LOGIN_CREDENTIALS);
     return () => {
       // cleanup
     }
