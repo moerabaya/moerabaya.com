@@ -18,6 +18,7 @@ interface Props {
 const Home: NextPage<Props> = ({projects}: Props) => {
 
   useEffect(() => {
+    console.log(process.env.LOGIN_CREDENTIALS);
     return () => {
       // cleanup
     }
