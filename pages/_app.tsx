@@ -7,7 +7,6 @@ import Cookies from "universal-cookie"
 import consts from "consts";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  console.log(process.env.LOGIN_CREDENTIALS);
   return <Layout pageProps={pageProps}><Component {...pageProps} /></Layout>
 }
 
@@ -20,8 +19,6 @@ MyApp.getInitialProps = async (appContext: any) => {
   if (password === process.env.LOGIN_CREDENTIALS) {
     appProps.pageProps.hasReadPermission = true;
   }
-  
-  alert(process.env.LOGIN_CREDENTIALS);
 
   return { ...appProps };
 }
