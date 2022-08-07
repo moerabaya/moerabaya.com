@@ -18,6 +18,7 @@ MyApp.getInitialProps = async (appContext: any) => {
 
   if (password === process.env.LOGIN_CREDENTIALS) {
     appProps.pageProps.hasReadPermission = true;
+    alert(process.env.LOGIN_CREDENTIALS)
   }
 
   return { ...appProps };
