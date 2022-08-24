@@ -18,7 +18,7 @@ const Menu = ({hasReadPermission}: any) => {
       <div className="container">
         <div className="flex-grid">
           <div className="col">
-            {pathname != "/" && <span className={styles["nav-icon-link"]}><Link  href="/" onClick={() => setIsMenuOpen(false)}><Image src={require("../assets/images/portrait.jpg")} alt="" layout="fixed" width={45} height={45} placeholder='blur' style={{display: "none1"}} /></Link></span>}
+            {pathname != "/" && <span className={styles["nav-icon-link"]}><Link  href="/" onClick={() => setIsMenuOpen(false)}><img src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" width={45} height={45} style={{margin: 0, borderRadius: "3px"}} /></Link></span>}
             <span className="page-title">{renderPageTitle(pathname, projects)}</span>
           </div>
           <div className="col align-right">

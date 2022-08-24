@@ -27,4 +27,8 @@ export interface Project {
   metaimage?: string
   date?: string
   contents?: any
+  behance?: string
+  website?: string
+  appstore?: string
+  googleplay: string
 }

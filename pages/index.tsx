@@ -5,9 +5,8 @@ import Image from 'next/image'
 import React, { useEffect } from 'react';
 import { Project } from '../types'
 import Link from 'next/link';
-import Footer from '../components/Footer';
-import Menu from '../components/Menu';
-import Layout from '../templates/Layout';
+import {GrAppleAppStore} from "react-icons/gr";
+import {BsGlobe2} from "react-icons/bs";
 import path from 'path';
 import fs from 'fs';
 import grayMatter from 'gray-matter';
@@ -36,9 +35,25 @@ const Home: NextPage<Props> = ({projects}: Props) => {
           <div className="content-wrapper">
             <h3 className='project-name'>{project.title}</h3>
             <h4 className='project-type'>{project.project_type}</h4>
-            <Link href={project.path}>
-              <a className='project-link'>View Case Study</a>
-            </Link>
+            <div className="project-links">
+              {/* <Link href={project.path}> */}
+                {/* <a title='Coming soon!' className='project-link disabled'>Case Study</a> */}
+              {/* </Link> */}
+              {/* <Link href={project.behance}> */}
+                {project.behance ? <a title='View Project on Behacne' href={project.behance} target="_blank" className='project-link media' rel="noreferrer">
+                  View on Behance
+                </a> : <a title='Coming soon!' className='project-link disabled'>Case Study</a>}
+
+                {project.appstore && <a title={`Download ${project.title} App`} href={project.appstore} target="_blank" className='project-link media' rel="noreferrer">
+                  <GrAppleAppStore />
+                </a>}
+
+                {project.website && <a title={`Visit ${project.title}'s website`} href={project.website} target="_blank" className='project-link media' rel="noreferrer">
+                  <BsGlobe2 />
+                </a>}
+
+              {/* </Link> */}
+            </div>
           </div>
         </li>
       )
