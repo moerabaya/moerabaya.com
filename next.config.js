@@ -2,6 +2,15 @@
 const withPlugins = require('next-compose-plugins');
 const nextConfig = {
   reactStrictMode: true,
+   async redirects() {
+    return [
+      {
+        source: '/google-certificate',
+        destination: 'https://www.coursera.org/account/accomplishments/certificate/QXRM6U8EWV2Q',
+        permanent: false
+      }
+    ];
+  },
   // webpack: (config, options) => {
   //   config.module.rules.push({
   //     test: /\.(svg|png|jpe?g|gif|mp4)$/i,
