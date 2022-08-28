@@ -2,6 +2,10 @@
 const withPlugins = require('next-compose-plugins');
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['en.gravatar.com'],
+  },
+  styledComponents: true
   // webpack: (config, options) => {
   //   config.module.rules.push({
   //     test: /\.(svg|png|jpe?g|gif|mp4)$/i,
