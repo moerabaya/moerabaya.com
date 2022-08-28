@@ -6,6 +6,8 @@ export interface Post {
   description: string
   tags: string
   metaimage: string
+  image: string
+  placeholder: string
   date: string
   contents: any
 }

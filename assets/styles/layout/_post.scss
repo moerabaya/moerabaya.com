@@ -38,17 +38,14 @@
 .posts-list {
   margin: 0;
   padding: 0;
-  li {
-    a {
-      padding: 7.5px 15px;
-      display: inline-block;
-      border-radius: 7.5px;
-      transition: 0.25s ease;
-      overflow: hidden;
-      &:hover {
-        background-color: rgba(var(--text-color), 0.1);
-      }
-    }
+  grid-template-columns: 33% 33% 33%;
+  display: grid;
+  gap: 25px;
+  @media (max-width: $on-laptop) {
+    grid-template-columns: 50% 50%;
+  }
+  @media (max-width: $on-palm) {
+    grid-template-columns: 100%;
   }
 }
 

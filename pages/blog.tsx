@@ -7,6 +7,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import grayMatter from 'gray-matter';
 import { Post } from '../types'
+import Article from '../components/Article';
 
 const Blog = ({posts}:any) => {
 
@@ -37,12 +38,15 @@ const Blog = ({posts}:any) => {
       <div className="container">
         {/* <h2>Coming soon</h2> */}
         <br />
-        <h5><strong>Articles</strong></h5>
+        <h5><strong>Latest Articles</strong></h5>
         <ul className="posts-list">
           {posts?.map((post:any) => (
-            <li key={post.slug}>
-              <Link href={post.slug}><a className="animated">{post?.title}</a></Link>
-            </li>
+            <Link href={post.slug} key={post.slug}>
+              <Article as="a">
+                <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="100%" layout="responsive" objectFit="contain"  />
+                <Article.Title>{post?.title}</Article.Title>
+              </Article>
+            </Link>
           ))}
         </ul>
       </div>
@@ -67,7 +71,9 @@ export async function getStaticProps() {
   const posts = files.map(file => {
     return {
       slug: `posts/${file.filename.replace('.mdx', '')}`,
-      title: file.matter.data.title
+      title: file.matter.data.title,
+      image: file.matter.data.image,
+      placeholder: file.matter.data.placeholder
     }
   })
   
