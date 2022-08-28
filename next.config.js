@@ -10,7 +10,7 @@ const nextConfig = {
     return [
       {
         source: '/google-certificate',
-        destination: 'https://www.coursera.org/account/accomplishments/certificate/QXRM6U8EWV2Q',
+        destination: 'https://coursera.org/share/1ebf02b39984eab2802e74286134250a',
         permanent: false
       }
     ];
