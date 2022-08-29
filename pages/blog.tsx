@@ -43,7 +43,7 @@ const Blog = ({posts}:any) => {
           {posts?.map((post:any) => (
             <Link href={post.slug} key={post.slug}>
               <Article as="a">
-                <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="100%" layout="responsive" objectFit="contain"  />
+                <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
                 <Article.Title>{post?.title}</Article.Title>
               </Article>
             </Link>
