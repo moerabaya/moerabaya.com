@@ -44,7 +44,10 @@ const Blog = ({posts}:any) => {
             <Link href={post.slug} key={post.slug}>
               <Article as="a">
                 <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
-                <Article.Title>{post?.title}</Article.Title>
+                <Article.Content>
+                  <Article.Title>{post?.title}</Article.Title>
+                  {post?.tags.split(", ").map((item: string) => <Article.Label>{item}</Article.Label>)}
+                </Article.Content>
               </Article>
             </Link>
           ))}
@@ -73,6 +76,7 @@ export async function getStaticProps() {
       slug: `posts/${file.filename.replace('.mdx', '')}`,
       title: file.matter.data.title,
       image: file.matter.data.image,
+      tags: file.matter.data.tags,
       placeholder: file.matter.data.placeholder
     }
   })
