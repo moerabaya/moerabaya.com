@@ -46,7 +46,7 @@ const Blog = ({posts}:any) => {
                 <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
                 <Article.Content>
                   <Article.Title>{post?.title}</Article.Title>
-                  {post?.tags.split(", ").map((item: string) => <Article.Label>{item}</Article.Label>)}
+                  {post?.tags.split(", ").map((item: string) => <Article.Label key={item}>{item}</Article.Label>)}
                 </Article.Content>
               </Article>
             </Link>
