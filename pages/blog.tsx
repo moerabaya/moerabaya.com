@@ -8,9 +8,10 @@ import path from 'path';
 import grayMatter from 'gray-matter';
 import { Post } from '../types'
 import Article from '../components/Article';
+import useFormatter from '../hooks/useFormatter';
 
 const Blog = ({posts}:any) => {
-
+  const formatter = useFormatter();
   return (
     <div className='page-content'>
       <Head>
@@ -45,8 +46,14 @@ const Blog = ({posts}:any) => {
               <Article as="a">
                 <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
                 <Article.Content>
-                  <Article.Title>{post?.title}</Article.Title>
-                  {post?.tags.split(", ").map((item: string) => <Article.Label key={item}>{item}</Article.Label>)}
+                  <Article.Category>{post?.category}</Article.Category>
+                  <Article.Title dangerouslySetInnerHTML={{__html: post?.title}}></Article.Title>
+                  <div>
+                    <Article.Text>{post.date}</Article.Text>
+                    <Article.Text>.</Article.Text>
+                    <Article.Text>{formatter.timeToRead(post.content)} min read</Article.Text>
+                  </div>
+                  <div>{post?.tags.split(", ").map((item: string) => <Article.Label key={item}>{item}</Article.Label>)}</div>
                 </Article.Content>
               </Article>
             </Link>
@@ -68,16 +75,14 @@ export async function getStaticProps() {
     const content = await fs.readFile(filePath, 'utf8');
     const matter = grayMatter(content);
     return {
-      filename, matter
+      filename, matter, content
     }
   }))
   const posts = files.map(file => {
     return {
+      ...file.matter.data,
       slug: `posts/${file.filename.replace('.mdx', '')}`,
-      title: file.matter.data.title,
-      image: file.matter.data.image,
-      tags: file.matter.data.tags,
-      placeholder: file.matter.data.placeholder
+      content: file.content
     }
   })
   

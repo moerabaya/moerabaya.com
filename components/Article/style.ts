@@ -2,26 +2,45 @@ import {default as NextImage} from "next/image";
 import styled from "styled-components";
 
 const Title = styled.h5`
-	text-transform: uppercase;
 	margin: 0;
 	font-weight: 500;
+	font-size: 1.3em;
+	line-height: 1.2;
 `;
+
 const Content = styled.section`
 	padding: 20px;
 `;
+
 const Image = styled(NextImage)`
 	display: block;
 `;
 
-const Label = styled.small`
-	border: 1px solid #eaeaea;
+
+
+const Text = styled.small`
+	padding: 5px 0;
+	color: var(--light-color);
+	margin-right: 0.75em;
+	margin-top: 0.5em;
+	font-size: 0.75em;
+	display: inline-block;
+`;
+
+const Label = styled(Text)`
+	border: 1px solid var(--border-color);
 	padding: 5px 10px;
-	color: rgba(0,0,0,0.5);
 	border-radius: 0.3em;
 	margin-right: 0.5em;
 	margin-top: 0.5em;
-	font-size: 0.85em;
-	display: inline-block;
+`;
+
+const Category = styled(Text)`
+	margin-bottom: 0.3em;
+	margin-top: 0;
+	font-size: 0.8em;
+	font-weight: 500;
+	color: var(--button-color);
 `;
 
 const Article = Object.assign(styled.article`
@@ -30,14 +49,22 @@ const Article = Object.assign(styled.article`
 	border-radius: 0.5em;
 	overflow: hidden;
 	text-decoration: none !important;
-	&:hover h5 {
-		text-decoration: underline;
+	background-color: var(--card-background);
+	box-shadow: 0px 0px 0px 0px var(--card-shadow-color);
+	transition: 0.25s ease;
+	&:hover {
+		box-shadow: 0px 0px 5px 0px var(--card-shadow-color);
+		h5 {
+			text-decoration: underline;
+		}
 	}
 `, {
 	Title,
 	Image,
 	Content,
-	Label
+	Label,
+	Text,
+	Category
 });
 
 export default Article;
