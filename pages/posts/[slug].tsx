@@ -38,14 +38,15 @@ const Post = ({ mdxSource, meta }: any) => {
         <meta property="twitter:description" content={meta.description} />
         <meta property="twitter:image" content={meta?.metaimage ? require(meta?.metaimage) : require('../../assets/images/metaimage.png')} />
       </Head>
+      <Image src={meta.image} placeholder="blur" blurDataURL={meta.placeholder} width="100%" height="30px" layout="responsive" objectFit="cover"  />
       <div className="container">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
-        <h1 className='post-title'>{meta.title}</h1>
+        <h1 className='post-title' dangerouslySetInnerHTML={{__html: meta?.title}}></h1>
         <h5 className="post-details">
           {meta.date} . {meta.author}
         </h5>
-        <Image src={meta.image} placeholder="blur" blurDataURL={meta.placeholder} width="100%" height="40px" layout="responsive" objectFit="cover"  />
+        
         <div className="content">
           <MDXRemote {...mdxSource} />
         </div>

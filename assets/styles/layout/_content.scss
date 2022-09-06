@@ -13,7 +13,7 @@
 
 /* Page content */
 .page-content, .post-content, .project-content {
-  padding-top: 95px;
+  padding-top: 75px;
   min-height: calc(100vh - 107px);
   @media (max-width: $screen-sm-max) {
     min-height: calc(100vh - 126px);
