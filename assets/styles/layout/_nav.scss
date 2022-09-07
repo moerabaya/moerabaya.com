@@ -19,18 +19,24 @@
 
   .flex-grid {
     align-items: center;
+    justify-content: space-between;
   }
 
   .col {
     width: auto;
+    flex: 1;
     &:first-child {
-      flex: 1;
+      flex: unset;
       > span {
         vertical-align: middle;
         display: inline-block;
         display: inline-flex;
       }
     }
+    &:last-child {
+      flex: unset;
+    }
+    
   }
 
   .container {

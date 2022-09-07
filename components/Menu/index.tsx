@@ -2,13 +2,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import styles from "../styles/components/Menu.module.scss";
-import { Project } from '../types';
+import styles from "../../styles/components/Menu.module.scss";
+import { Project } from '../../../types';
 import Cookies from 'universal-cookie';
 import consts from "consts"
+import Menu from './Menu.styled';
+import { BsSun } from 'react-icons/bs';
+import { Button } from '../Button';
 
 // type DF = React.FC<{ title?: String }>
-const Menu = ({hasReadPermission}: any) => {
+export default ({hasReadPermission}: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
@@ -21,13 +24,29 @@ const Menu = ({hasReadPermission}: any) => {
             {pathname != "/" && <span className={styles["nav-icon-link"]}><Link  href="/" onClick={() => setIsMenuOpen(false)}><Image src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' width={45} height={45} style={{margin: 0, borderRadius: "3px"}} /></Link></span>}
             <span className="page-title">{renderPageTitle(pathname, projects)}</span>
           </div>
+          <div className="col menu-items">
+            <Menu>
+              <Menu.Item>
+                <Link href="/">
+                  <a>Work</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link href="/about">
+                  <a>About</a>
+                </Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link href="/about">
+                  <a>Blog</a>
+                </Link>
+              </Menu.Item>
+            </Menu>
+          </div>
           <div className="col align-right">
-            <a className={"McButton" + (isMenuOpen ? " active" : "")} onClick={() => {
-              setIsMenuOpen(!isMenuOpen);
-            }}>
-              <b></b>
-              <b></b>
-            </a>
+            <Button>
+              <BsSun />
+            </Button>
           </div>
         </div>
         <ul className="navigation-list">
@@ -45,11 +64,11 @@ const Menu = ({hasReadPermission}: any) => {
     </nav>
   )
 }
-export default Menu;
+
 function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode {
   var title: string = "";
   if(pathname == "/") {
-    title = "UX, Product Designer | Engineer";
+    title = "Mohammed Rabay'a | Engineer";
   } else if (pathname == "/about") {
     title = "About";
   } else if (pathname.includes("/blog")) {
@@ -60,6 +79,6 @@ function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode
       title = project.title;
     }
   })
-  return title;
+  return <text className=""><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</text>;
 }
 

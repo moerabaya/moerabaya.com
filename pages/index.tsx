@@ -100,7 +100,7 @@ const Home: NextPage<Props> = ({projects}: Props) => {
                 <a className="animated" target="_blank" href="https://www.google.com/search?q=Amman%2C+Jordan"><h4>Amman, Jordan</h4></a>
               </div>
               <div className="col"> */}
-              <h1 className="title">I design/develop user inter­­&shy;faces and engaging product experi­­en­­&shy;ces for humans.</h1>
+              <h1 className="title">I design/develop user inter­­&shy;faces and enga&shy;ging product experi­­en­­&shy;ces for humans.</h1>
               {/* <ArrowDown className="arrow-down" /> */}
               {/* </div> */}
             {/* </div> */}
