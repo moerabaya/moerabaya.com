@@ -5,6 +5,8 @@ import App from 'next/app'
 
 import Cookies from "universal-cookie"
 import consts from "consts";
+// prevent TypeScript errors on the css prop on arbitrary elements
+// import {} from 'styled-components/cssprop'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Layout pageProps={pageProps}><Component {...pageProps} /></Layout>
