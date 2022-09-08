@@ -91,31 +91,13 @@ const Home: NextPage<Props> = ({projects}: Props) => {
   
         <header>
           <div className="container">
-            {/* <div className="flex-grid"> */}
-              {/* <div className="col contact-details">
-                <a className="animated" href="mailto:rabaya.moe@gmail.com"><h4>rabaya.moe[at]gmail.com</h4></a>
-                <br/>
-                <a className="animated" href="tel:00962799127281"><h4>(962) 799 127 281</h4></a>
-                &nbsp; &nbsp;
-                <a className="animated" target="_blank" href="https://www.google.com/search?q=Amman%2C+Jordan"><h4>Amman, Jordan</h4></a>
-              </div>
-              <div className="col"> */}
-              <h1 className="title">I design/develop user inter­­&shy;faces and enga&shy;ging product experi­­en­­&shy;ces for humans.</h1>
-              {/* <ArrowDown className="arrow-down" /> */}
-              {/* </div> */}
-            {/* </div> */}
+            <h1 className="title">I design/develop user inter­­&shy;faces and enga&shy;ging product experi­­en­­&shy;ces for humans.</h1>
           </div>
         </header>
-        {/* <div className="container">
-          <hr />
-        </div> */}
         <section className="work-section">
-          {/* <div className="container"> */}
-            {/* <h2 className="work-title">Selected Projects</h2> */}
             <div className="content">
               {WorkItems()}
             </div>
-          {/* </div> */}
         </section>
       </div>
   )

@@ -11,7 +11,7 @@
   transition: 0.25s ease;
   background-color: var(--nav-background-color);
   @media (max-width: $on-laptop) {
-    height: 45px + 25px;
+    height: 45px + 15px;
   }
   &.open {
     height: 100%;
@@ -87,14 +87,11 @@
   }
 
   .page-title {
-    font-size: 20px;
+    font-size: 1.1em;
     margin-left: 20px;
     vertical-align: middle;
     &:only-child {
       margin: 0;
-    }
-    @media (max-width: $on-palm) {
-      font-size: 17px;
     }
   }
   

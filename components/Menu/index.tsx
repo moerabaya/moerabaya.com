@@ -4,17 +4,39 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/components/Menu.module.scss";
 import { Project } from '../../../types';
+import MovingText from 'react-moving-text';
 import Cookies from 'universal-cookie';
 import consts from "consts"
 import Menu from './Menu.styled';
 import { BsSun } from 'react-icons/bs';
 import { Button } from '../Button';
 
-// type DF = React.FC<{ title?: String }>
+const Pages = [
+  {
+    name: "Work",
+    path: "/"
+  },
+  {
+    name: "About",
+    path: "/about"
+  },
+  {
+    name: "Blog",
+    path: "/blog"
+  }
+]
 export default ({hasReadPermission}: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
+
+  const renderMenu = () => Pages.map(({path, name}) => (
+    <Menu.Item active={pathname == path}>
+      <Link href={path}>
+        <Button size="small" as="a">{name}</Button>
+      </Link>
+    </Menu.Item>
+  ))
 
   return (
     <nav className={"main-nav" + (isMenuOpen ? " open" : "")}>
@@ -26,25 +48,11 @@ export default ({hasReadPermission}: any) => {
           </div>
           <div className="col menu-items">
             <Menu>
-              <Menu.Item>
-                <Link href="/">
-                  <a>Work</a>
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link href="/about">
-                  <a>About</a>
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link href="/about">
-                  <a>Blog</a>
-                </Link>
-              </Menu.Item>
+              {renderMenu()}
             </Menu>
           </div>
           <div className="col align-right">
-            <Button>
+            <Button size="medium">
               <BsSun />
             </Button>
           </div>
@@ -66,9 +74,9 @@ export default ({hasReadPermission}: any) => {
 }
 
 function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode {
-  var title: string = "";
+  let title;
   if(pathname == "/") {
-    title = "Mohammed Rabay'a | Engineer";
+    title = <><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</>;
   } else if (pathname == "/about") {
     title = "About";
   } else if (pathname.includes("/blog")) {
@@ -79,6 +87,6 @@ function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode
       title = project.title;
     }
   })
-  return <text className=""><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</text>;
+  return title;
 }
 
