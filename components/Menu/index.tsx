@@ -24,13 +24,13 @@ const Pages = [
     path: "/blog"
   }
 ]
-export default ({hasReadPermission}: any) => {
+const MenuList = ({hasReadPermission}: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
 
   const renderMenu = () => Pages.map(({path, name}) => (
-    <Menu.Item active={pathname == path}>
+    <Menu.Item key={name} active={pathname == path}>
       <Link href={path}>
         <Button size="small" as="a">{name}</Button>
       </Link>
@@ -89,3 +89,4 @@ function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode
   return title;
 }
 
+export default MenuList;

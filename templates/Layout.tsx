@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
-import Menu from '../components/Menu';
+import MenuList from '../components/Menu';
 
 export default function Layout({ children, pageProps }:any) {
   return (
@@ -11,7 +11,7 @@ export default function Layout({ children, pageProps }:any) {
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
       </Head>
-      <Menu  {...pageProps} />
+      <MenuList  {...pageProps} />
       <main>{children}</main>
 			<Footer />
     </div>
