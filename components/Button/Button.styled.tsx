@@ -1,6 +1,7 @@
 import styled, { ButtonInterface } from "styled-components";
+import { Base } from "../Base";
 
-export const Button = styled.button<ButtonInterface>`
+export const Button = styled(Base)<ButtonInterface>`
 	appearance: none;
 	border: none;
 	outline: none;
