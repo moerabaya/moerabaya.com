@@ -3,8 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/components/Menu.module.scss";
-import { Project } from '../../../types';
-import MovingText from 'react-moving-text';
+import { Project } from 'types';
 import Cookies from 'universal-cookie';
 import consts from "consts"
 import Menu from './Menu.styled';
