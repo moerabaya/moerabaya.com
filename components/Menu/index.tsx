@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 import consts from "consts"
 import Menu from './Menu.styled';
 import { BsSun } from 'react-icons/bs';
-import { Button } from '../Button';
+import { Burger, Button } from '../Button';
 
 const Pages = [
   {
@@ -35,7 +35,11 @@ const MenuList = ({hasReadPermission}: any) => {
         <Button size="small" as="a">{name}</Button>
       </Link>
     </Menu.Item>
-  ))
+  ));
+
+  const renderInnerMenu = () => Pages.map(({path, name}) => (
+    <li key={name} onClick={() => setIsMenuOpen(false)}><Link href={path} className="animated">{name}</Link></li>
+  ));
 
   return (
     <nav className={"main-nav" + (isMenuOpen ? " open" : "")}>
@@ -50,22 +54,22 @@ const MenuList = ({hasReadPermission}: any) => {
               {renderMenu()}
             </Menu>
           </div>
-          <div className="col align-right">
+          <div className="col align-right flex-grid">
             <Button size="medium">
               <BsSun />
             </Button>
+            <Burger hide={["large", "xlarge"]} size="medium" isActive={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
           </div>
         </div>
         <ul className="navigation-list">
-          <li onClick={() => setIsMenuOpen(false)}><Link href="/" className="animated">Home</Link></li>
-          <li onClick={() => setIsMenuOpen(false)}><Link href="/about" className="animated">About</Link></li>
-          <li onClick={() => setIsMenuOpen(false)}><Link href="/blog" className="animated">Blog</Link></li>
+          {renderInnerMenu()}
           {hasReadPermission && <li className="logout"><a onClick={(e) => {
             e.preventDefault()
             const cookies = new Cookies()
             cookies.remove(consts.SiteReadCookie, { path: "/" })
             window.location.href = asPath ?? "/"
           }} className="animated">Logout</a></li>}
+
         </ul>
       </div>
     </nav>
@@ -75,7 +79,8 @@ const MenuList = ({hasReadPermission}: any) => {
 function renderPageTitle(pathname: string, projects: Project[]): React.ReactNode {
   let title;
   if(pathname == "/") {
-    title = <><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</>;
+    // title = <><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</>;
+    title = <>UX, Product Designer | Engineer</>;
   } else if (pathname == "/about") {
     title = "About";
   } else if (pathname.includes("/blog")) {
