@@ -506,7 +506,7 @@
 }
 html, body {
   min-height: 100%;
-  cursor: crosshair;
+  cursor: pointer;
   @media screen and (max-width: 650px) {
     height: auto;
     overflow: auto;

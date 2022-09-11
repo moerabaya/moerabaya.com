@@ -107,7 +107,7 @@
     width: $bar-w;
     vertical-align: middle;
     height: 45px;
-    cursor: crosshair;
+    cursor: pointer;
     @media (max-width: $screen-md-max) {
       width: $bar-w-sm;
     }

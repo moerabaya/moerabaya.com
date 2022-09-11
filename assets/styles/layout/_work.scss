@@ -14,10 +14,11 @@
     padding: 0;
   }
   .work-list {
+    --text-color: #000000;
     margin: 0;
     padding: 0;
-    border-top: 1px solid #CECECE;
-    border-bottom: 1px solid #CECECE;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
   }
   .work-item {
     margin: 0;
@@ -58,6 +59,7 @@
     justify-content: center;
     flex-grow: unset;
     min-height: 33.8vw;
+    color: var(--text-color);
     .project-name {
       font-weight: 500;
       text-transform: uppercase;
