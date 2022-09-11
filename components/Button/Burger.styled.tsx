@@ -3,17 +3,12 @@ import { Button } from "./Button.styled";
 
 
 export const Burger = styled(Button)`
-	/* $bar-w: 40px;
-	$bar-w-sm: 25px;
-	$bar-h: 3px;
-	$bar-h-sm: 2.5px;
-	$bar-color: var(--text-color); */
 	position: relative;
 	display: inline-block;
 	width: 1.75em;
 	vertical-align: middle;
 	min-height: 1.75em;
-	cursor: crosshair;
+	cursor: pointer;
 	position: relative;
 	@media (max-width: var(--screen-md-max)) {
 		width: 1.75em;
