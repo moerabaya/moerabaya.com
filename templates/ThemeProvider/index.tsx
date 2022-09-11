@@ -2,11 +2,12 @@ import React, { createContext, Dispatch, SetStateAction, useState } from "react"
 
 interface ThemeInterface {
 	theme: string,
-	setTheme?: (theme: string) => void
+	setTheme: (theme: string) => void
 }
 
 const defaultValue = {
-	theme: "light"
+	theme: "light",
+	setTheme: (theme: string) => {}
 }
 export const ThemeContext = createContext<ThemeInterface>(defaultValue);
 
