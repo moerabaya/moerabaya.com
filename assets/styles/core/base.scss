@@ -69,6 +69,8 @@ li {
 }
 
 /* Headings */
+
+/* Headings */
 h1,
 h2,
 h3,
@@ -78,16 +80,57 @@ h6 {
   font-weight: 400;
 }
 
+h1 {
+  font-size: 3.25rem;
+  line-height: 1.3em;
+  @media screen and (max-width: $on-laptop) {
+    font-size: 2.7rem;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 1.5rem;
+  }
+}
+
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.4em;
+  @media screen and (max-width: $on-laptop) {
+    font-size: 1.5rem;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 1.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.82rem;
+  line-height: 1.2em;
+  @media screen and (max-width: $on-laptop) {
+    font-size: 24px;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 20px;
+  }
+}
+
+h4 {
+  font-size: 1.421rem;
+  line-height: 1.1em;
+  @media screen and (max-width: $on-laptop) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: $on-palm) {
+    font-size: 18px;
+  }
+}
+
 /* Links */
 a {
-  text-decoration: none;
+  cursor: pointer;
   color: var(--text-color);
   &:visited {
     color: color-mod(var(--text-color) shade(15%));
-  }
-  &:hover {
-    text-decoration: underline;
-    color: var(--text-color);
   }
 }
 

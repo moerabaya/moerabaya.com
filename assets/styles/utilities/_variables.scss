@@ -1,10 +1,9 @@
 /* Variables */
 
-$base-font-family: 'Work Sans', Helvetica, Arial, sans-serif;
-$base-font-size:   19px;
-$mobile-font-size:   17px;
+$base-font-size:   18px;
+$mobile-font-size:   16px;
 $small-font-size:  calc(#{$base-font-size} * .875);
-$base-line-height: 1.5;
+$base-line-height: 1.25;
 
 $spacing-unit: 30px;
 
@@ -46,13 +45,13 @@ $screen-xl-max: 1440px;
 	--background-color: #FFFFFF;
 	--background-color-rgb: 255, 255, 255;
 	--alternate-background-color: #f1f1f1;
+	--alternate-text-color: #2a2a2a;
 	--nav-background-color: rgba(255, 255, 255, 0.9);
 	--text-color: #000000;
-	--text-color-light: #bebdbd;
-	--alternate-text-color: #2a2a2a;
+	--text-color-rgb: 0, 0, 0;
+	--text-color-light: #7F7F7F;
 	--link-color: #DAC6A6;
 	--brand-color: #415144;
-	--light-color: #7F7F7F;
 	--border-color: #eaeaea;
 	--selection-color: var(--text-color);
 	--selection-background-color: #EBD4F1;
@@ -61,64 +60,48 @@ $screen-xl-max: 1440px;
 	--button-color: #3B60E4;
 	--button-color-darken: hsl(227, 76%, 45%);
 	--button-text: #fff;
-	// --letter-spacing: 0;
-	// --bs-font-sans-serif: 'Aeonik', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--letter-spacing: -0.03em;
-	--bs-font-sans-serif: 'Work Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--bs-font-sans-serif: 'DM Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--bs-font-serif: Georgia, serif;
 	--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 	--card-background: #FFFFFF;
 	--card-shadow-color: rgba(0,0,0,0.1);
-	// --background-color: rgb(255, 237, 215);
-	// --background-color-rgb: 255, 237, 215;
-	// --alternate-background-color: #FFE2BF;
-	// --alternate-background-color-rgb: 255, 226, 191;
-	// --nav-background-color: rgb(255, 237, 215, 0.5);
-	// --text-color: #000000;
-	// --selection-color: var(--text-color);
-	// --selection-background-color: #ffc6c7;
 
 
-	
-	
-	
-	
-	
-	
-	
-	
+	--screen-sm-min: 500px;
+	--screen-sm-max: 600px;
+	--screen-md-min: 700px;
+	--screen-md-max: 768px;
+	--screen-lg-min: 1100px;
+	--screen-lg-max: 1280px;
+	--screen-xl-min: 1368px;
+	--screen-xl-max: 1440px;
 }
 
 
-html[data-theme='dark'] {
-	// --background-color: rgb(255, 237, 215);
-	// --background-color-rgb: 255, 237, 215;
-	// --alternate-background-color: #FFE2BF;
-	// --alternate-background-color-rgb: 255, 226, 191;
-	// --nav-background-color: rgb(255, 237, 215, 0.5);
-	// --text-color: #000000;
-	// --selection-color: var(--text-color);
-	// --selection-background-color: #ffc6c7;
-
+html[data-theme="dark"] {
 	--background-color: #000000;
 	--background-color-rgb: 0, 0, 0;
-	--alternate-background-color: #1f1f1f;
+	--alternate-background-color: #232323;
+	--alternate-text-color: #ffffff;
 	--nav-background-color: rgba(0, 0, 0, 0.4);
+	--border-color: #DAC6A6;
 	--text-color: #DAC6A6;
-	--text-color-light: #f5e5ca;
+	--text-color-rgb: 218, 198, 166;
+	--text-color-light: #b9a98f;
 	--link-color: #DAC6A6;
 	--brand-color: #415144;
 	--selection-color: var(--text-color);
 	--selection-background-color: #9B6A83;
 	--masthead-color: #543fd7;
 	--masthead-text: #fff;
-	--button-color: #263238;
+	--button-color: #f5e5ca;
 	--button-text: #fff;
-	--letter-spacing: 0;
-	--bs-font-sans-serif: 'Aeonik', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	// --letter-spacing: -0.03em;
-	// --bs-font-sans-serif: 'Work Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--bs-font-sans-serif: 'DM Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--bs-font-serif: Georgia, serif;
 	--bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+	--card-background: var(--background-color);
+	--card-shadow-color: rgba(var(--text-color-rgb),0.1);
 }

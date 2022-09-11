@@ -11,7 +11,7 @@
   transition: 0.25s ease;
   background-color: var(--nav-background-color);
   @media (max-width: $on-laptop) {
-    height: 45px + 25px;
+    height: 45px + 15px;
   }
   &.open {
     height: 100%;
@@ -19,18 +19,24 @@
 
   .flex-grid {
     align-items: center;
+    justify-content: space-between;
   }
 
   .col {
     width: auto;
+    flex: 1;
     &:first-child {
-      flex: 1;
+      flex: unset;
       > span {
         vertical-align: middle;
         display: inline-block;
         display: inline-flex;
       }
     }
+    &:last-child {
+      flex: unset;
+    }
+    
   }
 
   .container {
@@ -81,14 +87,11 @@
   }
 
   .page-title {
-    font-size: 20px;
+    font-size: 1.1em;
     margin-left: 20px;
     vertical-align: middle;
     &:only-child {
       margin: 0;
-    }
-    @media (max-width: $on-palm) {
-      font-size: 17px;
     }
   }
   
@@ -104,7 +107,7 @@
     width: $bar-w;
     vertical-align: middle;
     height: 45px;
-    cursor: crosshair;
+    cursor: pointer;
     @media (max-width: $screen-md-max) {
       width: $bar-w-sm;
     }

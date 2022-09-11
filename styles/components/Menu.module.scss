@@ -8,7 +8,7 @@
 .nav-icon-link {
   display: inline-block;
   vertical-align: middle;
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 // .main-nav {
@@ -87,7 +87,7 @@
 //     width: $bar-w;
     
 //     height: 45px;
-//     cursor: crosshair;
+//     cursor: pointer;
 //     @media (max-width: $on-laptop) {
 //       width: $bar-w-sm;
 //     }
