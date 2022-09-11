@@ -9,15 +9,15 @@ enum ScreenSize {
 
 export const Base = styled.div<BaseComponent>`
 	@media (max-width: ${ScreenSize.Small}) {
-		display: ${props => props.hide?.includes("small") ? "none" : "initial"} !important;
+		display: ${props => props.hide?.includes("small") ? `none !important` : ''}
 	}
 	@media (min-width: ${ScreenSize.Small}) and (max-width: ${ScreenSize.Medium}) {
-		display: ${props => props.hide?.includes("medium") ? "none" : "initial"} !important;
+		display: ${props => props.hide?.includes("medium") ? 'none !important' : ''}
 	}
 	@media (min-width: ${ScreenSize.Medium}) and (max-width: ${ScreenSize.Large}) {
-		display: ${props => props.hide?.includes("large") ? "none" : "initial"} !important;
+		display: ${props => props.hide?.includes("large") ? 'none !important' : ''}
 	}
-	@media (min-width: ${ScreenSize.Large}) and (max-width: ${ScreenSize.xLarge}) {
-		display: ${props => props.hide?.includes("xlarge") ? "none" : "initial"} !important;
+	@media (min-width: ${ScreenSize.Large}) {
+		display: ${props => props.hide?.includes("xlarge") ? 'none !important' : ''}
 	}
 `;

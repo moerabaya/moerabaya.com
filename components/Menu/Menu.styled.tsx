@@ -1,8 +1,9 @@
-import styled, { MenuItemInterface } from "styled-components";
+import styled, { BaseComponent, MenuItemComponent } from "styled-components";
+import { Base } from "../Base";
 
-const Item = styled.li<MenuItemInterface>`
+const Item = styled.li<MenuItemComponent>`
 	display: inline-block;
-	padding: 0 0.5em;
+	padding: 0 0.6em;
 	a {
 		display: block;
 		text-decoration: none;
@@ -16,14 +17,10 @@ const Item = styled.li<MenuItemInterface>`
 `;
 
 const Menu = Object.assign(
-	styled.ul`
+	styled((props) => <Base {...props} as="ul" />)`
 		margin: 0;
-		padding: 0 1.5em;
+		padding: 0 0.75em;
 		text-align: end;
-		display: none;
-		@media (min-width: ${props => props.theme.screen_md_max}) {
-			display: block;
-		}
 	`, {
 		Item
 	}

@@ -1,14 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from "../../styles/components/Menu.module.scss";
 import { Project } from 'types';
 import Cookies from 'universal-cookie';
 import consts from "consts"
 import Menu from './Menu.styled';
-import { BsSun } from 'react-icons/bs';
+import { BsMoon, BsSun } from 'react-icons/bs';
 import { Burger, Button } from '../Button';
+import { ThemeContext } from 'templates/ThemeProvider';
 
 const Pages = [
   {
@@ -28,6 +29,7 @@ const MenuList = ({hasReadPermission}: any) => {
   const [isMenuOpen, setIsMenuOpen] = useState<any>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
+  const {theme, setTheme} = useContext(ThemeContext);
 
   const renderMenu = () => Pages.map(({path, name}) => (
     <Menu.Item key={name} active={pathname == path}>
@@ -50,13 +52,13 @@ const MenuList = ({hasReadPermission}: any) => {
             <span className="page-title">{renderPageTitle(pathname, projects)}</span>
           </div>
           <div className="col menu-items">
-            <Menu>
+            <Menu hide={["small", "medium"]}>
               {renderMenu()}
             </Menu>
           </div>
           <div className="col align-right flex-grid">
-            <Button size="medium">
-              <BsSun />
+            <Button size="medium" onClick={() => setTheme(theme == "dark" ? "light" : "dark")}>
+              {theme == "dark" ? <BsSun /> : <BsMoon style={{padding: "0.05em"}} />}
             </Button>
             <Burger hide={["large", "xlarge"]} size="medium" isActive={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
           </div>

@@ -16,11 +16,9 @@ const Image = styled(NextImage)`
 	display: block;
 `;
 
-
-
 const Text = styled.small`
 	padding: 5px 0;
-	color: var(--light-color);
+	color: var(--text-color-light);
 	margin-right: 0.75em;
 	margin-top: 0.5em;
 	font-size: 0.75em;
@@ -44,7 +42,7 @@ const Category = styled(Text)`
 `;
 
 const Article = Object.assign(styled.article`
-	border: 1px solid #eaeaea;
+	border: 1px solid var(--border-color);
 	display: inline-block;
 	border-radius: 0.5em;
 	overflow: hidden;
