@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import { theme as styledTheme } from 'styles/theme';
 import { useContext, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-const Navigation = dynamic(() => import("../components/Menu"), {
+const Navigation = dynamic(() => import("../components/Navigation"), {
   ssr: false,
 });
 export default function Layout({ children, pageProps }:any) {
