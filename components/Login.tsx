@@ -3,14 +3,14 @@ import Cookies from "universal-cookie"
 import consts from "consts"
 import form from "styles/components/Form.module.scss"
 import login from "styles/components/Login.module.scss"
-import classnames from 'classnames/bind';
+import cn from 'classnames';
 
 const Login = ({ redirectPath }:any) => {
   const [password, setPassword] = useState("")
 
   return (
-    <article className={classnames("project-content", login.loginForm)}>
-      <div className={classnames("container", login.container)}>
+    <article className={cn("project-content", login.loginForm)}>
+      <div className={cn("container", login.container)}>
         <form className={form.styles}>
           <label className={form["input-element"]}>
             <label htmlFor="password">Password</label>
