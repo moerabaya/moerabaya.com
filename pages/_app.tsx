@@ -11,8 +11,8 @@ import ThemeProvider from 'templates/ThemeProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <Layout pageProps={pageProps}>
+    <ThemeProvider {...pageProps}>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
