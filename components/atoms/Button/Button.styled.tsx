@@ -1,7 +1,8 @@
 import styled, { ButtonComponent } from "styled-components";
-import { Base } from "../Base";
+import { mixins } from "styles";
+import { Component } from "../Component";
 
-export const Button = styled((props) => <Base {...props} as="button" />)<ButtonComponent>`
+export const Button = styled((props) => <Component {...props} as="button" />)<ButtonComponent>`
 	appearance: none;
 	border: none;
 	outline: none;
@@ -18,4 +19,5 @@ export const Button = styled((props) => <Base {...props} as="button" />)<ButtonC
 	&:active {
 		background-color: rgba(var(--text-color-rgb), 0.1);
 	}
+	${props => props.smallCaps && mixins.smallCaps}
 `;

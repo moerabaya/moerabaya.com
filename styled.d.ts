@@ -7,7 +7,7 @@ declare module 'styled-components' {
     Small = "500px",
     Medium = "768px",
     Large = "1280px",
-    xLarge = "1440px"
+    xLarge = "1440px",
   }
 
   export interface DefaultTheme {
@@ -17,20 +17,26 @@ declare module 'styled-components' {
       font: string;
       background: string;
     };
+
+    screens: {
+      [key: string]: string;
+    }
   }
-  
-  
+
   export type ScreenSizes = "xlarge" | "large" | "medium" | "small" | "all";
+
   export interface BaseComponent {
     hide?: ScreenSizes[],
     show?: ScreenSizes[]
   }
-	export interface ButtonComponent extends BaseComponent {
+
+  export interface ButtonComponent extends BaseComponent {
 		size?: "small" | "medium" | "large" = "small";
     isActive?: boolean = false;
+    smallCaps?: boolean = false
 	}
+
   export interface MenuItemComponent extends BaseComponent {
     active?: boolean = false;   
   }
-  
 }
