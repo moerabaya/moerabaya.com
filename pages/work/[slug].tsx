@@ -8,7 +8,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import matter from 'gray-matter';
 import Image from 'next/image';
 import rehypeImgSize from 'rehype-img-size';
-import Login from 'components/Login';
+import Login from 'components/templates/Login';
 
 
 const components = {
