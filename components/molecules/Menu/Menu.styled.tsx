@@ -1,5 +1,5 @@
 import styled, { BaseComponent, MenuItemComponent } from "styled-components";
-import { Base } from "../Base";
+import { Component } from "../../atoms/Component";
 
 const Item = styled.li<MenuItemComponent>`
 	display: inline-block;
@@ -17,7 +17,7 @@ const Item = styled.li<MenuItemComponent>`
 `;
 
 const Menu = Object.assign(
-	styled((props) => <Base {...props} as="ul" />)`
+	styled((props) => <Component {...props} as="ul" />)`
 		margin: 0;
 		padding: 0 0.75em;
 		text-align: end;

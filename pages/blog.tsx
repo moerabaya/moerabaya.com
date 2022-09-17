@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import React from 'react'
-import Footer from '../components/Footer';
-import Menu from '../components/Menu';
+import Footer from '../components/molecules/Footer';
+import Menu from '../components/organisms/Navigation';
 import { promises as fs } from 'fs';
 import path from 'path';
 import grayMatter from 'gray-matter';
 import { Post } from '../types'
-import Article from '../components/Article';
+import Article from '../components/molecules/Article';
 import useFormatter from '../hooks/useFormatter';
 
 const Blog = ({posts}:any) => {
