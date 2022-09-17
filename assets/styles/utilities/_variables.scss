@@ -71,14 +71,10 @@ $screen-xl-max: 1440px;
 	--card-shadow-color: rgba(0,0,0,0.1);
 
 
-	--screen-sm-min: 500px;
-	--screen-sm-max: 600px;
-	--screen-md-min: 700px;
-	--screen-md-max: 768px;
-	--screen-lg-min: 1100px;
-	--screen-lg-max: 1280px;
-	--screen-xl-min: 1368px;
-	--screen-xl-max: 1440px;
+	@media (min-width: $screen-lg-max) {
+		--base-font-size: 18px;
+		--base-small-caps-size: 21px;
+	}
 }
 
 

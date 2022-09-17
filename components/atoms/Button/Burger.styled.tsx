@@ -10,12 +10,7 @@ export const Burger = styled(Button)`
 	min-height: 1.75em;
 	cursor: pointer;
 	position: relative;
-	@media (max-width: var(--screen-md-max)) {
-		width: 1.75em;
-	}
 	&:before, &:after {
-		// position: absolute;
-		// left: 0;
 		content: "";
 		position: absolute;
 		display: block;
@@ -23,22 +18,12 @@ export const Burger = styled(Button)`
 		height: 2px;
 		background-color: var(--text-color);
 		transition: 0.15s linear;
-		@media (max-width: var(--screen-md-max)) {
-			width: 1.25em;
-			height: 1.5px;
-		}
 	}
 	&:before {
 		top: 35%;
-		@media (max-width: var(--screen-md-max)) {
-			top: 35%;
-		}
 	}
 	&:after {
 		top: 55%;
-		@media (max-width: var(--screen-md-max)) {
-			top: 55%;
-		}
 	}
 
 	&:before {
