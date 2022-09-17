@@ -27,6 +27,7 @@ const Nav = Object.assign(
 		transition: 0.25s ease;
 		background-color: var(--nav-background-color);
 		padding: 20px 35px;
+
 		@media (max-width: ${props => props.theme.screens.medium}) {
 			height: 45px + 15px;
 		}

@@ -43,7 +43,7 @@ $screen-xl-max: 1440px;
 
 :root {
 	--base-font-size: 16px;
-	--base-small-caps-size: 19px;
+	--base-small-caps-size: 15px;
 	--background-color: #FFFFFF;
 	--background-color-rgb: 255, 255, 255;
 	--alternate-background-color: #f1f1f1;
@@ -72,8 +72,8 @@ $screen-xl-max: 1440px;
 
 
 	@media (min-width: $screen-lg-max) {
-		--base-font-size: 18px;
-		--base-small-caps-size: 21px;
+		--base-font-size: 19px;
+		--base-small-caps-size: 16px;
 	}
 }
 
