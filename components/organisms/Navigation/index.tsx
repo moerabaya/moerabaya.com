@@ -6,7 +6,7 @@ import styles from "styles/components/Menu.module.scss";
 import { Project } from 'types';
 import Cookies from 'universal-cookie';
 import consts from "consts"
-import Menu from './Menu.styled';
+import Menu from '../../molecules/Menu/Menu.styled';
 import { BsMoon, BsSun } from 'react-icons/bs';
 import { Burger, Button } from '../../atoms/Button';
 import { ThemeContext } from 'templates/ThemeProvider';

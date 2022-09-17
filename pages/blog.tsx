@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link';
 import React from 'react'
 import Footer from '../components/molecules/Footer';
-import Menu from '../components/molecules/Navigation';
+import Menu from '../components/organisms/Navigation';
 import { promises as fs } from 'fs';
 import path from 'path';
 import grayMatter from 'gray-matter';

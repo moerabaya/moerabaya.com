@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import Footer from '../components/molecules/Footer';
 import { theme } from 'styles/theme';
 import dynamic from 'next/dynamic';
-const Navigation = dynamic(() => import("../components/molecules/Navigation"), {
+const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
   ssr: false,
 });
 export default function Layout({ children, pageProps }:any) {
