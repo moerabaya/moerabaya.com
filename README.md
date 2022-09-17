@@ -9,7 +9,10 @@ Mohammed Rabay'a is an experinced software engineer specialized in designing and
 
 
 ## Folder Structure
-Project components follow [atomic design methdology](https://atomicdesign.bradfrost.com/chapter-2/#:~:text=Atomic%20design%20is%20atoms%2C%20molecules,parts%20at%20the%20same%20time.) created by [Brad Frost](https://bradfrost.com/). This will provide direction on building interface design components more deliberately and with explicit order and hierarchy.
+Project components follow [atomic design principles](https://atomicdesign.bradfrost.com/chapter-2/#:~:text=Atomic%20design%20is%20atoms%2C%20molecules,parts%20at%20the%20same%20time.) created by [Brad Frost](https://bradfrost.com/). This will provide direction on building interface design components more deliberately and with explicit order and hierarchy.
+- Atoms: are the basic building blocks of all matter. Each element has distinct properties, and they can’t be broken down further. e.g. form labels, inputs, buttons, and others
+- Molecules: are group of two or more atoms held together. These combinations of atoms take on their own unique properties. e.g. Card, Search Molecule, etc.
+- Organisms: are assimbles of molecules functionign together as a unit. These relatively complex structures can range from single-celled organisms all the way up to incredibly sophisticated organisms.  e.g. Navigation, Header, Footer, etc.
 
 
 ## Reach Out
