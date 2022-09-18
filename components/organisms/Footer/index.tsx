@@ -1,9 +1,11 @@
 import React from 'react'
+import { Component } from '../../atoms/Component'
+import {default as StyledFooter} from "./Footer.styled";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="site-footer">
-      <div className="container">
+    <StyledFooter>
+      <Component container={true}>
         <ul className="resume-list">
           <li>
             <a className="animated" href="/engineering-resume-2022.pdf" target="_blank">download résumé</a>
@@ -29,9 +31,8 @@ const Footer: React.FC = () => {
             <a className="animated" target="_blank" rel="noreferrer" href="https://github.com/moerabaya">github</a>
           </li>
         </ul>
-      </div>
-
-    </footer>
+      </Component>
+    </StyledFooter>
   )
 }
 export default Footer

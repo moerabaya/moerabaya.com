@@ -27,7 +27,8 @@ declare module 'styled-components' {
 
   export interface BaseComponent {
     hide?: ScreenSizes[],
-    show?: ScreenSizes[]
+    show?: ScreenSizes[],
+    container?: boolean
   }
 
   export interface ButtonComponent extends BaseComponent {

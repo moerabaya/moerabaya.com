@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
-import Footer from '../components/molecules/Footer';
+import Footer from '../components/organisms/Footer';
 import { theme } from 'styles/theme';
 import dynamic from 'next/dynamic';
 const Navigation = dynamic(() => import("../components/organisms/Navigation"), {

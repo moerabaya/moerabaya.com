@@ -1,4 +1,4 @@
-import styled, { BaseComponent } from "styled-components";
+import styled, { BaseComponent, css } from "styled-components";
 
 
 export const Component = styled.div<BaseComponent>`
@@ -14,4 +14,18 @@ export const Component = styled.div<BaseComponent>`
 	@media (min-width: ${props => props.theme.screens.large}) {
 		display: ${props => props.hide?.includes("xlarge") ? 'none !important' : ''}
 	}
+
+	${props => props.container && css`
+		margin: 0 auto;
+		max-width: auto;
+		@media (min-width: ${props => props.theme.screens.small}) and (max-width: ${props => props.theme.screens.medium}) {
+			max-width: ${props.theme.screens.small};
+		}
+		@media (min-width: ${props => props.theme.screens.medium}) and (max-width: ${props => props.theme.screens.large}) {
+			max-width: ${props.theme.screens.medium};
+		}
+		@media (min-width: ${props => props.theme.screens.large}) {
+			max-width: ${props.theme.screens.large};
+		}
+	`}
 `;
