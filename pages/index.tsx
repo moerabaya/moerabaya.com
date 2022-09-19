@@ -10,6 +10,7 @@ import {BsGlobe2} from "react-icons/bs";
 import path from 'path';
 import fs from 'fs';
 import grayMatter from 'gray-matter';
+import AnimatedText from '../components/atoms/AnimatedText';
 
 interface Props {
   projects: Project[]
@@ -90,7 +91,7 @@ const Home: NextPage<Props> = ({projects}: Props) => {
   
         <header>
           <div className="container">
-            <h1 className="title">I design/develop user inter­­&shy;faces and enga&shy;ging product experi­­en­­&shy;ces for humans.</h1>
+            <AnimatedText text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans." type="heading1"/>
           </div>
         </header>
         <section className="work-section">
