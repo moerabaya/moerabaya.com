@@ -1,9 +1,13 @@
 
 declare module 'motion' {
 	type TagType = {
-		paragraph: "p",
-		heading1: "h1",
-		heading2: "h2"
+		p: "p",
+		h1: "h1",
+		h2: "h2",
+		h3: "h3",
+		h4: "h4",
+		h5: "h5",
+		h6: "h6"
 	};
 	
 	interface AnimatedCharachtersProps {

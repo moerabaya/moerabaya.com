@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { motion } from "framer-motion";
 import Wrapper from "./Wrapper";
 import { AnimatedCharachtersProps } from "motion";
+import Text from "../Text";
 
 
 // AnimatedCharacters
@@ -25,10 +26,10 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
   };
 
   //  Split each word of props.text into an array
-  const splitWords = props.text.split(" ");
+  const splitWords: any = props.text.split(" ");
 
   // Create storage array
-  const words = [];
+  const words: any = [];
 
   // Push each word into words array
   for (const [, item] of splitWords.entries()) {
@@ -36,7 +37,7 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
   }
 
   // Add a space ("\u00A0") to the end of each word
-  words.map((word) => {
+  words.map((word: any) => {
     return word.push("\u00A0");
   });
 
@@ -45,8 +46,8 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
   // const Tag = React.createElement("h1");
 
   return (
-    <h1>
-      {words.map((word, index) => {
+    <Text as={props.type} style={{lineHeight: "0.5em"}}>
+      {words.map((word: any, index: any) => {
         return (
           // Wrap each word in the Wrapper component
           <Wrapper key={index}>
@@ -60,7 +61,7 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
                   key={index}
                 >
                   <motion.span
-                    style={{ display: "inline-block" }}
+                    style={{ display: "inline-block", top: "-0.1em", position: "relative" }}
                     variants={item}
                   >
                     {element}
@@ -72,7 +73,7 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
         );
       })}
       {/* {} */}
-    </h1>
+    </Text>
   );
 };
 

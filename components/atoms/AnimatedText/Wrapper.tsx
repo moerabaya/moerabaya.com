@@ -4,10 +4,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.span`
 	white-space: nowrap;
-	-webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black;
-	font-weight: bold;
-	color: transparent
+	font-weight: 500;
+	line-height: 1em;
 `
 // interface WrapperProps {
 // 	children: ReactElement;

@@ -91,7 +91,7 @@ const Home: NextPage<Props> = ({projects}: Props) => {
   
         <header>
           <div className="container">
-            <AnimatedText text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans." type="heading1"/>
+            <AnimatedText text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans." type="h1"/>
           </div>
         </header>
         <section className="work-section">
