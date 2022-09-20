@@ -8,9 +8,10 @@ import Link from 'next/link';
 import {GrAppleAppStore} from "react-icons/gr";
 import {BsGlobe2} from "react-icons/bs";
 import path from 'path';
-import fs from 'fs';
+import fs, { Dirent } from 'fs';
 import grayMatter from 'gray-matter';
 import AnimatedText from '../components/atoms/AnimatedText';
+import AnimatedView from '../components/atoms/AnimatedView';
 
 interface Props {
   projects: Project[]
@@ -26,36 +27,39 @@ const Home: NextPage<Props> = ({projects}: Props) => {
   function WorkItems() {
     var list: any = [];
 
-    projects?.sort((a: any, b: any) => a.index - b.index).map((project: Project) => {
+    projects?.sort((a: any, b: any) => a.index - b.index).map((project: Project, index: number) => {
       list.push(
-        <li key={project.slug} className={"work-item " + project.slug}>
-          <div className="content-media">
-            <Image placeholder="blur" layout="responsive" alt="" src={project.cover_photo && require("../assets/images/projects/" + project.cover_photo)} />
-          </div>
-          <div className="content-wrapper">
-            <h3 className='project-name'>{project.title}</h3>
-            <h4 className='project-type'>{project.project_type}</h4>
-            <div className="project-links">
-              {/* <Link href={project.path}> */}
-                {/* <a title='Coming soon!' className='project-link disabled'>Case Study</a> */}
-              {/* </Link> */}
-              {/* <Link href={project.behance}> */}
-                {project.behance ? <a title='View Project on Behacne' href={project.behance} target="_blank" className='project-link media' rel="noreferrer">
-                  View on Behance
-                </a> : <a title='Coming soon!' className='project-link disabled'>Case Study</a>}
+        <li className={"work-item " + project.slug}>
+            <AnimatedView key={project.slug} duration={1.25} vertical="25%">
+              <div className="content-media">
+                <Image placeholder="blur" layout="responsive" alt="" src={project.cover_photo && require("../assets/images/projects/" + project.cover_photo)} />
+              </div>
+            </AnimatedView>
+            <AnimatedView key={project.slug} duration={1.25} vertical="25%">
+              <div className="content-wrapper">
+                <h3 className='project-name'>{project.title}</h3>
+                <h4 className='project-type'>{project.project_type}</h4>
+                <div className="project-links">
+                  {/* <Link href={project.path}> */}
+                    {/* <a title='Coming soon!' className='project-link disabled'>Case Study</a> */}
+                  {/* </Link> */}
+                  {/* <Link href={project.behance}> */}
+                    {project.behance ? <a title='View Project on Behacne' href={project.behance} target="_blank" className='project-link media' rel="noreferrer">
+                      View on Behance
+                    </a> : <a title='Coming soon!' className='project-link disabled'>Case Study</a>}
 
-                {project.appstore && <a title={`Download ${project.title} App`} href={project.appstore} target="_blank" className='project-link media' rel="noreferrer">
-                  <GrAppleAppStore />
-                </a>}
+                    {project.appstore && <a title={`Download ${project.title} App`} href={project.appstore} target="_blank" className='project-link media' rel="noreferrer">
+                      <GrAppleAppStore />
+                    </a>}
 
-                {project.website && <a title={`Visit ${project.title}'s website`} href={project.website} target="_blank" className='project-link media' rel="noreferrer">
-                  <BsGlobe2 />
-                </a>}
-
-              {/* </Link> */}
-            </div>
-          </div>
-        </li>
+                    {project.website && <a title={`Visit ${project.title}'s website`} href={project.website} target="_blank" className='project-link media' rel="noreferrer">
+                      <BsGlobe2 />
+                    </a>}
+                  {/* </Link> */}
+                </div>
+              </div>
+            </AnimatedView>
+          </li>
       )
     })
     return (
@@ -96,7 +100,11 @@ const Home: NextPage<Props> = ({projects}: Props) => {
         </header>
         <section className="work-section">
             <div className="content">
+              <AnimatedView duration={1} delay={1.25} vertical="25%">
+                <hr style={{margin: 0}} />
+              </AnimatedView>
               {WorkItems()}
+              <hr style={{margin: 0}} />
             </div>
         </section>
       </div>

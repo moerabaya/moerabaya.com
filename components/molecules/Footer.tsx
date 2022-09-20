@@ -30,7 +30,6 @@ const Footer: React.FC = () => {
           </li>
         </ul>
       </div>
-
     </footer>
   )
 }
