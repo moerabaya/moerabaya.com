@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { NextPage } from 'next/types';
 import React from 'react'
+import AnimatedView from '../components/atoms/AnimatedView';
 
 const About: NextPage<any> = () => {
   return (
@@ -29,13 +30,20 @@ const About: NextPage<any> = () => {
       </Head>
       <div className="container">
         <br />
-        <h2>Hi, I&apos;m <strong>Mohammed Rabay&apos;a</strong>.
+        <AnimatedView>
+          <h2>Hi, I&apos;m <strong>Mohammed Rabay&apos;a</strong>.</h2>
+        </AnimatedView>
         <br />
-        <br /> A product-focused software engineer with over {new Date().getFullYear() - 2015}+ years of experience working in the field of UX and traditional development.
+        <AnimatedView delay={0.75}>
+          <h2>A product-focused software engineer with over {new Date().getFullYear() - 2015}+ years of experience working in the field of UX and traditional development.</h2>
+        </AnimatedView>
         
         <br />
         <br />
-        Based in Amman, Jordan and currently designing and creating products at <a target="_blank" href="https://cura.healthcare/" rel="noreferrer"><strong>Cura Healthcare</strong></a></h2>
+        <AnimatedView delay={1.5}>
+
+          <h2>Based in Amman, Jordan and currently designing and creating products at <a target="_blank" href="https://cura.healthcare/" rel="noreferrer"><strong>Cura Healthcare</strong></a></h2>
+        </AnimatedView>
       </div>
     </div>
   )
