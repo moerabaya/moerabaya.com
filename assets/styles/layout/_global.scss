@@ -17,7 +17,8 @@ html, body {
 }
 
 hr {
-	border-color: var(--text-color);
+  border: none;
+	border-top: 1px solid var(--border-color);;
 	margin: 1em 0;
 }
 

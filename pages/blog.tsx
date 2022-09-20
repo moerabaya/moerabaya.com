@@ -9,6 +9,7 @@ import grayMatter from 'gray-matter';
 import { Post } from '../types'
 import Article from '../components/molecules/Article';
 import useFormatter from '../hooks/useFormatter';
+import AnimatedView from '../components/atoms/AnimatedView';
 
 const Blog = ({posts}:any) => {
   const formatter = useFormatter();
@@ -39,24 +40,28 @@ const Blog = ({posts}:any) => {
       <div className="container">
         {/* <h2>Coming soon</h2> */}
         <br />
-        <h5><strong>Latest Articles</strong></h5>
+        <AnimatedView>
+          <h5><strong>Latest Articles</strong></h5>
+        </AnimatedView>
         <ul className="posts-list">
-          {posts?.map((post:any) => (
-            <Link href={post.slug} key={post.slug}>
-              <Article as="a">
-                <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
-                <Article.Content>
-                  <Article.Category>{post?.category}</Article.Category>
-                  <Article.Title dangerouslySetInnerHTML={{__html: post?.title}}></Article.Title>
-                  <div>
-                    <Article.Text>{post.date}</Article.Text>
-                    <Article.Text>.</Article.Text>
-                    <Article.Text>{formatter.timeToRead(post.content)} min read</Article.Text>
-                  </div>
-                  <div>{post?.tags.split(", ").map((item: string) => <Article.Label key={item}>{item}</Article.Label>)}</div>
-                </Article.Content>
-              </Article>
-            </Link>
+          {posts?.map((post:any, index: number) => (
+            <AnimatedView key={post.slug} vertical="20%" delay={index}>
+              <Link href={post.slug}>
+                <Article as="a">
+                  <Article.Image src={post.image} placeholder="blur" blurDataURL={post.placeholder} width="100%" height="65px" layout="responsive" objectFit="cover"  />
+                  <Article.Content>
+                    <Article.Category>{post?.category}</Article.Category>
+                    <Article.Title dangerouslySetInnerHTML={{__html: post?.title}}></Article.Title>
+                    <div>
+                      <Article.Text>{post.date}</Article.Text>
+                      <Article.Text>.</Article.Text>
+                      <Article.Text>{formatter.timeToRead(post.content)} min read</Article.Text>
+                    </div>
+                    <div>{post?.tags.split(", ").map((item: string) => <Article.Label key={item}>{item}</Article.Label>)}</div>
+                  </Article.Content>
+                </Article>
+              </Link>
+            </AnimatedView>
           ))}
         </ul>
       </div>

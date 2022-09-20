@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import Footer from '../components/organisms/Footer';
 import { theme } from 'styles/theme';
 import dynamic from 'next/dynamic';
+import AnimatedView from '../components/atoms/AnimatedView';
 const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
   ssr: false,
 });
@@ -15,9 +16,13 @@ export default function Layout({ children, pageProps }:any) {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='' />
           <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
         </Head>
-        <Navigation  {...pageProps} />
+        <AnimatedView>
+          <Navigation  {...pageProps} />
+        </AnimatedView>
         <main>{children}</main>
-        <Footer />
+        <AnimatedView>
+          <Footer />
+        </AnimatedView>
       </div>
     </ThemeProvider>
   );
