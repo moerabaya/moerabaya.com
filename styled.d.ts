@@ -14,7 +14,8 @@ declare module 'styled-components' {
     borderRadius: string;
 
     grid: {
-      margin: string;
+      gutter: string;
+      padding: string
     },
 
     colors: {
@@ -43,6 +44,15 @@ declare module 'styled-components' {
 
   export interface MenuItemComponent extends BaseComponent {
     active?: boolean = false;   
+  }
+
+  export interface LinkProps {
+    animated?: boolean = false;
+    smallCaps?: boolean = false;
+  }
+
+  export interface RowProps {
+    wrap?: boolean = true;
   }
 
   export interface ColumnProps {

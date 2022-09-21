@@ -1,83 +1,70 @@
 import React from 'react'
+import { Avatar } from '../../atoms/Avatar';
 import { Component } from '../../atoms/Component'
 import { Column, Grid, Row } from '../../atoms/Grid';
+import Link from '../../atoms/Link';
+import List from '../../atoms/List';
 import {default as StyledFooter} from "./Footer.styled";
 
 const Footer: React.FC = () => {
   return (
     <StyledFooter>
       <Grid container={true}>
-        <Row>
-          <Column md={12}>
-            <ul className="social-media-list">
-            {/* <li className="social-media-item">
-              <a className="animated" target="_blank" href="https://www.facebook.com/moerabaya">facebook</a>
-            </li> */}
-            {/* <li className="social-media-item">
-              <a target="_blank" href="https://www.instagram.com/moe.rabaya/">instagram</a>
-            </li> */}
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/moerabaya/">linkedin</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://dribbble.com/moerabaya">dribbble</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://www.behance.net/moerabaya">behance</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://github.com/moerabaya">github</a>
-            </li>
-          </ul>
-          </Column>
-          <Column md={1}>
-            <ul className="social-media-list">
-            {/* <li className="social-media-item">
-              <a className="animated" target="_blank" href="https://www.facebook.com/moerabaya">facebook</a>
-            </li> */}
-            {/* <li className="social-media-item">
-              <a target="_blank" href="https://www.instagram.com/moe.rabaya/">instagram</a>
-            </li> */}
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/moerabaya/">linkedin</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://dribbble.com/moerabaya">dribbble</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://www.behance.net/moerabaya">behance</a>
-            </li>
-            <li className="social-media-item">
-              <a className="animated" target="_blank" rel="noreferrer" href="https://github.com/moerabaya">github</a>
-            </li>
-          </ul>
+        <Row wrap>
+          <Column>
+            <Avatar href="/about" src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} />
           </Column>
         </Row>
-        <ul className="resume-list">
-          <li>
-            <a className="animated" href="/engineering-resume-2022.pdf" target="_blank">download résumé</a>
-          </li>
-        </ul>
-        <ul className="social-media-list">
-          {/* <li className="social-media-item">
-            <a className="animated" target="_blank" href="https://www.facebook.com/moerabaya">facebook</a>
-          </li> */}
-          {/* <li className="social-media-item">
-            <a target="_blank" href="https://www.instagram.com/moe.rabaya/">instagram</a>
-          </li> */}
-          <li className="social-media-item">
-            <a className="animated" target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/moerabaya/">linkedin</a>
-          </li>
-          <li className="social-media-item">
-            <a className="animated" target="_blank" rel="noreferrer" href="https://dribbble.com/moerabaya">dribbble</a>
-          </li>
-          <li className="social-media-item">
-            <a className="animated" target="_blank" rel="noreferrer" href="https://www.behance.net/moerabaya">behance</a>
-          </li>
-          <li className="social-media-item">
-            <a className="animated" target="_blank" rel="noreferrer" href="https://github.com/moerabaya">github</a>
-          </li>
-        </ul>
+        <Row wrap>
+          <Column md={5}>
+            <h4>
+              Feel free to reach out if you want to collaborate with us, or simply have a chat.
+            </h4>
+            <h4>
+              <Link animated={true} href="mail:rabaya.moe@gmail.com">contact@moerabaya.com</Link>
+            </h4>
+          </Column>
+          <Column md={1}>
+            
+          </Column>
+          <Column md={2}>
+            <List>
+              <List.Header>
+                Languages
+              </List.Header>
+              <List.Item>
+                <Link animated={true}>linkedin</Link>
+              </List.Item>
+            </List>
+          </Column>
+          <Column md={2}>
+            <List>
+              <List.Header>
+                Follow
+              </List.Header>
+              <List.Item>
+                <Link animated={true}>Twitter</Link>
+              </List.Item>
+              <List.Item>
+                <Link animated={true}>LinkedIn</Link>
+              </List.Item>
+              <List.Item>
+                <Link animated={true}>Dribbble</Link>
+              </List.Item>
+              <List.Item>
+                <Link animated={true}>Behance</Link>
+              </List.Item>
+            </List>
+          </Column>
+          <Column md={2}>
+            
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            ©2022 moerabaya.com
+          </Column>
+        </Row>
       </Grid>
     </StyledFooter>
   )

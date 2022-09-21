@@ -51,7 +51,7 @@ const Navigation = ({hasReadPermission}: any) => {
     <Nav isOpen={isOpen}>
       <div className="flex-grid">
         <div className="col">
-          {pathname != "/" && <span className={styles["nav-icon-link"]}><Avatar href="/" onClick={() => setIsOpen(false)} src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} style={{margin: 0, borderRadius: "3px"}} /></span>}
+          {pathname != "/" && <span className={styles["nav-icon-link"]}><Avatar href="/" onClick={() => setIsOpen(false)} src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} /></span>}
           <Nav.Title>{renderPageTitle(pathname, projects)}</Nav.Title>
         </div>
         <div className="col menu-items">

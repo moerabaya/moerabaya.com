@@ -1,8 +1,8 @@
 import styled, { ColumnProps, css } from "styled-components";
 
 const Colmun = styled.div<ColumnProps>`
-	padding-left: ${props => props.theme.grid.margin};
-	padding-right: ${props => props.theme.grid.margin};
+	padding-left: ${props => props.theme.grid.gutter};
+	padding-right: ${props => props.theme.grid.gutter};
 	${props => props.sm && css`
 		width: ${100 / (12/props.sm)}%
 	`}

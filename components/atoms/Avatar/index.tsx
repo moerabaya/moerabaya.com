@@ -8,9 +8,11 @@ interface AvatarProps extends ImageProps {
 export const Avatar = (props: AvatarProps) => {
 	const image = <Image src={props.src} alt={props.alt} placeholder={props.placeholder} blurDataURL={props.blurDataURL} width={props.size} height={props.size} style={{ margin: 0, borderRadius: "3px" }} />;
 
-	return props.href ? image : (
+	return !props.href ? image : (
 		<Link href={props.href!} onClick={props.onClick}>
-			{image}
+			<a>
+				{image}
+			</a>
 		</Link>
 	)
 }
