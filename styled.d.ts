@@ -13,6 +13,10 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string;
 
+    grid: {
+      margin: string;
+    },
+
     colors: {
       font: string;
       background: string;
@@ -39,5 +43,12 @@ declare module 'styled-components' {
 
   export interface MenuItemComponent extends BaseComponent {
     active?: boolean = false;   
+  }
+
+  export interface ColumnProps {
+    sm?: number;
+    md?: number;
+    lg?: number;
+    xl?: number;
   }
 }

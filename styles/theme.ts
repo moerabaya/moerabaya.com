@@ -2,6 +2,9 @@ import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme  = {
 	borderRadius: "5px",
+	grid: {
+		margin: "1em"
+	},
 	colors: {
 		font: "#000",
 		background: "#fff"
