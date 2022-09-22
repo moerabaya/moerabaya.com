@@ -1,25 +1,26 @@
 import styled, { ColumnProps, css } from "styled-components";
+import { Component } from "../Component";
 
-const Colmun = styled.div<ColumnProps>`
+const Colmun = styled(Component)<ColumnProps>`
 	padding-left: ${props => props.theme.grid.gutter};
 	padding-right: ${props => props.theme.grid.gutter};
 	${props => props.sm && css`
-		width: ${100 / (12/props.sm)}%
-	`}
+		width: ${100 / (12/props.sm)}%;
+	`};
+	${props => props.md && css`
+		@media (min-width: ${props => props.theme.screens.small}){
+			width: ${100 / (12/props.md)}%;
+		}
+	`};
 	@media (min-width: ${props => props.theme.screens.medium}){
-		${props => props.md && css`
-			width: ${100 / (12/props.md)}%
-		`}
-	}
-	@media (min-width: ${props => props.theme.screens.large}){
 		${props => props.lg && css`
-			width: ${100 / (12/props.lg)}%
+			width: ${100 / (12/props.lg)}% !important;
 		`}
-	}
-	@media (min-width: ${props => props.theme.screens.xlarge}) {
+	};
+	@media (min-width: ${props => props.theme.screens.large}) {
 		${props => props.xl && css`
-			width: ${100 / (12/props.xl)}%
+			width: ${100 / (12/props.xl)}% !important;
 		`}
-	}
+	};
 `;
 export default Colmun;

@@ -4,6 +4,7 @@ import { Component } from '../../atoms/Component'
 import { Column, Grid, Row } from '../../atoms/Grid';
 import Link from '../../atoms/Link';
 import List from '../../atoms/List';
+import Text from '../../atoms/Text';
 import {default as StyledFooter} from "./Footer.styled";
 
 const Footer: React.FC = () => {
@@ -16,48 +17,65 @@ const Footer: React.FC = () => {
           </Column>
         </Row>
         <Row wrap>
-          <Column md={5}>
-            <h4>
+          <Column sm={6} md={4}>
+            <Text as="p">
               Feel free to reach out if you want to collaborate with us, or simply have a chat.
-            </h4>
-            <h4>
+            </Text>
+            <Text as="p">
               <Link animated={true} href="mail:rabaya.moe@gmail.com">contact@moerabaya.com</Link>
-            </h4>
+            </Text>
           </Column>
-          <Column md={1}>
-            
+          <Column sm={12} hide="small" md={2}>
           </Column>
           <Column md={2}>
             <List>
               <List.Header>
-                Languages
+                <Text smallCaps>Languages</Text>
               </List.Header>
               <List.Item>
-                <Link animated={true}>linkedin</Link>
+                <Link smallCaps>en</Link>
+                <Text opacity={0.5} style={{padding: "0 0.5em"}}>.</Text>
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>ar</Link>
               </List.Item>
             </List>
           </Column>
           <Column md={2}>
             <List>
               <List.Header>
-                Follow
+                <Text smallCaps>Follow</Text>
               </List.Header>
               <List.Item>
-                <Link animated={true}>Twitter</Link>
+                <Link opacity={0.5} onHover={{ opacity: 1 }}>Twitter</Link>
               </List.Item>
               <List.Item>
-                <Link animated={true}>LinkedIn</Link>
+                <Link opacity={0.5} onHover={{ opacity: 1 }}>LinkedIn</Link>
               </List.Item>
               <List.Item>
-                <Link animated={true}>Dribbble</Link>
+                <Link opacity={0.5} onHover={{ opacity: 1 }}>Dribbble</Link>
               </List.Item>
               <List.Item>
-                <Link animated={true}>Behance</Link>
+                <Link opacity={0.5} onHover={{ opacity: 1 }}>Behance</Link>
               </List.Item>
             </List>
           </Column>
           <Column md={2}>
-            
+            <List>
+              <List.Item as="h5">
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Home</Link>
+              </List.Item>
+              <List.Item as="h5">
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Cases</Link>
+              </List.Item>
+              <List.Item as="h5">
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Services</Link>
+              </List.Item>
+              <List.Item as="h5">
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Blog</Link>
+              </List.Item>
+              <List.Item as="h5">
+                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Contact</Link>
+              </List.Item>
+            </List>
           </Column>
         </Row>
         <Row>

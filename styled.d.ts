@@ -31,9 +31,15 @@ declare module 'styled-components' {
   export type ScreenSizes = "xlarge" | "large" | "medium" | "small" | "all";
 
   export interface BaseComponent {
-    hide?: ScreenSizes[],
-    show?: ScreenSizes[],
+    hide?: ScreenSizes[] | string,
+    show?: ScreenSizes[] | string,
     container?: boolean
+  }
+
+  export interface TextProps {
+    opacity?: number = 1;
+    smallCaps?: boolean;
+    onHover?: {};
   }
 
   export interface ButtonComponent extends BaseComponent {
@@ -46,16 +52,15 @@ declare module 'styled-components' {
     active?: boolean = false;   
   }
 
-  export interface LinkProps {
+  export interface LinkProps extends TextProps {
     animated?: boolean = false;
-    smallCaps?: boolean = false;
   }
 
   export interface RowProps {
     wrap?: boolean = true;
   }
 
-  export interface ColumnProps {
+  export interface ColumnProps extends BaseComponent {
     sm?: number;
     md?: number;
     lg?: number;

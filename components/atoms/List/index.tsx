@@ -3,13 +3,11 @@ import { mixins } from "../../../styles";
 
 
 const Header = styled.h4`
-	font-weight: bold;
-	${mixins.smallCaps}
 `;
 
 
 const Item = styled.li`
-	margin-bottom: 0.5em;
+	margin-bottom: 0.75em;
 `;
 
 const List = Object.assign(

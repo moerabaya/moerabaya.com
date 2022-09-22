@@ -1,8 +1,11 @@
 import styled, { css, LinkProps as Props } from "styled-components";
 import { LinkProps } from "next/link";
 import { mixins } from "../../../styles";
+import Text from "../Text";
 
-const Link = styled.a<Props & LinkProps>`
+const Link = styled(Text).attrs({
+  as: "a"
+})<Props & LinkProps>`
 	text-decoration: none;
 	${props => props.smallCaps && mixins.smallCaps}
 	${props => props.animated && css`
