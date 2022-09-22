@@ -1,11 +1,11 @@
-import styled, { css, LinkProps as Props } from "styled-components";
-import { LinkProps } from "next/link";
+import styled, { css, LinkProps } from "styled-components";
+import { default as NextLink, LinkProps as NextLinkProps } from "next/link";
 import { mixins } from "../../../styles";
 import Text from "../Text";
 
-const Link = styled(Text).attrs({
+const StyledLink = styled(Text).attrs({
   as: "a"
-})<Props & LinkProps>`
+})<LinkProps & NextLinkProps>`
 	text-decoration: none;
 	${props => props.smallCaps && mixins.smallCaps}
 	${props => props.animated && css`
@@ -25,5 +25,10 @@ const Link = styled(Text).attrs({
 		}
 	`}
 `;
+
+const Link = ({href, ...rest}: LinkProps & NextLinkProps) => (
+	<NextLink prefetch href={href} passHref>
+		<StyledLink {...rest} />
+	</NextLink>);
 
 export default Link;

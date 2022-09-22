@@ -17,63 +17,63 @@ const Footer: React.FC = () => {
           </Column>
         </Row>
         <Row wrap>
-          <Column sm={6} md={4}>
-            <Text as="p">
+          <Column sm={12} lg={5} xl={4} style={{paddingBottom: "2em"}}>
+            <Text as="h5">
               Feel free to reach out if you want to collaborate with us, or simply have a chat.
             </Text>
-            <Text as="p">
+            <Text as="h5">
               <Link animated={true} href="mail:rabaya.moe@gmail.com">contact@moerabaya.com</Link>
             </Text>
           </Column>
-          <Column sm={12} hide="sm" md={2}>
+          <Column sm={12} hide={["sm", "md"]} lg={1} xl={2}>
           </Column>
-          <Column md={2}>
+          <Column sm={4} lg={2} style={{paddingBottom: "2em"}}>
             <List>
               <List.Header>
                 <Text smallCaps>Languages</Text>
               </List.Header>
               <List.Item>
-                <Link smallCaps>en</Link>
+                <Link href="/" smallCaps>en</Link>
                 <Text opacity={0.5} style={{padding: "0 0.5em"}}>.</Text>
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>ar</Link>
+                <Link href="/ar/" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>ar</Link>
               </List.Item>
             </List>
           </Column>
-          <Column md={2}>
+          <Column sm={4} lg={2} style={{paddingBottom: "2em"}}>
             <List>
               <List.Header>
                 <Text smallCaps>Follow</Text>
               </List.Header>
               <List.Item>
-                <Link opacity={0.5} onHover={{ opacity: 1 }}>Twitter</Link>
+                <Link href="https://twitter.com/moerabaya_" target="_blank" opacity={0.5} onHover={{ opacity: 1 }}>Twitter</Link>
               </List.Item>
               <List.Item>
-                <Link opacity={0.5} onHover={{ opacity: 1 }}>LinkedIn</Link>
+                <Link href="https://www.linkedin.com/in/moerabaya/" target="_blank" opacity={0.5} onHover={{ opacity: 1 }}>LinkedIn</Link>
               </List.Item>
               <List.Item>
-                <Link opacity={0.5} onHover={{ opacity: 1 }}>Dribbble</Link>
+                <Link href="https://dribbble.com/moerabaya/" target="_blank" opacity={0.5} onHover={{ opacity: 1 }}>Dribbble</Link>
               </List.Item>
               <List.Item>
-                <Link opacity={0.5} onHover={{ opacity: 1 }}>Behance</Link>
+                <Link href="https://www.behance.net/moerabaya/" target="_blank" opacity={0.5} onHover={{ opacity: 1 }}>Behance</Link>
               </List.Item>
             </List>
           </Column>
-          <Column md={2}>
+          <Column sm={4} lg={2}>
             <List>
-              <List.Item as="h5">
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Home</Link>
+              <List.Item as="h5" style={{marginTop: "0.5em"}}>
+                <Link href="/" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Home</Link>
               </List.Item>
-              <List.Item as="h5">
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Cases</Link>
+              <List.Item as="h5" style={{marginTop: "0.5em"}}>
+                <Link href="/work" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Cases</Link>
               </List.Item>
-              <List.Item as="h5">
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Services</Link>
+              <List.Item as="h5" style={{marginTop: "0.5em"}}>
+                <Link href="/services" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Services</Link>
               </List.Item>
-              <List.Item as="h5">
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Blog</Link>
+              <List.Item as="h5" style={{marginTop: "0.5em"}}>
+                <Link href="/blog" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Blog</Link>
               </List.Item>
-              <List.Item as="h5">
-                <Link smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Contact</Link>
+              <List.Item as="h5" style={{marginTop: "0.5em"}}>
+                <Link href="/contact" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Contact</Link>
               </List.Item>
             </List>
           </Column>
