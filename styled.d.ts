@@ -28,11 +28,11 @@ declare module 'styled-components' {
     }
   }
 
-  export type ScreenSizes = "xlarge" | "large" | "medium" | "small" | "all";
+  export type ScreenSizes = "xlg" | "lg" | "md" | "sm" | "all";
 
   export interface BaseComponent {
-    hide?: ScreenSizes[] | string,
-    show?: ScreenSizes[] | string,
+    hide?: ScreenSizes[] | ScreenSizes,
+    show?: ScreenSizes[] | ScreenSizes,
     container?: boolean
   }
 
@@ -43,7 +43,7 @@ declare module 'styled-components' {
   }
 
   export interface ButtonComponent extends BaseComponent {
-		size?: "small" | "medium" | "large" = "small";
+		size?: "sm" | "md" | "lg" = "sm";
     isActive?: boolean = false;
     smallCaps?: boolean = false
 	}

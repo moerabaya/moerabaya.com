@@ -36,7 +36,7 @@ const Navigation = ({hasReadPermission}: any) => {
   const renderMenu = () => Pages.map(({path, name}) => (
     <Menu.Item key={name} active={pathname == path}>
       <Link href={path}>
-        <Button smallCaps={true} size="small" as="a">{name}</Button>
+        <Button smallCaps={true} size="sm" as="a">{name}</Button>
       </Link>
     </Menu.Item>
   ));
@@ -55,15 +55,15 @@ const Navigation = ({hasReadPermission}: any) => {
           <Nav.Title>{renderPageTitle(pathname, projects)}</Nav.Title>
         </div>
         <div className="col menu-items">
-          <Menu hide={["small", "medium"]}>
+          <Menu hide={["sm", "md"]}>
             {renderMenu()}
           </Menu>
         </div>
         <div className="col align-right flex-grid">
-          <Button size="medium" onClick={() => setTheme(theme == "dark" ? "light" : "dark")}>
+          <Button size="md" onClick={() => setTheme(theme == "dark" ? "light" : "dark")}>
             {theme == "dark" ? <BsSun /> : <BsMoon style={{padding: "0.05em"}} />}
           </Button>
-          <Burger hide={["large", "xlarge"]} size="medium" isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
+          <Burger hide={["lg", "xlg"]} size="md" isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
         </div>
       </div>
       <ul className="navigation-list">

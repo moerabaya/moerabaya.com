@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               <Link animated={true} href="mail:rabaya.moe@gmail.com">contact@moerabaya.com</Link>
             </Text>
           </Column>
-          <Column sm={12} hide="small" md={2}>
+          <Column sm={12} hide="sm" md={2}>
           </Column>
           <Column md={2}>
             <List>
