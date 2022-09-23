@@ -72,6 +72,9 @@ $screen-xl-max: 1440px;
 	--card-background: #FFFFFF;
 	--card-shadow-color: rgba(0,0,0,0.1);
 
+	--primary-color: #F9A020;
+	--primary-color-context: #000000;
+
 
 	@media (min-width: $screen-lg-max) {
 		--base-font-size: 19px;

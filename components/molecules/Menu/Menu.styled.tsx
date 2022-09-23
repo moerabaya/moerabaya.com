@@ -1,4 +1,4 @@
-import styled, { BaseComponent, MenuItemComponent } from "styled-components";
+import styled, { ComponentProps, MenuItemComponent } from "styled-components";
 import { Component } from "../../atoms/Component";
 
 const Item = styled.li<MenuItemComponent>`

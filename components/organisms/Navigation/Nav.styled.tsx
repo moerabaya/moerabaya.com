@@ -1,6 +1,5 @@
-import styled, { ScreenSize, MenuItemComponent } from "styled-components";
+import styled, { css } from "styled-components";
 import { mixins } from "styles";
-import { Component } from "../../atoms/Component";
 
 interface Props {
   readonly isOpen: boolean;
@@ -22,17 +21,17 @@ const Nav = Object.assign(
 		position: fixed;
 		width: 100%;
 		z-index: 100;
-		height: 75px;
+		height: ${45+15}px;
+		padding: 1em 1em;
 		overflow: hidden;
 		transition: 0.25s ease;
 		background-color: var(--nav-background-color);
-		padding: 20px 35px;
-
-		@media (max-width: ${props => props.theme.screens.medium}) {
-			height: 45px + 15px;
+		@media (min-width: ${props => props.theme.screens.medium}) {
+			height: 75px !important;
+			padding: 20px 35px;
 		}
-		${props => props.isOpen && `
-			height: 100%;
+		${props => props.isOpen && css`
+			height: 100% !important;
 		`}
 	`, {
 		Title

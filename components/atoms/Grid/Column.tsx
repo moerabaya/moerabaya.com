@@ -1,9 +1,10 @@
 import styled, { ColumnProps, css } from "styled-components";
 import { Component } from "../Component";
 
-const Colmun = styled(Component)<ColumnProps>`
+const Column = styled(Component)<ColumnProps>`
 	padding-left: ${props => props.theme.grid.gutter};
 	padding-right: ${props => props.theme.grid.gutter};
+
 	${props => props.sm && css`
 		width: ${100 / (12/props.sm)}%;
 	`};
@@ -23,4 +24,4 @@ const Colmun = styled(Component)<ColumnProps>`
 		`}
 	};
 `;
-export default Colmun;
+export default Column;
