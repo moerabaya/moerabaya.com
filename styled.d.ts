@@ -4,13 +4,6 @@ import 'styled-components';
 
 // and extend them!
 declare module 'styled-components' {
-  export enum ScreenSize {
-    Small = "500px",
-    Medium = "768px",
-    Large = "1280px",
-    xLarge = "1440px",
-  }
-
   export interface DefaultTheme {
     borderRadius: string;
 
@@ -26,15 +19,25 @@ declare module 'styled-components' {
 
     screens: {
       [key: string]: string;
-    }
+    };
+
+    breakpoints: {
+      [key: string]: string;
+    };
   }
 
   export type ScreenSizes = "xlg" | "lg" | "md" | "sm" | "all";
 
-  export interface BaseComponent {
+  export interface ComponentProps {
     hide?: ScreenSizes[] | ScreenSizes,
     show?: ScreenSizes[] | ScreenSizes,
-    container?: boolean
+    container?: boolean;
+  }
+  
+  export interface FlexComponentProps extends ComponentProps {
+    fullHeight?: boolean;
+    alignItems?: "flex-start" | "flex-end" | "center";
+    justifyContent?: "flex-start" | "flex-end" | "center";
   }
 
   export interface TextProps {
@@ -43,13 +46,19 @@ declare module 'styled-components' {
     onHover?: {};
   }
 
-  export interface ButtonComponent extends BaseComponent {
+  export interface IconProps {
+    size: number | string;
+    slot?: "start" | "end" | "left" | "right";
+  }
+
+  export interface ButtonComponent extends ComponentProps {
 		size?: "sm" | "md" | "lg" = "sm";
     isActive?: boolean = false;
-    smallCaps?: boolean = false
+    smallCaps?: boolean = false;
+    alternative?: boolean = false;
 	}
 
-  export interface MenuItemComponent extends BaseComponent {
+  export interface MenuItemComponent extends ComponentProps {
     active?: boolean = false;   
   }
 
@@ -59,11 +68,11 @@ declare module 'styled-components' {
     children?: ReactElement | string;
   }
 
-  export interface RowProps {
+  export interface RowProps extends FlexComponentProps {
     wrap?: boolean = true;
   }
 
-  export interface ColumnProps extends BaseComponent {
+  export interface ColumnProps extends ComponentProps {
     sm?: number;
     md?: number;
     lg?: number;

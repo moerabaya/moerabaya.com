@@ -13,8 +13,14 @@ export const theme: DefaultTheme  = {
 	screens: {
 		small: "500px",
 		medium: "768px",
-		large: "1280px",
-		xLarge: "1440px"
+		large: "860px",
+		xLarge: "1160px"
+	},
+	breakpoints: {
+		small: "500px",
+		medium: "768px",
+		large: "900px",
+		xLarge: "1200px"
 	}
 }
 
