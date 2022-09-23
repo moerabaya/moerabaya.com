@@ -1,4 +1,5 @@
 // import original module declarations
+import { ReactElement } from 'react';
 import 'styled-components';
 
 // and extend them!
@@ -52,8 +53,10 @@ declare module 'styled-components' {
     active?: boolean = false;   
   }
 
-  export interface LinkProps extends TextProps {
+  export interface LinkProps extends TextProps, React.HTMLProps<HTMLAnchorElement> {
     animated?: boolean = false;
+    href: Url;
+    children?: ReactElement | string;
   }
 
   export interface RowProps {
