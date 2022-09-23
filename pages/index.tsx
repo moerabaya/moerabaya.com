@@ -2,9 +2,9 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 // import styles from '../styles/app.scss'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Project } from '../types'
-import Link from 'next/link';
+import { Avatar } from "components/atoms/Avatar";
 import {GrAppleAppStore} from "react-icons/gr";
 import {BsGlobe2} from "react-icons/bs";
 import path from 'path';
@@ -12,12 +12,17 @@ import fs, { Dirent } from 'fs';
 import grayMatter from 'gray-matter';
 import AnimatedText from '../components/atoms/AnimatedText';
 import AnimatedView from '../components/atoms/AnimatedView';
+import {Grid, Row, Column} from '../components/atoms/Grid';
+import Header from '../components/organisms/Header';
+import { Button } from '../components/atoms/Button';
+import Icon from '../components/atoms/Icon';
+import ButtonGroup from '../components/atoms/ButtonGroup';
 
 interface Props {
   projects: Project[]
 }
 const Home: NextPage<Props> = ({projects}: Props) => {
-
+  const [headerAnimateState, setHeaderAniamteState] = useState(false);
   useEffect(() => {
     return () => {
       // cleanup
@@ -69,45 +74,69 @@ const Home: NextPage<Props> = ({projects}: Props) => {
     )
   }
   return (
-      <div className="page-content">
-        <Head>
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-          <title>Mohammed Rabay&apos;a — UX, Product Designer | Senior Engineer</title>
-          
-          {/* <!-- Primary Meta Tags --> */}
-          <meta name="title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
-          <meta name="description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
-  
-          {/* <!-- Open Graph / Facebook --> */}
-          <meta property="og:url" content="https://moerabaya.com/" />
-          <meta property="og:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
-          <meta property="og:description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
-          <meta property="og:image" content={require('../assets/images/metaimage.png')} />
-  
-          {/* <!-- Twitter --> */}
-          <meta property="twitter:url" content="https://moerabaya.com/" />
-          <meta property="twitter:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
-          <meta property="twitter:description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
-          <meta property="twitter:image" content={require('../assets/images/metaimage.png')} />
-        </Head>
-  
-        <header>
-          <div className="container">
-            <AnimatedText text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans." type="h1"/>
-          </div>
-        </header>
-        <section className="work-section">
-            <div className="content">
-              <AnimatedView duration={1} delay={1.25} vertical="25%">
-                <hr style={{margin: 0}} />
+    <>
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Mohammed Rabay&apos;a — UX, Product Designer | Senior Engineer</title>
+        
+        {/* <!-- Primary Meta Tags --> */}
+        <meta name="title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta name="description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:url" content="https://moerabaya.com/" />
+        <meta property="og:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta property="og:description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
+        <meta property="og:image" content={require('../assets/images/metaimage.png')} />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:url" content="https://moerabaya.com/" />
+        <meta property="twitter:title" content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer" />
+        <meta property="twitter:description" content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences." />
+        <meta property="twitter:image" content={require('../assets/images/metaimage.png')} />
+      </Head>
+
+      <Header fullHeight={true}>
+        <Grid container={true}>
+          <Row fullHeight={true} alignItems="center">
+            <Column style={{marginTop: "-5%"}}>
+              <AnimatedView>
+                <Avatar href="/about" src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} />
               </AnimatedView>
-              {WorkItems()}
+              <h3>
+                <AnimatedView>
+                  <span>Hi my name is Mohammed 👋</span>
+                </AnimatedView>
+              </h3>
+              <AnimatedText text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans." type="h1" finished={(state: boolean) => setHeaderAniamteState(state)} />
+              <ButtonGroup style={{paddingTop: "1em"}}>
+                <AnimatedView style={{display: "inline-block"}} animate={headerAnimateState}>
+                  <Button size={"lg"} smallCaps alternative>
+                    Checkout my case studies
+                  </Button>
+                </AnimatedView>
+                <AnimatedView style={{display: "inline-block"}} animate={headerAnimateState} delay={0.2}>
+                  <Button size={"lg"} smallCaps>
+                    Lets grab A coffee <Icon size="1.6em" slot="start">☕️</Icon>
+                  </Button>
+                </AnimatedView>
+              </ButtonGroup>
+            </Column>
+          </Row>
+        </Grid>
+      </Header>
+      {/* <section className="work-section">
+          <div className="content">
+            <AnimatedView duration={1} delay={1.25} vertical="25%">
               <hr style={{margin: 0}} />
-            </div>
-        </section>
-      </div>
+            </AnimatedView>
+            {WorkItems()}
+            <hr style={{margin: 0}} />
+          </div>
+      </section> */}
+    </>
   )
 }
 
