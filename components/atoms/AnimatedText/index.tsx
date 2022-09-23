@@ -1,13 +1,22 @@
 import { motion } from "framer-motion";
 import { AnimatedTextProps } from "motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedCharacters from "./AnimatedCharacters";
 
 const AnimatedText = ({
 	text,
-	type
+	type,
+  finished
 }: AnimatedTextProps) => {
 	const [replay, setReplay] = useState(true);
+  const hideDuration = 0.85;
+  const showDuration = 0.85;
+  const childrenDuration = 0.01;
+
+  useEffect(() => {
+    if(replay && finished)
+      setTimeout(() => finished(true), (showDuration + (childrenDuration * text.length)) * 1000);
+  }, [replay])
 
 	const placeholderText = [
     {
@@ -19,7 +28,7 @@ const AnimatedText = ({
   const container = {
     visible: {
       transition: {
-        staggerChildren: 0.025
+        staggerChildren: childrenDuration
       }
     }
   };
@@ -38,7 +47,7 @@ const AnimatedText = ({
       animate={replay ? "visible" : "hidden"}
       variants={container}
     >
-			<AnimatedCharacters text={text} type={type} />
+			<AnimatedCharacters text={text} type={type} hideDuration={hideDuration} showDuration={showDuration} />
     </motion.div>
 	)
 }

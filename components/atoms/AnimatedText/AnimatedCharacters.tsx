@@ -4,7 +4,6 @@ import Wrapper from "./Wrapper";
 import { AnimatedCharachtersProps } from "motion";
 import Text from "../Text";
 
-
 // AnimatedCharacters
 // Handles the deconstruction of each word and character to setup for the
 // individual character animations
@@ -15,13 +14,13 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
       y: "200%",
       // color: "#FFFFFF",
 			opacity: 0,
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 }
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: props.hideDuration }
     },
     visible: {
       y: 0,
       // color: "#111111",
 			opacity: 1,
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 }
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: props.showDuration }
     }
   };
 
@@ -47,7 +46,7 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
 
   return (
     <Text as={props.type} style={{lineHeight: "0.5em"}}>
-      {words.map((word: any, index: any) => {
+      {words.map((word: string, index: number) => {
         return (
           // Wrap each word in the Wrapper component
           <Wrapper key={index}>

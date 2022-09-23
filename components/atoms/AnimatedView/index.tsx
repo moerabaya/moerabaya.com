@@ -1,19 +1,23 @@
 import { motion } from "framer-motion";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
-
-const AnimatedView = ({
-	vertical = 0,
-	children,
-	duration = 1,
-	delay = 0
-}: {
+interface AniamtedViewProps {
 	vertical?: number | string,
-	children?: ReactElement,
+	style?: React.CSSProperties;
+  children?: React.ReactNode;
 	duration?: number,
 	value?: number | string,
-	delay?: number
-}) => {
+	delay?: number,
+	animate?: boolean;
+}
+const AnimatedView = ({
+	vertical = 0,
+	animate = true,
+	children,
+	duration = 1,
+	delay = 0,
+	...rest
+}: AniamtedViewProps) => {
 	const animation = {
     hidden: {
       y: vertical,
@@ -29,8 +33,9 @@ const AnimatedView = ({
 	return (
 		<motion.div
 			initial="hidden"
-			animate="visible"
+			animate={animate ? "visible" : false}
 			variants={animation}
+			{...rest}
 		>{children}</motion.div>
 	)
 }

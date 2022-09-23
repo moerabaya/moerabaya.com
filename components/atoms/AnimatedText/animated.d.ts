@@ -14,11 +14,14 @@ declare module 'motion' {
 		children?: ReactElement;
 		text: string;
 		type: tagMap;
+		showDuration: number;
+		hideDuration: number;
 	}
 
 	interface AnimatedTextProps {
 		children?: ReactElement;
 		text: string;
 		type: tagMap;
+		finished?: (state: boolean) => void;
 	}
 }
