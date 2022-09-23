@@ -3,6 +3,8 @@ Mohammed Rabay'a is an experinced software engineer specialized in designing and
 
 ## Remaining
 - [x] Clear Navigation 
+- [x] New Footer
+- [x] Grid System
 - [ ] Design System Components 
 - [ ] Dark mode (Save to localStorage)
 - [ ] Custom project pages (Case Study)

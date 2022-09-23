@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import React from 'react'
-import Footer from '../components/molecules/Footer';
+import Footer from '../components/organisms/Footer';
 import Menu from '../components/organisms/Navigation';
 import { promises as fs } from 'fs';
 import path from 'path';

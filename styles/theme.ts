@@ -2,6 +2,10 @@ import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme  = {
 	borderRadius: "5px",
+	grid: {
+		gutter: "1em",
+		padding: "0.35em"
+	},
 	colors: {
 		font: "#000",
 		background: "#fff"
