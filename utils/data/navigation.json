@@ -1,0 +1,20 @@
+{
+	"menu": [
+		{
+			"name": "Home",
+			"path": "/"
+		},
+		{
+			"name": "Cases",
+			"path": "/work"
+		},
+		{
+			"name": "Services",
+			"path": "/services"
+		},
+		{
+			"name": "Blog",
+			"path": "/blog"
+		}
+	]
+}

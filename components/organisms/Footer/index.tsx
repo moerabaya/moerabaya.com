@@ -6,8 +6,16 @@ import Link from '../../atoms/Link';
 import List from '../../atoms/List';
 import Text from '../../atoms/Text';
 import {default as StyledFooter} from "./Footer.styled";
+import navigation from "utils/data/navigation.json";
 
+const Pages = navigation.menu;
 const Footer: React.FC = () => {
+  const renderPages = () => Pages?.map(({path, name}) => (
+    <List.Item key={name} as="h5" style={{marginTop: "0.5em"}}>
+      <Link href={path} smallCaps opacity={0.5} onHover={{ opacity: 1 }}>{name}</Link>
+    </List.Item>
+  ));
+
   return (
     <StyledFooter>
       <Grid container={true}>
@@ -17,15 +25,15 @@ const Footer: React.FC = () => {
           </Column>
         </Row>
         <Row wrap>
-          <Column sm={12} lg={5} xl={4} style={{paddingBottom: "2em"}}>
-            <Text as="h5">
+          <Column sm={12} lg={5} style={{paddingBottom: "2em"}}>
+            <Text as="h4">
               Feel free to reach out if you want to collaborate with us, or simply have a chat.
             </Text>
-            <Text as="h5">
+            <Text as="h4">
               <Link animated={true} href="mail:rabaya.moe@gmail.com">contact@moerabaya.com</Link>
             </Text>
           </Column>
-          <Column sm={12} hide={["sm", "md"]} lg={1} xl={2}>
+          <Column sm={12} hide={["sm", "md"]} lg={1}>
           </Column>
           <Column sm={4} lg={2} style={{paddingBottom: "2em"}}>
             <List>
@@ -59,22 +67,8 @@ const Footer: React.FC = () => {
             </List>
           </Column>
           <Column sm={4} lg={2}>
-            <List>
-              <List.Item as="h5" style={{marginTop: "0.5em"}}>
-                <Link href="/" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Home</Link>
-              </List.Item>
-              <List.Item as="h5" style={{marginTop: "0.5em"}}>
-                <Link href="/work" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Cases</Link>
-              </List.Item>
-              <List.Item as="h5" style={{marginTop: "0.5em"}}>
-                <Link href="/services" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Services</Link>
-              </List.Item>
-              <List.Item as="h5" style={{marginTop: "0.5em"}}>
-                <Link href="/blog" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Blog</Link>
-              </List.Item>
-              <List.Item as="h5" style={{marginTop: "0.5em"}}>
-                <Link href="/contact" smallCaps opacity={0.5} onHover={{ opacity: 1 }}>Contact</Link>
-              </List.Item>
+            <List style={{paddingTop: "0.75em"}}>
+              {renderPages()}
             </List>
           </Column>
         </Row>

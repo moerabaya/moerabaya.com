@@ -12,28 +12,17 @@ import { Burger, Button } from '../../atoms/Button';
 import { ThemeContext } from 'templates/ThemeProvider';
 import Nav from './Nav.styled';
 import { Avatar } from '../../atoms/Avatar';
+import navigation from "utils/data/navigation.json";
 
-const Pages = [
-  {
-    name: "Work",
-    path: "/"
-  },
-  {
-    name: "About",
-    path: "/about"
-  },
-  {
-    name: "Blog",
-    path: "/blog"
-  }
-]
+const Pages = navigation.menu;
+
 const Navigation = ({hasReadPermission}: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
   const {theme, setTheme} = useContext(ThemeContext);
 
-  const renderMenu = () => Pages.map(({path, name}) => (
+  const renderMenu = () => Pages?.map(({path, name}) => (
     <Menu.Item key={name} active={pathname == path}>
       <Link href={path}>
         <Button smallCaps={true} size="sm" as="a">{name}</Button>
