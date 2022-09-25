@@ -99,7 +99,7 @@ const Home: NextPage<Props> = ({projects}: Props) => {
       </Head>
 
       <Header fullHeight={true}>
-        <Grid container={true}>
+        <Grid fluid={["sm", "md"]}>
           <Row fullHeight={true} alignItems="center">
             <Column style={{marginTop: "-5%"}}>
               <AnimatedView>

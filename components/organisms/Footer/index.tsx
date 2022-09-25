@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
 
   return (
     <StyledFooter>
-      <Grid container={true}>
+      <Grid>
         <Row wrap>
           <Column>
             <Avatar href="/about" src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} />

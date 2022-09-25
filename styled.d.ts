@@ -31,7 +31,10 @@ declare module 'styled-components' {
   export interface ComponentProps {
     hide?: ScreenSizes[] | ScreenSizes,
     show?: ScreenSizes[] | ScreenSizes,
-    container?: boolean;
+  }
+
+  export interface GridProps extends ComponentProps {
+    fluid?: ScreenSizes[] | ScreenSizes;
   }
   
   export interface FlexComponentProps extends ComponentProps {

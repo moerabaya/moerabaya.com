@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react'
-import styles from "styles/components/Menu.module.scss";
 import { Project } from 'types';
 import Cookies from 'universal-cookie';
 import consts from "consts"
@@ -40,7 +39,7 @@ const Navigation = ({hasReadPermission}: any) => {
     <Nav isOpen={isOpen}>
       <div className="flex-grid">
         <div className="col">
-          {pathname != "/" && <span className={styles["nav-icon-link"]}><Avatar href="/" onClick={() => setIsOpen(false)} src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} /></span>}
+          {pathname != "/" && <span><Avatar href="/" onClick={() => setIsOpen(false)} src={"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"} alt="Portrait of Mohammed Rabay'a" placeholder='blur' blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"' size={45} /></span>}
           <Nav.Title>{renderPageTitle(pathname, projects)}</Nav.Title>
         </div>
         <div className="col menu-items">
@@ -50,7 +49,7 @@ const Navigation = ({hasReadPermission}: any) => {
         </div>
         <div className="col align-right flex-grid">
           <Button size="md" onClick={() => setTheme(theme == "dark" ? "light" : "dark")}>
-            {theme == "dark" ? <BsSun /> : <BsMoon style={{padding: "0.05em"}} />}
+            {theme == "dark" ? <BsSun size="1.4em" /> : <BsMoon size="1.2em" />}
           </Button>
           <Burger hide={["lg", "xlg"]} size="md" isActive={isOpen} onClick={() => setIsOpen(!isOpen)} />
         </div>
