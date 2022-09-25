@@ -14,7 +14,7 @@ export const Burger = styled(Button)`
 		content: "";
 		position: absolute;
 		display: block;
-		width: 1em;
+		width: 1.2em;
 		height: 2px;
 		background-color: var(--text-color);
 		transition: 0.15s linear;
@@ -23,7 +23,7 @@ export const Burger = styled(Button)`
 		top: 35%;
 	}
 	&:after {
-		top: 55%;
+		top: 60%;
 	}
 
 	&:before {
