@@ -31,14 +31,10 @@ $dot-after-color: $dot-color;
 
 $dot-spacing: $dot-width + $dot-width/2;
 
-$screen-sm-min: 500px;
-$screen-sm-max: 600px;
-$screen-md-min: 700px;
-$screen-md-max: 768px;
-$screen-lg-min: 1100px;
-$screen-lg-max: 1280px;
-$screen-xl-min: 1368px;
-$screen-xl-max: 1440px;
+$screen-sm: 500px;
+$screen-md: 768px;
+$screen-lg: 1280px;
+$screen-xl: 1440px;
 
 
 :root {
@@ -76,9 +72,13 @@ $screen-xl-max: 1440px;
 	--primary-color-context: #000000;
 
 
-	@media (min-width: $screen-lg-max) {
-		--base-font-size: 19px;
-		--base-small-caps-size: 16px;
+	@media (min-width: $screen-lg) {
+		--base-font-size: 20px;
+		--base-small-caps-size: 18px;
+	}
+	@media (min-width: $screen-md) {
+		--base-font-size: 18px;
+		--base-small-caps-size: 17px;
 	}
 }
 

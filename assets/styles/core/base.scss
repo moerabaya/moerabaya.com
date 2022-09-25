@@ -79,52 +79,46 @@ h4,
 h5,
 h6 {
   font-weight: 400;
+  line-height: 1.3em;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   line-height: 1.3em;
-  @media screen and (max-width: $on-laptop) {
-    font-size: 2.7rem;
+  @media screen and (max-width: $screen-lg) {
+    font-size: 2.25rem;
   }
-  @media screen and (max-width: $on-palm) {
-    font-size: 1.5rem;
+  @media screen and (max-width: $screen-md) {
+    font-size: 2rem;
   }
 }
 
 
 h2 {
-  font-size: 2.25rem;
-  line-height: 1.4em;
-  @media screen and (max-width: $on-laptop) {
-    font-size: 1.5rem;
-  }
-  @media screen and (max-width: $on-palm) {
-    font-size: 1.25rem;
-  }
+  font-size: 1.75rem;
+  line-height: 1.3em;
 }
 
 h3 {
-  font-size: 1.82rem;
-  line-height: 1.2em;
-  @media screen and (max-width: $on-laptop) {
-    font-size: 24px;
+  font-size: 1.45rem;
+  @media screen and (max-width: $screen-lg) {
+    font-size: 1.35rem;
   }
-  @media screen and (max-width: $on-palm) {
-    font-size: 20px;
+  @media screen and (max-width: $screen-md) {
+    font-size: 1.25rem;
   }
 }
 
 h4 {
   font-size: 1.3rem;
-  // font-size: 1.421rem;
-  // line-height: 1.1em;
-  // @media screen and (max-width: $on-laptop) {
-  //   font-size: 20px;
-  // }
-  // @media screen and (max-width: $on-palm) {
-  //   font-size: 18px;
-  // }
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.9rem;
 }
 
 /* Links */
