@@ -1,12 +1,11 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 
-
 const Wrapper = styled.span`
-	white-space: nowrap;
-	font-weight: 500;
-	line-height: 1em;
-`
+  /* white-space: nowrap; */
+  font-weight: 500;
+  line-height: 1em;
+`;
 // interface WrapperProps {
 // 	children: ReactElement;
 // }
