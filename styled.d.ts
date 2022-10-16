@@ -1,16 +1,16 @@
 // import original module declarations
-import { ReactElement } from 'react';
-import 'styled-components';
+import { ReactElement } from "react";
+import "styled-components";
 
 // and extend them!
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     borderRadius: string;
 
     grid: {
       gutter: string;
-      padding: string
-    },
+      padding: string;
+    };
 
     colors: {
       font: string;
@@ -29,14 +29,14 @@ declare module 'styled-components' {
   export type ScreenSizes = "xlg" | "lg" | "md" | "sm" | "all";
 
   export interface ComponentProps {
-    hide?: ScreenSizes[] | ScreenSizes,
-    show?: ScreenSizes[] | ScreenSizes,
+    hide?: ScreenSizes[] | ScreenSizes;
+    show?: ScreenSizes[] | ScreenSizes;
   }
 
   export interface GridProps extends ComponentProps {
     fluid?: ScreenSizes[] | ScreenSizes;
   }
-  
+
   export interface FlexComponentProps extends ComponentProps {
     fullHeight?: boolean;
     alignItems?: "flex-start" | "flex-end" | "center";
@@ -55,17 +55,20 @@ declare module 'styled-components' {
   }
 
   export interface ButtonComponent extends ComponentProps {
-		size?: "sm" | "md" | "lg" = "sm";
+    size?: "sm" | "md" | "lg" = "sm";
     isActive?: boolean = false;
     smallCaps?: boolean = false;
     alternative?: boolean = false;
-	}
-
-  export interface MenuItemComponent extends ComponentProps {
-    active?: boolean = false;   
+    layout?: "full" | "block";
   }
 
-  export interface LinkProps extends TextProps, React.HTMLProps<HTMLAnchorElement> {
+  export interface MenuItemComponent extends ComponentProps {
+    active?: boolean = false;
+  }
+
+  export interface LinkProps
+    extends TextProps,
+      React.HTMLProps<HTMLAnchorElement> {
     animated?: boolean = false;
     href: Url;
     children?: ReactElement | string;
