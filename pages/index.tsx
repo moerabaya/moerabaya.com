@@ -186,19 +186,27 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               />
               <ButtonGroup style={{ paddingTop: "1em" }}>
                 <AnimatedView
-                  style={{ display: "inline-block" }}
+                  style={{
+                    display: "inline-block",
+                    width: "100%",
+                    maxWidth: "300px",
+                  }}
                   animate={headerAnimateState}
                 >
-                  <Button size={"lg"} smallCaps alternative>
+                  <Button size={"lg"} smallCaps alternative layout="full">
                     Checkout past work
                   </Button>
                 </AnimatedView>
                 <AnimatedView
-                  style={{ display: "inline-block" }}
+                  style={{
+                    display: "inline-block",
+                    width: "100%",
+                    maxWidth: "300px",
+                  }}
                   animate={headerAnimateState}
                   delay={0.2}
                 >
-                  <Button size={"lg"} smallCaps>
+                  <Button size={"lg"} smallCaps layout="full">
                     Lets grab a coffee{" "}
                     <Icon size="1.6em" slot="start">
                       ☕️
@@ -210,15 +218,6 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           </Row>
         </Grid>
       </Header>
-      {/* <section className="work-section">
-          <div className="content">
-            <AnimatedView duration={1} delay={1.25} vertical="25%">
-              <hr style={{margin: 0}} />
-            </AnimatedView>
-            {WorkItems()}
-            <hr style={{margin: 0}} />
-          </div>
-      </section> */}
     </>
   );
 };
