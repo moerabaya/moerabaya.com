@@ -1,8 +1,8 @@
 import styled, { ButtonComponent, css } from "styled-components";
 import { mixins } from "styles";
-import { Component } from "../Component";
+import { Component } from "../";
 
-export const Button = styled((props) => (
+const Button = styled((props) => (
   <Component {...props} as="button" />
 ))<ButtonComponent>`
   ${(props) => props.smallCaps && mixins.smallCaps}
@@ -62,3 +62,4 @@ export const Button = styled((props) => (
       }
     `}
 `;
+export default Button;

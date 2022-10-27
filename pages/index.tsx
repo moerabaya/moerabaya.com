@@ -12,7 +12,7 @@ import fs, { Dirent } from "fs";
 import grayMatter from "gray-matter";
 import AnimatedText from "../components/atoms/AnimatedText";
 import AnimatedView from "../components/atoms/AnimatedView";
-import { Grid, Row, Column } from "../components/atoms/Grid";
+import { Grid, Row, Col } from "../components/atoms/Grid";
 import Header from "../components/organisms/Header";
 import { Button } from "../components/atoms/Button";
 import Icon from "../components/atoms/Icon";
@@ -161,7 +161,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       <Header fullHeight={true}>
         <Grid fluid={["sm", "md"]}>
           <Row fullHeight={true} alignItems="center">
-            <Column style={{ marginTop: "-5%" }}>
+            <Col style={{ marginTop: "-5%" }}>
               <AnimatedView>
                 <Avatar
                   href="/about"
@@ -214,7 +214,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   </Button>
                 </AnimatedView>
               </ButtonGroup>
-            </Column>
+            </Col>
           </Row>
         </Grid>
       </Header>

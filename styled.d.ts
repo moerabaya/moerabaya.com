@@ -78,7 +78,7 @@ declare module "styled-components" {
     wrap?: boolean = true;
   }
 
-  export interface ColumnProps extends ComponentProps {
+  export interface ColProps extends ComponentProps {
     sm?: number;
     md?: number;
     lg?: number;

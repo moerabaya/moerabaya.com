@@ -7,10 +7,10 @@ import Cookies from "universal-cookie";
 import consts from "consts";
 import Menu from "../../molecules/Menu/Menu.styled";
 import { BsMoon, BsSun } from "react-icons/bs";
-import { Burger, Button } from "../../atoms/Button";
+import { Burger } from "../../atoms/Button";
 import { ThemeContext } from "templates/ThemeProvider";
 import Nav from "./Nav.styled";
-import { Avatar } from "../../atoms/Avatar";
+import { Avatar, Button } from "components/atoms";
 import navigation from "utils/data/navigation.json";
 
 const Pages = navigation.menu;

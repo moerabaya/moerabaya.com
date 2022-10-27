@@ -1,5 +1,5 @@
 import AnimatedView from "components/atoms/AnimatedView";
-import { Column, Grid, Row } from "components/atoms/Grid";
+import { Col, Grid, Row, Text } from "components/atoms";
 import { useContext } from "react";
 import { ThemeContext } from "templates/ThemeProvider";
 
@@ -10,9 +10,9 @@ export default function Contact() {
       <div className="page-content">
         <Grid>
           <Row>
-            <Column sm={6}>
+            <Col sm={6}>
               <AnimatedView delay={0.75}>
-                <h2>Want to connect? Let's talk!</h2>
+                <Text as="h1">Want to connect? Let's talk!</Text>
               </AnimatedView>
               <AnimatedView delay={1.5}>
                 <h2>
@@ -25,8 +25,8 @@ export default function Contact() {
                   </a>
                 </h2>
               </AnimatedView>
-            </Column>
-            <Column sm={6}>
+            </Col>
+            <Col sm={6}>
               <a
                 className="twitter-timeline"
                 data-width="500"
@@ -42,7 +42,7 @@ export default function Contact() {
                 src="https://platform.twitter.com/widgets.js"
                 charset="utf-8"
               ></script>
-            </Column>
+            </Col>
           </Row>
         </Grid>
       </div>
