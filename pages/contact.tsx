@@ -12,7 +12,7 @@ export default function Contact() {
           <Row>
             <Col sm={6}>
               <AnimatedView delay={0.75}>
-                <Text as="h1">Want to connect? Let's talk!</Text>
+                <Text as="h1">Want to connect? Lets talk!</Text>
               </AnimatedView>
               <AnimatedView delay={1.5}>
                 <h2>
@@ -40,7 +40,6 @@ export default function Contact() {
               <script
                 async
                 src="https://platform.twitter.com/widgets.js"
-                charset="utf-8"
               ></script>
             </Col>
           </Row>

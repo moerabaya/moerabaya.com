@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { Button } from "./Button.styled";
+import Button from "./Button.styled";
 
 export const Burger = styled(Button)`
   position: relative;

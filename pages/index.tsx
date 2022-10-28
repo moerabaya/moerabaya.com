@@ -4,7 +4,6 @@ import Image from "next/image";
 // import styles from '../styles/app.scss'
 import React, { useEffect, useState } from "react";
 import { Project } from "../types";
-import { Avatar } from "components/atoms/Avatar";
 import { GrAppleAppStore } from "react-icons/gr";
 import { BsGlobe2 } from "react-icons/bs";
 import path from "path";
@@ -12,9 +11,8 @@ import fs, { Dirent } from "fs";
 import grayMatter from "gray-matter";
 import AnimatedText from "../components/atoms/AnimatedText";
 import AnimatedView from "../components/atoms/AnimatedView";
-import { Grid, Row, Col } from "../components/atoms/Grid";
+import { Grid, Row, Col, Avatar, Button } from "components/atoms/";
 import Header from "../components/organisms/Header";
-import { Button } from "../components/atoms/Button";
 import Icon from "../components/atoms/Icon";
 import ButtonGroup from "../components/atoms/ButtonGroup";
 

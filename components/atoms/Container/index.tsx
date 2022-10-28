@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Component } from "../";
+import Component from "components/atoms/Component";
 
 const Container = styled(Component)`
   margin: 0 auto;
