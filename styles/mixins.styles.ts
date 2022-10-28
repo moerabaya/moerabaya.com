@@ -1,7 +1,7 @@
-import {css} from "styled-components";
+import { css } from "styled-components";
 
 const smallCaps = css`
-	font-variant: small-caps;
+  font-variant: small-caps;
   text-transform: uppercase;
   font-size: var(--base-small-caps-size);
   font-weight: 500;
@@ -11,5 +11,5 @@ const smallCaps = css`
 `;
 
 export default {
-	smallCaps
-}
+  smallCaps,
+};

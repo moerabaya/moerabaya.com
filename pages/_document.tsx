@@ -1,19 +1,25 @@
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components';
+import Document, {
+  DocumentContext,
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 function setInitialColorMode() {
   const getMediaQueryPreference = function () {
     const mediaQuery = "(prefers-color-scheme: dark)";
     const mql = window.matchMedia(mediaQuery);
     const hasPreference = typeof mql.matches === "boolean";
-    
+
     if (hasPreference) {
       return mql.matches ? "dark" : "light";
     }
     // return default
-    return "light"
+    return "light";
   };
-  
+
   function getInitialColorMode() {
     const media = getMediaQueryPreference();
     const preference = window.localStorage.getItem("theme");
@@ -28,9 +34,10 @@ function setInitialColorMode() {
   const colorMode = getInitialColorMode();
 
   const root = document.documentElement;
-	root.style.setProperty("--initial-color-mode", colorMode);
+  root.style.setProperty("--initial-color-mode", colorMode);
 
-	if (colorMode === "dark") document.documentElement.setAttribute("data-theme", "dark");
+  if (colorMode === "dark")
+    document.documentElement.setAttribute("data-theme", "dark");
 }
 // our function needs to be a string
 const blockingSetInitialColorMode = `(function() {
@@ -39,30 +46,29 @@ const blockingSetInitialColorMode = `(function() {
 })()
 `;
 
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-    
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(<App {...props} />),
-        })
+        });
 
-      const initialProps = await Document.getInitialProps(ctx)
+      const initialProps = await Document.getInitialProps(ctx);
       console.log(initialProps.styles);
       return {
         ...initialProps,
         styles: [initialProps.styles, sheet.getStyleElement()],
-      }
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
-  
+
   render = () => (
     <Html>
       <Head />

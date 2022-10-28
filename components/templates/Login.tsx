@@ -1,12 +1,12 @@
-import { useState } from "react"
-import Cookies from "universal-cookie"
-import consts from "consts"
-import form from "styles/components/Form.module.scss"
-import login from "styles/components/Login.module.scss"
-import cn from 'classnames';
+import { useState } from "react";
+import Cookies from "universal-cookie";
+import consts from "consts";
+import form from "styles/components/Form.module.scss";
+import login from "styles/components/Login.module.scss";
+import cn from "classnames";
 
-const Login = ({ redirectPath }:any) => {
-  const [password, setPassword] = useState("")
+const Login = ({ redirectPath }: any) => {
+  const [password, setPassword] = useState("");
 
   return (
     <article className={cn("project-content", login.loginForm)}>
@@ -26,12 +26,12 @@ const Login = ({ redirectPath }:any) => {
             type="submit"
             className="mt-3 bg-green-400 text-white p-2 font-bold rounded hover:bg-green-600"
             onClick={(e) => {
-              e.preventDefault()
-              const cookies = new Cookies()
+              e.preventDefault();
+              const cookies = new Cookies();
               cookies.set(consts.SiteReadCookie, password, {
                 path: "/",
-              })
-              window.location.href = redirectPath ?? "/"
+              });
+              window.location.href = redirectPath ?? "/";
             }}
           >
             Login
@@ -39,7 +39,7 @@ const Login = ({ redirectPath }:any) => {
         </form>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
