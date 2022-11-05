@@ -4,7 +4,7 @@ import { default as StyledFooter } from "./Footer.styled";
 import navigation from "utils/data/navigation.json";
 
 const Pages = navigation.menu;
-const Footer: React.FC = () => {
+const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
   const renderPages = () =>
     Pages?.map(({ path, name }) => (
       <List.Item key={name} as="h5" style={{ marginTop: "0.5em" }}>
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
     ));
 
   return (
-    <StyledFooter>
+    <StyledFooter ref={ref}>
       <Grid>
         <Row wrap>
           <Col>
@@ -124,5 +124,7 @@ const Footer: React.FC = () => {
       </Grid>
     </StyledFooter>
   );
-};
+});
+
+Footer.displayName = "Footer";
 export default Footer;
