@@ -1,5 +1,5 @@
 import AnimatedView from "components/atoms/AnimatedView";
-import { Col, Grid, Row, Text } from "components/atoms";
+import { Col, Grid, Link, Row, Text } from "components/atoms";
 import { useContext } from "react";
 import { ThemeContext } from "templates/ThemeProvider";
 
@@ -12,18 +12,21 @@ export default function Contact() {
           <Row>
             <Col sm={6}>
               <AnimatedView delay={0.75}>
-                <Text as="h1">Want to connect? Lets talk!</Text>
+                <Text as="h2" weight={500}>
+                  Want to connect? Lets talk!
+                </Text>
               </AnimatedView>
               <AnimatedView delay={1.5}>
-                <h2>
-                  <a
+                <h3>
+                  <Link
+                    animated
                     target="_blank"
                     href="https://cura.healthcare/"
                     rel="noreferrer"
                   >
                     <strong>contact@moerabaya.com</strong>
-                  </a>
-                </h2>
+                  </Link>
+                </h3>
               </AnimatedView>
             </Col>
             <Col sm={6}>
@@ -34,9 +37,7 @@ export default function Contact() {
                 data-dnt="true"
                 data-theme={theme}
                 href="https://twitter.com/moerabaya_?ref_src=twsrc%5Etfw"
-              >
-                Tweets by moerabaya_
-              </a>{" "}
+              ></a>{" "}
               <script
                 async
                 src="https://platform.twitter.com/widgets.js"

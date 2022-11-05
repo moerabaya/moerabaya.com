@@ -46,6 +46,21 @@ declare module "styled-components" {
   export interface TextProps {
     opacity?: number = 1;
     smallCaps?: boolean;
+    weight?:
+      | 100
+      | 200
+      | 300
+      | 400
+      | 500
+      | 600
+      | 700
+      | 800
+      | 900
+      | "lighter"
+      | "light"
+      | "normal"
+      | "bold"
+      | "bolder";
     onHover?: {};
   }
 
