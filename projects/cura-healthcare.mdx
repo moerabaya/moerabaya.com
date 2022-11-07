@@ -4,7 +4,7 @@ slug: cura-healthcare
 type: type-2
 description: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
 tags: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
-metaimage: ''
+metaimage: ""
 color: "#EBD4F1"
 author: Mohammed Rabay'a
 date: Feb 9th 2022
@@ -12,9 +12,9 @@ project_type: Product Design & Development
 cover_placeholder_photo: cura-healthcare.jpg
 cover_photo: cura-healthcare@2x.jpg
 index: 2
-behance: 'https://www.behance.net/gallery/107017279/Cura-Healthcare'
-appstore: 'https://apps.apple.com/us/app/%D9%83%D9%8A%D9%88%D8%B1%D8%A7-cura-%D8%A7%D8%B3%D8%AA%D8%B4%D8%B1-%D8%B7%D8%A8%D9%8A%D8%A8/id1033016040'
-website: 'https://cura.healthcare/'
+behance: "https://www.behance.net/gallery/107017279/Cura-Healthcare"
+appstore: "https://apps.apple.com/us/app/%D9%83%D9%8A%D9%88%D8%B1%D8%A7-cura-%D8%A7%D8%B3%D8%AA%D8%B4%D8%B1-%D8%B7%D8%A8%D9%8A%D8%A8/id1033016040"
+website: "https://cura.healthcare/"
 ---
 
 Everytime I try to open any storyboard or nib files using Xcode through Visual Studio for Mac by right-clicking the file and choosing `Open With|Xcode Interface Builder` I keep getting this error `Error updating xcode project` which is really getting on my nerve lately.
@@ -22,7 +22,7 @@ Everytime I try to open any storyboard or nib files using Xcode through Visual S
 I looked it up in `Ide.log` from `Help|Open Log Directory` and the issue was I needed to add an attribute:
 
 ```
-Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780 
+Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780
 ERROR [2022-02-09 09:52:36Z]: Error updating Xcode project
 Xamarin.Designer.iOS.XcodeIntegration.ObjCIntegration.ObjectiveCGenerationException: Could not generate outlet 'UsecasesTextField' in class 'Sample.iOS.Core.UsecasesAddController' as its type 'Sample.iOS.Core.PaddingTextField' could not be resolved to Objective-C.
 
@@ -44,9 +44,9 @@ namespace Sample.iOS.Core
 
         }
 ```
+
 <br />
 After:
-
 
 ```csharp
 namespace Sample.iOS.Core
@@ -59,7 +59,6 @@ namespace Sample.iOS.Core
 
         }
 ```
-
 
 <br />
 Voilà now i'm able to use Xcode again with Visual Studio. 😬

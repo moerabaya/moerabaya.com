@@ -4,7 +4,7 @@ slug: jewemall
 type: type-1
 description: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
 tags: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
-metaimage: ''
+metaimage: ""
 color: "#F1FEF9"
 author: Mohammed Rabay'a
 date: Feb 9th 2022
@@ -12,7 +12,7 @@ project_type: UX, UI Design
 cover_placeholder_photo: jewemall.jpg
 cover_photo: jewemall@2x.jpg
 index: 3
-appstore: 'https://apps.apple.com/us/app/jewemall/id1610008830?platform=iphone'
+appstore: "https://apps.apple.com/us/app/jewemall/id1610008830?platform=iphone"
 ---
 
 Everytime I try to open any storyboard or nib files using Xcode through Visual Studio for Mac by right-clicking the file and choosing `Open With|Xcode Interface Builder` I keep getting this error `Error updating xcode project` which is really getting on my nerve lately.
@@ -20,7 +20,7 @@ Everytime I try to open any storyboard or nib files using Xcode through Visual S
 I looked it up in `Ide.log` from `Help|Open Log Directory` and the issue was I needed to add an attribute:
 
 ```
-Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780 
+Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780
 ERROR [2022-02-09 09:52:36Z]: Error updating Xcode project
 Xamarin.Designer.iOS.XcodeIntegration.ObjCIntegration.ObjectiveCGenerationException: Could not generate outlet 'UsecasesTextField' in class 'Sample.iOS.Core.UsecasesAddController' as its type 'Sample.iOS.Core.PaddingTextField' could not be resolved to Objective-C.
 
@@ -42,9 +42,9 @@ namespace Sample.iOS.Core
 
         }
 ```
+
 <br />
 After:
-
 
 ```csharp
 namespace Sample.iOS.Core
@@ -57,7 +57,6 @@ namespace Sample.iOS.Core
 
         }
 ```
-
 
 <br />
 Voilà now i'm able to use Xcode again with Visual Studio. 😬

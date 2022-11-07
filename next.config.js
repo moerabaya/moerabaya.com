@@ -1,20 +1,21 @@
 /** @type {import('next').NextConfig} */
-const withPlugins = require('next-compose-plugins');
+const withPlugins = require("next-compose-plugins");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['en.gravatar.com'],
+    domains: ["en.gravatar.com"],
   },
   styledComponents: true,
   async redirects() {
     return [
       {
-        source: '/google-certificate',
-        destination: 'https://coursera.org/share/1ebf02b39984eab2802e74286134250a',
-        permanent: false
-      }
+        source: "/google-certificate",
+        destination:
+          "https://coursera.org/share/1ebf02b39984eab2802e74286134250a",
+        permanent: false,
+      },
     ];
-  }
+  },
   // webpack: (config, options) => {
   //   config.module.rules.push({
   //     test: /\.(svg|png|jpe?g|gif|mp4)$/i,
@@ -30,7 +31,7 @@ const nextConfig = {
   //   })
   //   return config
   // }
-}
+};
 // const withMDX = require('@next/mdx')({
 //   extension: /\.mdx?$/,
 //   options: {
@@ -43,4 +44,3 @@ const nextConfig = {
 // })
 
 module.exports = nextConfig;
-
