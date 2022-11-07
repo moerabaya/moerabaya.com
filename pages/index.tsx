@@ -15,12 +15,14 @@ import { Grid, Row, Col, Avatar, Button } from "components/atoms/";
 import Header from "../components/organisms/Header";
 import Icon from "../components/atoms/Icon";
 import ButtonGroup from "../components/atoms/ButtonGroup";
+import useGlobalization from "hooks/useGlobalization";
 
 interface Props {
   projects: Project[];
 }
 const Home: NextPage<Props> = ({ projects }: Props) => {
   const [headerAnimateState, setHeaderAniamteState] = useState(false);
+  const { getLocalizedString } = useGlobalization();
   useEffect(() => {
     return () => {
       // cleanup
@@ -111,14 +113,12 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>
-          Mohammed Rabay&apos;a — UX, Product Designer | Senior Engineer
-        </title>
+        <title>{getLocalizedString("title")}</title>
 
         {/* <!-- Primary Meta Tags --> */}
         <meta
           name="title"
-          content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer"
+          content={"Mohammed Rabay'a — UX, Product Designer | Senior Engineer"}
         />
         <meta
           name="description"

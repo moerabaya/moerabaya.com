@@ -5,6 +5,11 @@ const nextConfig = {
   images: {
     domains: ["en.gravatar.com"],
   },
+  i18n: {
+    locales: ["en-US", "ar"],
+    defaultLocale: "en-US",
+  },
+  trailingSlash: true,
   styledComponents: true,
   async redirects() {
     return [
