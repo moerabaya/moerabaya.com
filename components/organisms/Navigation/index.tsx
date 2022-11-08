@@ -12,17 +12,19 @@ import { ThemeContext } from "templates/ThemeProvider";
 import Nav from "./Nav.styled";
 import { Avatar, Button } from "components/atoms";
 import navigation from "utils/data/navigation.json";
+import useGlobalization from "hooks/useGlobalization";
 
-const Pages = navigation.menu;
+const Pages = navigation;
 
 const Navigation = ({ hasReadPermission }: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
   const { theme, setTheme } = useContext(ThemeContext);
+  const { locale } = useGlobalization();
 
   const renderMenu = () =>
-    Pages?.map(({ path, name }) => (
+    Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
       <Menu.Item key={name} active={pathname == path}>
         <Link href={path}>
           <Button smallCaps={true} size="sm" as="a">
@@ -33,7 +35,7 @@ const Navigation = ({ hasReadPermission }: any) => {
     ));
 
   const renderInnerMenu = () =>
-    Pages.map(({ path, name }) => (
+    Pages[locale == "ar" ? "ar" : "en"].map(({ path, name }) => (
       <li key={name} onClick={() => setIsOpen(false)}>
         <Link href={path} className="animated">
           {name}
@@ -107,14 +109,16 @@ function renderPageTitle(
   pathname: string,
   projects: Project[]
 ): React.ReactNode {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { getLocalizedString } = useGlobalization();
   let title;
   if (pathname == "/") {
     // title = <><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</>;
-    title = <>UX, Product Designer | Engineer</>;
+    title = <>{getLocalizedString("hero")}</>;
   } else if (pathname == "/about") {
-    title = "About";
+    title = getLocalizedString("About");
   } else if (pathname.includes("/blog")) {
-    title = "Blog";
+    title = getLocalizedString("About");
   }
   projects
     ?.sort((a: any, b: any) => a.index - b.index)
