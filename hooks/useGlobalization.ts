@@ -15,7 +15,7 @@ const languages: LanguageResources<Resource> = {
   "en-US": enUS,
 };
 
-function getter() {
+function getter(...args: string[] | Object[]) {
   var current = arguments[0];
   for (var i = 1; i < arguments.length; i++) {
     if (current[arguments[i]]) {
