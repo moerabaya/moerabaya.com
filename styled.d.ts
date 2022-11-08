@@ -1,5 +1,7 @@
 // import original module declarations
+import { Direction } from "moerabaya-components";
 import { ReactElement } from "react";
+import { LinkProps as NextLinkProps } from "next/link";
 import "styled-components";
 
 // and extend them!
@@ -27,6 +29,10 @@ declare module "styled-components" {
   }
 
   export type ScreenSizes = "xlg" | "lg" | "md" | "sm" | "all";
+
+  export interface GlobalStyleProps {
+    direction: Direction;
+  }
 
   export interface ComponentProps {
     hide?: ScreenSizes[] | ScreenSizes;
@@ -81,11 +87,10 @@ declare module "styled-components" {
     active?: boolean = false;
   }
 
-  export interface LinkProps
-    extends TextProps,
-      React.HTMLProps<HTMLAnchorElement> {
+  export interface LinkProps extends TextProps, NextLinkProps {
     animated?: boolean = false;
     href: Url;
+    target?: "_blank" | "_self" | "_parent" | "_top";
     children?: ReactElement | string;
   }
 
