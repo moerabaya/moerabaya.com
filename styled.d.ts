@@ -87,10 +87,13 @@ declare module "styled-components" {
     active?: boolean = false;
   }
 
-  export interface LinkProps extends TextProps, NextLinkProps {
+  export interface LinkProps
+    extends TextProps,
+      NextLinkProps,
+      React.HTMLProps<HTMLAnchorElement> {
     animated?: boolean = false;
     href: Url;
-    target?: "_blank" | "_self" | "_parent" | "_top";
+    // target?: "_blank" | "_self" | "_parent" | "_top";
     children?: ReactElement | string;
   }
 
