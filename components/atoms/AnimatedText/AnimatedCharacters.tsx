@@ -44,7 +44,7 @@ const AnimatedCharacters = (props: AnimatedCharachtersProps) => {
 
   // Push each word into words array
   for (const [, item] of splitWords.entries()) {
-    words.push(item.split(""));
+    words.push(item.split(" "));
   }
 
   // Add a space ("\u00A0") to the end of each word
