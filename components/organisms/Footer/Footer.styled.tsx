@@ -1,3 +1,4 @@
+import { Grid } from "components/atoms";
 import styled from "styled-components";
 
 export default styled.footer`
@@ -9,6 +10,10 @@ export default styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
+
+  > div {
+    transition: 0.25s ease-in-out;
+  }
 
   a {
     color: var(--footer-font-color);
