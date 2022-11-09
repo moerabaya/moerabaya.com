@@ -28,8 +28,8 @@ const StyledLink: any = styled(Text).attrs({
     `}
 `;
 
-const Link = ({ href, ...rest }: LinkProps) => (
-  <NextLink prefetch href={href} passHref>
+const Link = ({ href, locale, ...rest }: LinkProps) => (
+  <NextLink prefetch href={href} locale={locale} passHref>
     <StyledLink {...rest} target />
   </NextLink>
 );
