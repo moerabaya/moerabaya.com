@@ -37,6 +37,8 @@ declare module "styled-components" {
   export interface ComponentProps {
     hide?: ScreenSizes[] | ScreenSizes;
     show?: ScreenSizes[] | ScreenSizes;
+    p?: string;
+    m?: string;
   }
 
   export interface GridProps extends ComponentProps {
@@ -49,9 +51,11 @@ declare module "styled-components" {
     justifyContent?: "flex-start" | "flex-end" | "center";
   }
 
-  export interface TextProps {
+  export interface TextProps extends ComponentProps {
     opacity?: number = 1;
     smallCaps?: boolean;
+    textTransform?: "uppercase" | "lowercase";
+    align?: "center" | "start" | "end" | "left" | "right";
     weight?:
       | 100
       | 200

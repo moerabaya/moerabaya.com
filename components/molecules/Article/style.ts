@@ -28,7 +28,7 @@ const Text = styled.small`
 const Label = styled(Text)`
   border: 1px solid var(--border-color);
   padding: 5px 10px;
-  border-radius: 0.3em;
+  /* border-radius: 0.3em; */
   margin-right: 0.5em;
   margin-top: 0.5em;
 `;
@@ -45,7 +45,7 @@ const Article = Object.assign(
   styled.article`
     border: 1px solid var(--border-color);
     display: inline-block;
-    border-radius: 0.5em;
+    /* border-radius: 0.5em; */
     overflow: hidden;
     text-decoration: none !important;
     background-color: var(--card-background);

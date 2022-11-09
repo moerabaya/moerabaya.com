@@ -7,9 +7,12 @@ import grayMatter from "gray-matter";
 import Article from "../components/molecules/Article";
 import useFormatter from "../hooks/useFormatter";
 import AnimatedView from "../components/atoms/AnimatedView";
+import { Text } from "components/atoms";
+import useGlobalization from "hooks/useGlobalization";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
+  const { getLocalizedString } = useGlobalization();
   return (
     <div className="page-content">
       <Head>
@@ -53,13 +56,13 @@ const Blog = ({ posts }: any) => {
         {/* <h2>Coming soon</h2> */}
         <br />
         <AnimatedView>
-          <h5>
-            <strong>Latest Articles</strong>
-          </h5>
+          <Text as="h4" p="1em 0" textTransform="uppercase" weight={"bold"}>
+            {getLocalizedString("blog", "title")}
+          </Text>
         </AnimatedView>
         <ul className="posts-list">
           {posts?.map((post: any, index: number) => (
-            <AnimatedView key={post.slug} vertical="20%" delay={index}>
+            <AnimatedView key={post.slug} delay={index}>
               <Link href={post.slug}>
                 <Article as="a">
                   <Article.Image

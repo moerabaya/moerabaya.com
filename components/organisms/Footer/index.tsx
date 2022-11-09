@@ -3,10 +3,12 @@ import { Avatar, Col, Grid, Row, Link, List, Text } from "components/atoms/";
 import { default as StyledFooter } from "./Footer.styled";
 import navigation from "utils/data/navigation.json";
 import useGlobalization from "hooks/useGlobalization";
+import { useRouter } from "next/router";
 
 const Pages = navigation;
 const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { locale, getLocalizedString, isArabic } = useGlobalization();
+  const { pathname } = useRouter();
   const renderPages = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
       <List.Item key={name} as="h5" style={{ marginTop: "0.5em" }}>
@@ -53,7 +55,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
               <List.Item>
                 <Link
                   opacity={isArabic ? 0.5 : 1}
-                  href={"/"}
+                  href={pathname}
                   locale="en-US"
                   smallCaps
                 >
@@ -63,7 +65,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   .
                 </Text>
                 <Link
-                  href="/"
+                  href={pathname}
                   locale="ar"
                   smallCaps
                   opacity={isArabic ? 1 : 0.5}

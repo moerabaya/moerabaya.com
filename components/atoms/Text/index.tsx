@@ -1,9 +1,16 @@
 import styled, { css, TextProps } from "styled-components";
 import { mixins } from "styles";
+import Component from "../Component";
 
-const Text = styled.span<TextProps>`
-  font-weight: ${(props) => props.weight ?? "normal"};
+const Text = styled((props) => (
+  <Component {...props} as={props.as ?? "span"} />
+))<TextProps>`
+  padding: ${(props) => props.p};
+  margin: ${(props) => props.m};
+  font-weight: ${(props) => props.weight};
   opacity: ${(props) => props.opacity};
+  text-align: ${(props) => props.align};
+  text-transform: ${(props) => props.textTransform};
   ${(props) => props.smallCaps && mixins.smallCaps}
   ${(props) =>
     props.onHover &&
