@@ -59,9 +59,7 @@ export default function Layout({ children, pageProps }: any) {
             rel="stylesheet"
           />
         </Head>
-        <AnimatedView>
-          <Navigation {...pageProps} />
-        </AnimatedView>
+        <Navigation {...pageProps} />
         <main
           style={{
             marginBottom: footerHeight,

@@ -33,7 +33,7 @@ const AnimatedView = ({
   return (
     <motion.div
       initial="hidden"
-      animate={animate ? "visible" : false}
+      animate={animate ? "visible" : "hidden"}
       variants={animation}
       {...rest}
     >
