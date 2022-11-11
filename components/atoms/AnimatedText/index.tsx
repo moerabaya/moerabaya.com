@@ -11,10 +11,7 @@ const AnimatedText = ({ text, type, finished }: AnimatedTextProps) => {
 
   useEffect(() => {
     if (replay && finished)
-      setTimeout(
-        () => finished(true),
-        (showDuration + childrenDuration * text.length) * 1000
-      );
+      setTimeout(() => finished(true), showDuration * 1000);
   }, [replay]);
 
   const placeholderText = [
