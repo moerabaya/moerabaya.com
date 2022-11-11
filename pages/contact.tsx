@@ -3,7 +3,7 @@ import { Col, Grid, Link, Row, Text } from "components/atoms";
 import { useContext } from "react";
 import { ThemeContext } from "templates/ThemeProvider";
 
-export default function Contact() {
+const Contact = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   return (
     <>
@@ -48,4 +48,14 @@ export default function Contact() {
       </div>
     </>
   );
+};
+
+Contact.displayName = "Contact";
+
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
 }
+
+export default Contact;
