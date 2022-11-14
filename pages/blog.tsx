@@ -65,15 +65,15 @@ const Blog = ({ posts }: any) => {
             <AnimatedView key={post.slug} delay={index}>
               <Link href={post.slug}>
                 <Article as="a">
-                  <Article.Image
-                    src={post.image}
-                    placeholder="blur"
-                    blurDataURL={post.placeholder}
-                    width="100%"
-                    height="65px"
-                    layout="responsive"
-                    objectFit="cover"
-                  />
+                  <Article.ImageWrapper>
+                    <Article.Image
+                      src={post.image}
+                      placeholder="blur"
+                      blurDataURL={post.placeholder}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </Article.ImageWrapper>
                   <Article.Content>
                     <Article.Category>{post?.category}</Article.Category>
                     <Article.Title

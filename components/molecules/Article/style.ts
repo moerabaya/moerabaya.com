@@ -10,10 +10,23 @@ const Title = styled.h5`
 
 const Content = styled.section`
   padding: 20px;
+  flex: 1;
 `;
 
 const Image = styled(NextImage)`
   display: block;
+  flex: 1;
+  padding-bottom: 20%;
+  position: relative;
+`;
+
+const ImageWrapper = styled.div`
+  /* padding: 1em; */
+  width: 28.5%;
+  border-radius: 88px;
+  overflow: hidden;
+  padding-bottom: 18.5%;
+  position: relative;
 `;
 
 const Text = styled.small`
@@ -44,13 +57,15 @@ const Category = styled(Text)`
 const Article = Object.assign(
   styled.article`
     border: 1px solid var(--border-color);
-    display: inline-block;
+    /* display: inline-block; */
     /* border-radius: 0.5em; */
     overflow: hidden;
     text-decoration: none !important;
     background-color: var(--card-background);
     box-shadow: 0px 0px 0px 0px var(--card-shadow-color);
     transition: 0.25s ease;
+    display: flex;
+    padding: 1em;
     &:hover {
       box-shadow: 0px 0px 5px 0px var(--card-shadow-color);
       h5 {
@@ -65,6 +80,7 @@ const Article = Object.assign(
     Label,
     Text,
     Category,
+    ImageWrapper,
   }
 );
 
