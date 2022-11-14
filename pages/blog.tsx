@@ -75,7 +75,6 @@ const Blog = ({ posts }: any) => {
                     />
                   </Article.ImageWrapper>
                   <Article.Content>
-                    <Article.Category>{post?.category}</Article.Category>
                     <Article.Title
                       dangerouslySetInnerHTML={{ __html: post?.title }}
                     ></Article.Title>
@@ -85,11 +84,6 @@ const Blog = ({ posts }: any) => {
                       <Article.Text>
                         {formatter.timeToRead(post.content)} min read
                       </Article.Text>
-                    </div>
-                    <div>
-                      {post?.tags.split(", ").map((item: string) => (
-                        <Article.Label key={item}>{item}</Article.Label>
-                      ))}
                     </div>
                   </Article.Content>
                 </Article>
