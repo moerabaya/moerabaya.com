@@ -14,8 +14,18 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
     const handleScroll = (event: Event) => {
       const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
         ?.clientHeight;
-      const contentHeight = document.body.clientHeight - footerHeight! * 1.5;
-      setOpacity((window.scrollY - contentHeight) / footerHeight!);
+      const contentHeight = document.body.clientHeight + footerHeight!;
+      console.log(contentHeight - (window.scrollY + window.innerHeight));
+      console.log(footerHeight!);
+      console.log(
+        (contentHeight - (window.scrollY + window.innerHeight)) / footerHeight!
+      );
+      // console.log(footerHeight! / (contentHeight - window.scrollY));
+      setOpacity(
+        1 -
+          (contentHeight - (window.scrollY + window.innerHeight)) /
+            footerHeight!
+      );
     };
 
     window.addEventListener("scroll", handleScroll);
