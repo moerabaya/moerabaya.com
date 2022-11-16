@@ -1,5 +1,4 @@
-Mohammed Rabay'a is an experinced software engineer specialized in designing and building web and mobile applications.
-[moerabaya.com](https://moerabaya.com/)
+Mohammed Rabay'a is an experinced software engineer specialized in designing and building web and mobile applications. To contact Mohammed or learn more please visit [moerabaya.com](https://moerabaya.com/).
 
 ## Remaining
 
