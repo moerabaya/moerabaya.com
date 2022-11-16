@@ -1,5 +1,7 @@
 // import original module declarations
+import { Direction } from "moerabaya-components";
 import { ReactElement } from "react";
+import { LinkProps as NextLinkProps } from "next/link";
 import "styled-components";
 
 // and extend them!
@@ -28,9 +30,15 @@ declare module "styled-components" {
 
   export type ScreenSizes = "xlg" | "lg" | "md" | "sm" | "all";
 
+  export interface GlobalStyleProps {
+    direction: Direction;
+  }
+
   export interface ComponentProps {
     hide?: ScreenSizes[] | ScreenSizes;
     show?: ScreenSizes[] | ScreenSizes;
+    p?: string;
+    m?: string;
   }
 
   export interface GridProps extends ComponentProps {
@@ -43,9 +51,11 @@ declare module "styled-components" {
     justifyContent?: "flex-start" | "flex-end" | "center";
   }
 
-  export interface TextProps {
+  export interface TextProps extends ComponentProps {
     opacity?: number = 1;
     smallCaps?: boolean;
+    textTransform?: "uppercase" | "lowercase";
+    align?: "center" | "start" | "end" | "left" | "right";
     weight?:
       | 100
       | 200
@@ -83,9 +93,11 @@ declare module "styled-components" {
 
   export interface LinkProps
     extends TextProps,
+      NextLinkProps,
       React.HTMLProps<HTMLAnchorElement> {
     animated?: boolean = false;
     href: Url;
+    // target?: "_blank" | "_self" | "_parent" | "_top";
     children?: ReactElement | string;
   }
 

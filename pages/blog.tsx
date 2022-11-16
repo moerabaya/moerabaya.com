@@ -7,9 +7,12 @@ import grayMatter from "gray-matter";
 import Article from "../components/molecules/Article";
 import useFormatter from "../hooks/useFormatter";
 import AnimatedView from "../components/atoms/AnimatedView";
+import { Text } from "components/atoms";
+import useGlobalization from "hooks/useGlobalization";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
+  const { getLocalizedString } = useGlobalization();
   return (
     <div className="page-content">
       <Head>
@@ -53,26 +56,25 @@ const Blog = ({ posts }: any) => {
         {/* <h2>Coming soon</h2> */}
         <br />
         <AnimatedView>
-          <h5>
-            <strong>Latest Articles</strong>
-          </h5>
+          <Text as="h4" p="1em 0" textTransform="uppercase" weight={"bold"}>
+            {getLocalizedString("blog", "title")}
+          </Text>
         </AnimatedView>
         <ul className="posts-list">
           {posts?.map((post: any, index: number) => (
-            <AnimatedView key={post.slug} vertical="20%" delay={index}>
+            <AnimatedView key={post.slug} delay={index}>
               <Link href={post.slug}>
                 <Article as="a">
-                  <Article.Image
-                    src={post.image}
-                    placeholder="blur"
-                    blurDataURL={post.placeholder}
-                    width="100%"
-                    height="65px"
-                    layout="responsive"
-                    objectFit="cover"
-                  />
+                  <Article.ImageWrapper>
+                    <Article.Image
+                      src={post.image}
+                      placeholder="blur"
+                      blurDataURL={post.placeholder}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </Article.ImageWrapper>
                   <Article.Content>
-                    <Article.Category>{post?.category}</Article.Category>
                     <Article.Title
                       dangerouslySetInnerHTML={{ __html: post?.title }}
                     ></Article.Title>
@@ -82,11 +84,6 @@ const Blog = ({ posts }: any) => {
                       <Article.Text>
                         {formatter.timeToRead(post.content)} min read
                       </Article.Text>
-                    </div>
-                    <div>
-                      {post?.tags.split(", ").map((item: string) => (
-                        <Article.Label key={item}>{item}</Article.Label>
-                      ))}
                     </div>
                   </Article.Content>
                 </Article>

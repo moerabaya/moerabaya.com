@@ -1,14 +1,15 @@
-Mohammed Rabay'a is an experinced software engineer specialized in designing and building web and mobile applications.
-[moerabaya.com](https://moerabaya.com/)
+Mohammed Rabay'a is an experinced software engineer specialized in designing and building web and mobile applications. To contact Mohammed or learn more please visit [moerabaya.com](https://moerabaya.com/).
 
 ## Remaining
 
 - [x] Clear Navigation
 - [x] New Footer
 - [x] Grid System
+- [x] Translated pages both in Arabic and English
 - [ ] Design System Components
 - [ ] Dark mode (Save to localStorage)
 - [ ] Custom project pages (Case Study)
+
 
 ## Folder Structure
 

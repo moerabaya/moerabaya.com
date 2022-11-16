@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Col, Grid, Row, Link, List, Text } from "components/atoms/";
 import { default as StyledFooter } from "./Footer.styled";
 import navigation from "utils/data/navigation.json";
+import useGlobalization from "hooks/useGlobalization";
+import { useRouter } from "next/router";
 
-const Pages = navigation.menu;
+const Pages = navigation;
 const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
+  const { locale, getLocalizedString, isArabic } = useGlobalization();
+  const [opacity, setOpacity] = useState(0);
+  const { pathname } = useRouter();
+  React.useEffect(() => {
+    const handleScroll = (event: Event) => {
+      const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
+        ?.clientHeight;
+      const contentHeight = document.body.clientHeight + footerHeight!;
+      console.log(contentHeight - (window.scrollY + window.innerHeight));
+      console.log(footerHeight!);
+      console.log(
+        (contentHeight - (window.scrollY + window.innerHeight)) / footerHeight!
+      );
+      // console.log(footerHeight! / (contentHeight - window.scrollY));
+      setOpacity(
+        1 -
+          (contentHeight - (window.scrollY + window.innerHeight)) /
+            footerHeight!
+      );
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const renderPages = () =>
-    Pages?.map(({ path, name }) => (
+    Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
       <List.Item key={name} as="h5" style={{ marginTop: "0.5em" }}>
         <Link href={path} smallCaps opacity={0.5} onHover={{ opacity: 1 }}>
           {name}
@@ -16,7 +45,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
 
   return (
     <StyledFooter ref={ref}>
-      <Grid>
+      <Grid style={{ opacity: opacity }}>
         <Row wrap>
           <Col>
             <Avatar
@@ -33,10 +62,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
         </Row>
         <Row wrap>
           <Col sm={12} lg={5} style={{ paddingBottom: "2em" }}>
-            <Text as="h4">
-              Feel free to reach out if you want to collaborate with us, or
-              simply have a chat.
-            </Text>
+            <Text as="h4">{getLocalizedString("footer", "title")}</Text>
             <Text as="h4">
               <Link animated={true} href="mail:rabaya.moe@gmail.com">
                 contact@moerabaya.com
@@ -47,22 +73,30 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
             <List>
               <List.Header>
-                <Text smallCaps>Languages</Text>
+                <Text smallCaps>
+                  {getLocalizedString("footer", "languages")}
+                </Text>
               </List.Header>
               <List.Item>
-                <Link href="/" smallCaps>
-                  en
+                <Link
+                  opacity={isArabic ? 0.5 : 1}
+                  href={pathname}
+                  locale="en-US"
+                  smallCaps
+                >
+                  {getLocalizedString("footer", "en")}
                 </Link>
                 <Text opacity={0.5} style={{ padding: "0 0.5em" }}>
                   .
                 </Text>
                 <Link
-                  href="/ar/"
+                  href={pathname}
+                  locale="ar"
                   smallCaps
-                  opacity={0.5}
+                  opacity={isArabic ? 1 : 0.5}
                   onHover={{ opacity: 1 }}
                 >
-                  ar
+                  {getLocalizedString("footer", "ar")}
                 </Link>
               </List.Item>
             </List>
@@ -70,7 +104,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
             <List>
               <List.Header>
-                <Text smallCaps>Follow</Text>
+                <Text smallCaps>{getLocalizedString("footer", "follow")}</Text>
               </List.Header>
               <List.Item>
                 <Link
@@ -79,7 +113,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   opacity={0.5}
                   onHover={{ opacity: 1 }}
                 >
-                  Twitter
+                  {getLocalizedString("footer", "twitter")}
                 </Link>
               </List.Item>
               <List.Item>
@@ -89,7 +123,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   opacity={0.5}
                   onHover={{ opacity: 1 }}
                 >
-                  LinkedIn
+                  {getLocalizedString("footer", "linkedin")}
                 </Link>
               </List.Item>
               <List.Item>
@@ -99,7 +133,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   opacity={0.5}
                   onHover={{ opacity: 1 }}
                 >
-                  Dribbble
+                  {getLocalizedString("footer", "dribbble")}
                 </Link>
               </List.Item>
               <List.Item>
@@ -109,7 +143,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   opacity={0.5}
                   onHover={{ opacity: 1 }}
                 >
-                  Behance
+                  {getLocalizedString("footer", "behance")}
                 </Link>
               </List.Item>
             </List>
@@ -119,7 +153,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           </Col>
         </Row>
         <Row>
-          <Col>©2022 moerabaya.com</Col>
+          <Col>©{new Date().getFullYear()} moerabaya.com</Col>
         </Row>
       </Grid>
     </StyledFooter>

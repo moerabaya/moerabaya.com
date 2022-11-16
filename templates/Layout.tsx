@@ -10,11 +10,14 @@ import React, {
   useLayoutEffect,
   useRef,
 } from "react";
+import GlobalStyle from "./GlobalStyle";
+import useGlobalization from "hooks/useGlobalization";
 const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
   ssr: false,
 });
 export default function Layout({ children, pageProps }: any) {
   const footerRef = useRef<HTMLDivElement>(null);
+  const { direction } = useGlobalization();
   const [footerHeight, setFooterHeight] = React.useState(0);
   useEffect(() => {
     function handleResize() {
@@ -32,6 +35,7 @@ export default function Layout({ children, pageProps }: any) {
 
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle direction={direction} />
       <div className={`content`}>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,10 +48,18 @@ export default function Layout({ children, pageProps }: any) {
             href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap"
+            rel="stylesheet"
+          />
         </Head>
-        <AnimatedView>
-          <Navigation {...pageProps} />
-        </AnimatedView>
+        <Navigation {...pageProps} />
         <main
           style={{
             marginBottom: footerHeight,

@@ -15,12 +15,14 @@ import { Grid, Row, Col, Avatar, Button } from "components/atoms/";
 import Header from "../components/organisms/Header";
 import Icon from "../components/atoms/Icon";
 import ButtonGroup from "../components/atoms/ButtonGroup";
+import useGlobalization from "hooks/useGlobalization";
 
 interface Props {
   projects: Project[];
 }
 const Home: NextPage<Props> = ({ projects }: Props) => {
   const [headerAnimateState, setHeaderAniamteState] = useState(false);
+  const { getLocalizedString } = useGlobalization();
   useEffect(() => {
     return () => {
       // cleanup
@@ -111,29 +113,18 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>
-          Mohammed Rabay&apos;a — UX, Product Designer | Senior Engineer
-        </title>
+        <title>{getLocalizedString("title")}</title>
 
         {/* <!-- Primary Meta Tags --> */}
-        <meta
-          name="title"
-          content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer"
-        />
-        <meta
-          name="description"
-          content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences."
-        />
+        <meta name="title" content={getLocalizedString("title")} />
+        <meta name="description" content={getLocalizedString("description")} />
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:url" content="https://moerabaya.com/" />
-        <meta
-          property="og:title"
-          content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer"
-        />
+        <meta property="og:title" content={getLocalizedString("title")} />
         <meta
           property="og:description"
-          content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences."
+          content={getLocalizedString("description")}
         />
         <meta
           property="og:image"
@@ -142,13 +133,10 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/" />
-        <meta
-          property="twitter:title"
-          content="Mohammed Rabay'a — UX, Product Designer | Senior Engineer"
-        />
+        <meta property="twitter:title" content={getLocalizedString("title")} />
         <meta
           property="twitter:description"
-          content="A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences."
+          content={getLocalizedString("description")}
         />
         <meta
           property="twitter:image"
@@ -174,11 +162,11 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               </AnimatedView>
               <h3>
                 <AnimatedView>
-                  <span>Hi my name is Mohammed 👋</span>
+                  <span>{getLocalizedString("home", "pretitle")}</span>
                 </AnimatedView>
               </h3>
               <AnimatedText
-                text="I design/develop user inter­­faces and engaging product experi­­en­ces for humans."
+                text={getLocalizedString("home", "title")}
                 type="h1"
                 finished={(state: boolean) => setHeaderAniamteState(state)}
               />
@@ -192,7 +180,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   animate={headerAnimateState}
                 >
                   <Button size={"lg"} smallCaps alternative layout="full">
-                    Checkout past work
+                    {getLocalizedString("home", "button-1")}
                   </Button>
                 </AnimatedView>
                 <AnimatedView
@@ -205,7 +193,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   delay={0.2}
                 >
                   <Button size={"lg"} smallCaps layout="full">
-                    Lets grab a coffee{" "}
+                    {getLocalizedString("home", "button-2")}{" "}
                     <Icon size="1.6em" slot="start">
                       ☕️
                     </Icon>
