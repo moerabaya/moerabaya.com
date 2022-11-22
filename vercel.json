@@ -1,3 +1,7 @@
 {
-  "buildCommand": "react-static build"
+  "buildCommand": "npm run build",
+  "framework": null,
+  "installCommand": "npm install",
+  "outputDirectory": "dist",
+  "devCommand": "npm run start"
 }
