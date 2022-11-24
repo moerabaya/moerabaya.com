@@ -41,6 +41,6 @@
     "gh-pages": "^3.2.3",
     "react-hot-loader": "^4.13.0",
     "serve": "^11.3.2",
-    "typescript": "^4.1.5"
+    "typescript": "^3.5.3"
   }
 }
