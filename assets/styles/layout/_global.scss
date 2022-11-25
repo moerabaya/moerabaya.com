@@ -3,7 +3,8 @@
   text-align: right;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   @media screen and (max-width: 650px) {
     height: auto;
@@ -18,8 +19,8 @@ html, body {
 
 hr {
   border: none;
-	border-top: 1px solid var(--border-color);;
-	margin: 1em 0;
+  border-top: 1px solid var(--border-color);
+  margin: 1em 0;
 }
 
 .arrow-link {
