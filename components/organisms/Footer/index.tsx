@@ -22,7 +22,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
       );
       // console.log(footerHeight! / (contentHeight - window.scrollY));
       setOpacity(
-        1 -
+        (window.innerWidth <= 500 ? 2 : 1) -
           (contentHeight - (window.scrollY + window.innerHeight)) /
             footerHeight!
       );
