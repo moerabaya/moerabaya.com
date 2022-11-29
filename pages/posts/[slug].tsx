@@ -8,7 +8,22 @@ import { useRouter } from "next/router";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
+
+const ResponsiveImage = (props: ImageProps) => (
+  <Image
+    alt={props.alt}
+    layout="responsive"
+    width="100%"
+    height="100%"
+    objectFit="contain"
+    {...props}
+  />
+);
+
+const components = {
+  Image: ResponsiveImage,
+};
 
 const Post = ({ mdxSource, meta }: any) => {
   var post: Post;
@@ -82,7 +97,7 @@ const Post = ({ mdxSource, meta }: any) => {
         </h5>
 
         <div className="content">
-          <MDXRemote {...mdxSource} />
+          <MDXRemote {...mdxSource} components={components} />
         </div>
       </div>
     </div>
