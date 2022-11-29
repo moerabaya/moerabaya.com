@@ -25,6 +25,7 @@
     "react-moving-text": "^0.0.7",
     "rehype-img-size": "^1.0.1",
     "styled-components": "^5.3.5",
+    "swiper": "^8.4.5",
     "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
