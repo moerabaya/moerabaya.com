@@ -2,8 +2,9 @@ import styled from "styled-components";
 import Component from "components/atoms/Component";
 
 const Container = styled(Component)`
-  margin: 0 auto;
+  margin: ${(props) => props.m ?? "0px auto"}; // center element in center
   max-width: unset;
+  padding: ${(props) => props.p ?? "0 1.75em"}; // center element in center
   @media (min-width: ${(props) =>
       props.theme.breakpoints.small}) and (max-width: ${(props) =>
       props.theme.breakpoints.medium}) {

@@ -1,5 +1,6 @@
 {
   "hero": "UX, Product Design | Engineer",
+  "name": "Mohammed Rabay'a",
   "title": "Mohammed Rabay'a - UX, Product Designer | Senior Engineer",
   "description": "A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences.",
   "navigation": {
@@ -16,6 +17,9 @@
   },
   "blog": {
     "title": "Latest Articles"
+  },
+  "work": {
+    "title": "Work"
   },
   "footer": {
     "title": "Feel free to reach out if you want to collaborate with us, or simply have a chat.",
