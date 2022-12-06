@@ -56,6 +56,10 @@ declare module "styled-components" {
     smallCaps?: boolean;
     textTransform?: "uppercase" | "lowercase";
     align?: "center" | "start" | "end" | "left" | "right";
+    /**
+     * number is in pixels
+     */
+    size?: number | string;
     weight?:
       | 100
       | 200
@@ -72,6 +76,23 @@ declare module "styled-components" {
       | "bold"
       | "bolder";
     onHover?: {};
+  }
+
+  export interface AnimateProps {
+    name: "wave";
+    /**
+     * number is in milliseconds
+     */
+    duration: number | string;
+    iteration: number | "infinite";
+    /**
+     * number is in milliseconds
+     */
+    delay: number | string;
+    /**
+     * transform origin which allows the change the point that transformation occurs
+     */
+    origin: string;
   }
 
   export interface IconProps {

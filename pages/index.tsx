@@ -11,7 +11,15 @@ import fs, { Dirent } from "fs";
 import grayMatter from "gray-matter";
 import AnimatedText from "../components/atoms/AnimatedText";
 import AnimatedView from "../components/atoms/AnimatedView";
-import { Grid, Row, Col, Avatar, Button } from "components/atoms/";
+import {
+  Grid,
+  Row,
+  Col,
+  Avatar,
+  Button,
+  Text,
+  Animate,
+} from "components/atoms/";
 import Header from "../components/organisms/Header";
 import Icon from "../components/atoms/Icon";
 import ButtonGroup from "../components/atoms/ButtonGroup";
@@ -162,7 +170,19 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               </AnimatedView>
               <h3>
                 <AnimatedView>
-                  <span>{getLocalizedString("home", "pretitle")}</span>
+                  <span>
+                    {getLocalizedString("home", "pretitle")}
+                    &nbsp;&nbsp;
+                    <Animate
+                      as={Text}
+                      name="wave"
+                      origin="70% 70%"
+                      size="1.2em"
+                      duration={1500}
+                    >
+                      👋
+                    </Animate>
+                  </span>
                 </AnimatedView>
               </h3>
               <AnimatedText
