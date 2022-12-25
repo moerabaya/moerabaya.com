@@ -12,12 +12,14 @@ import React, {
 } from "react";
 import GlobalStyle from "./GlobalStyle";
 import useGlobalization from "hooks/useGlobalization";
+import { useRouter } from "next/router";
 const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
   ssr: false,
 });
 export default function Layout({ children, pageProps }: any) {
   const footerRef = useRef<HTMLDivElement>(null);
   const { direction } = useGlobalization();
+  const { pathname } = useRouter();
   const [footerHeight, setFooterHeight] = React.useState(0);
   useEffect(() => {
     function handleResize() {
@@ -36,7 +38,7 @@ export default function Layout({ children, pageProps }: any) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle direction={direction} />
-      <div className={`content`}>
+      <div className={`content snappy`}>
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
@@ -62,7 +64,7 @@ export default function Layout({ children, pageProps }: any) {
         <Navigation {...pageProps} />
         <main
           style={{
-            marginBottom: footerHeight,
+            marginBottom: pathname !== "/work" ? footerHeight : 0,
             position: "relative",
             zIndex: 10,
             backgroundColor: "var(--background-color)",
@@ -72,7 +74,7 @@ export default function Layout({ children, pageProps }: any) {
           {children}
         </main>
         {/* <AnimatedView> */}
-        <Footer ref={footerRef} />
+        {pathname !== "/work" && <Footer ref={footerRef} />}
         {/* </AnimatedView> */}
       </div>
     </ThemeProvider>

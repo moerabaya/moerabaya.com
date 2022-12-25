@@ -7,86 +7,63 @@ import grayMatter from "gray-matter";
 import Article from "components/molecules/Article";
 import useFormatter from "hooks/useFormatter";
 import AnimatedView from "components/atoms/AnimatedView";
-import { Text, Grid, Row } from "components/atoms";
+import { Text, Grid, Row, Col } from "components/atoms";
 import useGlobalization from "hooks/useGlobalization";
 import { Project } from "types";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel, Pagination } from "swiper";
 import "swiper/css";
+import Image from "next/image";
 
 interface WorkProps {
   projects: Project[];
 }
 const WorkCarousel = ({ projects }: WorkProps) => {
   const prevScrollY = React.useRef(0);
-  const swiperRef = React.useRef<any>();
-  const [mousewheel, setMousewheel] = React.useState(true);
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY <= 1) {
-        // setGoingUp(false);
-        setTimeout(() => {
-          if (swiperRef?.current) {
-            swiperRef.current.mousewheel.enable();
-            swiperRef.current.allowTouchMove = true;
-            console.log("scroll top", currentScrollY);
-          }
-        }, 0);
-        console.log("hello world!");
-      }
-      // if (prevScrollY.current > currentScrollY && !goingUp) {
-      //   setGoingUp(true);
-      // }
-
-      prevScrollY.current = currentScrollY;
-      // console.log(goingUp, currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <Grid
-      as={Swiper}
-      slidesPerView={1}
-      spaceBetween={30}
-      onSwiper={(swiper) => {
-        swiperRef.current = swiper;
-      }}
-      direction={"vertical"}
       fluid={"all"}
-      style={{ height: "100vh" }}
-      grabCursor={true}
-      // allowTouchMove={false}
-      mousewheel={
-        mousewheel
-          ? {
-              forceToAxis: true,
-              releaseOnEdges: true,
-            }
-          : false
-      }
-      onReachEnd={(swiper) => {
-        swiper.mousewheel.disable();
-        swiper.allowTouchMove = false;
-        setMousewheel(false);
+      style={{
+        scrollSnapType: "y mandatory",
+        scrollSnapPointsY: "repeat(300px)",
+        maxHeight: "100vh",
+        overflowY: "scroll",
       }}
-      // onWheel={(swiper) => {
-      //   console.log("trying to scroll!");
-      // }}
-      onScroll={(swiper: any) => {
-        // window.scroll({ top: 0, left: 0, behavior: "smooth" });
-      }}
-      modules={[Mousewheel]}
     >
       {projects?.map((project: Project, index: number) => (
-        <SwiperSlide style={{ height: "100vh" }} key={project.slug}>
-          <h1>Slide {index}</h1>
-        </SwiperSlide>
+        <Row
+          style={{
+            height: "100vh",
+            scrollSnapAlign: "start",
+            paddingTop: "4.5em",
+            paddingBottom: "2em",
+          }}
+          key={project.slug}
+        >
+          <Col sm={6}>
+            <div
+              style={{
+                width: "100%",
+                position: "relative",
+                background: "white",
+                height: "100%",
+              }}
+            >
+              <Image
+                placeholder="blur"
+                alt=""
+                layout="fill"
+                objectFit="cover"
+                src={
+                  project.cover_photo &&
+                  require(`assets/images/projects/${project.cover_photo}`)
+                }
+              />
+            </div>
+          </Col>
+          <Col sm={6}>
+            <Text as="h2">{project.title}</Text>
+          </Col>
+        </Row>
       ))}
     </Grid>
   );
@@ -96,7 +73,7 @@ const Work = ({ projects }: WorkProps) => {
   const formatter = useFormatter();
   const { getLocalizedString } = useGlobalization();
   return (
-    <div className="page-content">
+    <div>
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
