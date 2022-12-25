@@ -1,13 +1,10 @@
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
 import { promises as fs } from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
-import Article from "components/molecules/Article";
 import useFormatter from "hooks/useFormatter";
-import AnimatedView from "components/atoms/AnimatedView";
-import { Text, Grid, Row, Col } from "components/atoms";
+import { Text, Grid, Row, Col, Link } from "components/atoms";
 import useGlobalization from "hooks/useGlobalization";
 import { Project } from "types";
 import "swiper/css";
@@ -17,8 +14,6 @@ interface WorkProps {
   projects: Project[];
 }
 const WorkCarousel = ({ projects }: WorkProps) => {
-  const prevScrollY = React.useRef(0);
-
   return (
     <Grid
       fluid={"all"}
@@ -31,6 +26,7 @@ const WorkCarousel = ({ projects }: WorkProps) => {
     >
       {projects?.map((project: Project, index: number) => (
         <Row
+          alignItems="center"
           style={{
             height: "100vh",
             scrollSnapAlign: "start",
@@ -39,7 +35,7 @@ const WorkCarousel = ({ projects }: WorkProps) => {
           }}
           key={project.slug}
         >
-          <Col sm={6}>
+          <Col sm={12} md={6} style={{ height: "100%", paddingInlineStart: 0 }}>
             <div
               style={{
                 width: "100%",
@@ -60,8 +56,13 @@ const WorkCarousel = ({ projects }: WorkProps) => {
               />
             </div>
           </Col>
-          <Col sm={6}>
-            <Text as="h2">{project.title}</Text>
+          <Col sm={12} md={6}>
+            <Text smallCaps style={{ margin: 0, marginBottom: 10 }} as="h2">
+              {project.title}
+            </Text>
+            <Link animated href="/">
+              View Case Study
+            </Link>
           </Col>
         </Row>
       ))}

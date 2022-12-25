@@ -59,7 +59,7 @@ declare module "styled-components" {
     /**
      * number is in pixels
      */
-    size?: number | string;
+    size?: number | string | "inherit" | "initial";
     weight?:
       | 100
       | 200

@@ -12,12 +12,12 @@ const Text = styled((props) => (
   opacity: ${(props) => props.opacity};
   text-align: ${(props) => props.align};
   text-transform: ${(props) => props.textTransform};
+  ${(props) => props.smallCaps && mixins.smallCaps}
   ${(props) =>
     props.size &&
     css`
       font-size: ${_.isNumber(props.size) ? `${props.size}px` : props.size};
     `}
-  ${(props) => props.smallCaps && mixins.smallCaps}
   ${(props) =>
     props.onHover &&
     css`
