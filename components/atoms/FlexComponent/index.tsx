@@ -3,6 +3,7 @@ import Component from "../Component";
 
 const FlexComponent = styled(Component)<FlexComponentProps>`
   display: flex;
+  flex-direction: ${(props) => props.direction ?? "row"};
   ${(props) =>
     props.fullHeight &&
     css`

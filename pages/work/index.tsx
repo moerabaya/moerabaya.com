@@ -14,6 +14,7 @@ interface WorkProps {
   projects: Project[];
 }
 const WorkCarousel = ({ projects }: WorkProps) => {
+  const { getLocalizedString } = useGlobalization();
   return (
     <Grid
       fluid={"all"}
@@ -33,8 +34,18 @@ const WorkCarousel = ({ projects }: WorkProps) => {
             paddingTop: "4.5em",
             paddingBottom: "2em",
           }}
+          direction="row-reverse"
+          wrap
           key={project.slug}
         >
+          <Col sm={12} md={6}>
+            <Text smallCaps style={{ margin: 0, marginBottom: 10 }} as="h1">
+              {project.title}
+            </Text>
+            <Link animated href={`${project.slug}`} smallCaps>
+              {getLocalizedString("work", "view")}
+            </Link>
+          </Col>
           <Col sm={12} md={6} style={{ height: "100%", paddingInlineStart: 0 }}>
             <div
               style={{
@@ -55,14 +66,6 @@ const WorkCarousel = ({ projects }: WorkProps) => {
                 }
               />
             </div>
-          </Col>
-          <Col sm={12} md={6}>
-            <Text smallCaps style={{ margin: 0, marginBottom: 10 }} as="h2">
-              {project.title}
-            </Text>
-            <Link animated href="/">
-              View Case Study
-            </Link>
           </Col>
         </Row>
       ))}

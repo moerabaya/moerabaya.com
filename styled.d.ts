@@ -49,6 +49,7 @@ declare module "styled-components" {
     fullHeight?: boolean;
     alignItems?: "flex-start" | "flex-end" | "center";
     justifyContent?: "flex-start" | "flex-end" | "center";
+    direction?: "row" | "row-reverse" | "column" | "column-reverse";
   }
 
   export interface TextProps extends ComponentProps {

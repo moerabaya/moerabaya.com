@@ -19,7 +19,8 @@
     "title": "Latest Articles"
   },
   "work": {
-    "title": "Work"
+    "title": "Work",
+    "view": "View Case Study"
   },
   "footer": {
     "title": "Feel free to reach out if you want to collaborate with us, or simply have a chat.",
