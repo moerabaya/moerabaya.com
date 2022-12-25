@@ -9,6 +9,7 @@ const Title = styled.span`
   font-size: 1.1em;
   vertical-align: middle;
   margin: 0 0.5em;
+  font-size: var(--base-small-caps-size);
   ${mixins.smallCaps}
   &:only-child {
     margin: 0;
