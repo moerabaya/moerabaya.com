@@ -155,7 +155,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       <Header fullHeight={true}>
         <Grid fluid={["sm", "md"]}>
           <Row fullHeight={true} alignItems="center">
-            <Col style={{ marginTop: "-5%" }}>
+            <Col style={{ marginTop: "-5%" }} sm={12}>
               <AnimatedView>
                 <Avatar
                   href="/about"
@@ -168,7 +168,8 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   size={45}
                 />
               </AnimatedView>
-              <h3>
+
+              <h2 style={{ marginBottom: "1em" }}>
                 <AnimatedView>
                   <span>
                     {getLocalizedString("home", "pretitle")}
@@ -184,7 +185,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                     </Animate>
                   </span>
                 </AnimatedView>
-              </h3>
+              </h2>
               <AnimatedText
                 text={getLocalizedString("home", "title")}
                 type="h1"
