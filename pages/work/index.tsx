@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
 import useFormatter from "hooks/useFormatter";
-import { Text, Grid, Row, Col, Link } from "components/atoms";
+import { Text, Grid, Row, Col, Link, AnimatedView } from "components/atoms";
 import useGlobalization from "hooks/useGlobalization";
 import { Project } from "types";
 import "swiper/css";
@@ -38,16 +38,30 @@ const WorkCarousel = ({ projects }: WorkProps) => {
           wrap
           key={project.slug}
         >
-          <Col sm={12} md={6}>
-            <Text smallCaps style={{ margin: 0, marginBottom: 10 }} as="h1">
-              {project.title}
-            </Text>
-            <Link animated href={`${project.slug}`} smallCaps>
-              {getLocalizedString("work", "view")}
-            </Link>
+          <Col sm={12} lg={6}>
+            <AnimatedView>
+              <Text
+                smallCaps
+                style={{ margin: 0, marginBottom: "5px" }}
+                as="h1"
+                weight={700}
+              >
+                {project.title}
+              </Text>
+              <Link
+                weight={200}
+                opacity={0.8}
+                animated
+                href={`${project.slug}`}
+                smallCaps
+              >
+                {getLocalizedString("work", "view")}
+              </Link>
+            </AnimatedView>
           </Col>
-          <Col sm={12} md={6} style={{ height: "100%", paddingInlineStart: 0 }}>
-            <div
+          <Col sm={12} lg={6} style={{ height: "100%", paddingInlineStart: 0 }}>
+            <AnimatedView
+              vertical={50}
               style={{
                 width: "100%",
                 position: "relative",
@@ -65,10 +79,25 @@ const WorkCarousel = ({ projects }: WorkProps) => {
                   require(`assets/images/projects/${project.cover_photo}`)
                 }
               />
-            </div>
+            </AnimatedView>
           </Col>
         </Row>
       ))}
+      <Row
+        style={{
+          position: "fixed",
+          top: "5em",
+          padding: 0,
+          margin: "0 -1.5em",
+          height: "100vh",
+        }}
+      >
+        <Col style={{ padding: 0, textAlign: "end" }}>
+          <Text as={"h4"} smallCaps style={{ margin: 0 }}>
+            1/4
+          </Text>
+        </Col>
+      </Row>
     </Grid>
   );
 };

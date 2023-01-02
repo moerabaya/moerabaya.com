@@ -8,11 +8,11 @@ const Text = styled((props) => (
 ))<TextProps>`
   padding: ${(props) => props.p};
   margin: ${(props) => props.m};
+  ${(props) => props.smallCaps && mixins.smallCaps}
   font-weight: ${(props) => props.weight};
   opacity: ${(props) => props.opacity};
   text-align: ${(props) => props.align};
   text-transform: ${(props) => props.textTransform};
-  ${(props) => props.smallCaps && mixins.smallCaps}
   ${(props) =>
     props.size &&
     css`
