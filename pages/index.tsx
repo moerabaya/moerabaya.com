@@ -200,7 +200,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   }}
                   animate={headerAnimateState}
                 >
-                  <Button size={"lg"} smallCaps alternative layout="full">
+                  <Button
+                    href="/work"
+                    size={"lg"}
+                    smallCaps
+                    alternative
+                    layout="full"
+                  >
                     {getLocalizedString("home", "button-1")}
                   </Button>
                 </AnimatedView>

@@ -101,12 +101,15 @@ declare module "styled-components" {
     slot?: "start" | "end" | "left" | "right";
   }
 
-  export interface ButtonComponent extends ComponentProps {
+  export interface ButtonComponent
+    extends ComponentProps,
+      HTMLElement<HTMLButtonElement> {
     size?: "sm" | "md" | "lg" = "sm";
     isActive?: boolean = false;
     smallCaps?: boolean = false;
     alternative?: boolean = false;
     layout?: "full" | "block";
+    href?: string;
   }
 
   export interface MenuItemComponent extends ComponentProps {

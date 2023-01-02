@@ -7,6 +7,9 @@ const StyledLink: any = styled(Text).attrs({
   as: "a",
 })<LinkProps>`
   text-decoration: none;
+  &:visited {
+    color: initial;
+  }
   ${(props) =>
     props.animated &&
     css`
