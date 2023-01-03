@@ -1,23 +1,40 @@
 import Head from "next/head";
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { promises as fs } from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
 import useFormatter from "hooks/useFormatter";
 import { Text, Grid, Row, Col, Link, AnimatedView } from "components/atoms";
 import useGlobalization from "hooks/useGlobalization";
-import { Project } from "types";
+import { Project as ProjectInterface } from "types";
 import "swiper/css";
-import Image from "next/image";
+import Project from "./project";
 
 interface WorkProps {
-  projects: Project[];
+  projects: ProjectInterface[];
 }
 const WorkCarousel = ({ projects }: WorkProps) => {
-  const { getLocalizedString } = useGlobalization();
+  const [currentProject, setCurrentProject] = useState(1);
+  const [itemsScrollTop, setItemsScrollTop] = useState<number[]>([]);
+  const handleScroll = (element: any) => {
+    itemsScrollTop.map((item: number, index: number) => {
+      if (element.target.scrollTop >= item) {
+        setCurrentProject(index + 1);
+      }
+    });
+  };
+
+  const updateScrollTop = useCallback((scrollTop: number) => {
+    if (!itemsScrollTop.includes(scrollTop)) {
+      itemsScrollTop.push(scrollTop);
+      setItemsScrollTop(itemsScrollTop);
+    }
+  }, []);
+
   return (
     <Grid
       fluid={"all"}
+      onScroll={handleScroll}
       style={{
         scrollSnapType: "y mandatory",
         scrollSnapPointsY: "repeat(300px)",
@@ -25,76 +42,27 @@ const WorkCarousel = ({ projects }: WorkProps) => {
         overflowY: "scroll",
       }}
     >
-      {projects?.map((project: Project, index: number) => (
-        <Row
-          alignItems="center"
-          style={{
-            height: "100vh",
-            scrollSnapAlign: "start",
-            paddingTop: "4.5em",
-            paddingBottom: "2em",
-          }}
-          direction="row-reverse"
-          wrap
-          key={project.slug}
-        >
-          <Col sm={12} lg={6}>
-            <AnimatedView>
-              <Text
-                smallCaps
-                style={{ margin: 0, marginBottom: "5px" }}
-                as="h1"
-                weight={700}
-              >
-                {project.title}
-              </Text>
-              <Link
-                weight={200}
-                opacity={0.8}
-                animated
-                href={`${project.slug}`}
-                smallCaps
-              >
-                {getLocalizedString("work", "view")}
-              </Link>
-            </AnimatedView>
-          </Col>
-          <Col sm={12} lg={6} style={{ height: "100%", paddingInlineStart: 0 }}>
-            <AnimatedView
-              vertical={50}
-              style={{
-                width: "100%",
-                position: "relative",
-                background: "white",
-                height: "100%",
-              }}
-            >
-              <Image
-                placeholder="blur"
-                alt=""
-                layout="fill"
-                objectFit="cover"
-                src={
-                  project.cover_photo &&
-                  require(`assets/images/projects/${project.cover_photo}`)
-                }
-              />
-            </AnimatedView>
-          </Col>
-        </Row>
+      {projects?.map((project: ProjectInterface, index: number) => (
+        <Project
+          key={`project-${project.title}`}
+          {...project}
+          updateScrollTop={updateScrollTop}
+        />
       ))}
       <Row
         style={{
           position: "fixed",
-          top: "5em",
-          padding: 0,
-          margin: "0 -1.5em",
-          height: "100vh",
+          // top: "5em",
+          // padding: 0,
+          // margin: "0 -1.5em",
+          // height: "100vh",
+          right: "1.25em",
+          bottom: "1.25em",
         }}
       >
         <Col style={{ padding: 0, textAlign: "end" }}>
           <Text as={"h4"} smallCaps style={{ margin: 0 }}>
-            1/4
+            {currentProject}/{projects.length}
           </Text>
         </Col>
       </Row>
