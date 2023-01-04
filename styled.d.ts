@@ -103,7 +103,7 @@ declare module "styled-components" {
 
   export interface ButtonComponent
     extends ComponentProps,
-      HTMLElement<HTMLButtonElement> {
+      React.HTMLProps<HTMLAnchorElement> {
     size?: "sm" | "md" | "lg" = "sm";
     isActive?: boolean = false;
     smallCaps?: boolean = false;
