@@ -12,7 +12,7 @@ const Button = styled((props: any) => (
     appearance: none;
     border: none;
     outline: none;
-    color: var(--text-color);
+    color: var(--text-color) !important;
     text-decoration: none;
     border-radius: 0.25em;
     font-weight: 500;
@@ -57,7 +57,7 @@ const Button = styled((props: any) => (
       props.alternative &&
       css`
         background-color: var(--text-color);
-        color: var(--background-color);
+        color: var(--background-color) !important;
         &:hover {
           background-color: var(--primary-color);
         }
