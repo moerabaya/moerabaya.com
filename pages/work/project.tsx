@@ -3,10 +3,38 @@ import { Row, Col, AnimatedView, Text, Link } from "components/atoms";
 import Image from "next/image";
 import useGlobalization from "hooks/useGlobalization";
 import React from "react";
+import styled from "styled-components";
 
 interface ProjectProps extends ProjectInterface {
   updateScrollTop: (scrollTop: number) => void;
 }
+
+const StyledProject = styled(Row)`
+  height: 100vh;
+  scroll-snap-align: start;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  align-items: center;
+  flex-direction: column;
+  > div:first-child {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  > div:last-child {
+    padding: 0;
+    flex: 1;
+  }
+  @media (min-width: ${(props) => props.theme.screens.medium}) {
+    flex-direction: row-reverse;
+    padding-bottom: 2em;
+    > div:last-child {
+      height: 100%;
+      padding-top: 2em;
+      padding-bottom: 0em;
+      padding-inline-end: 1em;
+    }
+  }
+`;
 
 const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
   const { getLocalizedString } = useGlobalization();
@@ -15,15 +43,9 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
     updateScrollTop(ref.current!.offsetTop);
   }, []);
   return (
-    <Row
+    <StyledProject
       ref={ref}
       alignItems="center"
-      style={{
-        height: "100vh",
-        scrollSnapAlign: "start",
-        paddingTop: "4.5em",
-        paddingBottom: "2em",
-      }}
       direction="row-reverse"
       wrap
       key={project.slug}
@@ -49,7 +71,7 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
           </Link>
         </AnimatedView>
       </Col>
-      <Col sm={12} lg={6} style={{ height: "100%", paddingInlineStart: 0 }}>
+      <Col sm={12} lg={6}>
         <AnimatedView
           vertical={50}
           style={{
@@ -71,7 +93,7 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
           />
         </AnimatedView>
       </Col>
-    </Row>
+    </StyledProject>
   );
 };
 export default Project;
