@@ -39,6 +39,7 @@ declare module "styled-components" {
     show?: ScreenSizes[] | ScreenSizes;
     p?: string;
     m?: string;
+    font?: "sans-serif" | "serif";
   }
 
   export interface GridProps extends ComponentProps {

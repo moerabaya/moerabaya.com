@@ -22,7 +22,7 @@ const Avatar = (props: AvatarProps) => {
     image
   ) : (
     <Link href={props.href!} onClick={props.onClick}>
-      <a>{image}</a>
+      {image}
     </Link>
   );
 };
