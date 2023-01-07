@@ -10,7 +10,8 @@ const ptSerif = PT_Serif({
 const Component = styled.div<ComponentProps>`
   padding: ${(props) => props.p};
   margin: ${(props) => props.m};
-  ${(props) => (props.font === "serif" ? ptSerif.style : null)}
+  font-family: ${(props) =>
+    props.font ? ptSerif.style.fontFamily : "inherit"};
   @media (max-width: ${(props) => props.theme.breakpoints.small}) {
     display: ${(props) =>
       props.hide?.includes("sm") ? `none !important` : ""};

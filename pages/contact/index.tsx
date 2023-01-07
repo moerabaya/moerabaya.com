@@ -12,7 +12,13 @@ const Contact = () => {
           <Row>
             <Col sm={9}>
               <AnimatedView delay={0.75}>
-                <Text as="h1" weight={900} smallCaps m={"1em 0 0.25em"}>
+                <Text
+                  as="h1"
+                  weight={900}
+                  smallCaps
+                  m={"1em 0 0.25em"}
+                  font="serif"
+                >
                   Want to connect? <br /> Lets talk!
                 </Text>
               </AnimatedView>
