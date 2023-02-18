@@ -12,3 +12,4 @@ export { default as Button } from "./Button";
 export { default as Avatar } from "./Avatar";
 export { default as AnimatedView } from "./AnimatedView";
 export { default as AnimatedText } from "./AnimatedText";
+export { default as Animate } from "./Animate";

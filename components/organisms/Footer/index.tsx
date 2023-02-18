@@ -22,7 +22,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
       );
       // console.log(footerHeight! / (contentHeight - window.scrollY));
       setOpacity(
-        1 -
+        (window.innerWidth <= 500 ? 2 : 1) -
           (contentHeight - (window.scrollY + window.innerHeight)) /
             footerHeight!
       );
@@ -64,7 +64,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <Col sm={12} lg={5} style={{ paddingBottom: "2em" }}>
             <Text as="h4">{getLocalizedString("footer", "title")}</Text>
             <Text as="h4">
-              <Link animated={true} href="mail:rabaya.moe@gmail.com">
+              <Link animated={true} href="mail:contact@moerabaya.com">
                 contact@moerabaya.com
               </Link>
             </Text>

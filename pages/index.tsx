@@ -11,7 +11,15 @@ import fs, { Dirent } from "fs";
 import grayMatter from "gray-matter";
 import AnimatedText from "../components/atoms/AnimatedText";
 import AnimatedView from "../components/atoms/AnimatedView";
-import { Grid, Row, Col, Avatar, Button } from "components/atoms/";
+import {
+  Grid,
+  Row,
+  Col,
+  Avatar,
+  Button,
+  Text,
+  Animate,
+} from "components/atoms/";
 import Header from "../components/organisms/Header";
 import Icon from "../components/atoms/Icon";
 import ButtonGroup from "../components/atoms/ButtonGroup";
@@ -147,7 +155,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       <Header fullHeight={true}>
         <Grid fluid={["sm", "md"]}>
           <Row fullHeight={true} alignItems="center">
-            <Col style={{ marginTop: "-5%" }}>
+            <Col style={{ marginTop: "-5%" }} sm={12}>
               <AnimatedView>
                 <Avatar
                   href="/about"
@@ -160,11 +168,24 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   size={45}
                 />
               </AnimatedView>
-              <h3>
+
+              <h2 style={{ marginBottom: "1em" }}>
                 <AnimatedView>
-                  <span>{getLocalizedString("home", "pretitle")}</span>
+                  <span>
+                    {getLocalizedString("home", "pretitle")}
+                    &nbsp;&nbsp;
+                    <Animate
+                      as={Text}
+                      name="wave"
+                      origin="70% 70%"
+                      size="1.2em"
+                      duration={1500}
+                    >
+                      👋
+                    </Animate>
+                  </span>
                 </AnimatedView>
-              </h3>
+              </h2>
               <AnimatedText
                 text={getLocalizedString("home", "title")}
                 type="h1"
@@ -179,7 +200,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   }}
                   animate={headerAnimateState}
                 >
-                  <Button size={"lg"} smallCaps alternative layout="full">
+                  <Button
+                    href="/work"
+                    size={"lg"}
+                    smallCaps
+                    alternative
+                    layout="full"
+                  >
                     {getLocalizedString("home", "button-1")}
                   </Button>
                 </AnimatedView>
