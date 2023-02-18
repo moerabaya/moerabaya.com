@@ -8,17 +8,13 @@
 // @import "../node_modules/three-dots/sass/three-dots.scss";
 
 // Core Styles
-@import '../assets/styles/core/reset.scss';
-@import '../assets/styles/core/base.scss';
-@import '../assets/styles/core/typography.scss';
+@import "../assets/styles/core/reset.scss";
+@import "../assets/styles/core/base.scss";
+@import "../assets/styles/core/_typography.scss";
 
-@import '../assets/styles/layout/_global.scss';
-@import '../assets/styles/layout/_content.scss';
-@import '../assets/styles/layout/_post.scss';
-@import '../assets/styles/layout/_work.scss';
-@import '../assets/styles/layout/_nav.scss';
-@import '../assets/styles/layout/_header.scss';
-@import '../assets/styles/layout/_footer.scss';
-
-@import './assets/styles/components/loading.scss';
-// @import './assets/styles/components/post.scss';
+@import "../assets/styles/layout/_global.scss";
+@import "../assets/styles/layout/_content.scss";
+@import "../assets/styles/layout/_post.scss";
+@import "../assets/styles/layout/_work.scss";
+@import "../assets/styles/layout/_nav.scss";
+@import "../assets/styles/layout/_header.scss";

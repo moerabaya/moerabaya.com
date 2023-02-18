@@ -1,5 +1,3 @@
-
-
 /* Grid */
 .flex-grid {
   display: flex;
@@ -24,10 +22,13 @@
 }
 
 /* Page content */
-.page-content, .post-content, .project-content {
+.page-content,
+.post-content,
+.project-content {
   padding-top: 75px;
+  padding-bottom: 75px;
   min-height: calc(100vh - 107px);
-  @media (max-width: $screen-sm-max) {
+  @media (max-width: $screen-sm) {
     min-height: calc(100vh - 126px);
   }
   @media (max-width: $on-palm) {
@@ -36,7 +37,7 @@
 }
 
 /* Coming soon */
-.coming-soon-container  {
+.coming-soon-container {
   text-align: center;
   vertical-align: middle;
   display: flex;
