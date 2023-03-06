@@ -1,8 +1,17 @@
 import styled, { ComponentProps, css } from "styled-components";
+import { PT_Serif } from "@next/font/google";
+
+const ptSerif = PT_Serif({
+  weight: "400",
+  style: ["italic", "normal"],
+  subsets: ["latin"],
+});
 
 const Component = styled.div<ComponentProps>`
   padding: ${(props) => props.p};
   margin: ${(props) => props.m};
+  font-family: ${(props) =>
+    props.font ? ptSerif.style.fontFamily : "inherit"};
   @media (max-width: ${(props) => props.theme.breakpoints.small}) {
     display: ${(props) =>
       props.hide?.includes("sm") ? `none !important` : ""};

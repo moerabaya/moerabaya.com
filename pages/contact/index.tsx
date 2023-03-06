@@ -10,10 +10,16 @@ const Contact = () => {
       <div className="page-content">
         <Grid>
           <Row>
-            <Col sm={6}>
+            <Col sm={9}>
               <AnimatedView delay={0.75}>
-                <Text as="h2" weight={500}>
-                  Want to connect? Lets talk!
+                <Text
+                  as="h1"
+                  weight={900}
+                  smallCaps
+                  m={"1em 0 0.25em"}
+                  font="serif"
+                >
+                  Want to connect? <br /> Lets talk!
                 </Text>
               </AnimatedView>
               <AnimatedView delay={1.5}>
@@ -29,20 +35,7 @@ const Contact = () => {
                 </h3>
               </AnimatedView>
             </Col>
-            <Col sm={6}>
-              <a
-                className="twitter-timeline"
-                data-width="500"
-                data-height="500"
-                data-dnt="true"
-                data-theme={theme}
-                href="https://twitter.com/moerabaya_?ref_src=twsrc%5Etfw"
-              ></a>{" "}
-              <script
-                async
-                src="https://platform.twitter.com/widgets.js"
-              ></script>
-            </Col>
+            <Col sm={3}></Col>
           </Row>
         </Grid>
       </div>
