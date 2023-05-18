@@ -1,7 +1,7 @@
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
   NextScript,
 } from "next/document";
@@ -59,7 +59,6 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-      console.log(initialProps.styles);
       return {
         ...initialProps,
         styles: [initialProps.styles, sheet.getStyleElement()],

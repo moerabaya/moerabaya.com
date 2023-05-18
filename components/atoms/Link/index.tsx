@@ -1,10 +1,9 @@
-import styled, { css, LinkProps } from "styled-components";
-import { default as NextLink, LinkProps as NextLinkProps } from "next/link";
-import { mixins } from "styles";
 import { Text } from "components/atoms";
+import { default as NextLink } from "next/link";
+import styled, { css, LinkProps } from "styled-components";
 
-const StyledLink: any = styled(Text).attrs({
-  as: "a",
+const Link = styled(Text).attrs({
+  as: NextLink,
 })<LinkProps>`
   text-decoration: none;
   color: var(--text-color);
@@ -31,10 +30,10 @@ const StyledLink: any = styled(Text).attrs({
     `}
 `;
 
-const Link = ({ href, locale, ...rest }: LinkProps) => (
-  <NextLink prefetch href={href} locale={locale} passHref>
-    <StyledLink {...rest} target />
-  </NextLink>
-);
+// const Link = (props: LinkProps) => (
+//   <StyledLink prefetch {...props}>
+//     {/* <StyledLink {...rest} target /> */}
+//   </StyledLink>
+// );
 
 export default Link;

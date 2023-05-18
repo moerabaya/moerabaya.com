@@ -34,8 +34,6 @@ const useGlobalization = () => {
 
   const getLocalizedString = (...a: string[]): string => {
     const translateValue = getter(languages[locale as Languages], ...a);
-    // console.log(a);
-    // const translateValue = "";
     return translateValue;
   };
   return {

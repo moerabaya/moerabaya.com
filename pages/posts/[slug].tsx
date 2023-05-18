@@ -1,21 +1,18 @@
-import React, { useEffect } from "react";
-import { Post } from "../../types";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import Head from "next/head";
 import Image, { ImageProps } from "next/image";
+import { useRouter } from "next/router";
+import path from "path";
+import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
   <Image
-    alt={props.alt}
+    // alt={props.alt}
     layout="responsive"
-    width="100%"
-    height="100%"
+    sizes="100vw"
     objectFit="contain"
     {...props}
   />
@@ -76,18 +73,20 @@ const Post = ({ mdxSource, meta }: any) => {
           }
         />
       </Head>
-      <Image
-        src={meta.image}
-        placeholder="blur"
-        blurDataURL={meta.placeholder}
-        width="100%"
-        height="30px"
-        layout="responsive"
-        objectFit="cover"
-      />
+
       <div className="container">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
+        <Image
+          alt={meta.alt}
+          src={meta.image}
+          placeholder="blur"
+          blurDataURL={meta.placeholder}
+          width="1200"
+          height="400"
+          sizes="100% 50%"
+          objectFit="contain"
+        />
         <h1
           className="post-title"
           dangerouslySetInnerHTML={{ __html: meta?.title }}
