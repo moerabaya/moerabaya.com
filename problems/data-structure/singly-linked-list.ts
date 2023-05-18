@@ -79,4 +79,15 @@ class SinglyLinkedList implements SinglyLinkedListParams {
     }
     return node;
   }
+
+  // TODO Implement set, insert, remove, and reverse
+  set(index: number, val: string) {
+    if (index < 0 || index > this.length) return null;
+    let newItem = new ListNode(val);
+    let old = this.get(index);
+    newItem.next = old;
+    old = newItem;
+
+    return newItem;
+  }
 }
