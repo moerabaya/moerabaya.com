@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Configuration and helpers */
 @import "../assets/styles/utilities/variables";
 @import "../assets/styles/utilities/functions";
@@ -16,5 +20,4 @@
 @import "../assets/styles/layout/_content.scss";
 @import "../assets/styles/layout/_post.scss";
 @import "../assets/styles/layout/_work.scss";
-@import "../assets/styles/layout/_nav.scss";
 @import "../assets/styles/layout/_header.scss";
