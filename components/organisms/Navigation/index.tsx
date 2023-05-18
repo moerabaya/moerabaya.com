@@ -1,18 +1,17 @@
-import Image from "next/image";
+import Logo from "assets/images/logo.svg";
+import { AnimatedView } from "components/atoms";
+import consts from "consts";
+import useGlobalization from "hooks/useGlobalization";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { ThemeContext } from "templates/ThemeProvider";
 import { Project } from "types";
 import Cookies from "universal-cookie";
-import consts from "consts";
-import Menu from "../../molecules/Menu/Menu.styled";
-import { BsMoon, BsSun } from "react-icons/bs";
-import { Burger } from "../../atoms/Button";
-import { ThemeContext } from "templates/ThemeProvider";
-import Nav from "./Nav.styled";
-import { AnimatedView, Avatar, Button } from "components/atoms";
 import navigation from "utils/data/navigation.json";
-import useGlobalization from "hooks/useGlobalization";
+import { Burger } from "../../atoms/Button";
+import Nav from "./Nav.styled";
 
 const Pages = navigation;
 
@@ -24,16 +23,34 @@ const Navigation = ({ hasReadPermission }: any) => {
   const { locale } = useGlobalization();
 
   const renderMenu = () =>
-    Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
-      <Menu.Item key={name} active={pathname == path}>
-        <Link href={path}>
-          <Button smallCaps={true} size="sm" as="a">
-            {name}
-          </Button>
-        </Link>
-      </Menu.Item>
+    Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
+      <Link
+        className={`px-3 py-2 ${
+          index == 0 && "bg-fuchsia-50"
+        } font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100`}
+        href={path}
+        key={name}
+      >
+        {name}
+      </Link>
     ));
 
+  const Socials = [
+    <Link
+      href=""
+      key="github-url"
+      className="px-2 py-2 bg-fuchsia-50 font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100"
+    >
+      <BsGithub size="25px" />
+    </Link>,
+    <Link
+      href=""
+      key="github-url"
+      className="px-2 py-2 bg-fuchsia-50 font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100"
+    >
+      <BsLinkedin size="25px" />
+    </Link>,
+  ];
   const renderInnerMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"].map(({ path, name }, index) => (
       <AnimatedView
@@ -50,69 +67,56 @@ const Navigation = ({ hasReadPermission }: any) => {
     ));
 
   return (
-    <Nav isOpen={isOpen}>
+    <Nav isOpen={isOpen} className="text-center">
       <AnimatedView vertical={"-75"}>
-        <div className="flex-grid">
-          <div className="col">
-            {pathname != "/" && (
-              <span>
-                <Avatar
-                  href="/"
-                  onClick={() => setIsOpen(false)}
-                  src={
-                    "https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"
-                  }
-                  alt="Portrait of Mohammed Rabay'a"
-                  placeholder="blur"
-                  blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
-                  size={45}
-                />
-              </span>
-            )}
-            <Nav.Title>{renderPageTitle(pathname, projects)}</Nav.Title>
-          </div>
-          <div className="col menu-items">
-            <Menu hide={["sm", "md"]}>{renderMenu()}</Menu>
-          </div>
-          <div className="col align-right flex-grid">
-            <Button
-              size="md"
-              onClick={() => setTheme(theme == "dark" ? "light" : "dark")}
-              style={{ padding: "0.5em", height: "2.5em", width: "2.5em" }}
-            >
-              {theme == "dark" ? (
-                <BsSun size="1.4em" />
-              ) : (
-                <BsMoon size="1.2em" />
-              )}
-            </Button>
-            <Burger
-              hide={["lg", "xlg"]}
-              size="md"
-              isActive={isOpen}
-              onClick={() => setIsOpen(!isOpen)}
-            />
-          </div>
-        </div>
-
-        <ul className="navigation-list">
-          {renderInnerMenu()}
-          {hasReadPermission && (
-            <li className="logout">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  const cookies = new Cookies();
-                  cookies.remove(consts.SiteReadCookie, { path: "/" });
-                  window.location.href = asPath ?? "/";
-                }}
-                className="animated"
+        <div className="container m-auto">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="flex items-center">{renderMenu()}</div>
+            <div className="text-center flex justify-center items-center">
+              <Link href="/">
+                <Logo />
+              </Link>
+            </div>
+            <div className="flex items-center justify-end">
+              {Socials}
+              {/* <Button
+                size="md"
+                onClick={() => setTheme(theme == "dark" ? "light" : "dark")}
+                style={{ padding: "0.5em", height: "2.5em", width: "2.5em" }}
               >
-                Logout
-              </a>
-            </li>
-          )}
-        </ul>
+                {theme == "dark" ? (
+                  <BsSun size="1.4em" />
+                ) : (
+                  <BsMoon size="1.2em" />
+                )}
+              </Button> */}
+              <Burger
+                hide={["lg", "xlg"]}
+                size="md"
+                isActive={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+              />
+            </div>
+          </div>
+          <ul className="hidden">
+            {renderInnerMenu()}
+            {hasReadPermission && (
+              <li className="logout">
+                <a
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const cookies = new Cookies();
+                    cookies.remove(consts.SiteReadCookie, { path: "/" });
+                    window.location.href = asPath ?? "/";
+                  }}
+                  className="animated"
+                >
+                  Logout
+                </a>
+              </li>
+            )}
+          </ul>
+        </div>
       </AnimatedView>
     </Nav>
   );
