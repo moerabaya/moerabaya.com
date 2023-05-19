@@ -9,7 +9,8 @@ declare module "motion" {
     h6: "h6";
   };
 
-  interface AnimatedCharachtersProps {
+  interface AnimatedCharachtersProps
+    extends ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> {
     children?: ReactElement;
     text: string;
     type: tagMap;
@@ -17,7 +18,8 @@ declare module "motion" {
     hideDuration: number;
   }
 
-  interface AnimatedTextProps {
+  interface AnimatedTextProps
+    extends ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> {
     children?: ReactElement;
     text: string;
     type: tagMap;

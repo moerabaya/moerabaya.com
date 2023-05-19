@@ -3,7 +3,7 @@ import { AnimatedTextProps } from "motion";
 import { useEffect, useState } from "react";
 import AnimatedCharacters from "./AnimatedCharacters";
 
-const AnimatedText = ({ text, type, finished }: AnimatedTextProps) => {
+const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {
   const [replay, setReplay] = useState(true);
   const hideDuration = 0.85;
   const showDuration = 0.85;
@@ -37,9 +37,7 @@ const AnimatedText = ({ text, type, finished }: AnimatedTextProps) => {
   };
   return (
     <motion.div
-      className="App"
       initial="hidden"
-      // animate="visible"
       animate={replay ? "visible" : "hidden"}
       variants={container}
     >
@@ -48,6 +46,7 @@ const AnimatedText = ({ text, type, finished }: AnimatedTextProps) => {
         type={type}
         hideDuration={hideDuration}
         showDuration={showDuration}
+        {...rest}
       />
     </motion.div>
   );
