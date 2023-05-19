@@ -25,9 +25,9 @@ const Navigation = ({ hasReadPermission }: any) => {
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
       <Link
-        className={`px-3 py-2 ${
-          index == 0 && "bg-fuchsia-50"
-        } font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100`}
+        className={`px-4 py-2 ${
+          index == 0 && "bg-stone-100"
+        } font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200`}
         href={path}
         key={name}
       >
@@ -39,16 +39,16 @@ const Navigation = ({ hasReadPermission }: any) => {
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-fuchsia-50 font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100"
+      className="px-2 py-2 bg-stone-100 font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
     >
       <BsGithub size="25px" />
     </Link>,
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-fuchsia-50 font-normal mx-2 rounded-xl text-gray-400 hover:bg-fuchsia-100"
+      className="px-2 py-2 bg-stone-100 font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
     >
-      <BsLinkedin size="25px" />
+      <BsLinkedin size="25px" className="rounded-md" />
     </Link>,
   ];
   const renderInnerMenu = () =>
