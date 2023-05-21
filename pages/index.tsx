@@ -141,12 +141,14 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </div>
       <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
-      <div className="py-20 bg-stone-100">
+      <div className="py-20 bg-stone-100 dark:bg-neutral-950">
         <div className="container mx-auto max-w-2xl flex items-center justify-between">
-          <h2 className="font-medium text-stone-800">Want to work together?</h2>
+          <h2 className="font-medium text-stone-800 dark:text-neutral-50">
+            Want to work together?
+          </h2>
           <a
             href="mail:contact@moerabaya.com"
-            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-black hover:text-white rounded-full"
+            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
           >
             Let's connect
           </a>
