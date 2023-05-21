@@ -27,7 +27,7 @@ const Navigation = ({ hasReadPermission }: any) => {
       <Link
         className={`px-4 py-2 ${
           index == 0 && "bg-stone-100"
-        } font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200`}
+        } font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200`}
         href={path}
         key={name}
       >
@@ -39,16 +39,16 @@ const Navigation = ({ hasReadPermission }: any) => {
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-stone-100 font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
+      className="px-2 py-2 bg-stone-100 font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
     >
-      <BsGithub size="25px" />
+      <BsGithub size="26px" />
     </Link>,
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-stone-100 font-normal mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
+      className="px-2 py-2 bg-stone-100 font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
     >
-      <BsLinkedin size="25px" className="rounded-md" />
+      <BsLinkedin size="26px" className="rounded-md" />
     </Link>,
   ];
   const renderInnerMenu = () =>
@@ -74,22 +74,11 @@ const Navigation = ({ hasReadPermission }: any) => {
             <div className="flex items-center">{renderMenu()}</div>
             <div className="text-center flex justify-center items-center">
               <Link href="/">
-                <Logo />
+                <Logo width={60} />
               </Link>
             </div>
             <div className="flex items-center justify-end">
               {Socials}
-              {/* <Button
-                size="md"
-                onClick={() => setTheme(theme == "dark" ? "light" : "dark")}
-                style={{ padding: "0.5em", height: "2.5em", width: "2.5em" }}
-              >
-                {theme == "dark" ? (
-                  <BsSun size="1.4em" />
-                ) : (
-                  <BsMoon size="1.2em" />
-                )}
-              </Button> */}
               <Burger
                 hide={["lg", "xlg"]}
                 size="md"

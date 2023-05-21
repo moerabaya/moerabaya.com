@@ -39,10 +39,10 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               >
                 {index === 0 && (
                   <Text
-                    className="mt-5 ms-5 absolute uppercase font-medium divide-amber-400"
+                    className="mt-9 ms-9 px-3 py-2 absolute uppercase font-medium bg-amber-500 text-white rounded-2xl"
                     size={15}
                   >
-                    Featured
+                    {getLocalizedString("home", "featured")}
                   </Text>
                 )}
                 <Image
@@ -53,7 +53,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("../assets/images/projects/" + project.cover_photo)
                   }
-                  className="overflow-hidden rounded-xl shadow-lg shadow-transparent hover:shadow-stone-200 transition-all cursor-pointer m-0"
+                  className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0"
                 />
               </AnimatedView>
             </li>
@@ -142,8 +142,14 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       </div>
       <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
       <div className="py-20 bg-stone-100">
-        <div className="container mx-auto max-w-4xl">
-          <h2>Let's connect</h2>
+        <div className="container mx-auto max-w-2xl flex items-center justify-between">
+          <h2 className="font-medium text-stone-800">Want to work together?</h2>
+          <a
+            href="mail:contact@moerabaya.com"
+            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-black hover:text-white rounded-full"
+          >
+            Let's connect
+          </a>
         </div>
       </div>
     </>

@@ -12,8 +12,8 @@
   "home": {
     "pretitle": "Hi, I am Moe - ",
     "title": "I create product experiences for humans.",
-    "button-1": "Check out past work",
-    "button-2": "Lets grab a coffee"
+    "contact-title": "Let's connect",
+    "featured": "featured"
   },
   "blog": {
     "title": "Latest Articles"
