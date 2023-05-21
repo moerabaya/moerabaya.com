@@ -2,7 +2,7 @@
   "en": [
     {
       "name": "About",
-      "path": "/work"
+      "path": "/about"
     },
     {
       "name": "Blog",
@@ -11,8 +11,8 @@
   ],
   "ar": [
     {
-      "name": "الرئيسية",
-      "path": "/"
+      "name": "من أنا؟",
+      "path": "/about"
     },
     {
       "name": "المدونة",
