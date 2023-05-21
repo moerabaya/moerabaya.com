@@ -1,13 +1,12 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-// import styles from '../styles/app.scss'
 import { Animate, AnimatedText, Text } from "components/atoms/";
 import fs from "fs";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
 import path from "path";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AnimatedView from "../components/atoms/AnimatedView";
 import { Project } from "../types";
 
@@ -17,11 +16,6 @@ interface Props {
 const Home: NextPage<Props> = ({ projects }: Props) => {
   const [headerAnimateState, setHeaderAniamteState] = useState(false);
   const { getLocalizedString } = useGlobalization();
-  useEffect(() => {
-    return () => {
-      // cleanup
-    };
-  }, []);
 
   function WorkItems() {
     var list: any = [];
@@ -32,8 +26,17 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         if (index !== 1)
           list.push(
             // eslint-disable-next-line react/jsx-no-duplicate-props
-            <li className={`${index === 0 ? "col-span-2" : "col-span-1"}`}>
-              <AnimatedView key={project.slug} duration={1.25} vertical="25%">
+            <li
+              className={`${
+                index === 0 ? "col-span-2" : "col-span-1"
+              } border-solid border-stone-100`}
+            >
+              <AnimatedView
+                key={project.slug}
+                delay={(index === 0 ? 0.5 : 0.25) * (index + 1)}
+                duration={0.75}
+                vertical="25%"
+              >
                 {index === 0 && (
                   <Text
                     className="mt-5 ms-5 absolute uppercase font-medium divide-amber-400"
@@ -56,7 +59,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             </li>
           );
       });
-    return <ul className="grid grid-cols-2 gap-4 py-6 m-0">{list}</ul>;
+    return <ul className="grid grid-cols-2 gap-4 pb-24 m-0">{list}</ul>;
   }
   return (
     <>
@@ -95,7 +98,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <div className="container max-w-xl mx-auto pt-32">
+      <div className="container max-w-xl mx-auto py-40">
         <AnimatedView>
           <Image
             src={
@@ -117,16 +120,18 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             className="inline-block my-1"
           />
           &nbsp;&nbsp;
-          <Animate
-            as={Text}
-            name="wave"
-            origin="70% 70%"
-            size="1.85em"
-            className="-mt-2"
-            duration={1500}
-          >
-            👋
-          </Animate>
+          <AnimatedView delay={0.6} duration={0.25} vertical="25%">
+            <Animate
+              as={Text}
+              name="wave"
+              origin="70% 70%"
+              size="1.85em"
+              className="-mt-2"
+              duration={1500}
+            >
+              👋
+            </Animate>
+          </AnimatedView>
         </div>
         <AnimatedText
           text={getLocalizedString("home", "title")}
@@ -136,6 +141,11 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </div>
       <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
+      <div className="py-20 bg-stone-100">
+        <div className="container mx-auto max-w-4xl">
+          <h2>Let's connect</h2>
+        </div>
+      </div>
     </>
   );
 };
