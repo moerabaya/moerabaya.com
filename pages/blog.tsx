@@ -1,14 +1,13 @@
+import { Text } from "components/atoms";
+import { promises as fs } from "fs";
+import grayMatter from "gray-matter";
+import useGlobalization from "hooks/useGlobalization";
 import Head from "next/head";
 import Link from "next/link";
-import React from "react";
-import { promises as fs } from "fs";
 import path from "path";
-import grayMatter from "gray-matter";
+import AnimatedView from "../components/atoms/AnimatedView";
 import Article from "../components/molecules/Article";
 import useFormatter from "../hooks/useFormatter";
-import AnimatedView from "../components/atoms/AnimatedView";
-import { Text } from "components/atoms";
-import useGlobalization from "hooks/useGlobalization";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
@@ -52,7 +51,7 @@ const Blog = ({ posts }: any) => {
           content={require("../assets/images/metaimage.png")}
         />
       </Head>
-      <div className="container">
+      <div className="container mx-auto max-w-4xl">
         {/* <h2>Coming soon</h2> */}
         <br />
         <AnimatedView>
@@ -63,8 +62,20 @@ const Blog = ({ posts }: any) => {
         <ul className="posts-list">
           {posts?.map((post: any, index: number) => (
             <AnimatedView key={post.slug} delay={index}>
-              <Link href={post.slug}>
-                <Article as="a">
+              <Link
+                href={post.slug}
+                className="flex py-8 mb-5 rounded-full relative overflow-hidden"
+              >
+                <div
+                  className="absolute top-0 bottom-0 left-0 right-0 z-0"
+                  style={{
+                    backgroundImage: `url(${post.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "blur(100px)",
+                  }}
+                ></div>
+                <div className="relative z-10">
                   <Article.ImageWrapper>
                     <Article.Image
                       src={post.image}
@@ -86,7 +97,7 @@ const Blog = ({ posts }: any) => {
                       </Article.Text>
                     </div>
                   </Article.Content>
-                </Article>
+                </div>
               </Link>
             </AnimatedView>
           ))}
