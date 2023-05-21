@@ -26,8 +26,8 @@ const Navigation = ({ hasReadPermission }: any) => {
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
       <Link
         className={`px-4 py-2 ${
-          index == 0 && "bg-stone-100"
-        } font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200`}
+          index == 0 && "bg-stone-100 dark:bg-neutral-900"
+        } font-regular mx-2 rounded-xl text-stone-800 hover:bg-stone-200 dark:text-neutral-50 dark:hover:bg-neutral-800`}
         href={path}
         key={name}
       >
@@ -39,14 +39,14 @@ const Navigation = ({ hasReadPermission }: any) => {
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-stone-100 font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
+      className="px-2 py-2 bg-stone-100 font-regular mx-2 rounded-xl text-gray-400 hover:bg-stone-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
     >
       <BsGithub size="26px" />
     </Link>,
     <Link
       href=""
       key="github-url"
-      className="px-2 py-2 bg-stone-100 font-medium mx-2 rounded-xl text-gray-400 hover:bg-stone-200"
+      className="px-2 py-2 bg-stone-100 font-regular mx-2 rounded-xl text-gray-400 hover:bg-stone-200 dark:bg-neutral-900 dark:hover:bg-neutral-800"
     >
       <BsLinkedin size="26px" className="rounded-md" />
     </Link>,
@@ -74,7 +74,7 @@ const Navigation = ({ hasReadPermission }: any) => {
             <div className="flex items-center">{renderMenu()}</div>
             <div className="text-center flex justify-center items-center">
               <Link href="/">
-                <Logo width={60} />
+                <Logo width={60} className="dark:fill-neutral-50" />
               </Link>
             </div>
             <div className="flex items-center justify-end">
