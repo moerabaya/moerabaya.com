@@ -37,7 +37,7 @@ function setInitialColorMode() {
   root.style.setProperty("--initial-color-mode", colorMode);
 
   if (colorMode === "dark")
-    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.setAttribute("class", "dark");
 }
 // our function needs to be a string
 const blockingSetInitialColorMode = `(function() {
