@@ -1,3 +1,4 @@
+import { AnimatedView } from "components/atoms";
 import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
@@ -74,30 +75,33 @@ const Post = ({ mdxSource, meta }: any) => {
         />
       </Head>
 
-      <div className="container">
+      <div className="container mx-auto max-w-4xl py-10">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
-        <Image
-          alt={meta.alt}
-          src={meta.image}
-          placeholder="blur"
-          blurDataURL={meta.placeholder}
-          width="1200"
-          height="400"
-          sizes="100% 50%"
-          objectFit="contain"
-        />
-        <h1
-          className="post-title"
-          dangerouslySetInnerHTML={{ __html: meta?.title }}
-        ></h1>
-        <h5 className="post-details">
-          {meta.date} . {meta.author}
-        </h5>
+        <AnimatedView className="w-full overflow-hidden relative h-[350px]">
+          <Image
+            alt={meta.alt}
+            src={meta.image}
+            placeholder="blur"
+            blurDataURL={meta.placeholder}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-[50px]"
+          />
+        </AnimatedView>
+        <AnimatedView delay={0.5} className="px-7 pt-4">
+          <h2
+            className="font-medium"
+            dangerouslySetInnerHTML={{ __html: meta?.title }}
+          ></h2>
+          <h5 className="post-details">
+            {meta.date} . {meta.author}
+          </h5>
 
-        <div className="content">
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
+          <div className="content">
+            <MDXRemote {...mdxSource} components={components} />
+          </div>
+        </AnimatedView>
       </div>
     </div>
   );

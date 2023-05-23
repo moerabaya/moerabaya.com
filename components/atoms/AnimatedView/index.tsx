@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import React, { ReactElement } from "react";
+import React from "react";
 
-interface AniamtedViewProps {
+interface AniamtedViewProps extends React.HTMLAttributes<HTMLDivElement> {
   vertical?: number | string;
   style?: React.CSSProperties;
-  children?: React.ReactNode;
   duration?: number;
   value?: number | string;
   delay?: number;
