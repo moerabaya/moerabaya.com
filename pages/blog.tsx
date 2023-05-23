@@ -3,10 +3,10 @@ import { promises as fs } from "fs";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 import AnimatedView from "../components/atoms/AnimatedView";
-import Article from "../components/molecules/Article";
 import useFormatter from "../hooks/useFormatter";
 
 const Blog = ({ posts }: any) => {
@@ -52,51 +52,35 @@ const Blog = ({ posts }: any) => {
         />
       </Head>
       <div className="container mx-auto max-w-4xl">
-        {/* <h2>Coming soon</h2> */}
-        <br />
         <AnimatedView>
-          <Text as="h4" p="1em 0" textTransform="uppercase" weight={"bold"}>
+          <Text as="h4" p="1em 1em" textTransform="uppercase" weight={"bold"}>
             {getLocalizedString("blog", "title")}
           </Text>
         </AnimatedView>
         <ul className="posts-list">
           {posts?.map((post: any, index: number) => (
-            <AnimatedView key={post.slug} delay={index}>
+            <AnimatedView key={post.slug} delay={index / 2}>
               <Link
                 href={post.slug}
-                className="flex py-8 mb-5 rounded-full relative overflow-hidden"
+                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-48 transition ease-in-out duration-500 hover:shadow-stone-300 hover:shadow-lg cursor-pointer"
               >
-                <div
-                  className="absolute top-0 bottom-0 left-0 right-0 z-0"
-                  style={{
-                    backgroundImage: `url(${post.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    filter: "blur(100px)",
-                  }}
-                ></div>
+                <Image
+                  src={post.image}
+                  placeholder="blur"
+                  blurDataURL={post.placeholder}
+                  layout="fill"
+                  objectFit="cover"
+                  alt={""}
+                />{" "}
                 <div className="relative z-10">
-                  <Article.ImageWrapper>
-                    <Article.Image
-                      src={post.image}
-                      placeholder="blur"
-                      blurDataURL={post.placeholder}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </Article.ImageWrapper>
-                  <Article.Content>
-                    <Article.Title
-                      dangerouslySetInnerHTML={{ __html: post?.title }}
-                    ></Article.Title>
-                    <div>
-                      <Article.Text>{post.date}</Article.Text>
-                      <Article.Text>.</Article.Text>
-                      <Article.Text>
-                        {formatter.timeToRead(post.content)} min read
-                      </Article.Text>
-                    </div>
-                  </Article.Content>
+                  <span className="bg-white p-1 px-3 rounded-t-md -mb-3 text-sm inline-block text-neutral-500">
+                    {post.date} . {formatter.timeToRead(post.content)} min read
+                  </span>
+                  <h2 className="max-w-lg m-0">
+                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block">
+                      {post?.title}
+                    </span>
+                  </h2>
                 </div>
               </Link>
             </AnimatedView>
