@@ -11,6 +11,11 @@ const nextConfig = {
   },
   trailingSlash: true,
   styledComponents: true,
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
   async redirects() {
     return [
       {

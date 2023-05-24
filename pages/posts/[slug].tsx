@@ -10,11 +10,12 @@ import path from "path";
 import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
+  // eslint-disable-next-line jsx-a11y/alt-text
   <Image
-    // alt={props.alt}
-    layout="responsive"
+    width="0"
+    height="0"
     sizes="100vw"
-    objectFit="contain"
+    className="w-full h-auto"
     {...props}
   />
 );
