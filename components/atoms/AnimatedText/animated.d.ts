@@ -10,7 +10,7 @@ declare module "motion" {
   };
 
   interface AnimatedCharachtersProps
-    extends ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> {
+    extends React.PropsWithChildren<HTMLMotionProps<"div">> {
     children?: ReactElement;
     text: string;
     type: tagMap;
@@ -19,7 +19,7 @@ declare module "motion" {
   }
 
   interface AnimatedTextProps
-    extends ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> {
+    extends React.PropsWithChildren<HTMLMotionProps<"div">> {
     children?: ReactElement;
     text: string;
     type: tagMap;
