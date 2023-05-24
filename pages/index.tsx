@@ -5,6 +5,7 @@ import useGlobalization from "hooks/useGlobalization";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import path from "path";
 import { useState } from "react";
 import AnimatedView from "../components/atoms/AnimatedView";
@@ -26,7 +27,8 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         if (index !== 1)
           list.push(
             // eslint-disable-next-line react/jsx-no-duplicate-props
-            <li
+            <Link
+              href={`work/${project.slug}`}
               className={`${
                 index === 0 ? "col-span-2" : "col-span-1"
               } border-solid border-stone-100`}
@@ -56,7 +58,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0"
                 />
               </AnimatedView>
-            </li>
+            </Link>
           );
       });
     return <ul className="grid grid-cols-2 gap-4 pb-24 m-0">{list}</ul>;
@@ -144,13 +146,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       <div className="py-20 bg-stone-100 dark:bg-neutral-950">
         <div className="container mx-auto max-w-2xl flex items-center justify-between">
           <h2 className="font-medium text-stone-800 dark:text-neutral-50">
-            Want to work together?
+            {getLocalizedString("home", "contact-title")}
           </h2>
           <a
             href="mail:contact@moerabaya.com"
             className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
           >
-            Let's connect
+            {getLocalizedString("home", "contact-button")}
           </a>
         </div>
       </div>
