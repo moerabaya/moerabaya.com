@@ -62,7 +62,7 @@ const Blog = ({ posts }: any) => {
             <AnimatedView key={post.slug} delay={index / 2}>
               <Link
                 href={post.slug}
-                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-48 transition ease-in-out duration-500 hover:shadow-stone-300 hover:shadow-lg cursor-pointer"
+                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-[230px] transition ease-in-out duration-500 hover:shadow-stone-300 dark:hover:shadow-stone-700 hover:shadow-lg cursor-pointer"
               >
                 <Image
                   src={post.image}
@@ -73,11 +73,11 @@ const Blog = ({ posts }: any) => {
                   alt={""}
                 />{" "}
                 <div className="relative z-10">
-                  <span className="bg-white p-1 px-3 rounded-t-md -mb-3 text-sm inline-block text-neutral-500">
+                  <span className="bg-white p-1 px-3 rounded-t-md -mb-3 text-sm inline-block text-neutral-500 dark:bg-neutral-950 dark:text-neutral-300">
                     {post.date} . {formatter.timeToRead(post.content)} min read
                   </span>
                   <h2 className="max-w-lg m-0">
-                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block">
+                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block dark:bg-neutral-950">
                       {post?.title}
                     </span>
                   </h2>

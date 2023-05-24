@@ -40,7 +40,7 @@ const Navigation = ({ hasReadPermission }: any) => {
       target="_blank"
       href="https://github.com/moerabaya/"
       key="github-url"
-      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-400 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
     >
       <BsGithub size="26px" />
     </a>,
@@ -48,7 +48,7 @@ const Navigation = ({ hasReadPermission }: any) => {
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
       key="github-url"
-      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-400 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
     >
       <BsLinkedin size="26px" className="rounded-md" />
     </a>,

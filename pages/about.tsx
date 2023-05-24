@@ -143,7 +143,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
           <div>
             <AnimatedView delay={1} className="inline-block me-3">
               <a
-                className={`px-4 py-2 bg-neutral-900 text-neutral-50 hover:bg-amber-500 rounded-2xl text-base inline-block ml-auto mt-2 transition ease-in-out hover:rounded-full`}
+                className={`px-4 py-2 bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 hover:bg-amber-500 dark:hover:bg-amber-500 rounded-2xl text-base inline-block ml-auto mt-2 transition ease-in-out hover:rounded-full`}
                 href={"mail:contact@moerabaya.com"}
               >
                 {getLocalizedString("about", "reach-out")}
@@ -151,7 +151,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
             </AnimatedView>
             <AnimatedView delay={1.25} className="inline-block">
               <Link
-                className={`px-4 py-2 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-50 rounded-2xl text-base inline-block ml-auto mt-2 transition ease-in-out hover:rounded-full`}
+                className={`px-4 py-2 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-50  dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-2xl text-base inline-block ml-auto mt-2 transition ease-in-out hover:rounded-full`}
                 href={"engineering-resume-2022.pdf"}
               >
                 {getLocalizedString("about", "download-resume")}
