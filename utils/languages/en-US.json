@@ -12,11 +12,19 @@
   "home": {
     "pretitle": "Hi, I am Moe - ",
     "title": "I create product experiences for humans.",
-    "contact-title": "Let's connect",
+    "contact-title": "Want to work together?",
+    "contact-button": "Let's connect",
     "featured": "featured"
   },
   "blog": {
     "title": "Latest Articles"
+  },
+  "about": {
+    "title": "Hola, مرحبا",
+    "about": "",
+    "work-title": "Recent work",
+    "download-resume": "Download resume",
+    "reach-out": "Reach out"
   },
   "work": {
     "title": "Work",
