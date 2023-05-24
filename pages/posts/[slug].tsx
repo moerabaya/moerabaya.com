@@ -7,6 +7,9 @@ import Head from "next/head";
 import Image, { ImageProps } from "next/image";
 import { useRouter } from "next/router";
 import path from "path";
+import "prism-themes/themes/prism-atom-dark.css";
+import Prism from "prismjs";
+import { useEffect } from "react";
 import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
@@ -27,7 +30,9 @@ const components = {
 const Post = ({ mdxSource, meta }: any) => {
   var post: Post;
   const { pathname } = useRouter();
-
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <div className="post-content">
       <Head>

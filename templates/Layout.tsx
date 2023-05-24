@@ -54,6 +54,10 @@ export default function Layout({ children, pageProps }: any) {
             href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <Navigation {...pageProps} />
         <main

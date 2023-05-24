@@ -145,15 +145,19 @@ blockquote {
 /* Code formatting */
 pre,
 code {
-  font-size: 15px;
+  font-size: 15px !important;
   border: 1px solid $grey-color-light;
   border-radius: 3px;
+  padding: 0;
+  margin: 0;
   background-color: var(--alternate-background-color);
   color: var(--alternate-text-color);
+  font-family: "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace !important;
 }
 
 code {
-  padding: 1px 5px;
+  padding: 0;
 }
 
 pre {
