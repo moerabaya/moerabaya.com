@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               href={`work/${project.slug}`}
               className={`${
                 index === 0 ? "col-span-2" : "col-span-1"
-              } border-solid border-stone-100`}
+              } border-solid border-stone-100 max-sm:col-span-2`}
             >
               <AnimatedView
                 key={project.slug}
@@ -61,7 +61,9 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             </Link>
           );
       });
-    return <ul className="grid grid-cols-2 gap-4 pb-24 m-0">{list}</ul>;
+    return (
+      <ul className="grid grid-cols-2 gap-4 pb-24 m-0 max-md:pb-10">{list}</ul>
+    );
   }
   return (
     <>
@@ -100,7 +102,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <div className="container max-w-xl mx-auto py-40">
+      <div className="container max-w-2xl mx-auto py-40 px-9 max-md:py-28">
         <AnimatedView>
           <Image
             src={
@@ -142,15 +144,15 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           className="m-0"
         />
       </div>
-      <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
-      <div className="py-20 bg-stone-100 dark:bg-neutral-950">
+      <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>
+      <div className="py-20 bg-stone-100 dark:bg-neutral-950 px-5 max-md:py-12">
         <div className="container mx-auto max-w-2xl flex items-center justify-between">
-          <h2 className="font-medium text-stone-800 dark:text-neutral-50">
+          <h2 className="font-medium text-stone-800 dark:text-neutral-50 max-md:text-2xl">
             {getLocalizedString("home", "contact-title")}
           </h2>
           <a
             href="mail:contact@moerabaya.com"
-            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
+            className="px-8 py-3 ms-5 max-md:py-2 max-md:px-6 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
           >
             {getLocalizedString("home", "contact-button")}
           </a>
