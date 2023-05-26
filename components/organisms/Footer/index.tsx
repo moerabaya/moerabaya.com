@@ -67,7 +67,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
             <List>
               <List.Header>
-                <Text smallCaps>
+                <Text smallCaps size={19}>
                   {getLocalizedString("footer", "languages")}
                 </Text>
               </List.Header>
@@ -98,7 +98,9 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
             <List>
               <List.Header>
-                <Text smallCaps>{getLocalizedString("footer", "follow")}</Text>
+                <Text smallCaps size={19}>
+                  {getLocalizedString("footer", "follow")}
+                </Text>
               </List.Header>
               <List.Item>
                 <Link

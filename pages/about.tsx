@@ -55,7 +55,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("../assets/images/projects/" + project.cover_photo)
                   }
-                  className="overflow-hidden rounded-xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0 border border-solid border-stone-200"
+                  className="overflow-hidden rounded-xl transition ease-in-out duration-500 hover:shadow-stone-200 dark:hover:shadow-stone-700 hover:shadow-md cursor-pointer m-0 border border-solid border-stone-200"
                 />
               </AnimatedView>
             </Link>
@@ -119,7 +119,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
         <div className="ps-8 col-span-3 mt-4">
           <AnimatedView>
             <h4 className="font-semibold leading-5 text-stone-800 dark:text-neutral-50">
-              {getLocalizedString("title")}
+              {getLocalizedString("about", "title")}
             </h4>
           </AnimatedView>
           <AnimatedView delay={0.75}>
