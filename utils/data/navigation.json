@@ -1,38 +1,22 @@
 {
   "en": [
     {
-      "name": "Home",
-      "path": "/"
-    },
-    {
-      "name": "Work",
-      "path": "/work"
+      "name": "About",
+      "path": "/about"
     },
     {
       "name": "Blog",
       "path": "/blog"
-    },
-    {
-      "name": "Contact",
-      "path": "/contact"
     }
   ],
   "ar": [
     {
-      "name": "الرئيسية",
-      "path": "/"
-    },
-    {
-      "name": "المشاريع",
-      "path": "/work"
+      "name": "من أنا؟",
+      "path": "/about"
     },
     {
       "name": "المدونة",
       "path": "/blog"
-    },
-    {
-      "name": "تواصل معي",
-      "path": "/contact"
     }
   ]
 }

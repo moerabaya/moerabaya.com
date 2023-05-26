@@ -1,18 +1,12 @@
-import Head from "next/head";
-import { ThemeProvider } from "styled-components";
-import Footer from "../components/organisms/Footer";
-import { theme } from "styles/theme";
-import dynamic from "next/dynamic";
-import AnimatedView from "../components/atoms/AnimatedView";
-import React, {
-  HTMLAttributes,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-} from "react";
-import GlobalStyle from "./GlobalStyle";
 import useGlobalization from "hooks/useGlobalization";
+import dynamic from "next/dynamic";
+import Head from "next/head";
 import { useRouter } from "next/router";
+import React, { useEffect, useRef } from "react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "styles/theme";
+import Footer from "../components/organisms/Footer";
+import GlobalStyle from "./GlobalStyle";
 const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
   ssr: false,
 });
@@ -47,7 +41,7 @@ export default function Layout({ children, pageProps }: any) {
             crossOrigin=""
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,6 +52,10 @@ export default function Layout({ children, pageProps }: any) {
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap"
             rel="stylesheet"
           />
         </Head>

@@ -1,7 +1,7 @@
 import Document, {
   DocumentContext,
-  Html,
   Head,
+  Html,
   Main,
   NextScript,
 } from "next/document";
@@ -37,7 +37,7 @@ function setInitialColorMode() {
   root.style.setProperty("--initial-color-mode", colorMode);
 
   if (colorMode === "dark")
-    document.documentElement.setAttribute("data-theme", "dark");
+    document.documentElement.setAttribute("class", "dark");
 }
 // our function needs to be a string
 const blockingSetInitialColorMode = `(function() {
@@ -59,7 +59,6 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-      console.log(initialProps.styles);
       return {
         ...initialProps,
         styles: [initialProps.styles, sheet.getStyleElement()],

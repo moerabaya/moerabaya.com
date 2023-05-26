@@ -1,5 +1,5 @@
-import AnimatedView from "components/atoms/AnimatedView";
 import { Col, Grid, Link, Row, Text } from "components/atoms";
+import AnimatedView from "components/atoms/AnimatedView";
 import { useContext } from "react";
 import { ThemeContext } from "templates/ThemeProvider";
 

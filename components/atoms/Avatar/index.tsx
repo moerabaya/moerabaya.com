@@ -1,9 +1,11 @@
 import Image, { ImageProps } from "next/image";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
+import { MouseEventHandler } from "react";
 
-interface AvatarProps extends ImageProps {
-  size: number | string;
+interface AvatarProps extends Omit<ImageProps, "onClick"> {
+  size: ImageProps["width"];
   href?: string;
+  onClick?: MouseEventHandler<HTMLImageElement | HTMLAnchorElement> | undefined;
 }
 const Avatar = (props: AvatarProps) => {
   const image = (
@@ -22,7 +24,7 @@ const Avatar = (props: AvatarProps) => {
     image
   ) : (
     <Link href={props.href!} onClick={props.onClick}>
-      <a>{image}</a>
+      {image}
     </Link>
   );
 };

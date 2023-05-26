@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Avatar, Col, Grid, Row, Link, List, Text } from "components/atoms/";
-import { default as StyledFooter } from "./Footer.styled";
-import navigation from "utils/data/navigation.json";
+import { Avatar, Col, Grid, Link, List, Row, Text } from "components/atoms/";
 import useGlobalization from "hooks/useGlobalization";
 import { useRouter } from "next/router";
+import React, { useState } from "react";
+import navigation from "utils/data/navigation.json";
+import { default as StyledFooter } from "./Footer.styled";
 
 const Pages = navigation;
 const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
@@ -15,12 +15,6 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
       const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
         ?.clientHeight;
       const contentHeight = document.body.clientHeight + footerHeight!;
-      console.log(contentHeight - (window.scrollY + window.innerHeight));
-      console.log(footerHeight!);
-      console.log(
-        (contentHeight - (window.scrollY + window.innerHeight)) / footerHeight!
-      );
-      // console.log(footerHeight! / (contentHeight - window.scrollY));
       setOpacity(
         (window.innerWidth <= 500 ? 2 : 1) -
           (contentHeight - (window.scrollY + window.innerHeight)) /

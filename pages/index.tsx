@@ -1,29 +1,15 @@
+import { Animate, AnimatedText, Text } from "components/atoms/";
+import fs from "fs";
+import grayMatter from "gray-matter";
+import useGlobalization from "hooks/useGlobalization";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-// import styles from '../styles/app.scss'
-import React, { useEffect, useState } from "react";
-import { Project } from "../types";
-import { GrAppleAppStore } from "react-icons/gr";
-import { BsGlobe2 } from "react-icons/bs";
+import Link from "next/link";
 import path from "path";
-import fs, { Dirent } from "fs";
-import grayMatter from "gray-matter";
-import AnimatedText from "../components/atoms/AnimatedText";
+import { useState } from "react";
 import AnimatedView from "../components/atoms/AnimatedView";
-import {
-  Grid,
-  Row,
-  Col,
-  Avatar,
-  Button,
-  Text,
-  Animate,
-} from "components/atoms/";
-import Header from "../components/organisms/Header";
-import Icon from "../components/atoms/Icon";
-import ButtonGroup from "../components/atoms/ButtonGroup";
-import useGlobalization from "hooks/useGlobalization";
+import { Project } from "../types";
 
 interface Props {
   projects: Project[];
@@ -31,11 +17,6 @@ interface Props {
 const Home: NextPage<Props> = ({ projects }: Props) => {
   const [headerAnimateState, setHeaderAniamteState] = useState(false);
   const { getLocalizedString } = useGlobalization();
-  useEffect(() => {
-    return () => {
-      // cleanup
-    };
-  }, []);
 
   function WorkItems() {
     var list: any = [];
@@ -43,10 +24,29 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
     projects
       ?.sort((a: any, b: any) => a.index - b.index)
       .map((project: Project, index: number) => {
-        list.push(
-          <li className={"work-item " + project.slug}>
-            <AnimatedView key={project.slug} duration={1.25} vertical="25%">
-              <div className="content-media">
+        if (index !== 1)
+          list.push(
+            // eslint-disable-next-line react/jsx-no-duplicate-props
+            <Link
+              href={`work/${project.slug}`}
+              className={`${
+                index === 0 ? "col-span-2" : "col-span-1"
+              } border-solid border-stone-100`}
+            >
+              <AnimatedView
+                key={project.slug}
+                delay={(index === 0 ? 0.5 : 0.25) * (index + 1)}
+                duration={0.75}
+                vertical="25%"
+              >
+                {index === 0 && (
+                  <Text
+                    className="mt-9 ms-9 px-3 py-2 absolute uppercase font-medium bg-amber-500 text-white rounded-2xl"
+                    size={15}
+                  >
+                    {getLocalizedString("home", "featured")}
+                  </Text>
+                )}
                 <Image
                   placeholder="blur"
                   layout="responsive"
@@ -55,65 +55,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("../assets/images/projects/" + project.cover_photo)
                   }
+                  className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0"
                 />
-              </div>
-            </AnimatedView>
-            <AnimatedView key={project.slug} duration={1.25} vertical="25%">
-              <div className="content-wrapper">
-                <h3 className="project-name">{project.title}</h3>
-                <h4 className="project-type">{project.project_type}</h4>
-                <div className="project-links">
-                  {/* <Link href={project.path}> */}
-                  {/* <a title='Coming soon!' className='project-link disabled'>Case Study</a> */}
-                  {/* </Link> */}
-                  {/* <Link href={project.behance}> */}
-                  {project.behance ? (
-                    <a
-                      title="View Project on Behacne"
-                      href={project.behance}
-                      target="_blank"
-                      className="project-link media"
-                      rel="noreferrer"
-                    >
-                      View on Behance
-                    </a>
-                  ) : (
-                    <a title="Coming soon!" className="project-link disabled">
-                      Case Study
-                    </a>
-                  )}
-
-                  {project.appstore && (
-                    <a
-                      title={`Download ${project.title} App`}
-                      href={project.appstore}
-                      target="_blank"
-                      className="project-link media"
-                      rel="noreferrer"
-                    >
-                      <GrAppleAppStore />
-                    </a>
-                  )}
-
-                  {project.website && (
-                    <a
-                      title={`Visit ${project.title}'s website`}
-                      href={project.website}
-                      target="_blank"
-                      className="project-link media"
-                      rel="noreferrer"
-                    >
-                      <BsGlobe2 />
-                    </a>
-                  )}
-                  {/* </Link> */}
-                </div>
-              </div>
-            </AnimatedView>
-          </li>
-        );
+              </AnimatedView>
+            </Link>
+          );
       });
-    return <ul className="work-list">{list}</ul>;
+    return <ul className="grid grid-cols-2 gap-4 pb-24 m-0">{list}</ul>;
   }
   return (
     <>
@@ -152,85 +100,62 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <Header fullHeight={true}>
-        <Grid fluid={["sm", "md"]}>
-          <Row fullHeight={true} alignItems="center">
-            <Col style={{ marginTop: "-5%" }} sm={12}>
-              <AnimatedView>
-                <Avatar
-                  href="/about"
-                  src={
-                    "https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"
-                  }
-                  alt="Portrait of Mohammed Rabay'a"
-                  placeholder="blur"
-                  blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
-                  size={45}
-                />
-              </AnimatedView>
+      <div className="container max-w-xl mx-auto py-40">
+        <AnimatedView>
+          <Image
+            src={
+              "https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"
+            }
+            alt="Portrait of Mohammed Rabay'a"
+            placeholder="blur"
+            blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
+            width={70}
+            height={70}
+            className="rounded-3xl overflow-hidden"
+          />
+        </AnimatedView>
 
-              <h2 style={{ marginBottom: "1em" }}>
-                <AnimatedView>
-                  <span>
-                    {getLocalizedString("home", "pretitle")}
-                    &nbsp;&nbsp;
-                    <Animate
-                      as={Text}
-                      name="wave"
-                      origin="70% 70%"
-                      size="1.2em"
-                      duration={1500}
-                    >
-                      👋
-                    </Animate>
-                  </span>
-                </AnimatedView>
-              </h2>
-              <AnimatedText
-                text={getLocalizedString("home", "title")}
-                type="h1"
-                finished={(state: boolean) => setHeaderAniamteState(state)}
-              />
-              <ButtonGroup style={{ paddingTop: "1em" }}>
-                <AnimatedView
-                  style={{
-                    display: "inline-block",
-                    width: "100%",
-                    maxWidth: "300px",
-                  }}
-                  animate={headerAnimateState}
-                >
-                  <Button
-                    href="/work"
-                    size={"lg"}
-                    smallCaps
-                    alternative
-                    layout="full"
-                  >
-                    {getLocalizedString("home", "button-1")}
-                  </Button>
-                </AnimatedView>
-                <AnimatedView
-                  style={{
-                    display: "inline-block",
-                    width: "100%",
-                    maxWidth: "300px",
-                  }}
-                  animate={headerAnimateState}
-                  delay={0.2}
-                >
-                  <Button size={"lg"} smallCaps layout="full">
-                    {getLocalizedString("home", "button-2")}{" "}
-                    <Icon size="1.6em" slot="start">
-                      ☕️
-                    </Icon>
-                  </Button>
-                </AnimatedView>
-              </ButtonGroup>
-            </Col>
-          </Row>
-        </Grid>
-      </Header>
+        <div className="flex items-center">
+          <AnimatedText
+            text={getLocalizedString("home", "pretitle")}
+            type="h2"
+            className="inline-block my-1"
+          />
+          &nbsp;&nbsp;
+          <AnimatedView delay={0.6} duration={0.25} vertical="25%">
+            <Animate
+              as={Text}
+              name="wave"
+              origin="70% 70%"
+              size="1.85em"
+              className="-mt-2"
+              duration={1500}
+            >
+              👋
+            </Animate>
+          </AnimatedView>
+        </div>
+        <AnimatedText
+          text={getLocalizedString("home", "title")}
+          type="h2"
+          finished={(state: boolean) => setHeaderAniamteState(state)}
+          className="m-0"
+        />
+      </div>
+      <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
+      <div className="py-20 bg-stone-100 dark:bg-neutral-950">
+        <div className="container mx-auto max-w-2xl flex items-center justify-between">
+          <h2 className="font-medium text-stone-800 dark:text-neutral-50">
+            {getLocalizedString("home", "contact-title")}
+          </h2>
+          <a
+            href="mail:contact@moerabaya.com"
+            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
+          >
+            {getLocalizedString("home", "contact-button")}
+          </a>
+        </div>
+      </div>
     </>
   );
 };

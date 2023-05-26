@@ -10,13 +10,21 @@
     "contact": "Contact"
   },
   "home": {
-    "pretitle": "Hi my name is Mohammed",
-    "title": "I design/develop user interfaces and engaging product experiences for humans.",
-    "button-1": "Check out past work",
-    "button-2": "Lets grab a coffee"
+    "pretitle": "Hi, I am Moe - ",
+    "title": "I create product experiences for humans.",
+    "contact-title": "Want to work together?",
+    "contact-button": "Let's connect",
+    "featured": "featured"
   },
   "blog": {
     "title": "Latest Articles"
+  },
+  "about": {
+    "title": "Hola, مرحبا",
+    "about": "",
+    "work-title": "Recent work",
+    "download-resume": "Download resume",
+    "reach-out": "Reach out"
   },
   "work": {
     "title": "Work",

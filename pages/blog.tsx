@@ -1,14 +1,13 @@
-import Head from "next/head";
-import Link from "next/link";
-import React from "react";
-import { promises as fs } from "fs";
-import path from "path";
-import grayMatter from "gray-matter";
-import Article from "../components/molecules/Article";
-import useFormatter from "../hooks/useFormatter";
-import AnimatedView from "../components/atoms/AnimatedView";
 import { Text } from "components/atoms";
+import { promises as fs } from "fs";
+import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import path from "path";
+import AnimatedView from "../components/atoms/AnimatedView";
+import useFormatter from "../hooks/useFormatter";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
@@ -52,41 +51,37 @@ const Blog = ({ posts }: any) => {
           content={require("../assets/images/metaimage.png")}
         />
       </Head>
-      <div className="container">
-        {/* <h2>Coming soon</h2> */}
-        <br />
+      <div className="container mx-auto max-w-4xl">
         <AnimatedView>
-          <Text as="h4" p="1em 0" textTransform="uppercase" weight={"bold"}>
+          <Text as="h4" p="1em 1em" textTransform="uppercase" weight={"bold"}>
             {getLocalizedString("blog", "title")}
           </Text>
         </AnimatedView>
         <ul className="posts-list">
           {posts?.map((post: any, index: number) => (
-            <AnimatedView key={post.slug} delay={index}>
-              <Link href={post.slug}>
-                <Article as="a">
-                  <Article.ImageWrapper>
-                    <Article.Image
-                      src={post.image}
-                      placeholder="blur"
-                      blurDataURL={post.placeholder}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </Article.ImageWrapper>
-                  <Article.Content>
-                    <Article.Title
-                      dangerouslySetInnerHTML={{ __html: post?.title }}
-                    ></Article.Title>
-                    <div>
-                      <Article.Text>{post.date}</Article.Text>
-                      <Article.Text>.</Article.Text>
-                      <Article.Text>
-                        {formatter.timeToRead(post.content)} min read
-                      </Article.Text>
-                    </div>
-                  </Article.Content>
-                </Article>
+            <AnimatedView key={post.slug} delay={index / 2}>
+              <Link
+                href={post.slug}
+                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-[230px] transition ease-in-out duration-500 hover:shadow-stone-300 dark:hover:shadow-stone-700 hover:shadow-lg cursor-pointer"
+              >
+                <Image
+                  src={post.image}
+                  placeholder="blur"
+                  blurDataURL={post.placeholder}
+                  layout="fill"
+                  objectFit="cover"
+                  alt={""}
+                />{" "}
+                <div className="relative z-10">
+                  <span className="bg-white p-1 px-3 rounded-t-md -mb-3 text-sm inline-block text-neutral-500 dark:bg-neutral-950 dark:text-neutral-300">
+                    {post.date} . {formatter.timeToRead(post.content)} min read
+                  </span>
+                  <h2 className="max-w-lg m-0">
+                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block dark:bg-neutral-950">
+                      {post?.title}
+                    </span>
+                  </h2>
+                </div>
               </Link>
             </AnimatedView>
           ))}

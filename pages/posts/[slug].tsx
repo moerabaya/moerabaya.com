@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
-import { Post } from "../../types";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { AnimatedView } from "components/atoms";
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import Head from "next/head";
 import Image, { ImageProps } from "next/image";
+import { useRouter } from "next/router";
+import path from "path";
+import "prism-themes/themes/prism-atom-dark.css";
+import Prism from "prismjs";
+import { useEffect } from "react";
+import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
+  // eslint-disable-next-line jsx-a11y/alt-text
   <Image
-    alt={props.alt}
-    layout="responsive"
-    width="100%"
-    height="100%"
-    objectFit="contain"
+    width="0"
+    height="0"
+    sizes="100vw"
+    className="w-full h-auto"
     {...props}
   />
 );
@@ -28,7 +30,9 @@ const components = {
 const Post = ({ mdxSource, meta }: any) => {
   var post: Post;
   const { pathname } = useRouter();
-
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
   return (
     <div className="post-content">
       <Head>
@@ -76,29 +80,34 @@ const Post = ({ mdxSource, meta }: any) => {
           }
         />
       </Head>
-      <Image
-        src={meta.image}
-        placeholder="blur"
-        blurDataURL={meta.placeholder}
-        width="100%"
-        height="30px"
-        layout="responsive"
-        objectFit="cover"
-      />
-      <div className="container">
+
+      <div className="container mx-auto max-w-4xl py-10">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
-        <h1
-          className="post-title"
-          dangerouslySetInnerHTML={{ __html: meta?.title }}
-        ></h1>
-        <h5 className="post-details">
-          {meta.date} . {meta.author}
-        </h5>
+        <AnimatedView className="w-full overflow-hidden relative h-[350px]">
+          <Image
+            alt={meta.alt}
+            src={meta.image}
+            placeholder="blur"
+            blurDataURL={meta.placeholder}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-[50px]"
+          />
+        </AnimatedView>
+        <AnimatedView delay={0.5} className="px-7 pt-4">
+          <h2
+            className="font-medium"
+            dangerouslySetInnerHTML={{ __html: meta?.title }}
+          ></h2>
+          <h5 className="post-details">
+            {meta.date} . {meta.author}
+          </h5>
 
-        <div className="content">
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
+          <div className="content">
+            <MDXRemote {...mdxSource} components={components} />
+          </div>
+        </AnimatedView>
       </div>
     </div>
   );

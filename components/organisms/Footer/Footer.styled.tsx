@@ -1,4 +1,3 @@
-import { Grid } from "components/atoms";
 import styled from "styled-components";
 
 export default styled.footer`
@@ -17,5 +16,8 @@ export default styled.footer`
 
   a {
     color: var(--footer-font-color);
+    &:visited {
+      color: var(--footer-font-color);
+    }
   }
 `;
