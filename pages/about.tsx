@@ -40,7 +40,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
         if (index !== 1)
           list.push(
             // eslint-disable-next-line react/jsx-no-duplicate-props
-            <Link href={`work/${project.slug}`}>
+            <Link href={`work/${project.slug}`} className="min-w-[250px]">
               <AnimatedView
                 key={project.slug}
                 delay={(index === 0 ? 0.5 : 0.25) * (index + 1)}
@@ -62,7 +62,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
           );
       });
     return (
-      <ul className="grid grid-cols-3 max-sm:grid-cols-2 gap-4 m-0 max-[480px]:grid-cols-1">
+      <ul className="container mx-auto max-w-5xl px-5 flex m-0 max-[480px]:grid-cols-1 overflow-x-scroll pb-4 space-x-3 rtl:flex-row-reverse">
         {list}
       </ul>
     );
@@ -168,9 +168,11 @@ const About: NextPage<Props> = ({ projects }: Props) => {
         <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-700" />
       </div>
       <div className="container mx-auto max-w-4xl my-10 px-5">
-        <h4 className="font-medium text-xl">Recent work</h4>
+        <h4 className="font-medium text-xl">
+          {getLocalizedString("about", "work-title")}
+        </h4>
       </div>
-      <div className="container mx-auto max-w-5xl px-5">{WorkItems()}</div>
+      {WorkItems()}
     </div>
   );
 };

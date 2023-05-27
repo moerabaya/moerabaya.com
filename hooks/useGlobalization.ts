@@ -1,5 +1,6 @@
 import { Direction } from "moerabaya-components";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 import ar from "utils/languages/ar.json";
 import enUS from "utils/languages/en-US.json";
 
@@ -31,6 +32,11 @@ const useGlobalization = () => {
   const { locale } = useRouter();
   const direction: Direction = locale === "ar" ? "rtl" : "ltr";
   const isArabic = locale === "ar";
+
+  useMemo(() => {
+    if (typeof document !== "undefined")
+      document.documentElement.dir = direction;
+  }, [direction]);
 
   const getLocalizedString = (...a: string[]): string => {
     const translateValue = getter(languages[locale as Languages], ...a);
