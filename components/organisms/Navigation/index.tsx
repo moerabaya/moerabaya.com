@@ -47,7 +47,7 @@ const Navigation = ({ hasReadPermission }: any) => {
     <a
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
-      key="github-url"
+      key="linkedin-url"
       className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
     >
       <BsLinkedin size="26px" className="rounded-md" />
@@ -60,7 +60,7 @@ const Navigation = ({ hasReadPermission }: any) => {
         animate={isOpen}
         delay={isOpen ? index * 0.5 : 0}
       >
-        <li onClick={() => setIsOpen(false)}>
+        <li className="block p-5 text-xl" onClick={() => setIsOpen(false)}>
           <Link href={path} className="animated">
             {name}
           </Link>
@@ -70,27 +70,36 @@ const Navigation = ({ hasReadPermission }: any) => {
 
   return (
     <Nav isOpen={isOpen} className="text-center">
-      <AnimatedView vertical={"-75"}>
-        <div className="container m-auto">
+      <AnimatedView vertical={"-75"} className="h-full">
+        <div className="container m-auto h-full">
           <div className="grid grid-cols-3 gap-3">
-            <div className="flex items-center">{renderMenu()}</div>
+            <div className="flex items-center">
+              <div className="max-sm:hidden">{renderMenu()}</div>
+            </div>
             <div className="text-center flex justify-center items-center">
               <Link href="/">
                 <Logo width={60} className="dark:fill-neutral-50" />
               </Link>
             </div>
             <div className="flex items-center justify-end">
-              {Socials}
+              <div className="max-sm:hidden flex items-center justify-end">
+                {Socials}
+              </div>
               <Burger
-                hide={["lg", "xlg"]}
                 size="md"
                 isActive={isOpen}
+                className="!hidden max-sm:!block"
                 onClick={() => setIsOpen(!isOpen)}
               />
             </div>
           </div>
-          <ul className="hidden">
-            {renderInnerMenu()}
+          <div className="m-0 h-full flex flex-col">
+            <div className="flex items-center flex-col justify-center flex-1  ">
+              {renderInnerMenu()}
+            </div>
+            <div className="mt-auto flex items-center pb-10 justify-center">
+              {Socials}
+            </div>
             {hasReadPermission && (
               <li className="logout">
                 <a
@@ -106,7 +115,7 @@ const Navigation = ({ hasReadPermission }: any) => {
                 </a>
               </li>
             )}
-          </ul>
+          </div>
         </div>
       </AnimatedView>
     </Nav>
