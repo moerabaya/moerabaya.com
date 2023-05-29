@@ -17,7 +17,6 @@ import "prismjs/components/prism-typescript.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import { useEffect } from "react";
-import { CodeBlock, CopyBlock, tomorrowNightBright } from "react-code-blocks";
 import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
@@ -31,46 +30,28 @@ const ResponsiveImage = (props: ImageProps) => (
   />
 );
 
-const CustomCodeBlock = (props: any) => {
-  // if any language selected or javascript by default
-
-  const { className, copy, children } = props;
-
-  const language =
-    className?.match(/(?<=language-)(\w.*?)\b/) != null
-      ? className?.match(/(?<=language-)(\w.*?)\b/)[0]
-      : "javascript";
-
-  return copy ? (
-    <CopyBlock
-      text={children}
-      language={language}
-      theme={tomorrowNightBright}
-      showLineNumbers={false}
-      wrapLines
-      codeBlock
-    />
-  ) : (
-    <CodeBlock
-      text={children}
-      language={language}
-      theme={tomorrowNightBright}
-      wrapLines
-      codeBlock={false}
-    />
-  );
-};
-
 const components = {
   Image: ResponsiveImage,
   code: (props: any) => <code {...props} />,
+  pre: (
+    props: React.PropsWithChildren<React.HTMLAttributes<HTMLPreElement>>
+  ) => (
+    <pre
+      {...props}
+      className={`${props.className} copy-to-clipboard`}
+      data-prismjs-copy="copy"
+    />
+  ),
 };
 
 const Post = ({ mdxSource, meta }: any) => {
   var post: Post;
   const { pathname } = useRouter();
   useEffect(() => {
-    Prism.highlightAll();
+    const highlight = async () => {
+      await Prism.highlightAll();
+    };
+    highlight();
   }, []);
   return (
     <div className="post-content">

@@ -15,7 +15,7 @@ Everytime I try to open any storyboard or nib files using Xcode through Visual S
 
 I looked it up in `Ide.log` from `Help|Open Log Directory` and the issue was I needed to add an attribute:
 
-```
+```command
 Xamarin.Designer.iOS/XcodeIntegration/XcodeSyncing/XcodeProjectTracker.cs:780
 ERROR [2022-02-09 09:52:36Z]: Error updating Xcode project
 Xamarin.Designer.iOS.XcodeIntegration.ObjCIntegration.ObjectiveCGenerationException: Could not generate outlet 'UsecasesTextField' in class 'Sample.iOS.Core.UsecasesAddController' as its type 'Sample.iOS.Core.PaddingTextField' could not be resolved to Objective-C.

@@ -152,13 +152,17 @@ code > * {
     monospace !important;
 }
 
-code {
-  padding: 0;
+code:not([class*="language-"]) {
+  padding: 0.2em 0.35em;
+  background-color: var(--code-background-color);
+  border-radius: 0.25em;
+  font-size: 0.85em;
 }
 
 pre {
   overflow-x: scroll;
   padding: 8px 12px;
+  border-radius: 0.25em;
   > code {
     padding-right: 0;
     padding-left: 0;
