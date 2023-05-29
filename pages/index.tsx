@@ -40,10 +40,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                 vertical="25%"
               >
                 {index === 0 && (
-                  <Text
-                    className="mt-9 ms-9 px-3 py-2 absolute uppercase font-medium bg-amber-500 text-white rounded-2xl"
-                    size={15}
-                  >
+                  <Text className="mt-9 ms-9 px-3 py-2 text-base absolute uppercase font-medium bg-amber-500 text-white rounded-2xl max-sm:text-[0.85em] max-sm:px-2 max-sm:py-1 max-sm:mt-5 max-sm:ms-5">
                     {getLocalizedString("home", "featured")}
                   </Text>
                 )}
@@ -102,7 +99,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <div className="container max-w-2xl mx-auto py-40 px-9 max-md:py-28">
+      <div className="container max-w-2xl mx-auto py-40 px-9 max-md:py-28 max-sm:px-5">
         <AnimatedView>
           <Image
             src={
@@ -121,7 +118,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           <AnimatedText
             text={getLocalizedString("home", "pretitle")}
             type="h2"
-            className="inline-block my-1"
+            className="inline-block my-1 max-sm:text-2xl"
           />
           &nbsp;&nbsp;
           <AnimatedView delay={0.6} duration={0.25} vertical="25%">
@@ -130,7 +127,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               name="wave"
               origin="70% 70%"
               size="1.85em"
-              className="-mt-2"
+              className="-mt-2 max-sm:!text-[1.7em]"
               duration={1500}
             >
               👋
@@ -141,7 +138,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           text={getLocalizedString("home", "title")}
           type="h2"
           finished={(state: boolean) => setHeaderAniamteState(state)}
-          className="m-0"
+          className="m-0 max-sm:text-2xl"
         />
       </div>
       <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>

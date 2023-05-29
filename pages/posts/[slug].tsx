@@ -7,9 +7,17 @@ import Head from "next/head";
 import Image, { ImageProps } from "next/image";
 import { useRouter } from "next/router";
 import path from "path";
-import "prism-themes/themes/prism-atom-dark.css";
+import "prism-themes/themes/prism-vsc-dark-plus.css";
 import Prism from "prismjs";
+import "prismjs/components/prism-csharp.js";
+import "prismjs/components/prism-graphql.js";
+import "prismjs/components/prism-javascript.js";
+import "prismjs/components/prism-jsx.js";
+import "prismjs/components/prism-typescript.js";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import { useEffect } from "react";
+import { CodeBlock, CopyBlock, tomorrowNightBright } from "react-code-blocks";
 import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
@@ -23,8 +31,39 @@ const ResponsiveImage = (props: ImageProps) => (
   />
 );
 
+const CustomCodeBlock = (props: any) => {
+  // if any language selected or javascript by default
+
+  const { className, copy, children } = props;
+
+  const language =
+    className?.match(/(?<=language-)(\w.*?)\b/) != null
+      ? className?.match(/(?<=language-)(\w.*?)\b/)[0]
+      : "javascript";
+
+  return copy ? (
+    <CopyBlock
+      text={children}
+      language={language}
+      theme={tomorrowNightBright}
+      showLineNumbers={false}
+      wrapLines
+      codeBlock
+    />
+  ) : (
+    <CodeBlock
+      text={children}
+      language={language}
+      theme={tomorrowNightBright}
+      wrapLines
+      codeBlock={false}
+    />
+  );
+};
+
 const components = {
   Image: ResponsiveImage,
+  code: (props: any) => <code {...props} />,
 };
 
 const Post = ({ mdxSource, meta }: any) => {
@@ -81,7 +120,7 @@ const Post = ({ mdxSource, meta }: any) => {
         />
       </Head>
 
-      <div className="container mx-auto max-w-4xl py-10">
+      <div className="container mx-auto max-w-4xl py-10 line-numbers">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
         <AnimatedView className="w-full overflow-hidden relative h-[350px]">

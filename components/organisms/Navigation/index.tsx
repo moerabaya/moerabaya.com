@@ -60,7 +60,7 @@ const Navigation = ({ hasReadPermission }: any) => {
         animate={isOpen}
         delay={isOpen ? index * 0.5 : 0}
       >
-        <li className="block p-5 text-xl" onClick={() => setIsOpen(false)}>
+        <li className="block p-5 text-2xl" onClick={() => setIsOpen(false)}>
           <Link href={path} className="animated">
             {name}
           </Link>
