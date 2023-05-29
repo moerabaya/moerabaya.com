@@ -1,4 +1,4 @@
-import { Avatar, Col, Grid, Link, List, Row, Text } from "components/atoms/";
+import { Avatar, Col, Link, List, Row, Text } from "components/atoms/";
 import useGlobalization from "hooks/useGlobalization";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -16,7 +16,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
         ?.clientHeight;
       const contentHeight = document.body.clientHeight + footerHeight!;
       setOpacity(
-        (window.innerWidth <= 500 ? 2 : 1) -
+        (window.innerWidth <= 700 ? 2 : 1) -
           (contentHeight - (window.scrollY + window.innerHeight)) /
             footerHeight!
       );
@@ -39,7 +39,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
 
   return (
     <StyledFooter ref={ref}>
-      <Grid style={{ opacity: opacity }}>
+      <div style={{ opacity: opacity }} className="container mx-auto px-5">
         <Row wrap>
           <Col>
             <Avatar
@@ -54,20 +54,22 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
             />
           </Col>
         </Row>
-        <Row wrap>
-          <Col sm={12} lg={5} style={{ paddingBottom: "2em" }}>
-            <Text as="h4">{getLocalizedString("footer", "title")}</Text>
-            <Text as="h4">
+        <div className="grid grid-cols-6 max-md:grid-cols-11 max-sm:grid-cols-3 max-[380px]:grid-cols-2 pb-8 ">
+          <div className="col-span-2 px-2 max-xl:pe-16 max-xl:col-span-3 max-lg:pe-2 max-md:col-span-5 max-sm:col-span-3 max-[380px]:col-span-2 max-sm:max-w-[430px] pt-3 pb-5">
+            <Text className="text-xl max-md:text-lg block max-sm:text-xl">
+              {getLocalizedString("footer", "title")}
+            </Text>
+            <Text className="text-xl max-md:text-xl block mt-4 max-sm:text-xl">
               <Link animated={true} href="mail:contact@moerabaya.com">
                 contact@moerabaya.com
               </Link>
             </Text>
-          </Col>
-          <Col sm={12} hide={["sm", "md"]} lg={1}></Col>
-          <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
+          </div>
+          <div className="col-span-1 max-xl:hidden"></div>
+          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2 max-[380px]:col-span-2">
             <List>
               <List.Header>
-                <Text smallCaps size={19}>
+                <Text smallCaps className="text-lg max-xl:text-base">
                   {getLocalizedString("footer", "languages")}
                 </Text>
               </List.Header>
@@ -94,11 +96,11 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                 </Link>
               </List.Item>
             </List>
-          </Col>
-          <Col sm={4} lg={2} style={{ paddingBottom: "2em" }}>
+          </div>
+          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2">
             <List>
               <List.Header>
-                <Text smallCaps size={19}>
+                <Text smallCaps className="text-lg max-xl:text-base">
                   {getLocalizedString("footer", "follow")}
                 </Text>
               </List.Header>
@@ -143,15 +145,20 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                 </Link>
               </List.Item>
             </List>
-          </Col>
-          <Col sm={4} lg={2}>
-            <List style={{ paddingTop: "0.75em" }}>{renderPages()}</List>
-          </Col>
-        </Row>
+          </div>
+          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2">
+            <List
+              style={{ paddingTop: "0.75em" }}
+              className="max-xs:flex max-xs:space-x-4 max-xs:mt-4 max-xs:!pb-5"
+            >
+              {renderPages()}
+            </List>
+          </div>
+        </div>
         <Row>
           <Col>©{new Date().getFullYear()} moerabaya.com</Col>
         </Row>
-      </Grid>
+      </div>
     </StyledFooter>
   );
 });

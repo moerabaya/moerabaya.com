@@ -101,20 +101,22 @@ const Post = ({ mdxSource, meta }: any) => {
         />
       </Head>
 
-      <div className="container mx-auto max-w-4xl py-10 line-numbers">
+      <div className="container mx-auto max-w-4xl py-10 line-numbers max-sm:py-0">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
-        <AnimatedView className="w-full overflow-hidden relative h-[350px]">
-          <Image
-            alt={meta.alt}
-            src={meta.image}
-            placeholder="blur"
-            blurDataURL={meta.placeholder}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-[50px]"
-          />
-        </AnimatedView>
+        <div className="px-4">
+          <AnimatedView className="w-full overflow-hidden relative h-[350px] max-sm:h-[50vw] max-sm:min-h-[200px]">
+            <Image
+              alt={meta.alt}
+              src={meta.image}
+              placeholder="blur"
+              blurDataURL={meta.placeholder}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-[50px]"
+            />
+          </AnimatedView>
+        </div>
         <AnimatedView delay={0.5} className="px-7 pt-4">
           <h2
             className="font-medium"
