@@ -46,6 +46,7 @@ $screen-xl: 1440px;
   --alternate-background-color: #f1f1f1;
   --alternate-text-color: #2a2a2a;
   --nav-background-color: rgba(var(--background-color-rgb), 0.8);
+  --code-background-color: #eeeeee;
   --text-color: #000000;
   --text-color-rgb: 0, 0, 0;
   --text-color-light: #7f7f7f;
@@ -91,6 +92,7 @@ html.dark {
   --alternate-background-color: #232323;
   --alternate-text-color: #fafafa;
   --nav-background-color: rgb(17, 17, 17, 0.75);
+  --code-background-color: #1e1e1e;
   --border-color: #eaeaea;
   --text-color: #ffffff;
   --text-color-rgb: 255, 255, 255;

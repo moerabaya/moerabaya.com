@@ -51,18 +51,23 @@ const Blog = ({ posts }: any) => {
           content={require("../assets/images/metaimage.png")}
         />
       </Head>
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-4xl px-5 pt-5">
         <AnimatedView>
-          <Text as="h4" p="1em 1em" textTransform="uppercase" weight={"bold"}>
+          <Text
+            as="h4"
+            textTransform="uppercase"
+            className="px-5"
+            weight={"bold"}
+          >
             {getLocalizedString("blog", "title")}
           </Text>
         </AnimatedView>
-        <ul className="posts-list">
+        <ul className="px-0 mx-0 py-5">
           {posts?.map((post: any, index: number) => (
             <AnimatedView key={post.slug} delay={index / 2}>
               <Link
                 href={post.slug}
-                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-[230px] transition ease-in-out duration-500 hover:shadow-stone-300 dark:hover:shadow-stone-700 hover:shadow-lg cursor-pointer"
+                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-[230px] max-md:h-[180px] transition ease-in-out duration-500 hover:shadow-stone-300 dark:hover:shadow-stone-700 hover:shadow-lg cursor-pointer"
               >
                 <Image
                   src={post.image}
@@ -77,7 +82,7 @@ const Blog = ({ posts }: any) => {
                     {post.date} . {formatter.timeToRead(post.content)} min read
                   </span>
                   <h2 className="max-w-lg m-0">
-                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block dark:bg-neutral-950">
+                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block dark:bg-neutral-950 max-md:text-2xl">
                       {post?.title}
                     </span>
                   </h2>

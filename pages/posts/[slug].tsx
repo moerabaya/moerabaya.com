@@ -7,8 +7,15 @@ import Head from "next/head";
 import Image, { ImageProps } from "next/image";
 import { useRouter } from "next/router";
 import path from "path";
-import "prism-themes/themes/prism-atom-dark.css";
+import "prism-themes/themes/prism-vsc-dark-plus.css";
 import Prism from "prismjs";
+import "prismjs/components/prism-csharp.js";
+import "prismjs/components/prism-graphql.js";
+import "prismjs/components/prism-javascript.js";
+import "prismjs/components/prism-jsx.js";
+import "prismjs/components/prism-typescript.js";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import { useEffect } from "react";
 import { Post } from "../../types";
 
@@ -25,13 +32,26 @@ const ResponsiveImage = (props: ImageProps) => (
 
 const components = {
   Image: ResponsiveImage,
+  code: (props: any) => <code {...props} />,
+  pre: (
+    props: React.PropsWithChildren<React.HTMLAttributes<HTMLPreElement>>
+  ) => (
+    <pre
+      {...props}
+      className={`${props.className} copy-to-clipboard`}
+      data-prismjs-copy="copy"
+    />
+  ),
 };
 
 const Post = ({ mdxSource, meta }: any) => {
   var post: Post;
   const { pathname } = useRouter();
   useEffect(() => {
-    Prism.highlightAll();
+    const highlight = async () => {
+      await Prism.highlightAll();
+    };
+    highlight();
   }, []);
   return (
     <div className="post-content">
@@ -81,20 +101,22 @@ const Post = ({ mdxSource, meta }: any) => {
         />
       </Head>
 
-      <div className="container mx-auto max-w-4xl py-10">
+      <div className="container mx-auto max-w-4xl py-10 line-numbers max-sm:py-0">
         {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
         <br /> */}
-        <AnimatedView className="w-full overflow-hidden relative h-[350px]">
-          <Image
-            alt={meta.alt}
-            src={meta.image}
-            placeholder="blur"
-            blurDataURL={meta.placeholder}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-[50px]"
-          />
-        </AnimatedView>
+        <div className="px-4">
+          <AnimatedView className="w-full overflow-hidden relative h-[350px] max-sm:h-[50vw] max-sm:min-h-[200px]">
+            <Image
+              alt={meta.alt}
+              src={meta.image}
+              placeholder="blur"
+              blurDataURL={meta.placeholder}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-[50px]"
+            />
+          </AnimatedView>
+        </div>
         <AnimatedView delay={0.5} className="px-7 pt-4">
           <h2
             className="font-medium"

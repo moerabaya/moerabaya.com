@@ -40,7 +40,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
         if (index !== 1)
           list.push(
             // eslint-disable-next-line react/jsx-no-duplicate-props
-            <Link href={`work/${project.slug}`}>
+            <Link href={`work/${project.slug}`} className="min-w-[250px]">
               <AnimatedView
                 key={project.slug}
                 delay={(index === 0 ? 0.5 : 0.25) * (index + 1)}
@@ -55,13 +55,17 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("../assets/images/projects/" + project.cover_photo)
                   }
-                  className="overflow-hidden rounded-xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0 border border-solid border-stone-200"
+                  className="overflow-hidden rounded-xl transition ease-in-out duration-500 hover:shadow-stone-200 dark:hover:shadow-stone-700 hover:shadow-md cursor-pointer m-0 border border-solid border-stone-200"
                 />
               </AnimatedView>
             </Link>
           );
       });
-    return <ul className="grid grid-cols-3 gap-4 m-0">{list}</ul>;
+    return (
+      <ul className="container mx-auto max-w-5xl px-5 flex m-0 max-[480px]:grid-cols-1 overflow-x-scroll pb-4 space-x-3 rtl:flex-row-reverse">
+        {list}
+      </ul>
+    );
   }
   return (
     <div className="page-content">
@@ -102,8 +106,8 @@ const About: NextPage<Props> = ({ projects }: Props) => {
           content={require("../assets/images/metaimage.png")}
         />
       </Head>
-      <div className="container mx-auto max-w-4xl grid grid-cols-4 my-16 mb-0">
-        <div className="text-2xl">
+      <div className="container mx-auto max-w-4xl grid grid-cols-4 py-16 max-md:py-12 mb-0 px-5 pb-10 max-md:pb-8 max-sm:grid-cols-1">
+        <div className="text-2xl max-md:max-w-[175px] max-sm:max-w-[150px]">
           <Image
             src={
               "https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1000"
@@ -113,13 +117,13 @@ const About: NextPage<Props> = ({ projects }: Props) => {
             blurDataURL='"https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1"'
             width={400}
             height={990}
-            className="overflow-hidden rounded-3xl"
+            className="overflow-hidden rounded-[2em] mb-3"
           />
         </div>
-        <div className="ps-8 col-span-3 mt-4">
+        <div className="ps-8 col-span-3 mt-4 max-md:mt-0 max-sm:ps-0">
           <AnimatedView>
             <h4 className="font-semibold leading-5 text-stone-800 dark:text-neutral-50">
-              {getLocalizedString("title")}
+              {getLocalizedString("about", "title")}
             </h4>
           </AnimatedView>
           <AnimatedView delay={0.75}>
@@ -163,10 +167,12 @@ const About: NextPage<Props> = ({ projects }: Props) => {
       <div className="container mx-auto max-w-5xl">
         <hr className="h-px my-6 bg-gray-200 border-0 dark:bg-gray-700" />
       </div>
-      <div className="container mx-auto max-w-4xl my-10">
-        <h4 className="font-medium text-xl">Recent work</h4>
+      <div className="container mx-auto max-w-4xl my-10 px-5">
+        <h4 className="font-medium text-xl">
+          {getLocalizedString("about", "work-title")}
+        </h4>
       </div>
-      <div className="container mx-auto max-w-5xl">{WorkItems()}</div>
+      {WorkItems()}
     </div>
   );
 };

@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               href={`work/${project.slug}`}
               className={`${
                 index === 0 ? "col-span-2" : "col-span-1"
-              } border-solid border-stone-100`}
+              } border-solid border-stone-100 max-sm:col-span-2`}
             >
               <AnimatedView
                 key={project.slug}
@@ -40,10 +40,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                 vertical="25%"
               >
                 {index === 0 && (
-                  <Text
-                    className="mt-9 ms-9 px-3 py-2 absolute uppercase font-medium bg-amber-500 text-white rounded-2xl"
-                    size={15}
-                  >
+                  <Text className="mt-9 ms-9 px-3 py-2 text-base absolute uppercase font-medium bg-amber-500 text-white rounded-2xl max-sm:text-[0.85em] max-sm:px-2 max-sm:py-1 max-sm:mt-5 max-sm:ms-5">
                     {getLocalizedString("home", "featured")}
                   </Text>
                 )}
@@ -61,7 +58,9 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             </Link>
           );
       });
-    return <ul className="grid grid-cols-2 gap-4 pb-24 m-0">{list}</ul>;
+    return (
+      <ul className="grid grid-cols-2 gap-4 pb-24 m-0 max-md:pb-10">{list}</ul>
+    );
   }
   return (
     <>
@@ -100,7 +99,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <div className="container max-w-xl mx-auto py-40">
+      <div className="container max-w-2xl mx-auto py-40 px-9 max-md:py-28 max-sm:px-5">
         <AnimatedView>
           <Image
             src={
@@ -119,7 +118,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           <AnimatedText
             text={getLocalizedString("home", "pretitle")}
             type="h2"
-            className="inline-block my-1"
+            className="inline-block my-1 max-sm:text-2xl"
           />
           &nbsp;&nbsp;
           <AnimatedView delay={0.6} duration={0.25} vertical="25%">
@@ -128,7 +127,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               name="wave"
               origin="70% 70%"
               size="1.85em"
-              className="-mt-2"
+              className="-mt-2 max-sm:!text-[1.7em]"
               duration={1500}
             >
               👋
@@ -139,18 +138,18 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           text={getLocalizedString("home", "title")}
           type="h2"
           finished={(state: boolean) => setHeaderAniamteState(state)}
-          className="m-0"
+          className="m-0 max-sm:text-2xl"
         />
       </div>
-      <div className="container max-w-5xl mx-auto">{WorkItems()}</div>
-      <div className="py-20 bg-stone-100 dark:bg-neutral-950">
+      <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>
+      <div className="py-20 bg-stone-100 dark:bg-neutral-950 px-5 max-md:py-12">
         <div className="container mx-auto max-w-2xl flex items-center justify-between">
-          <h2 className="font-medium text-stone-800 dark:text-neutral-50">
+          <h2 className="font-medium text-stone-800 dark:text-neutral-50 max-md:text-2xl">
             {getLocalizedString("home", "contact-title")}
           </h2>
           <a
             href="mail:contact@moerabaya.com"
-            className="px-8 py-3 ms-5 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
+            className="px-8 py-3 ms-5 max-md:py-2 max-md:px-6 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
           >
             {getLocalizedString("home", "contact-button")}
           </a>
