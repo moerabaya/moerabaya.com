@@ -6,12 +6,46 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import path from "path";
-import AnimatedView from "../components/atoms/AnimatedView";
-import useFormatter from "../hooks/useFormatter";
+import AnimatedView from "../../components/atoms/AnimatedView";
+import useFormatter from "../../hooks/useFormatter";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
   const { getLocalizedString } = useGlobalization();
+  const getAllCategories = () => {
+    const categories = new Map();
+    for (const post of posts) {
+      categories.set(post.category, [
+        ...(categories?.get(post.category) ?? []),
+        post,
+      ]);
+    }
+    return categories;
+  };
+
+  const renderCategories = () => {
+    const items: JSX.Element[] = [];
+    items.push(
+      <Link
+        href={`blog`}
+        className="px-3 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 rounded-2xl"
+      >
+        All
+      </Link>
+    );
+    getAllCategories().forEach((_, key) => {
+      items.push(
+        <Link
+          href={`blog/${key.toString().toLowerCase()}`}
+          className="px-3 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 rounded-3xl"
+        >
+          {key}
+        </Link>
+      );
+    });
+
+    return items;
+  };
   return (
     <div className="page-content">
       <Head>
@@ -36,7 +70,7 @@ const Blog = ({ posts }: any) => {
         />
         <meta
           property="og:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("../../assets/images/metaimage.png")}
         />
 
         {/* <!-- Twitter --> */}
@@ -48,7 +82,7 @@ const Blog = ({ posts }: any) => {
         />
         <meta
           property="twitter:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("../../assets/images/metaimage.png")}
         />
       </Head>
       <div className="container mx-auto max-w-4xl px-5 pt-5">
@@ -62,6 +96,7 @@ const Blog = ({ posts }: any) => {
             {getLocalizedString("blog", "title")}
           </Text>
         </AnimatedView>
+        <div className="pt-4 px-4 space-x-3">{renderCategories()}</div>
         <ul className="px-0 mx-0 py-5">
           {posts?.map((post: any, index: number) => (
             <AnimatedView key={post.slug} delay={index / 2}>
