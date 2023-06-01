@@ -145,7 +145,6 @@ const getStaticPaths = async () => {
       slug: filename.replace(".mdx", ""),
     },
   }));
-
   return {
     paths,
     fallback: false,
