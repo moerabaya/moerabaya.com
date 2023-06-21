@@ -1,0 +1,114 @@
+---
+title: "Software design principles"
+slug: nextjs/setting-up-graphql
+description: Visual studio, Mac, csharp, Xamarin, iOS, Android, c#, javascript, development, bugs, errors
+tags: NextJS, GraphQL
+category: GraphQL
+metaimage: ""
+image: "/articles/OIG.A.jpeg"
+placeholder: "/articles/OIG.A.jpeg"
+author: Mohammed Rabay'a
+date: June 2nd 2023
+---
+
+<hr />
+<h3 style={{ fontWeight: "bold", margin: "2em 0 1em" }}>Introduction</h3>
+
+**_Software design principles_** are a set of guidelines that helps developers to make a good system **_design_**.
+
+<h4 style={{ fontWeight: "bold", margin: "2em 0 1em" }}>
+  Symptoms of Bad Design
+</h4>
+
+- **Rigid**: That’s hard to change due to some dependencies.
+- **Fragile**: As you make changes, you get unexpected bugs.
+- **Immobile**: Hard to reuse.
+
+<br />
+
+<h4 style={{ fontWeight: "bold", margin: "1em 0" }}>Setup</h4>
+
+If you haven't setup your NextJS application yet, go ahead and create your application.
+
+```
+	npx create-next-app mountain-view
+```
+
+Once you are done with this, we will begin adding our graphql dependencies. We will need to install `@apollo/server`, `graphql` and `@as-integrations/next`, which allow us to run an Apollo server in our application:
+
+```
+	npm install @apollo/server graphql @as-integrations/next
+```
+
+<br />
+
+<h4 style={{ fontWeight: "bold", margin: "1em 0" }}>Structure</h4>
+
+If you are familiar with graphql, we know that we have two main components in any
+graphql application. That would be `resolvers` and `schema`. Also we need to create
+our graphql end point, this would also allow us to access our playground.
+
+```
+	├── apollo
+	|  ├── resolvers
+	|	 |  └── index.js
+	|	 └── schemas
+	|	    └── index.js
+	└── pages
+	   ├── api
+	   |  └── graphql.js
+	   └── index.js
+```
+
+<br />
+Let's create a simple query that has a simple method that returns all posts. In `api/schemas/index.js`
+
+```graphql
+export const typeDefs = `#graphql
+  type Post {
+    id: ID
+		name: String
+    description: String
+    content: String
+  }
+
+  type Query {
+    getPosts: [Post]
+  }
+`;
+```
+
+<br />
+We need to create resolvers for our new two methods, we can use github api to return
+these posts In `api/resolvers/index.js`
+
+```javascript
+export const resolvers = {
+  Query: {
+    getPosts: async () => {
+      try {
+        const posts = [
+          {
+            id: "random-id-7322371",
+            name: "GraphQL Post",
+            description: "This is a blog post.",
+          },
+        ];
+        return posts;
+      } catch (error) {
+        throw error;
+      }
+    },
+  },
+};
+```
+
+and that's pretty much all we need, now if you start your NextJS application and go to /api/graphql you will see this.
+
+<Image
+  src="/articles/nextjs/apollo-server.png"
+  placeholder="blur"
+  blurDataURL="/articles/nextjs/apollo-server-placeholder.png"
+/>
+
+Happy coding!
