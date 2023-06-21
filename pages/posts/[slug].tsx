@@ -54,7 +54,7 @@ const Post = ({ mdxSource, meta }: any) => {
     highlight();
   }, []);
   return (
-    <div className="post-content">
+    <div className="text-lg pt-8 max-md:text-base">
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

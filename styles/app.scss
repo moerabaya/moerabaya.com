@@ -2,17 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../node_modules/normalize.css/normalize.css";
+
 /* Configuration and helpers */
 @import "../assets/styles/utilities/variables";
 @import "../assets/styles/utilities/functions";
 @import "../assets/styles/utilities/mixins";
 
-// @import "../stylesheet.scss";
-
-// @import "../node_modules/three-dots/sass/three-dots.scss";
-
 // Core Styles
-@import "../assets/styles/core/reset.scss";
 @import "../assets/styles/core/base.scss";
 @import "../assets/styles/core/_typography.scss";
 
