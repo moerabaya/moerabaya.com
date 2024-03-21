@@ -17,7 +17,7 @@ const Item = styled.li<MenuItemComponent>`
 `;
 
 const Menu = Object.assign(
-  styled((props) => <Component {...props} as="ul" />)`
+  styled((props: any) => <Component {...props} as="ul" />)`
     margin: 0;
     padding: 0 0.75em;
     text-align: end;

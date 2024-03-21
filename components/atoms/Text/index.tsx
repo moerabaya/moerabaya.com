@@ -3,7 +3,7 @@ import styled, { css, TextProps } from "styled-components";
 import { mixins } from "styles";
 import Component from "../Component";
 
-const Text = styled((props) => (
+const Text = styled((props: any) => (
   <Component {...props} as={props.as ?? "span"} />
 ))<TextProps>`
   padding: ${(props) => props.p};

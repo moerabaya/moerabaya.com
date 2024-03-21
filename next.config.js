@@ -9,16 +9,10 @@ const nextConfig = {
     locales: ["en-US", "ar"],
     defaultLocale: "en-US",
   },
-  eslint: { 
-    ignoreDuringBuilds: true, 
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  styledComponents: true,
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
   async redirects() {
     return [
       {
