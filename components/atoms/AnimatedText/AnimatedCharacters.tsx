@@ -64,8 +64,7 @@ const AnimatedCharacters = ({
     <StyledAniamtedCharacters as={type} {...rest}>
       {words.map((word: string, index: number) => {
         return (
-          // Wrap each word in the Wrapper component
-          <Wrapper key={index}>
+          <span className="font-medium" key={index}>
             {words[index].flat().map((element: any, index: number) => {
               return (
                 <span
@@ -88,7 +87,7 @@ const AnimatedCharacters = ({
                 </span>
               );
             })}
-          </Wrapper>
+          </span>
         );
       })}
       {/* {} */}
