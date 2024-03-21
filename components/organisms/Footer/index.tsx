@@ -158,7 +158,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
         <Row>
           <Col sm={6} className="!p-2">
             <Link
-              className={`px-4 py-2 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-50  dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-2xl text-base inline-block transition ease-in-out hover:rounded-full`}
+              className={`px-4 py-2 bg-neutral-900 hover:text-neutral-50  hover:bg-neutral-800 rounded-2xl text-base inline-block transition ease-in-out hover:rounded-full`}
               href={"mohammed-rabaya.pdf"}
             >
               {getLocalizedString("footer", "downloadResume")}
