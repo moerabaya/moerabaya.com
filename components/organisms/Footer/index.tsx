@@ -156,7 +156,17 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           </div>
         </div>
         <Row>
-          <Col>©{new Date().getFullYear()} moerabaya.com</Col>
+          <Col sm={6} className="!p-2">
+            <Link
+              className={`px-4 py-2 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-50  dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-2xl text-base inline-block transition ease-in-out hover:rounded-full`}
+              href={"mohammed-rabaya.pdf"}
+            >
+              {getLocalizedString("footer", "downloadResume")}
+            </Link>
+          </Col>
+          <Col sm={6} className="flex items-center justify-end !p-2">
+            ©{new Date().getFullYear()} moerabaya.com
+          </Col>
         </Row>
       </div>
     </StyledFooter>

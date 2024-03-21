@@ -24,6 +24,24 @@ const nextConfig = {
           "https://coursera.org/share/1ebf02b39984eab2802e74286134250a",
         permanent: false,
       },
+      {
+        source: "/product-resume-2022.pdf",
+        destination:
+          "/mohammed-rabaya.pdf",
+        permanent: false,
+      },
+      {
+        source: "/engineering-resume-2022.pdf",
+        destination:
+          "/mohammed-rabaya.pdf",
+        permanent: false,
+      },
+      {
+        source: "/design-resume-2022.pdf",
+        destination:
+          "/mohammed-rabaya.pdf",
+        permanent: false,
+      },
     ];
   },
   webpack(config) {

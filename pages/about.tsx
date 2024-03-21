@@ -156,7 +156,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
             <AnimatedView delay={1.25} className="inline-block">
               <Link
                 className={`px-4 py-2 bg-neutral-200 hover:bg-neutral-900 hover:text-neutral-50  dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded-2xl text-base inline-block ml-auto mt-2 transition ease-in-out hover:rounded-full`}
-                href={"engineering-resume-2022.pdf"}
+                href={"mohammed-rabaya.pdf"}
               >
                 {getLocalizedString("about", "download-resume")}
               </Link>
