@@ -10,7 +10,15 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        '60vh': '65vh',
+        '65vh': '65vh',
+      }
+    },
+    fontFamily: {
+      "mono": '"Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
+    }
   },
   plugins: [],
 };

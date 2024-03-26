@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import useGlobalization from "hooks/useGlobalization";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -41,7 +42,7 @@ export default function Layout({ children, pageProps }: any) {
             crossOrigin=""
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
             rel="stylesheet"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />

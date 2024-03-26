@@ -77,8 +77,8 @@ const AnimatedCharacters = ({
                   <motion.span
                     style={{
                       display: "inline-block",
-                      top: "-0.1em",
                       position: "relative",
+                      letterSpacing: 0,
                     }}
                     variants={item}
                   >

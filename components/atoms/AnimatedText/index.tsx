@@ -3,7 +3,13 @@ import { AnimatedTextProps } from "motion";
 import { useEffect, useState } from "react";
 import AnimatedCharacters from "./AnimatedCharacters";
 
-const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {
+const AnimatedText = ({
+  text,
+  type,
+  finished,
+  fontWeight,
+  ...rest
+}: AnimatedTextProps) => {
   const [replay, setReplay] = useState(true);
   const hideDuration = 0.85;
   const showDuration = 0.85;

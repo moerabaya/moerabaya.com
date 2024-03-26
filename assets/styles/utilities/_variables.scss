@@ -37,8 +37,8 @@ $screen-lg: 1280px;
 $screen-xl: 1440px;
 
 :root {
-  --base-font-size: 14px;
-  --base-small-caps-size: 15px;
+  --base-font-size: 13px;
+  --base-small-caps-size: 14px;
   --background-color: #fafafa;
   --background-color-rgb: 250, 250, 250;
   --footer-background-color: #000000;
@@ -60,15 +60,14 @@ $screen-xl: 1440px;
   --button-color-darken: hsl(227, 76%, 45%);
   --button-text: #fff;
   --letter-spacing: -0.03em;
-  --bs-font-sans-serif: "DM Sans", "Vazirmatn", system-ui, -apple-system,
+  --bs-font-sans-serif: "Montserrat", "Vazirmatn", system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-sans-serif-arabic: "Vazirmatn", system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --bs-font-monospace:  "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 
   --card-background: #ffffff;
   --card-shadow-color: rgba(0, 0, 0, 0.1);
@@ -77,12 +76,12 @@ $screen-xl: 1440px;
   --primary-color-context: #000000;
 
   @media (min-width: $screen-lg) {
-    --base-font-size: 18px;
-    --base-small-caps-size: 18px;
+    --base-font-size: 15px;
+    --base-small-caps-size: 16px;
   }
   @media (min-width: $screen-md) {
-    --base-font-size: 17px;
-    --base-small-caps-size: 17px;
+    --base-font-size: 15px;
+    --base-small-caps-size: 16px;
   }
 }
 
@@ -104,12 +103,11 @@ html.dark {
   --masthead-text: #fff;
   --button-color: #f5e5ca;
   --button-text: #fff;
-  --bs-font-sans-serif: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+  --bs-font-sans-serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --bs-font-monospace:  "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
 
   --card-background: var(--background-color);
   --card-shadow-color: rgba(var(--text-color-rgb), 0.1);
