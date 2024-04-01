@@ -52,10 +52,6 @@ const WorkCarousel = ({ projects }: WorkProps) => {
       <Row
         style={{
           position: "fixed",
-          // top: "5em",
-          // padding: 0,
-          // margin: "0 -1.5em",
-          // height: "100vh",
           right: "1.25em",
           bottom: "1.25em",
         }}

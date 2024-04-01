@@ -60,6 +60,7 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 .next
+*.env
 
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build

@@ -13,7 +13,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  async redirects() {
+    async redirects() {
     return [
       {
         source: "/google-certificate",
@@ -42,6 +42,7 @@ const nextConfig = {
     ];
   },
   webpack(config) {
+    
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
@@ -62,6 +63,9 @@ const nextConfig = {
         use: ["@svgr/webpack"],
       }
     );
+
+    // Fixes npm packages that depend on `fs` module
+    config.resolve.fallback = { fs: false };
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;

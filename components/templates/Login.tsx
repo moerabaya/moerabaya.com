@@ -5,7 +5,13 @@ import form from "styles/components/Form.module.scss";
 import login from "styles/components/Login.module.scss";
 import cn from "classnames";
 
-const Login = ({ redirectPath }: any) => {
+const Login = ({
+  redirectPath,
+  slug,
+}: {
+  slug: string;
+  redirectPath?: string;
+}) => {
   const [password, setPassword] = useState("");
 
   return (
@@ -28,9 +34,16 @@ const Login = ({ redirectPath }: any) => {
             onClick={(e) => {
               e.preventDefault();
               const cookies = new Cookies();
-              cookies.set(consts.SiteReadCookie, password, {
-                path: "/",
-              });
+              if (slug)
+                cookies.set(
+                  consts.SiteReadCookie,
+                  {
+                    [slug]: password,
+                  },
+                  {
+                    path: "/",
+                  }
+                );
               window.location.href = redirectPath ?? "/";
             }}
           >

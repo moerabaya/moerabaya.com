@@ -3,12 +3,10 @@ import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { NextPage } from "next/types";
 import path from "path";
 import styled from "styled-components";
 import { Project } from "types";
-import AnimatedView from "../components/atoms/AnimatedView";
 import { AnimatedText } from "components/atoms";
 import GrabIcon from "../assets/icons/grab-icon.svg";
 import XIcon from "../assets/icons/x-icon.svg";
@@ -34,42 +32,6 @@ const About: NextPage<Props> = ({ projects }: Props) => {
   if (typeof window !== "undefined")
     window.localStorage.setItem("color-theme", "light");
 
-  function WorkItems() {
-    var list: any = [];
-
-    projects
-      ?.sort((a: any, b: any) => a.index - b.index)
-      .map((project: Project, index: number) => {
-        if (index !== 1)
-          list.push(
-            // eslint-disable-next-line react/jsx-no-duplicate-props
-            <Link href={`work/${project.slug}`} className="min-w-[250px]">
-              <AnimatedView
-                key={project.slug}
-                delay={(index === 0 ? 0.5 : 0.25) * (index + 1)}
-                duration={0.75}
-                vertical="25%"
-              >
-                <Image
-                  placeholder="blur"
-                  layout="responsive"
-                  alt=""
-                  src={
-                    project.cover_photo &&
-                    require("../assets/images/projects/" + project.cover_photo)
-                  }
-                  className="overflow-hidden rounded-xl transition ease-in-out duration-500 hover:shadow-stone-200 dark:hover:shadow-stone-700 hover:shadow-md cursor-pointer m-0 border border-solid border-stone-200"
-                />
-              </AnimatedView>
-            </Link>
-          );
-      });
-    return (
-      <ul className="container mx-auto max-w-5xl px-5 flex m-0 max-[480px]:grid-cols-1 overflow-x-scroll pb-4 space-x-3 rtl:flex-row-reverse">
-        {list}
-      </ul>
-    );
-  }
   return (
     <div className="page-content">
       <Head>

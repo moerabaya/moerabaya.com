@@ -1,5 +1,5 @@
 import { Animate, AnimatedText, Text } from "components/atoms/";
-import fs from "fs";
+import * as fs from "fs/promises";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
 import type { NextPage } from "next";
@@ -162,16 +162,24 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
 export default Home;
 
 export async function getStaticProps() {
+  return {
+    props: {
+      projects: await getProjects(),
+    },
+  };
+}
+
+export const getProjects = async (): Promise<Project[]> => {
   const projectsDirectory = path.join(
     process.cwd() /* process current directory */,
     "projects"
   );
-  const filenames = fs.readdirSync(projectsDirectory);
+  const filenames = await fs.readdir(projectsDirectory);
 
   const files = await Promise.all(
     filenames.map(async (filename: any) => {
       const filePath = path.join(projectsDirectory, filename);
-      const content = fs.readFileSync(filePath, "utf8");
+      const content = await fs.readFile(filePath, "utf8");
       const matter = grayMatter(content);
       return {
         filename,
@@ -182,14 +190,10 @@ export async function getStaticProps() {
 
   const projects = files.map((file) => {
     return {
-      ...file.matter.data,
-      path: `work/${file.filename.replace(".mdx", "")}`,
+      ...(file.matter.data as Project),
+      slug: file.filename.replace(".mdx", ""),
     };
   });
 
-  return {
-    props: {
-      projects,
-    },
-  };
-}
+  return projects;
+};

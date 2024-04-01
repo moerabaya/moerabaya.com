@@ -1,4 +1,4 @@
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -9,11 +9,21 @@ import matter from "gray-matter";
 import Image from "next/image";
 import rehypeImgSize from "rehype-img-size";
 import Login from "components/templates/Login";
+import { AnimatedText } from "components/atoms";
+import { Project as IProject } from "types";
+
+type ProjectProps = {
+  meta: IProject;
+  slug: string;
+  hasReadPermission: { [key: string]: string };
+  mdxSource: MDXRemoteSerializeResult;
+};
 
 const components = {
   // Custom image - here you can customize the image layout: https://nextjs.org/docs/api-reference/next/image#layout
   img: ({ src, height, width, ...rest }: any) => (
     // layout="responsive" makes the image fill the container width wise - I find it looks nicer for blog posts
+    // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       layout="responsive"
       src={src}
@@ -23,16 +33,17 @@ const components = {
     />
   ),
 };
-const Project = ({ mdxSource, meta, hasReadPermission }: any) => {
+const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
   const { pathname, asPath } = useRouter();
-  useEffect(() => {}, []);
 
-  if (!hasReadPermission) {
-    return <Login redirectPath={asPath} />;
+  if (meta.password && !hasReadPermission?.[meta.slug]) {
+    return <Login slug={meta.slug} redirectPath={asPath} />;
   }
 
+  const getProjectType = () => meta.project_type?.split(", ");
+
   return (
-    <div className="project-content">
+    <div className="pt-[75px]">
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -79,21 +90,25 @@ const Project = ({ mdxSource, meta, hasReadPermission }: any) => {
         />
       </Head>
 
-      <header>
-        <div className="container">
-          <h1 className="title">
-            <mark style={{ backgroundColor: meta.color ?? "white" }}>
-              {meta.description}
-            </mark>
-          </h1>
+      <div className="container mx-auto pt-28 pb-16">
+        <AnimatedText
+          text={meta.description as string}
+          className="text-5xl font-[500] leading-[1.15em]"
+          type={"h1"}
+        />
+        <div className="pt-14">
+          <span className="pe-5">{getProjectType()?.[0]}</span>
+          <span className="pe-5">x</span>
+          <span className="pe-5">{getProjectType()?.[1]}</span>
+          {meta.date && !Number.isNaN(new Date(meta.date).getFullYear()) && (
+            <>
+              <span className="pe-5">|</span>
+              <span>{new Date(meta.date).getFullYear()}</span>
+            </>
+          )}
         </div>
-      </header>
-      <div className="container">
-        <div className="content">
-          <MDXRemote {...mdxSource} components={components} />
-        </div>
-        {/* {post.contents} */}
       </div>
+      <MDXRemote {...mdxSource} components={components} />
     </div>
   );
 };
@@ -130,8 +145,8 @@ const getStaticProps = async ({ params: { slug } }: any) => {
   });
   return {
     props: {
-      meta: frontMatter,
-      slug,
+      meta: frontMatter as IProject,
+      slug: slug as string,
       mdxSource,
     },
   };

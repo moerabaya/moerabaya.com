@@ -26,7 +26,6 @@
 .post-content,
 .project-content {
   padding-top: 75px;
-  padding-bottom: 75px;
   min-height: calc(100vh - 107px);
   @media (max-width: $screen-sm) {
     min-height: calc(100vh - 126px);

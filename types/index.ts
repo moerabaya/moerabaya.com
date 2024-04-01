@@ -15,6 +15,7 @@ export interface Post {
 export interface Project {
   body?: string;
   slug: string;
+  id: string;
   path: string;
   title: string;
   type?: string;
@@ -33,4 +34,5 @@ export interface Project {
   website?: string;
   appstore?: string;
   googleplay: string;
+  password?: string;
 }
