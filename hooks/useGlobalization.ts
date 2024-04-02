@@ -42,10 +42,19 @@ const useGlobalization = () => {
     const translateValue = getter(languages[locale as Languages], ...a);
     return translateValue;
   };
+
+  const translate = (key: string, fallback: string) => {
+    const translateValue = getter(
+      languages[locale as Languages],
+      ...key.split(".")
+    );
+    return translateValue ?? fallback;
+  };
   return {
     locale,
     direction,
     getLocalizedString,
+    translate,
     isArabic,
   };
 };

@@ -20,12 +20,24 @@
     "title": "Latest Articles"
   },
   "about": {
-    "title": "Hola, مرحبا",
-    "about": "",
+    "title": "Mohammed Rabaya",
+    "about1": "A software engineer with over 9+ years of experience, I am currently based in Amsterdam.",
+    "about2": "I help companies build intuitive softwares and products using state-of-the-art technologies ensuring best practices are applied for smooth user experience and development process.",
     "work-title": "Recent work",
     "download-resume": "Download resume",
     "reach-out": "Reach out",
-    "checkout": "Checkout my work"
+    "checkout": "Checkout my work",
+    "connect": "Let's connect...",
+    "experience": {
+      "title": "Experience",
+      "present": "Present",
+      "seniorSoftwareEngineer": "Senior Software Engineer",
+      "seniorFrontendEngineer": "Senior Front-end Engineer",
+      "frontendEngineer": "Front-end Engineer",
+      "fullTime": "Full-time",
+      "amsterdam": "Amsterdam, Netherlands",
+      "amman": "Amman, Jordan"
+    }
   },
   "work": {
     "title": "Work",

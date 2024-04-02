@@ -28,7 +28,12 @@ interface Props {
   projects: Project[];
 }
 const About: NextPage<Props> = ({ projects }: Props) => {
-  const { getLocalizedString } = useGlobalization();
+  const { getLocalizedString, translate, locale } = useGlobalization();
+  const dateLocale = locale === "ar" ? "ar-EG" : locale;
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    year: "numeric",
+  };
   if (typeof window !== "undefined")
     window.localStorage.setItem("color-theme", "light");
 
@@ -101,10 +106,13 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                   </span>
                   <span className="w-[0.5px] h-[100vh] bg-[#FF0000] absolute bottom-0 left-0"></span>
                   <AnimatedText
-                    text={"Mohammed Rabaya" + " "}
+                    text={translate("about.title", "Mohammed Rabaya")}
                     type="h2"
-                    // finished={(state: boolean) => setHeaderAniamteState(state)}
-                    className="border-[1px] border-solid border-[#4597F7] w-[490px] text-7xl leading-[0.8] m-0 uppercase *:!font-extrabold px-0 text-stone-800 dark:text-neutral-50"
+                    className={`border-[1px] border-solid border-[#4597F7] w-[490px] ${
+                      locale === "ar"
+                        ? "text-[5.5rem] leading-[1]"
+                        : "text-7xl leading-[0.8]"
+                    } leading-[0.8] m-0 uppercase *:!font-extrabold px-0 text-stone-800 dark:text-neutral-50`}
                   />
                   <XIcon className="absolute -mt-[3px] -left-[0.75px]" />
                   <span className="absolute -left-5 bottom-9 px-[4px] py-[2px] rounded-[4px] bg-[#FFECEC] text-[#FF0000] font-mono text-[11px]">
@@ -116,7 +124,10 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                   </span>
                   <GrabIcon className="absolute bottom-[4.5em] left-[14.15em]" />
                   <div className="-mt-1 text-center">
-                    <span className="bg-[#4597F7] px-[2.5px] py-[1.25px] text-[8px] rounded-[1.75px] text-[white]">
+                    <span
+                      className="bg-[#4597F7] px-[2.5px] py-[1.25px] text-[8px] rounded-[1.75px] text-[white]"
+                      dir={"ltr"}
+                    >
                       531 x 154
                     </span>
                   </div>
@@ -139,13 +150,16 @@ const About: NextPage<Props> = ({ projects }: Props) => {
           </div>
           <div className="container mx-auto max-w-5xl px-10 text-[1.25em] pb-10">
             <div>
-              A software engineer with over 9+ years of experience, I am
-              currently based in Amsterdam.
+              {translate(
+                "about.about1",
+                "A software engineer with over 9+ years of experience, I am currently based in Amsterdam."
+              )}
             </div>
             <div className="mt-8">
-              I help companies build intuitive softwares and products using
-              state-of-the-art technologies ensuring best practices are applied
-              for smooth user experience and development process.
+              {translate(
+                "about.about2",
+                "I help companies build intuitive softwares and products using state-of-the-art technologies ensuring best practices are applied for smooth user experience and development process."
+              )}
             </div>
           </div>
           <div className="container mx-auto max-w-5xl px-10 text-[1.25em] pb-10">
@@ -153,13 +167,13 @@ const About: NextPage<Props> = ({ projects }: Props) => {
               href="mailto:contact@moerabaya.com"
               className="py-[10px] w-[206px] text-center inline-block text-white bg-stone-950 dark:bg-stone-50 dark:text-stone-950 text-[1rem] font-medium rounded-sm"
             >
-              Let's connect...
+              {translate("about.connect", "Let's connect...")}
             </a>
             <a
               href="/mohammed-rabaya.pdf"
               className="py-[10px] w-[206px] inline-block ms-4 text-center dark:text-white text-stone-950 text-[1rem] font-medium rounded-sm hover:bg-neutral-200 dark:hover:bg-[rgba(255,255,255,0.15)]"
             >
-              Download Resume
+              {translate("footer.downloadResume", "Download Resume")}
             </a>
           </div>
         </div>
@@ -169,55 +183,69 @@ const About: NextPage<Props> = ({ projects }: Props) => {
       </div>
       <div className="container mx-auto max-w-4xl pt-24 max-md:py-12 mb-0 px-5 pb-6 max-md:pb-8">
         <h4 className="block dark:text-neutral-100 text-neutral-950">
-          Experience
+          {translate("about.experience.title", "Experience")}
         </h4>
         <div className="flex">
           <h4 className="w-[230px] dark:text-neutral-100 text-neutral-950 text-[1.15rem]">
-            Jan 2023 - Present
+            {new Date("01-01-2023").toLocaleDateString(dateLocale, options)} -{" "}
+            {translate("about.experience.present", "Present")}
           </h4>
           <div className="flex-1">
             <h4 className="mt-4 m-0 dark:text-neutral-100 text-neutral-950 text-[1.15rem]">
-              Senior Software Engineer
+              {translate(
+                "about.experience.seniorSoftwareEngineer",
+                "Senior Software Engineer"
+              )}
             </h4>
             <h6 className="m-0 uppercase font-semibold dark:text-neutral-400 text-neutral-700 mt-[3px]">
-              Rodeo Software . Full-time
+              Rodeo Software .{" "}
+              {translate("about.experience.fullTime", "Full-time")}
             </h6>
           </div>
           <h6 className="m-0 uppercase font-semibold dark:text-neutral-100 text-neutral-950 mt-5 self-baseline">
-            Amsterdam, Netherlands
+            {translate("about.experience.amsterdam", "Amsterdam, Netherlands")}
           </h6>
         </div>
         <div className="flex mt-20">
           <h4 className="w-[230px] dark:text-neutral-100 text-neutral-950 text-[1.15rem] relative">
-            <div className="w-[1px] h-[90px] bg-neutral-800 absolute bottom-[140%] left-2"></div>
-            Nov 2017 - Dec 2022
+            <div className="w-[1px] h-[90px] bg-neutral-800 absolute bottom-[140%] start-2"></div>
+            {new Date("11-01-2017").toLocaleDateString(dateLocale, options)} -{" "}
+            {new Date("12-31-2022").toLocaleDateString(dateLocale, options)}
           </h4>
           <div className="flex-1">
             <h4 className="mt-4 m-0 dark:text-neutral-100 text-neutral-950 text-[1.15rem]">
-              Senior Front-end Engineer
+              {translate(
+                "about.experience.seniorFrontendEngineer",
+                "Senior Front-end Engineer"
+              )}
             </h4>
             <h6 className="m-0 uppercase font-semibold dark:text-neutral-400 text-neutral-700 mt-[3px]">
-              Cura Healthcare . Full-time
+              Cura Healthcare .{" "}
+              {translate("about.experience.fullTime", "Full-time")}
             </h6>
           </div>
           <h6 className="m-0 uppercase font-semibold dark:text-neutral-100 text-neutral-950 mt-5 self-baseline">
-            Amman, Jordan
+            {translate("about.experience.amman", "Amman, Jordan")}
           </h6>
         </div>
-        <div className="flex mt-8">
+        <div className="flex mt-8 pb-16">
           <h4 className="w-[230px] dark:text-neutral-100 text-neutral-950 text-[1.15rem]">
-            Jun 2015 - Nov 2017
+            {new Date("06-01-2015").toLocaleDateString(dateLocale, options)} -{" "}
+            {new Date("11-01-2017").toLocaleDateString(dateLocale, options)}
           </h4>
           <div className="flex-1">
             <h4 className="mt-4 m-0 dark:text-neutral-100 text-neutral-950 text-[1.15rem]">
-              Front-end Engineer
+              {translate(
+                "about.experience.frontendEngineer",
+                "Front-end Engineer"
+              )}
             </h4>
             <h6 className="m-0 uppercase font-semibold dark:text-neutral-400 text-neutral-700 mt-[3px]">
-              Plexable . Full-time
+              Plexable . {translate("about.experience.fullTime", "Full-time")}
             </h6>
           </div>
           <h6 className="m-0 uppercase font-semibold dark:text-neutral-100 text-neutral-950 mt-5 self-baseline">
-            Amman, Jordan
+            {translate("about.experience.amman", "Amman, Jordan")}
           </h6>
         </div>
       </div>
