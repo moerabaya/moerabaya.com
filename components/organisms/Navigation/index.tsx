@@ -12,15 +12,18 @@ import Cookies from "universal-cookie";
 import navigation from "utils/data/navigation.json";
 import { Burger } from "../../atoms/Button";
 import Nav from "./Nav.styled";
+import * as fs from "fs/promises";
+import path from "path";
+import grayMatter from "gray-matter";
 
 const Pages = navigation;
 
-const Navigation = ({ hasReadPermission }: any) => {
+const Navigation = ({ hasReadPermission, previous, next }: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const projects: Project[] = [];
   const { pathname, asPath } = useRouter();
   const { theme, setTheme } = useContext(ThemeContext);
   const { locale } = useGlobalization();
+  const isProject = pathname.split("/")?.[1] === "work";
 
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
@@ -67,7 +70,54 @@ const Navigation = ({ hasReadPermission }: any) => {
         </li>
       </AnimatedView>
     ));
+  if (isProject)
+    return (
+      <Nav isOpen={isOpen} className="text-center">
+        <AnimatedView vertical={"-75"} className="h-full">
+          <div className="container m-auto h-full flex items-center">
+            <Link
+              href={"/"}
+              className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4 me-auto"
+              style={{ fontVariant: "all-small-caps" }}
+            >
+              <svg
+                viewBox="0 0 10 10"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="dark:*:fill-neutral-50 *:fill-neutral-900 inline-block me-2 mt-[1px] max-sm:size-[16px] size-[10px] max-sm:m-0"
+              >
+                <path
+                  d="M5.00048 4.05732L8.30048 0.757324L9.24315 1.69999L5.94315 4.99999L9.24315 8.29999L8.30048 9.24266L5.00048 5.94266L1.70048 9.24266L0.757812 8.29999L4.05781 4.99999L0.757812 1.69999L1.70048 0.757324L5.00048 4.05732Z"
+                  fill="black"
+                />
+              </svg>
+              <span className="max-sm:hidden">Close</span>
+            </Link>
 
+            {previous && (
+              <Link
+                href={`/work/${previous}`}
+                className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4 me-"
+                style={{ fontVariant: "all-small-caps" }}
+              >
+                <span className="max-sm:hidden">Previous</span>
+                <span className="hidden max-sm:inline">Previous</span>
+              </Link>
+            )}
+            {next && (
+              <Link
+                href={`/work/${next}`}
+                className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4"
+                style={{ fontVariant: "all-small-caps" }}
+              >
+                <span className="max-sm:hidden">Next</span>
+                <span className="hidden max-sm:inline">Next</span>
+              </Link>
+            )}
+          </div>
+        </AnimatedView>
+      </Nav>
+    );
   return (
     <Nav isOpen={isOpen} className="text-center">
       <AnimatedView vertical={"-75"} className="h-full">
@@ -121,30 +171,5 @@ const Navigation = ({ hasReadPermission }: any) => {
     </Nav>
   );
 };
-
-function renderPageTitle(
-  pathname: string,
-  projects: Project[]
-): React.ReactNode {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { getLocalizedString } = useGlobalization();
-  let title;
-  if (pathname == "/") {
-    // title = <><strong>Mohammed Rabaya</strong>  &nbsp;|&nbsp;  Engineer</>;
-    title = <>{getLocalizedString("hero")}</>;
-  } else if (pathname == "/about") {
-    title = getLocalizedString("About");
-  } else if (pathname.includes("/blog")) {
-    title = getLocalizedString("About");
-  }
-  projects
-    ?.sort((a: any, b: any) => a.index - b.index)
-    .map((project) => {
-      if (pathname.includes(project.slug)) {
-        title = project.title;
-      }
-    });
-  return title;
-}
 
 export default Navigation;
