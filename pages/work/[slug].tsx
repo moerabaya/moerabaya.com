@@ -2,7 +2,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
@@ -90,13 +90,13 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
         />
       </Head>
 
-      <div className="container mx-auto pt-28 pb-16">
+      <div className="container mx-auto pt-28 pb-16 px-5">
         <AnimatedText
           text={meta.description as string}
-          className="text-5xl font-[500] leading-[1.15em]"
+          className="text-5xl font-[500] leading-[1.15em] max-md:text-[5vw] max-[500px]:text-[8vw] max-md:leading-[1.2]"
           type={"h1"}
         />
-        <div className="pt-14">
+        <div className="pt-14 max-md:text-[1em]">
           <span className="pe-5">{getProjectType()?.[0]}</span>
           <span className="pe-5">x</span>
           <span className="pe-5">{getProjectType()?.[1]}</span>
@@ -116,7 +116,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
 export default Project;
 
 const getStaticPaths = async () => {
-  const files = fs.readdirSync(path.join("projects"));
+  const files = await fs.readdir(path.join("projects"));
 
   const paths = files.map((filename) => ({
     params: {
@@ -131,7 +131,7 @@ const getStaticPaths = async () => {
 };
 
 const getStaticProps = async ({ params: { slug } }: any) => {
-  const markdownWithMeta = fs.readFileSync(
+  const markdownWithMeta = await fs.readFile(
     path.join("projects", slug + ".mdx"),
     "utf-8"
   );
@@ -143,11 +143,23 @@ const getStaticProps = async ({ params: { slug } }: any) => {
       rehypePlugins: options,
     },
   });
+
+  const projectsDirectory = path.join(
+    process.cwd() /* process current directory */,
+    "projects"
+  );
+  const filenames = await fs.readdir(projectsDirectory);
+  const current = filenames.indexOf(`${slug}.mdx`);
+  const next = filenames[current + 1]?.replace(".mdx", "") ?? null;
+  const previous = filenames[current - 1]?.replace(".mdx", "") ?? null;
+
   return {
     props: {
       meta: frontMatter as IProject,
       slug: slug as string,
       mdxSource,
+      next,
+      previous,
     },
   };
 };
