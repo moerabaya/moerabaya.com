@@ -143,13 +143,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       </div>
       <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>
       <div className="py-20 bg-stone-100 dark:bg-neutral-950 px-5 max-md:py-12">
-        <div className="container mx-auto max-w-2xl flex items-center justify-between">
+        <div className="container mx-auto max-w-2xl flex items-center justify-between max-sm:flex-col max-sm:w-full max-sm:w-full">
           <h2 className="font-medium text-stone-800 dark:text-neutral-50 max-md:text-2xl">
             {getLocalizedString("home", "contact-title")}
           </h2>
           <a
             href="mail:contact@moerabaya.com"
-            className="px-8 py-3 ms-5 max-md:py-2 max-md:px-6 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full"
+            className="px-8 py-3 ms-5 max-md:py-2 max-md:px-6 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full max-sm:w-full max-sm:text-center max-sm:mt-5 max-sm:py-3"
           >
             {getLocalizedString("home", "contact-button")}
           </a>

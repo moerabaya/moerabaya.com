@@ -13,7 +13,7 @@ import { getProjects } from "pages";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider {...pageProps}>
-      <Layout>
+      <Layout pageProps={pageProps}>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
@@ -27,7 +27,6 @@ MyApp.getInitialProps = async (context: any) => {
   const passwords = cookies.get(consts.SiteReadCookie) ?? {};
 
   const projects = await getProjects();
-  console.log(passwords);
 
   projects.map((project) => {
     const password = project.password;
