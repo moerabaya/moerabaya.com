@@ -18,7 +18,7 @@ const Login = ({
         placeholder="Enter password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="flex-1 text-center text-[3rem] bg-[--background-color] text-white placeholder-neutral-600 focus:bg-neutral-900"
+        className="flex-1 text-center text-[3rem] bg-[--background-color] text-neutral-950 dark:text-white placeholder-neutral-600 focus:bg-neutral-100 dark:focus:bg-neutral-900"
       />
       <button
         type="submit"
