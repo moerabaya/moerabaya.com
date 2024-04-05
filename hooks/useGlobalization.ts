@@ -28,7 +28,15 @@ function getter(...args: string[] | Object[]) {
   return current;
 }
 
-const useGlobalization = () => {
+export interface Globalization {
+  locale: string | undefined;
+  direction: Direction;
+  getLocalizedString: (...a: string[]) => string;
+  translate: (key: string, fallback: string) => any;
+  isArabic: boolean;
+}
+
+const useGlobalization = (): Globalization => {
   const { locale } = useRouter();
   const direction: Direction = locale === "ar" ? "rtl" : "ltr";
   const isArabic = locale === "ar";

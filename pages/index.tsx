@@ -40,7 +40,10 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                 vertical="25%"
               >
                 {index === 0 && (
-                  <Text className="mt-9 ms-9 px-3 py-2 text-base absolute uppercase font-medium bg-amber-500 text-white rounded-2xl max-sm:text-[0.85em] max-sm:px-2 max-sm:py-1 max-sm:mt-5 max-sm:ms-5">
+                  <Text
+                    className="mt-9 ms-9 px-3 pb-4 py-3 text-xl absolute leading-4 font-medium bg-amber-500 text-white rounded-3xl max-sm:text-[0.85em] max-sm:px-2 max-sm:py-1 max-sm:mt-5 max-sm:ms-5"
+                    style={{ fontVariant: "all-small-caps" }}
+                  >
                     {getLocalizedString("home", "featured")}
                   </Text>
                 )}

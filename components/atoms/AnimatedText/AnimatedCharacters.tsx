@@ -52,14 +52,6 @@ const AnimatedCharacters = ({
     words.push(item.split(" "));
   }
 
-  // Add a space ("\u00A0") to the end of each word
-  words.map((word: any) => {
-    return word.push("\u00A0");
-  });
-
-  // Get the tag name from tagMap
-  // const Tag = React.createElement("h1");
-
   return (
     <StyledAniamtedCharacters as={type} {...rest}>
       {words.map((word: string, index: number) => {
@@ -71,6 +63,7 @@ const AnimatedCharacters = ({
                   style={{
                     overflow: "hidden",
                     display: "inline-block",
+                    marginInlineEnd: "0.25em",
                   }}
                   key={index}
                 >
