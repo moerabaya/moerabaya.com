@@ -18,7 +18,7 @@ const Title = styled.span`
 
 const Nav = Object.assign(
   styled.nav<Props>`
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(25px);
     position: fixed;
     width: 100%;
     z-index: 100;

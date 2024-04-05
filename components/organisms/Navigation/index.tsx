@@ -29,8 +29,9 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
       <Link
         className={`px-4 py-2 ${
-          index == 0 && "bg-neutral-200 dark:bg-neutral-900"
-        } font-regular mx-2 rounded-2xl text-stone-800 hover:bg-neutral-300 dark:text-neutral-50 dark:md:hover:bg-neutral-800`}
+          index == 0 &&
+          " bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid  dark:bg-stone-900 dark:hover:bg-stone-800 dark:hover:border-stone-800"
+        } font-regular mx-2 rounded-2xl text-stone-800 hover:bg-stone-300 dark:text-stone-50 dark:md:hover:bg-stone-800`}
         href={path}
         key={name}
       >
@@ -43,7 +44,7 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
       target="_blank"
       href="https://github.com/moerabaya/"
       key="github-url"
-      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+      className="px-2 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-stone-200 hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 dark:hover:border-stone-800"
     >
       <BsGithub size="26px" />
     </a>,
@@ -51,7 +52,7 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
       key="linkedin-url"
-      className="px-2 py-2 bg-neutral-200 font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-neutral-300 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+      className="px-2 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 rounded-2xl dark:text-gray-50 hover:bg-stone-200 hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 dark:hover:border-stone-800"
     >
       <BsLinkedin size="26px" className="rounded-md" />
     </a>,
@@ -150,21 +151,6 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
             <div className="mt-auto flex items-center pb-10 justify-center">
               {Socials}
             </div>
-            {hasReadPermission && (
-              <li className="logout">
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const cookies = new Cookies();
-                    cookies.remove(consts.SiteReadCookie, { path: "/" });
-                    window.location.href = asPath ?? "/";
-                  }}
-                  className="animated"
-                >
-                  Logout
-                </a>
-              </li>
-            )}
           </div>
         </div>
       </AnimatedView>

@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               href={`work/${project.slug}`}
               className={`${
                 index === 0 ? "col-span-2" : "col-span-1"
-              } border-solid border-stone-100 max-sm:col-span-2`}
+              } max-sm:col-span-2`}
             >
               <AnimatedView
                 key={project.slug}
@@ -55,7 +55,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("../assets/images/projects/" + project.cover_photo)
                   }
-                  className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0"
+                  className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0 border-solid border-[1px] border-stone-200 dark:hover:shadow-stone-600 dark:border-stone-600"
                 />
               </AnimatedView>
             </Link>
