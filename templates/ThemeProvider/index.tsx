@@ -50,12 +50,14 @@ const ThemeProvider: React.FC<{ children: any }> = ({ children, ...rest }) => {
 
   const changeTheme = (theme: Theme, storePref = true) => {
     document.querySelector("html")?.setAttribute("data-theme", theme);
+    document.querySelector("html")?.setAttribute("class", theme);
     if (storePref && theme != mediaQueryPreference) {
       storeUserSetPreference(theme);
     } else {
       localStorage.removeItem("theme");
     }
     document.querySelector("html")?.setAttribute("data-theme", theme);
+    document.querySelector("html")?.setAttribute("class", theme);
     setTheme(theme);
   };
   const root = typeof window !== "undefined" ? document.documentElement : null;

@@ -25,6 +25,8 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
   const { locale } = useGlobalization();
   const isProject = pathname.split("/")?.[1] === "work";
 
+  const isDark = theme === "dark";
+
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
       <Link
@@ -40,6 +42,50 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
     ));
 
   const Socials = [
+    <span
+      key={"theme-switch"}
+      className={`px-1 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 dark:text-gray-50 hover:bg-stone-100 hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 w-20 flex rounded-full items-center relative`}
+    >
+      <span
+        className={`bg-[#EAEAEA] dark:bg-neutral-900 border-stone-200 border-[1px] border-solid dark:border-neutral-800 w-9 h-9 inline-block rounded-full transition-transform ${
+          isDark && "translate-x-[94%]"
+        }`}
+      ></span>
+      <div
+        className="absolute w-full h-full flex px-2 justify-between items-center left-0 cursor-pointer"
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className={`w-6 h-6 mx-[0.1rem] ${isDark && "opacity-40"}`}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+          />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className={`w-5 h-5 mx-[0.2rem] ${!isDark && "opacity-40"}`}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+          />
+        </svg>
+      </div>
+    </span>,
     <a
       target="_blank"
       href="https://github.com/moerabaya/"
@@ -133,7 +179,7 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
               </Link>
             </div>
             <div className="flex items-center justify-end">
-              <div className="max-sm:hidden flex items-center justify-end">
+              <div className="max-sm:hidden flex justify-end items-stretch">
                 {Socials}
               </div>
               <Burger
@@ -148,7 +194,7 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
             <div className="flex items-center flex-col justify-center flex-1  ">
               {renderInnerMenu()}
             </div>
-            <div className="mt-auto flex items-center pb-10 justify-center">
+            <div className="mt-auto flex items-center pb-10 justify-center items-stretch">
               {Socials}
             </div>
           </div>
