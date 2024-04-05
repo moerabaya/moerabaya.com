@@ -1,20 +1,14 @@
 import Logo from "assets/images/logo.svg";
 import { AnimatedView } from "components/atoms";
-import consts from "consts";
 import useGlobalization from "hooks/useGlobalization";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { ThemeContext } from "templates/ThemeProvider";
-import { Project } from "types";
-import Cookies from "universal-cookie";
 import navigation from "utils/data/navigation.json";
 import { Burger } from "../../atoms/Button";
 import Nav from "./Nav.styled";
-import * as fs from "fs/promises";
-import path from "path";
-import grayMatter from "gray-matter";
 
 const Pages = navigation;
 
@@ -48,7 +42,7 @@ const Navigation = ({ hasReadPermission, previous, next }: any) => {
     >
       <span
         className={`bg-[#EAEAEA] dark:bg-neutral-900 border-stone-200 border-[1px] border-solid dark:border-neutral-800 w-9 h-9 inline-block rounded-full transition-transform ${
-          isDark && "translate-x-[94%]"
+          isDark && "translate-x-[94%] rtl:-translate-x-[94%]"
         }`}
       ></span>
       <div

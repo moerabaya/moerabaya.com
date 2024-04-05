@@ -37,7 +37,7 @@ const jobs = (globalization: Globalization) => {
   };
   return [
     {
-      date: `${new Date("01-01-2023").toLocaleDateString(
+      date: `${new Date(2023, 1, 1).toLocaleDateString(
         dateLocale,
         options
       )} - ${translate("about.experience.present", "Present")}`,
@@ -53,10 +53,10 @@ const jobs = (globalization: Globalization) => {
       role: translate("about.experience.fullTime", "Full-time"),
     },
     {
-      date: `${new Date("11-01-2017").toLocaleDateString(
+      date: `${new Date(2017, 11, 1).toLocaleDateString(
         dateLocale,
         options
-      )} - ${new Date("12-31-2022").toLocaleDateString(dateLocale, options)}`,
+      )} - ${new Date(2022, 12, 31).toLocaleDateString(dateLocale, options)}`,
       title: translate(
         "about.experience.seniorFrontendEngineer",
         "Senior Front-end Engineer"
@@ -66,10 +66,10 @@ const jobs = (globalization: Globalization) => {
       role: translate("about.experience.fullTime", "Full-time"),
     },
     {
-      date: `${new Date("06-01-2015").toLocaleDateString(
+      date: `${new Date(2015, 6, 1).toLocaleDateString(
         dateLocale,
         options
-      )} - ${new Date("11-01-2017").toLocaleDateString(dateLocale, options)}`,
+      )} - ${new Date(2017, 11, 1).toLocaleDateString(dateLocale, options)}`,
       title: translate(
         "about.experience.frontendEngineer",
         "Front-end Engineer"

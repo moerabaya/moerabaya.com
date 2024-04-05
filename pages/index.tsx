@@ -7,7 +7,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import path from "path";
-import { useState } from "react";
 import AnimatedView from "../components/atoms/AnimatedView";
 import { Project } from "../types";
 
@@ -15,7 +14,6 @@ interface Props {
   projects: Project[];
 }
 const Home: NextPage<Props> = ({ projects }: Props) => {
-  const [headerAnimateState, setHeaderAniamteState] = useState(false);
   const { getLocalizedString } = useGlobalization();
 
   function WorkItems() {
@@ -140,13 +138,12 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         <AnimatedText
           text={getLocalizedString("home", "title")}
           type="h2"
-          finished={(state: boolean) => setHeaderAniamteState(state)}
           className="m-0 max-sm:text-2xl"
         />
       </div>
       <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>
       <div className="py-20 bg-stone-100 dark:bg-neutral-950 px-5 max-md:py-12">
-        <div className="container mx-auto max-w-2xl flex items-center justify-between max-sm:flex-col max-sm:w-full max-sm:w-full">
+        <div className="container mx-auto max-w-2xl flex items-center justify-between max-sm:flex-col max-sm:w-full">
           <h2 className="font-medium text-stone-800 dark:text-neutral-50 max-md:text-2xl">
             {getLocalizedString("home", "contact-title")}
           </h2>
