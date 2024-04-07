@@ -143,7 +143,6 @@ const getStaticPaths = async () => {
   const paths = files.reduce((prev: object[], filename) => {
     prev.push({
       params: { slug: filename.replace(".mdx", "") },
-      locale: "en-US",
     });
     prev.push({ params: { slug: filename.replace(".mdx", "") }, locale: "ar" });
     return prev;
@@ -165,6 +164,10 @@ const getStaticProps = async ({ params: { slug }, locale }: any) => {
   const mdxSource = await serialize(content);
 
   if (locale === "ar") {
+    if (process.env.npm_lifecycle_event === "build")
+      return {
+        notFound: true,
+      };
     return {
       redirect: {
         destination: `/posts/${slug}`,

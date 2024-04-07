@@ -36,6 +36,7 @@ const components = {
 const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
   const { pathname, asPath } = useRouter();
 
+  if (!meta) return;
   if (meta.password && !hasReadPermission?.[meta.slug]) {
     return <Login slug={meta.slug} redirectPath={asPath} />;
   }
@@ -121,7 +122,6 @@ const getStaticPaths = async () => {
   const paths = files.reduce((prev: object[], filename) => {
     prev.push({
       params: { slug: filename.replace(".mdx", "") },
-      locale: "en-US",
     });
     prev.push({ params: { slug: filename.replace(".mdx", "") }, locale: "ar" });
     return prev;
@@ -157,25 +157,30 @@ const getStaticProps = async ({ params, locale, ...rest }: any) => {
   const next = filenames[current + 1]?.replace(".mdx", "") ?? null;
   const previous = filenames[current - 1]?.replace(".mdx", "") ?? null;
 
-  console.log(params, rest);
-
+  const props = {
+    meta: frontMatter as IProject,
+    slug: slug as string,
+    mdxSource,
+    next,
+    previous,
+  };
   if (locale === "ar") {
+    if (process.env.npm_lifecycle_event === "build")
+      return {
+        notFound: true,
+        props,
+      };
     return {
       redirect: {
         destination: `/work/${slug}`,
         permanent: false,
       },
+      props,
     };
   }
 
   return {
-    props: {
-      meta: frontMatter as IProject,
-      slug: slug as string,
-      mdxSource,
-      next,
-      previous,
-    },
+    props,
   };
 };
 
