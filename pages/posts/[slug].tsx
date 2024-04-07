@@ -140,18 +140,22 @@ export default Post;
 const getStaticPaths = async () => {
   const files = fs.readdirSync(path.join("posts"));
 
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".mdx", ""),
-    },
-  }));
+  const paths = files.reduce((prev: object[], filename) => {
+    prev.push({
+      params: { slug: filename.replace(".mdx", "") },
+      locale: "en-US",
+    });
+    prev.push({ params: { slug: filename.replace(".mdx", "") }, locale: "ar" });
+    return prev;
+  }, []);
+
   return {
     paths,
     fallback: false,
   };
 };
 
-const getStaticProps = async ({ params: { slug } }: any) => {
+const getStaticProps = async ({ params: { slug }, locale }: any) => {
   const markdownWithMeta = fs.readFileSync(
     path.join("posts", slug + ".mdx"),
     "utf-8"
@@ -159,6 +163,15 @@ const getStaticProps = async ({ params: { slug } }: any) => {
 
   const { data: frontMatter, content } = matter(markdownWithMeta);
   const mdxSource = await serialize(content);
+
+  if (locale === "ar") {
+    return {
+      redirect: {
+        destination: `/posts/${slug}`,
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {

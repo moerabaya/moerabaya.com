@@ -118,19 +118,23 @@ export default Project;
 const getStaticPaths = async () => {
   const files = await fs.readdir(path.join("projects"));
 
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".mdx", ""),
-    },
-  }));
+  const paths = files.reduce((prev: object[], filename) => {
+    prev.push({
+      params: { slug: filename.replace(".mdx", "") },
+      locale: "en-US",
+    });
+    prev.push({ params: { slug: filename.replace(".mdx", "") }, locale: "ar" });
+    return prev;
+  }, []);
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
-const getStaticProps = async ({ params: { slug } }: any) => {
+const getStaticProps = async ({ params, locale, ...rest }: any) => {
+  const { slug } = params;
   const markdownWithMeta = await fs.readFile(
     path.join("projects", slug + ".mdx"),
     "utf-8"
@@ -152,6 +156,17 @@ const getStaticProps = async ({ params: { slug } }: any) => {
   const current = filenames.indexOf(`${slug}.mdx`);
   const next = filenames[current + 1]?.replace(".mdx", "") ?? null;
   const previous = filenames[current - 1]?.replace(".mdx", "") ?? null;
+
+  console.log(params, rest);
+
+  if (locale === "ar") {
+    return {
+      redirect: {
+        destination: `/work/${slug}`,
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {

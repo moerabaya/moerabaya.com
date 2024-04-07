@@ -35,8 +35,9 @@ const Blog = ({ posts }: any) => {
     items.push(
       <Link
         href={`/blog`}
-        className={`px-3 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 rounded-2xl !outline-none ${
-          !router.query?.slug && "bg-stone-200 dark:bg-stone-800 cursor-default"
+        className={`px-3 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid dark:text-gray-50  hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 active:bg-stone-200 dark:active:bg-stone-800 rounded-2xl !outline-none ${
+          !router.query?.slug &&
+          "border-neutral-300 dark:border-neutral-700 cursor-default"
         }`}
       >
         All
@@ -46,9 +47,9 @@ const Blog = ({ posts }: any) => {
       items.push(
         <Link
           href={`/blog/${key.toString().toLowerCase()}`}
-          className={`px-3 py-2 bg-stone-100 hover:bg-stone-200 dark:bg-stone-900 dark:hover:bg-stone-800 rounded-3xl !outline-none ${
+          className={`px-3 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid dark:text-gray-50  hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 active:bg-stone-200 dark:active:bg-stone-800 rounded-3xl !outline-none ${
             router.query?.slug === key.toString().toLowerCase() &&
-            "bg-stone-200 dark:bg-stone-800 cursor-default"
+            "border-neutral-300 dark:border-neutral-700 cursor-default"
           }`}
         >
           {key}

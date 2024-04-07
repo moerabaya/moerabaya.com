@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Cookies from "universal-cookie";
 import consts from "consts";
+import useGlobalization from "hooks/useGlobalization";
 
 const Login = ({
   redirectPath,
@@ -10,12 +11,12 @@ const Login = ({
   redirectPath?: string;
 }) => {
   const [password, setPassword] = useState("");
-
+  const { translate } = useGlobalization();
   return (
     <form className="pt-[75px] max-sm:pt-[60px] h-[100vh] flex  flex-col min-h-[320px]:">
       <input
         type="text"
-        placeholder="Enter password"
+        placeholder={translate("login.password", "Enter password")}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="flex-1 text-center text-[3rem] bg-[--background-color] text-neutral-950 dark:text-white placeholder-neutral-600 focus:bg-neutral-100 dark:focus:bg-neutral-900"
@@ -40,7 +41,7 @@ const Login = ({
           window.location.href = redirectPath ?? "/";
         }}
       >
-        Login
+        {translate("login.submit", "Login")}
       </button>
     </form>
   );

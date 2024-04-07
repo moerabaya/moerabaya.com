@@ -9,7 +9,8 @@ const Pages = navigation;
 const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { locale, getLocalizedString, isArabic } = useGlobalization();
   const [opacity, setOpacity] = useState(0);
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
+
   React.useEffect(() => {
     const handleScroll = (event: Event) => {
       const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
@@ -76,7 +77,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
               <List.Item>
                 <Link
                   opacity={isArabic ? 0.5 : 1}
-                  href={pathname}
+                  href={asPath}
                   locale="en-US"
                   smallCaps
                 >
@@ -86,7 +87,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
                   .
                 </Text>
                 <Link
-                  href={pathname}
+                  href={asPath}
                   locale="ar"
                   smallCaps
                   opacity={isArabic ? 1 : 0.5}
