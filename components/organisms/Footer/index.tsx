@@ -48,7 +48,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
               src={
                 "https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"
               }
-              alt="Portrait of Mohammed Rabay'a"
+              alt="Portrait of Moe Rabay'a"
               placeholder="blur"
               blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
               size={45}
@@ -160,7 +160,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
           <div className="!p-2 max-[500px]:text-center">
             <Link
               className={`px-4 py-2 bg-neutral-900 hover:text-neutral-50  hover:bg-neutral-800 rounded-2xl text-base inline-block transition ease-in-out hover:rounded-full`}
-              href={"mohammed-rabaya.pdf"}
+              href={"resume.pdf"}
             >
               {getLocalizedString("footer", "downloadResume")}
             </Link>

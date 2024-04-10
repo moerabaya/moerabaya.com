@@ -65,10 +65,10 @@ const Blog = ({ posts }: any) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>Blog - Mohammed Rabay&apos;a</title>
+        <title>Blog - Moe Rabay&apos;a</title>
 
         {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content="Blog | Mohammed Rabay'a" />
+        <meta name="title" content="Blog | Moe Rabay'a" />
         <meta
           name="description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
@@ -76,7 +76,7 @@ const Blog = ({ posts }: any) => {
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:url" content="https://moerabaya.com/blog" />
-        <meta property="og:title" content="Blog | Mohammed Rabay'a" />
+        <meta property="og:title" content="Blog | Moe Rabay'a" />
         <meta
           property="og:description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
@@ -88,7 +88,7 @@ const Blog = ({ posts }: any) => {
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/blog" />
-        <meta property="twitter:title" content="Blog | Mohammed Rabay'a" />
+        <meta property="twitter:title" content="Blog | Moe Rabay'a" />
         <meta
           property="twitter:description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"

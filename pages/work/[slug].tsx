@@ -49,18 +49,15 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{meta.title} - Mohammed Rabay&apos;a</title>
+        <title>{meta.title} - Moe Rabay&apos;a</title>
 
         {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content={meta.title + " | Mohammed Rabay'a"} />
+        <meta name="title" content={meta.title + " | Moe Rabay'a"} />
         <meta name="description" content={meta.description} />
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:url" content={"https://moerabaya.com/" + pathname} />
-        <meta
-          property="og:title"
-          content={meta.title + " | Mohammed Rabay'a"}
-        />
+        <meta property="og:title" content={meta.title + " | Moe Rabay'a"} />
         <meta property="og:description" content={meta.description} />
         <meta
           property="og:image"
@@ -78,7 +75,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
         />
         <meta
           property="twitter:title"
-          content={meta.title + " | Mohammed Rabay'a"}
+          content={meta.title + " | Moe Rabay'a"}
         />
         <meta property="twitter:description" content={meta.description} />
         <meta

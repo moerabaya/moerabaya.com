@@ -94,7 +94,7 @@ const Work = ({ projects }: WorkProps) => {
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:url" content="https://moerabaya.com/blog" />
-        <meta property="og:title" content="Blog | Mohammed Rabay'a" />
+        <meta property="og:title" content="Blog | Moe Rabay'a" />
         <meta
           property="og:description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"

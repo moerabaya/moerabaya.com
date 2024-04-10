@@ -24,19 +24,19 @@ const nextConfig = {
       {
         source: "/product-resume-2022.pdf",
         destination:
-          "/mohammed-rabaya.pdf",
+          "/resume.pdf",
         permanent: false,
       },
       {
         source: "/engineering-resume-2022.pdf",
         destination:
-          "/mohammed-rabaya.pdf",
+          "/resume.pdf",
         permanent: false,
       },
       {
         source: "/design-resume-2022.pdf",
         destination:
-          "/mohammed-rabaya.pdf",
+          "/resume.pdf",
         permanent: false,
       },
     ];

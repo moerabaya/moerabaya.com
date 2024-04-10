@@ -106,7 +106,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             src={
               "https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=150"
             }
-            alt="Portrait of Mohammed Rabay'a"
+            alt="Portrait of Moe Rabay'a"
             placeholder="blur"
             blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
             width={70}

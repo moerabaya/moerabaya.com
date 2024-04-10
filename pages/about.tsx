@@ -97,10 +97,10 @@ const About: NextPage<Props> = ({ projects }: Props) => {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>About - Mohammed Rabay&apos;a</title>
+        <title>About - Moe Rabay&apos;a</title>
 
         {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content="About | Mohammed Rabay'a" />
+        <meta name="title" content="About | Moe Rabay'a" />
         <meta
           name="description"
           content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
@@ -108,7 +108,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
 
         {/* <!-- Open Graph / Facebook --> */}
         <meta property="og:url" content="https://moerabaya.com/about" />
-        <meta property="og:title" content="About | Mohammed Rabay'a" />
+        <meta property="og:title" content="About | Moe Rabay'a" />
         <meta
           property="og:description"
           content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
@@ -120,7 +120,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/about" />
-        <meta property="twitter:title" content="About | Mohammed Rabay'a" />
+        <meta property="twitter:title" content="About | Moe Rabay'a" />
         <meta
           property="twitter:description"
           content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
@@ -151,7 +151,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                 src={
                   "https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1000"
                 }
-                alt="Portrait of Mohammed Rabay'a"
+                alt="Portrait of Moe Rabay'a"
                 placeholder="blur"
                 blurDataURL='"https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1"'
                 width={400}
@@ -173,7 +173,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                   </span>
                   <span className="w-[0.5px] h-[100vh] bg-[#FF0000] absolute bottom-0 left-0"></span>
                   <AnimatedText
-                    text={translate("about.title", "Mohammed Rabaya")}
+                    text={translate("about.title", "Moe Rabaya")}
                     type="h2"
                     className={`border-[1px] border-solid border-[#4597F7] max-lg:text-[6.75vw] max-md:text-[3rem]  max-sm:text-[10vw] max-[500px]:text-[12vw] w-[calc(auto + 100px)] ${
                       locale === "ar"
@@ -206,7 +206,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
                 src={
                   "https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1000"
                 }
-                alt="Portrait of Mohammed Rabay'a"
+                alt="Portrait of Moe Rabay'a"
                 placeholder="blur"
                 blurDataURL='"https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1"'
                 width={400}
@@ -237,7 +237,7 @@ const About: NextPage<Props> = ({ projects }: Props) => {
               {translate("about.connect", "Let's connect...")}
             </a>
             <a
-              href="/mohammed-rabaya.pdf"
+              href="/resume.pdf"
               className="py-[10px] w-[206px] inline-block text-center dark:text-white text-stone-950 text-[1rem] font-medium rounded-sm hover:bg-neutral-200 dark:hover:bg-[rgba(255,255,255,0.15)] max-sm:w-[170px] max-[400px]:w-full"
             >
               {translate("footer.downloadResume", "Download Resume")}
