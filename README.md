@@ -7,8 +7,8 @@ Moe Rabay'a is an experinced software engineer specialized in designing and buil
 - [x] Grid System
 - [x] Translated pages both in Arabic and English
 - [ ] Design System Components
-- [ ] Dark mode (Save to localStorage)
-- [ ] Custom project pages (Case Study)
+- [x] Dark mode (Save to localStorage)
+- [x] Custom project pages (Case Study)
 
 
 ## Folder Structure
