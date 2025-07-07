@@ -1,4 +1,4 @@
-import { default as NextImage } from "next/image";
+import { default as NextImage } from "next/legacy/image";
 import styled from "styled-components";
 
 const Title = styled.h3`

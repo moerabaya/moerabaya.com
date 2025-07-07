@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps } from "next/legacy/image";
 import { useRouter } from "next/router";
 import path from "path";
 import "prism-themes/themes/prism-vsc-dark-plus.css";
@@ -17,17 +17,16 @@ import "prismjs/components/prism-typescript.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import { useEffect } from "react";
-import { Post } from "../../types";
 
 const ResponsiveImage = (props: ImageProps) => (
   // eslint-disable-next-line jsx-a11y/alt-text
-  <Image
+  (<Image
     width="0"
     height="0"
     sizes="100vw"
     className="w-full h-auto"
     {...props}
-  />
+  />)
 );
 
 const components = {
@@ -45,7 +44,6 @@ const components = {
 };
 
 const Post = ({ mdxSource, meta }: any) => {
-  var post: Post;
   const { pathname } = useRouter();
   useEffect(() => {
     const highlight = async () => {

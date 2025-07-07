@@ -30,10 +30,4 @@ const Link = styled(Text).attrs({
     `}
 `;
 
-// const Link = (props: LinkProps) => (
-//   <StyledLink prefetch {...props}>
-//     {/* <StyledLink {...rest} target /> */}
-//   </StyledLink>
-// );
-
 export default Link;

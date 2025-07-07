@@ -23,6 +23,7 @@ declare module "motion" {
     children?: ReactElement;
     text: string;
     type: tagMap;
+    className?: string;
     finished?: (state: boolean) => void;
   }
 }

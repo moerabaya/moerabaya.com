@@ -6,7 +6,7 @@ import fs from "fs/promises";
 import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import rehypeImgSize from "rehype-img-size";
 import Login from "components/templates/Login";
 import { AnimatedText } from "components/atoms";
@@ -24,13 +24,13 @@ const components = {
   img: ({ src, height, width, ...rest }: any) => (
     // layout="responsive" makes the image fill the container width wise - I find it looks nicer for blog posts
     // eslint-disable-next-line jsx-a11y/alt-text
-    <Image
+    (<Image
       layout="responsive"
       src={src}
       height={height}
       width={width}
       {...rest}
-    />
+    />)
   ),
 };
 const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {

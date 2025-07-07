@@ -7,7 +7,6 @@ const AnimatedText = ({
   text,
   type,
   finished,
-  fontWeight,
   ...rest
 }: AnimatedTextProps) => {
   const [replay, setReplay] = useState(true);
