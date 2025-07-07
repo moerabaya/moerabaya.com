@@ -13,7 +13,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-    async redirects() {
+  async redirects() {
     return [
       {
         source: "/google-certificate",
@@ -23,26 +23,22 @@ const nextConfig = {
       },
       {
         source: "/product-resume-2022.pdf",
-        destination:
-          "/resume.pdf",
+        destination: "/resume.pdf",
         permanent: false,
       },
       {
         source: "/engineering-resume-2022.pdf",
-        destination:
-          "/resume.pdf",
+        destination: "/resume.pdf",
         permanent: false,
       },
       {
         source: "/design-resume-2022.pdf",
-        destination:
-          "/resume.pdf",
+        destination: "/resume.pdf",
         permanent: false,
       },
     ];
   },
   webpack(config) {
-    
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")

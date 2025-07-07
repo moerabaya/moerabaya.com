@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Variables */
 
 $base-font-size: 16px;
@@ -22,14 +24,14 @@ $on-laptop: 800px;
 
 $dot-width: 10px;
 $dot-height: 10px;
-$dot-radius: $dot-width/2;
+$dot-radius: math.div($dot-width, 2);
 
 $dot-color: #dac6a6;
 $dot-bg-color: $dot-color;
 $dot-before-color: $dot-color;
 $dot-after-color: $dot-color;
 
-$dot-spacing: $dot-width + $dot-width/2;
+$dot-spacing: $dot-width + math.div($dot-width, 2);
 
 $screen-sm: 500px;
 $screen-md: 768px;

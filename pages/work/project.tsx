@@ -1,6 +1,6 @@
 import { Project as ProjectInterface } from "types";
 import { Row, Col, AnimatedView, Text, Link } from "components/atoms";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import useGlobalization from "hooks/useGlobalization";
 import React from "react";
 import styled from "styled-components";
