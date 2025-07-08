@@ -10,8 +10,6 @@ import { AnimatedText } from "components";
 import GrabIcon from "../assets/icons/grab-icon.svg";
 import XIcon from "../assets/icons/x-icon.svg";
 
-
-
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
   const dateLocale = locale === "ar" ? "ar-EG" : locale;
@@ -262,5 +260,5 @@ About.displayName = "About";
 export default About;
 
 export async function getStaticProps() {
-  return { props: {} }
+  return { props: {} };
 }

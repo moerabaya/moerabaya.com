@@ -20,13 +20,13 @@ import { useEffect } from "react";
 
 const ResponsiveImage = (props: ImageProps) => (
   // eslint-disable-next-line jsx-a11y/alt-text
-  (<Image
+  <Image
     width="0"
     height="0"
     sizes="100vw"
     className="w-full h-auto"
     {...props}
-  />)
+  />
 );
 
 const components = {

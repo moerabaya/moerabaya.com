@@ -24,13 +24,13 @@ const components = {
   img: ({ src, height, width, ...rest }: any) => (
     // layout="responsive" makes the image fill the container width wise - I find it looks nicer for blog posts
     // eslint-disable-next-line jsx-a11y/alt-text
-    (<Image
+    <Image
       layout="responsive"
       src={src}
       height={height}
       width={width}
       {...rest}
-    />)
+    />
   ),
 };
 const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {

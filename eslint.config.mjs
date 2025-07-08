@@ -10,7 +10,7 @@ const eslintConfig = [
     extends: [
       "plugin:@next/next/recommended",
       "next",
-      "prettier",
+      "plugin:prettier/recommended",
     ],
   }),
 ];

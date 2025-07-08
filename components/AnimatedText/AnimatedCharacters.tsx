@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { AnimatedCharachtersProps } from "motion";
+import Text from "@/components/Text";
 import styled from "styled-components";
-import Text from "../Text";
 
 const StyledAniamtedCharacters = styled(Text)`
   lineheight: "0.5em";
