@@ -1,14 +1,15 @@
 import fs from "fs";
-import grayMatter from "gray-matter";
-import useGlobalization, { Globalization } from "hooks/useGlobalization";
+import path from "path";
 import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next/types";
-import path from "path";
-import { Project } from "types";
-import { AnimatedText } from "components";
 import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
+import { AnimatedText } from "components";
+import grayMatter from "gray-matter";
+import useGlobalization, { Globalization } from "hooks/useGlobalization";
+
+import { Project } from "types";
 
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;

@@ -1,13 +1,16 @@
-import Head from "next/head";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import "swiper/css";
+
 import { promises as fs } from "fs";
 import path from "path";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Head from "next/head";
+import { AnimatedView, Col, Grid, Link, Row, Text } from "components";
 import grayMatter from "gray-matter";
 import useFormatter from "hooks/useFormatter";
-import { Text, Grid, Row, Col, Link, AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
+
 import { Project as ProjectInterface } from "types";
-import "swiper/css";
+
 import Project from "./project";
 
 interface WorkProps {
@@ -122,9 +125,7 @@ const Work = ({ projects }: WorkProps) => {
           content={require("assets/images/metaimage.png")}
         />
       </Head>
-      {/* <h2>Coming soon</h2> */}
       <WorkCarousel projects={projects} />
-      {/* <pre>{JSON.stringify(projects, null, 2)}</pre> */}
     </div>
   );
 };

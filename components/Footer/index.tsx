@@ -1,8 +1,9 @@
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { Avatar, Col, Link, List, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
 import navigation from "utils/data/navigation.json";
+
 import { default as StyledFooter } from "./Footer.styled";
 
 const Pages = navigation;

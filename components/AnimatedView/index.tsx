@@ -1,5 +1,5 @@
-import { HTMLMotionProps, motion } from "framer-motion";
 import React from "react";
+import { HTMLMotionProps, motion } from "framer-motion";
 
 interface AniamtedViewProps
   extends React.PropsWithChildren<HTMLMotionProps<"div">> {

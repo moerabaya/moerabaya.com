@@ -1,6 +1,6 @@
+import { MouseEventHandler } from "react";
 import Image, { ImageProps } from "next/legacy/image";
 import Link from "next/link";
-import { MouseEventHandler } from "react";
 
 interface AvatarProps extends Omit<ImageProps, "onClick"> {
   size: ImageProps["width"];

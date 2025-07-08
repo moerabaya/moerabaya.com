@@ -1,5 +1,6 @@
 import _ from "lodash";
 import styled, { AnimateProps, keyframes } from "styled-components";
+
 import Wiggle from "./Wave";
 
 const Animate = styled.span<AnimateProps>`

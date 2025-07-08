@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { FlexComponent } from "components";
+import styled from "styled-components";
 
 const Header = styled(FlexComponent).attrs({
   as: "header",

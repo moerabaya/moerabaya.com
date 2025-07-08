@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedTextProps } from "motion";
-import { useEffect, useState } from "react";
+
 import AnimatedCharacters from "./AnimatedCharacters";
 
 const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {

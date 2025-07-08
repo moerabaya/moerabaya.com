@@ -1,7 +1,8 @@
-import styled, { css, GridProps } from "styled-components";
 import Container from "components/Container";
-import Row from "./Row";
+import styled, { css, GridProps } from "styled-components";
+
 import Col from "./Col";
+import Row from "./Row";
 
 const Grid = styled(Container)<GridProps>`
   ${(props) =>
@@ -36,4 +37,4 @@ const Grid = styled(Container)<GridProps>`
 `;
 
 export default Grid;
-export { Row, Col };
+export { Col, Row };

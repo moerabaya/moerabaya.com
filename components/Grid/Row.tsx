@@ -1,4 +1,5 @@
 import styled, { css, RowProps } from "styled-components";
+
 import FlexComponent from "@/components/FlexComponent";
 
 const Row = styled(FlexComponent)<RowProps>`

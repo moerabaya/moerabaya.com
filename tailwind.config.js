@@ -13,13 +13,13 @@ module.exports = {
   theme: {
     extend: {
       maxHeight: {
-        '60vh': '65vh',
-        '65vh': '65vh',
-      }
+        "60vh": "65vh",
+        "65vh": "65vh",
+      },
     },
     fontFamily: {
-      "mono": '"Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
-    }
+      mono: '"Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    },
   },
   plugins: [],
 };

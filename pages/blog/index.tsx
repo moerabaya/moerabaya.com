@@ -1,14 +1,15 @@
-import { Text } from "components";
 import { promises as fs } from "fs";
-import grayMatter from "gray-matter";
-import useGlobalization from "hooks/useGlobalization";
+import path from "path";
 import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import path from "path";
-import AnimatedView from "@/components/AnimatedView";
+import { Text } from "components";
+import grayMatter from "gray-matter";
+import useGlobalization from "hooks/useGlobalization";
+
 import useFormatter from "@/hooks/useFormatter";
+import AnimatedView from "@/components/AnimatedView";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();

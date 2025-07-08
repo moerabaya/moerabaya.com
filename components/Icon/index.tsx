@@ -1,5 +1,5 @@
-import styled, { css, IconProps } from "styled-components";
 import _ from "lodash";
+import styled, { css, IconProps } from "styled-components";
 
 const Icon = styled.span<IconProps>`
   display: inline-block;

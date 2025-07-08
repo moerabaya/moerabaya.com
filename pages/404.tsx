@@ -1,6 +1,7 @@
-import useGlobalization from "@/hooks/useGlobalization";
-import Head from "next/head";
 import React from "react";
+import Head from "next/head";
+
+import useGlobalization from "@/hooks/useGlobalization";
 
 const NotFound = () => {
   const { getLocalizedString } = useGlobalization();

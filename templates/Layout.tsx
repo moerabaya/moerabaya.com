@@ -1,13 +1,15 @@
-/* eslint-disable @next/next/no-page-custom-font */
-import useGlobalization from "hooks/useGlobalization";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useRef } from "react";
+import useGlobalization from "hooks/useGlobalization";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
+
 import Footer from "@/components/Footer";
+
 import GlobalStyle from "./GlobalStyle";
+
 const Navigation = dynamic(() => import("@/components/Navigation"), {
   ssr: false,
 });

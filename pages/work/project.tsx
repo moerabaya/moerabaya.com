@@ -1,9 +1,10 @@
-import { Project as ProjectInterface } from "types";
-import { Row, Col, AnimatedView, Text, Link } from "components";
-import Image from "next/legacy/image";
-import useGlobalization from "hooks/useGlobalization";
 import React from "react";
+import Image from "next/legacy/image";
+import { AnimatedView, Col, Link, Row, Text } from "components";
+import useGlobalization from "hooks/useGlobalization";
 import styled from "styled-components";
+
+import { Project as ProjectInterface } from "types";
 
 interface ProjectProps extends ProjectInterface {
   updateScrollTop: (scrollTop: number) => void;

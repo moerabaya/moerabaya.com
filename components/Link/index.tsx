@@ -1,5 +1,5 @@
-import { Text } from "components";
 import { default as NextLink } from "next/link";
+import { Text } from "components";
 import styled, { css, LinkProps } from "styled-components";
 
 const Link = styled(Text).attrs({

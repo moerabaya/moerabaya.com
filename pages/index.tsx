@@ -1,14 +1,15 @@
-import { Animate, AnimatedText, Text } from "components";
 import * as fs from "fs/promises";
-import grayMatter from "gray-matter";
-import useGlobalization from "hooks/useGlobalization";
+import path from "path";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
-import path from "path";
-import AnimatedView from "@/components/AnimatedView";
 import { Project } from "@/types";
+import { Animate, AnimatedText, Text } from "components";
+import grayMatter from "gray-matter";
+import useGlobalization from "hooks/useGlobalization";
+
+import AnimatedView from "@/components/AnimatedView";
 
 interface Props {
   projects: Project[];
@@ -24,7 +25,6 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
       .map((project: Project, index: number) => {
         if (index !== 1)
           list.push(
-            // eslint-disable-next-line react/jsx-no-duplicate-props
             <Link
               href={`work/${project.slug}`}
               className={`${

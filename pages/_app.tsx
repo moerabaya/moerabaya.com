@@ -1,15 +1,13 @@
 import "@/styles/app.scss";
-import type { AppProps } from "next/app";
-import Layout from "@/templates/Layout";
-import App from "next/app";
 
-import Cookies from "universal-cookie";
-import consts from "consts";
-import ThemeProvider from "templates/ThemeProvider";
-import { getProjects } from "pages";
+import type { AppProps } from "next/app";
+import App from "next/app";
 import Script from "next/script";
-// prevent TypeScript errors on the css prop on arbitrary elements
-// import {} from 'styled-components/cssprop'
+import Layout from "@/templates/Layout";
+import consts from "consts";
+import { getProjects } from "pages";
+import ThemeProvider from "templates/ThemeProvider";
+import Cookies from "universal-cookie";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -38,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 MyApp.getInitialProps = async (context: any) => {
   const appProps = await App.getInitialProps(context);
-  console.log("App.getInitialProps", context.ctx.req);
+
   const cookies = new Cookies(context.ctx.req.headers.cookie);
   const passwords = cookies.get(consts.SiteReadCookie) ?? {};
 

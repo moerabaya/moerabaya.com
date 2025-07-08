@@ -1,15 +1,16 @@
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import fs from "fs/promises";
 import path from "path";
-import { serialize } from "next-mdx-remote/serialize";
-import matter from "gray-matter";
+import React, { useEffect } from "react";
+import Head from "next/head";
 import Image from "next/legacy/image";
-import rehypeImgSize from "rehype-img-size";
-import Login from "components/templates/Login";
+import { useRouter } from "next/router";
 import { AnimatedText } from "components";
+import Login from "components/templates/Login";
+import matter from "gray-matter";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import rehypeImgSize from "rehype-img-size";
+
 import { Project as IProject } from "types";
 
 type ProjectProps = {
@@ -181,6 +182,6 @@ const getStaticProps = async ({ params, locale, ...rest }: any) => {
   };
 };
 
-export { getStaticProps, getStaticPaths };
+export { getStaticPaths, getStaticProps };
 
 //@ts-ignore

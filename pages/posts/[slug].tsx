@@ -1,14 +1,4 @@
-import { AnimatedView } from "components";
-import fs from "fs";
-import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
-import Image, { ImageProps } from "next/legacy/image";
-import { useRouter } from "next/router";
-import path from "path";
 import "prism-themes/themes/prism-vsc-dark-plus.css";
-import Prism from "prismjs";
 import "prismjs/components/prism-csharp.js";
 import "prismjs/components/prism-graphql.js";
 import "prismjs/components/prism-javascript.js";
@@ -16,15 +6,26 @@ import "prismjs/components/prism-jsx.js";
 import "prismjs/components/prism-typescript.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
+
+import fs from "fs";
+import path from "path";
 import { useEffect } from "react";
+import Head from "next/head";
+import Image, { ImageProps } from "next/legacy/image";
+import { useRouter } from "next/router";
+import { AnimatedView } from "components";
+import matter from "gray-matter";
+import { MDXRemote } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import Prism from "prismjs";
 
 const ResponsiveImage = (props: ImageProps) => (
-  // eslint-disable-next-line jsx-a11y/alt-text
   <Image
     width="0"
     height="0"
     sizes="100vw"
     className="w-full h-auto"
+    alt={props.alt}
     {...props}
   />
 );
@@ -180,4 +181,4 @@ const getStaticProps = async ({ params: { slug }, locale }: any) => {
   };
 };
 
-export { getStaticProps, getStaticPaths };
+export { getStaticPaths, getStaticProps };
