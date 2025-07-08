@@ -10,6 +10,8 @@ import { AnimatedText } from "components";
 import GrabIcon from "../assets/icons/grab-icon.svg";
 import XIcon from "../assets/icons/x-icon.svg";
 
+
+
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
   const dateLocale = locale === "ar" ? "ar-EG" : locale;
@@ -62,15 +64,9 @@ const jobs = (globalization: Globalization) => {
     },
   ];
 };
-
 const About = () => {
   const globalization = useGlobalization();
-  const { getLocalizedString, translate, locale } = globalization;
-  const dateLocale = locale === "ar" ? "ar-EG" : locale;
-  const options: Intl.DateTimeFormatOptions = {
-    month: "short",
-    year: "numeric",
-  };
+  const { translate, locale } = globalization;
   if (typeof window !== "undefined")
     window.localStorage.setItem("color-theme", "light");
 
@@ -264,3 +260,7 @@ const About = () => {
 About.displayName = "About";
 
 export default About;
+
+export async function getStaticProps() {
+  return { props: {} }
+}
