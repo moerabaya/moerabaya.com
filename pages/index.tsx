@@ -1,4 +1,4 @@
-import { Animate, AnimatedText, Text } from "components/atoms/";
+import { Animate, AnimatedText, Text } from "components";
 import * as fs from "fs/promises";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
@@ -7,7 +7,7 @@ import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import path from "path";
-import AnimatedView from "../components/atoms/AnimatedView";
+import AnimatedView from "../components/AnimatedView";
 import { Project } from "../types";
 
 interface Props {

@@ -9,7 +9,7 @@ import matter from "gray-matter";
 import Image from "next/legacy/image";
 import rehypeImgSize from "rehype-img-size";
 import Login from "components/templates/Login";
-import { AnimatedText } from "components/atoms";
+import { AnimatedText } from "components";
 import { Project as IProject } from "types";
 
 type ProjectProps = {

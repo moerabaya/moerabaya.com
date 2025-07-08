@@ -4,7 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import grayMatter from "gray-matter";
 import useFormatter from "hooks/useFormatter";
-import { Text, Grid, Row, Col, Link, AnimatedView } from "components/atoms";
+import { Text, Grid, Row, Col, Link, AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { Project as ProjectInterface } from "types";
 import "swiper/css";

@@ -1,4 +1,4 @@
-import { Text } from "components/atoms";
+import { Text } from "components";
 import { promises as fs } from "fs";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
@@ -7,7 +7,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import path from "path";
-import AnimatedView from "../../components/atoms/AnimatedView";
+import AnimatedView from "../../components/AnimatedView";
 import useFormatter from "../../hooks/useFormatter";
 
 const Blog = ({ posts }: any) => {

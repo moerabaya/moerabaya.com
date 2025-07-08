@@ -1,5 +1,5 @@
 import styled, { css, GridProps } from "styled-components";
-import Container from "components/atoms/Container";
+import Container from "components/Container";
 import Row from "./Row";
 import Col from "./Col";
 

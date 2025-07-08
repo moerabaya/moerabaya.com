@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexComponent } from "components/atoms/";
+import { FlexComponent } from "components";
 
 const Header = styled(FlexComponent).attrs({
   as: "header",

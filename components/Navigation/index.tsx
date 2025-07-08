@@ -1,5 +1,5 @@
 import Logo from "assets/images/logo.svg";
-import { AnimatedView } from "components/atoms";
+import { AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,7 +7,7 @@ import React, { useContext, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { ThemeContext } from "templates/ThemeProvider";
 import navigation from "utils/data/navigation.json";
-import { Burger } from "../../atoms/Button";
+import { Burger } from "../Button";
 import Nav from "./Nav.styled";
 
 const Pages = navigation;

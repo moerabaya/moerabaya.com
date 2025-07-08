@@ -1,5 +1,5 @@
 import styled, { ColProps, css } from "styled-components";
-import Component from "components/atoms/Component";
+import Component from "components/Component";
 
 const Col = styled(Component)<ColProps>`
   padding-left: ${(props) => props.theme.grid.gutter};

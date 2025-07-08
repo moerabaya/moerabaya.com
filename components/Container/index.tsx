@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Component from "components/atoms/Component";
+import Component from "components/Component";
 
 const Container = styled(Component)`
   margin: ${(props) => props.m ?? "0px auto"}; // center element in center

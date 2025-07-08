@@ -1,5 +1,5 @@
 import styled, { ComponentProps, MenuItemComponent } from "styled-components";
-import { Component } from "components/atoms/";
+import { Component } from "components";
 
 const Item = styled.li<MenuItemComponent>`
   display: inline-block;

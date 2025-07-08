@@ -7,7 +7,7 @@ import { NextPage } from "next/types";
 import path from "path";
 import styled from "styled-components";
 import { Project } from "types";
-import { AnimatedText } from "components/atoms";
+import { AnimatedText } from "components";
 import GrabIcon from "../assets/icons/grab-icon.svg";
 import XIcon from "../assets/icons/x-icon.svg";
 

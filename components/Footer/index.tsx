@@ -1,4 +1,4 @@
-import { Avatar, Col, Link, List, Row, Text } from "components/atoms/";
+import { Avatar, Col, Link, List, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { useRouter } from "next/router";
 import React, { useState } from "react";

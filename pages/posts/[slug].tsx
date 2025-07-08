@@ -1,4 +1,4 @@
-import { AnimatedView } from "components/atoms";
+import { AnimatedView } from "components";
 import fs from "fs";
 import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";

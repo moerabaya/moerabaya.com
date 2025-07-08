@@ -6,9 +6,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
-import Footer from "../components/organisms/Footer";
+import Footer from "../components/Footer";
 import GlobalStyle from "./GlobalStyle";
-const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
+const Navigation = dynamic(() => import("../components/Navigation"), {
   ssr: false,
 });
 export default function Layout({ children, pageProps }: any) {

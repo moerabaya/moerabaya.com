@@ -1,4 +1,4 @@
-import { Text } from "components/atoms";
+import { Text } from "components";
 import { default as NextLink } from "next/link";
 import styled, { css, LinkProps } from "styled-components";
 

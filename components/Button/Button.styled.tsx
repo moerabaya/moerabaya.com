@@ -1,7 +1,7 @@
 // import Link from "next/link";
 import styled, { ButtonComponent, css } from "styled-components";
 import { mixins } from "styles";
-import { Component, Link } from "../";
+import { Component, Link } from "..";
 
 const Button = styled((props: any) => (
   <Component {...props} as={props.href ? Link : "button"} />
