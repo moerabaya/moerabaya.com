@@ -5,28 +5,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { NextPage } from "next/types";
 import path from "path";
-import styled from "styled-components";
 import { Project } from "types";
 import { AnimatedText } from "components";
 import GrabIcon from "../assets/icons/grab-icon.svg";
 import XIcon from "../assets/icons/x-icon.svg";
-
-const RainbowText = styled.a`
-  background: linear-gradient(
-    217deg,
-    #ef5350,
-    #f48fb1,
-    #7e57c2,
-    #2196f3,
-    #26c6da,
-    #43a047
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-interface Props {
-  projects: Project[];
-}
 
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
@@ -80,7 +62,8 @@ const jobs = (globalization: Globalization) => {
     },
   ];
 };
-const About: NextPage<Props> = ({ projects }: Props) => {
+
+const About = () => {
   const globalization = useGlobalization();
   const { getLocalizedString, translate, locale } = globalization;
   const dateLocale = locale === "ar" ? "ar-EG" : locale;
@@ -281,36 +264,3 @@ const About: NextPage<Props> = ({ projects }: Props) => {
 About.displayName = "About";
 
 export default About;
-
-export async function getStaticProps() {
-  const projectsDirectory = path.join(
-    process.cwd() /* process current directory */,
-    "projects"
-  );
-  const filenames = fs.readdirSync(projectsDirectory);
-
-  const files = await Promise.all(
-    filenames.map(async (filename: any) => {
-      const filePath = path.join(projectsDirectory, filename);
-      const content = fs.readFileSync(filePath, "utf8");
-      const matter = grayMatter(content);
-      return {
-        filename,
-        matter,
-      };
-    })
-  );
-
-  const projects = files.map((file) => {
-    return {
-      ...file.matter.data,
-      path: `work/${file.filename.replace(".mdx", "")}`,
-    };
-  });
-
-  return {
-    props: {
-      projects,
-    },
-  };
-}
