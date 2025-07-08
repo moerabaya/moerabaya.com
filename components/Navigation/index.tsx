@@ -7,7 +7,7 @@ import React, { useContext, useState } from "react";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { ThemeContext } from "templates/ThemeProvider";
 import navigation from "utils/data/navigation.json";
-import { Burger } from "../Button";
+import { Burger } from "@/components/Button";
 import Nav from "./Nav.styled";
 
 const Pages = navigation;

@@ -7,8 +7,8 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import path from "path";
-import AnimatedView from "../../components/AnimatedView";
-import useFormatter from "../../hooks/useFormatter";
+import AnimatedView from "@/components/AnimatedView";
+import useFormatter from "@/hooks/useFormatter";
 
 const Blog = ({ posts }: any) => {
   const formatter = useFormatter();
@@ -83,7 +83,7 @@ const Blog = ({ posts }: any) => {
         />
         <meta
           property="og:image"
-          content={require("../../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
 
         {/* <!-- Twitter --> */}
@@ -95,7 +95,7 @@ const Blog = ({ posts }: any) => {
         />
         <meta
           property="twitter:image"
-          content={require("../../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
       </Head>
       <div className="container mx-auto max-w-4xl px-5 pt-5">

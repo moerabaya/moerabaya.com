@@ -7,8 +7,8 @@ import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import path from "path";
-import AnimatedView from "../components/AnimatedView";
-import { Project } from "../types";
+import AnimatedView from "@/components/AnimatedView";
+import { Project } from "@/types";
 
 interface Props {
   projects: Project[];
@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                   alt=""
                   src={
                     project.cover_photo &&
-                    require("../assets/images/projects/" + project.cover_photo)
+                    require("@/assets/images/projects/" + project.cover_photo)
                   }
                   className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0 border-solid border-[1px] border-stone-200 dark:hover:shadow-stone-600 dark:border-stone-600"
                 />
@@ -84,7 +84,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
         <meta
           property="og:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
 
         {/* <!-- Twitter --> */}
@@ -96,7 +96,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
         <meta
           property="twitter:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
       </Head>
 

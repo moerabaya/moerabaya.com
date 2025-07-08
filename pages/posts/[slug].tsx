@@ -72,7 +72,7 @@ const Post = ({ mdxSource, meta }: any) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
 
@@ -91,7 +91,7 @@ const Post = ({ mdxSource, meta }: any) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
       </Head>

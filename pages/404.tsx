@@ -1,4 +1,4 @@
-import useGlobalization from "hooks/useGlobalization";
+import useGlobalization from "@/hooks/useGlobalization";
 import Head from "next/head";
 import React from "react";
 

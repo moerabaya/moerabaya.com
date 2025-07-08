@@ -1,5 +1,5 @@
 import styled, { css, FlexComponentProps } from "styled-components";
-import Component from "../Component";
+import Component from "@/components/Component";
 
 const FlexComponent = styled(Component)<FlexComponentProps>`
   display: flex;

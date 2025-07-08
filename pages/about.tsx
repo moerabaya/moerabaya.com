@@ -7,8 +7,8 @@ import { NextPage } from "next/types";
 import path from "path";
 import { Project } from "types";
 import { AnimatedText } from "components";
-import GrabIcon from "../assets/icons/grab-icon.svg";
-import XIcon from "../assets/icons/x-icon.svg";
+import GrabIcon from "@/assets/icons/grab-icon.svg";
+import XIcon from "@/assets/icons/x-icon.svg";
 
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
@@ -92,7 +92,7 @@ const About = () => {
         />
         <meta
           property="og:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
 
         {/* <!-- Twitter --> */}
@@ -104,7 +104,7 @@ const About = () => {
         />
         <meta
           property="twitter:image"
-          content={require("../assets/images/metaimage.png")}
+          content={require("@/assets/images/metaimage.png")}
         />
       </Head>
       <div className="relative">

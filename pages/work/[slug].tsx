@@ -64,7 +64,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
 
@@ -83,7 +83,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
       </Head>

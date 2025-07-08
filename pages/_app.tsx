@@ -1,6 +1,6 @@
-import "../styles/app.scss";
+import "@/styles/app.scss";
 import type { AppProps } from "next/app";
-import Layout from "../templates/Layout";
+import Layout from "@/templates/Layout";
 import App from "next/app";
 
 import Cookies from "universal-cookie";
