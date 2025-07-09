@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Post } from "@/types";
 import { Text } from "components";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
@@ -11,12 +12,12 @@ import useGlobalization from "hooks/useGlobalization";
 import useFormatter from "@/hooks/useFormatter";
 import AnimatedView from "@/components/AnimatedView";
 
-const Blog = ({ posts }: any) => {
+const Blog = ({ posts }: { posts: Post[] }) => {
   const formatter = useFormatter();
   const router = useRouter();
   const filteredPosts = router.query?.slug
     ? posts?.filter(
-        (post: any) => post.category.toLowerCase() === router.query?.slug
+        (post) => post.category.toLowerCase() === router.query?.slug
       )
     : posts;
   const { getLocalizedString } = useGlobalization();
@@ -36,9 +37,9 @@ const Blog = ({ posts }: any) => {
     items.push(
       <Link
         href={`/blog`}
-        className={`px-3 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid dark:text-gray-50  hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 active:bg-stone-200 dark:active:bg-stone-800 rounded-2xl !outline-none ${
+        className={`rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-3 py-2 !outline-none hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:hover:bg-stone-900 dark:active:bg-stone-800 ${
           !router.query?.slug &&
-          "border-neutral-300 dark:border-neutral-700 cursor-default"
+          "cursor-default border-neutral-300 dark:border-neutral-700"
         }`}
       >
         All
@@ -48,9 +49,9 @@ const Blog = ({ posts }: any) => {
       items.push(
         <Link
           href={`/blog/${key.toString().toLowerCase()}`}
-          className={`px-3 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid dark:text-gray-50  hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 active:bg-stone-200 dark:active:bg-stone-800 rounded-3xl !outline-none ${
+          className={`rounded-3xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-3 py-2 !outline-none hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:hover:bg-stone-900 dark:active:bg-stone-800 ${
             router.query?.slug === key.toString().toLowerCase() &&
-            "border-neutral-300 dark:border-neutral-700 cursor-default"
+            "cursor-default border-neutral-300 dark:border-neutral-700"
           }`}
         >
           {key}
@@ -110,13 +111,13 @@ const Blog = ({ posts }: any) => {
             {getLocalizedString("blog", "title")}
           </Text>
         </AnimatedView>
-        <div className="pt-4 px-4 space-x-3">{renderCategories()}</div>
-        <ul className="px-0 mx-0 py-5">
-          {filteredPosts?.map((post: any, index: number) => (
+        <div className="space-x-3 px-4 pt-4">{renderCategories()}</div>
+        <ul className="mx-0 px-0 py-5">
+          {filteredPosts?.map((post, index: number) => (
             <AnimatedView key={post.slug} delay={index / 2}>
               <Link
                 href={post.slug}
-                className="flex mb-4 p-5 rounded-[40px] relative overflow-hidden h-[230px] max-md:h-[180px] transition ease-in-out duration-500 hover:shadow-stone-300 dark:hover:shadow-stone-700 hover:shadow-lg cursor-pointer"
+                className="relative mb-4 flex h-[230px] cursor-pointer overflow-hidden rounded-[40px] p-5 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-stone-300 dark:hover:shadow-stone-700 max-md:h-[180px]"
               >
                 <Image
                   src={post.image}
@@ -127,11 +128,11 @@ const Blog = ({ posts }: any) => {
                   alt={""}
                 />{" "}
                 <div className="relative z-10">
-                  <span className="bg-white p-1 px-3 rounded-t-md -mb-3 text-sm inline-block text-neutral-500 dark:bg-neutral-950 dark:text-neutral-300">
+                  <span className="-mb-3 inline-block rounded-t-md bg-white p-1 px-3 text-sm text-neutral-500 dark:bg-neutral-950 dark:text-neutral-300">
                     {post.date} . {formatter.timeToRead(post.content)} min read
                   </span>
-                  <h2 className="max-w-lg m-0">
-                    <span className="bg-white p-1 px-3 rounded-md font-medium inline-block dark:bg-neutral-950 max-md:text-2xl">
+                  <h2 className="m-0 max-w-lg">
+                    <span className="inline-block rounded-md bg-white p-1 px-3 font-medium dark:bg-neutral-950 max-md:text-2xl">
                       {post?.title}
                     </span>
                   </h2>
@@ -171,7 +172,7 @@ export async function getStaticProps() {
       ...file.matter.data,
       slug: `posts/${file.filename.replace(".mdx", "")}`,
       content: file.content,
-    };
+    } as unknown as Post;
   });
 
   return {

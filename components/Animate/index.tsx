@@ -1,5 +1,5 @@
 import _ from "lodash";
-import styled, { AnimateProps, keyframes } from "styled-components";
+import styled, { AnimateProps } from "styled-components";
 
 import Wiggle from "./Wave";
 

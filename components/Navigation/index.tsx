@@ -14,7 +14,20 @@ import Nav from "./Nav.styled";
 
 const Pages = navigation;
 
-const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
+type NavigationProps = {
+  previous?: string;
+  next?: string;
+  slug?: string;
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: string;
+    date?: string;
+    tags?: string[];
+  };
+};
+
+const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { pathname } = useRouter();
   const { translate } = useGlobalization();
@@ -29,7 +42,7 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
       <Link
         className={`px-4 py-2 ${
           index == 0 &&
-          " bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid  dark:bg-stone-900 dark:active:bg-stone-800 dark:hover:border-stone-800"
+          "border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] dark:border-[#202020] dark:bg-stone-900 dark:hover:border-stone-800 dark:active:bg-stone-800"
         } font-regular mx-2 rounded-2xl text-stone-800 active:bg-stone-200 dark:text-stone-50 dark:md:active:bg-stone-900`}
         href={path}
         key={name}
@@ -41,15 +54,15 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
   const Socials = [
     <span
       key={"theme-switch"}
-      className={`px-1 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 dark:text-gray-50 hover:bg-stone-100 hover:border-stone-200 dark:bg-stone-900 dark:hover:bg-stone-900 dark:hover:border-stone-800 w-20 flex rounded-full items-center relative active:bg-stone-200 dark:active:bg-stone-800`}
+      className={`font-regular relative mx-2 flex w-20 items-center rounded-full border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-1 hover:border-stone-200 hover:bg-stone-100 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:hover:bg-stone-900 dark:active:bg-stone-800`}
     >
       <span
-        className={`bg-[#EAEAEA] dark:bg-neutral-900 border-stone-200 border-[1px] border-solid dark:border-neutral-800 w-9 h-9 inline-block rounded-full transition-transform ${
+        className={`inline-block h-9 w-9 rounded-full border-[1px] border-solid border-stone-200 bg-[#EAEAEA] transition-transform dark:border-neutral-800 dark:bg-neutral-900 ${
           isDark && "translate-x-[94%] rtl:-translate-x-[94%]"
         }`}
       ></span>
-      <div
-        className="absolute w-full h-full flex px-2 justify-between items-center left-0 cursor-pointer"
+      <button
+        className="absolute left-0 flex h-full w-full cursor-pointer items-center justify-between px-2 text-inherit"
         onClick={() => setTheme(isDark ? "light" : "dark")}
       >
         <svg
@@ -58,7 +71,7 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`w-6 h-6 mx-[0.1rem] ${isDark && "opacity-40"}`}
+          className={`mx-[0.1rem] h-6 w-6 ${isDark && "opacity-40"}`}
         >
           <path
             strokeLinecap="round"
@@ -73,7 +86,7 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`w-5 h-5 mx-[0.2rem] ${!isDark && "opacity-40"}`}
+          className={`mx-[0.2rem] h-5 w-5 ${!isDark && "opacity-40"}`}
         >
           <path
             strokeLinecap="round"
@@ -81,13 +94,13 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
             d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
           />
         </svg>
-      </div>
+      </button>
     </span>,
     <a
       target="_blank"
       href="https://github.com/moerabaya/"
       key="github-url"
-      className="px-2 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 rounded-2xl dark:text-gray-50 active:bg-stone-200 hover:border-stone-200 dark:bg-stone-900 dark:active:bg-stone-800 dark:hover:border-stone-800"
+      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
     >
       <BsGithub size="26px" />
     </a>,
@@ -95,7 +108,7 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
       key="linkedin-url"
-      className="px-2 py-2 bg-[#F1F1F1] border-[1px] border-[#EEEEEE] dark:border-[#202020] border-solid font-regular mx-2 rounded-2xl dark:text-gray-50 active:bg-stone-200 hover:border-stone-200 dark:bg-stone-900 dark:active:bg-stone-800 dark:hover:border-stone-800"
+      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
     >
       <BsLinkedin size="26px" className="rounded-md" />
     </a>,
@@ -107,29 +120,32 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
         animate={isOpen}
         delay={isOpen ? index * 0.5 : 0}
       >
-        <li className="block p-5 text-2xl" onClick={() => setIsOpen(false)}>
+        <button
+          className="block p-5 text-2xl text-inherit"
+          onClick={() => setIsOpen(false)}
+        >
           <Link href={path} className="animated">
             {name}
           </Link>
-        </li>
+        </button>
       </AnimatedView>
     ));
   if (isProject)
     return (
       <Nav isOpen={isOpen} className="text-center">
         <AnimatedView vertical={"-75"} className="h-full">
-          <div className="container m-auto h-full flex items-center justify-stretch">
+          <div className="container m-auto flex h-full items-center justify-stretch">
             <div className="flex-1 text-start">
               <Link
                 href={"/"}
-                className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4"
+                className="inline-block rounded-[3px] px-3 py-3 pb-4 align-middle text-xl leading-3 text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-900"
                 style={{ fontVariant: "all-small-caps" }}
               >
                 <svg
                   viewBox="0 0 10 10"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="dark:*:fill-neutral-50 *:fill-neutral-900 inline-block me-2 mt-[1px] max-sm:size-[16px] size-[10px] max-sm:m-0"
+                  className="me-2 mt-[1px] inline-block size-[10px] *:fill-neutral-900 dark:*:fill-neutral-50 max-sm:m-0 max-sm:size-[16px]"
                 >
                   <path
                     d="M5.00048 4.05732L8.30048 0.757324L9.24315 1.69999L5.94315 4.99999L9.24315 8.29999L8.30048 9.24266L5.00048 5.94266L1.70048 9.24266L0.757812 8.29999L4.05781 4.99999L0.757812 1.69999L1.70048 0.757324L5.00048 4.05732Z"
@@ -141,15 +157,15 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
                 </span>
               </Link>
             </div>
-            <span className="flex-1 dark:text-neutral-50 text-neutral-900 align-middle inline-block text-lg px-3 rounded-[3px] leading-3 py-3 pb-3 me-auto text-center">
-              {props.meta.title}
+            <span className="me-auto inline-block flex-1 rounded-[3px] px-3 py-3 pb-3 text-center align-middle text-lg leading-3 text-neutral-900 dark:text-neutral-50">
+              {props.meta?.title}
             </span>
 
-            <div className="flex-1 text-end flex gap-3 justify-end">
+            <div className="flex flex-1 justify-end gap-3 text-end">
               {previous && (
                 <Link
                   href={`/work/${previous}`}
-                  className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4 me-"
+                  className="me- inline-block rounded-[3px] px-3 py-3 pb-4 align-middle text-xl leading-3 text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-900"
                   style={{ fontVariant: "all-small-caps" }}
                 >
                   <span className="max-sm:hidden">
@@ -163,7 +179,7 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
               {next && (
                 <Link
                   href={`/work/${next}`}
-                  className="dark:text-neutral-50 text-neutral-900 dark:hover:bg-neutral-900 hover:bg-neutral-100 align-middle inline-block text-xl px-3 rounded-[3px] leading-3 py-3 pb-4"
+                  className="inline-block rounded-[3px] px-3 py-3 pb-4 align-middle text-xl leading-3 text-neutral-900 hover:bg-neutral-100 dark:text-neutral-50 dark:hover:bg-neutral-900"
                   style={{ fontVariant: "all-small-caps" }}
                 >
                   <span className="max-sm:hidden">
@@ -187,13 +203,13 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
             <div className="flex items-center">
               <div className="max-sm:hidden">{renderMenu()}</div>
             </div>
-            <div className="text-center flex justify-center items-center">
+            <div className="flex items-center justify-center text-center">
               <Link href="/">
                 <Logo width={60} className="dark:fill-neutral-50" />
               </Link>
             </div>
             <div className="flex items-center justify-end">
-              <div className="max-sm:hidden flex justify-end items-stretch">
+              <div className="flex items-stretch justify-end max-sm:hidden">
                 {Socials}
               </div>
               <Burger
@@ -204,11 +220,11 @@ const Navigation = ({ hasReadPermission, previous, next, ...props }: any) => {
               />
             </div>
           </div>
-          <div className="m-0 h-full flex flex-col">
-            <div className="flex items-center flex-col justify-center flex-1  ">
+          <div className="m-0 flex h-full flex-col">
+            <div className="flex flex-1 flex-col items-center justify-center">
               {renderInnerMenu()}
             </div>
-            <div className="mt-auto flex pb-10 justify-center items-stretch">
+            <div className="mt-auto flex items-stretch justify-center pb-10">
               {Socials}
             </div>
           </div>

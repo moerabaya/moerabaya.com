@@ -89,7 +89,7 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
             objectFit="cover"
             src={
               project.cover_photo &&
-              require(`assets/images/projects/${project.cover_photo}`)
+              require(`@/assets/images/projects/${project.cover_photo}`)
             }
           />
         </AnimatedView>

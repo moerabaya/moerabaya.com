@@ -1,0 +1,13 @@
+# Ignore entire folders
+node_modules
+.next
+dist
+build
+coverage
+
+# Ignore specific files
+scripts/deploy.js
+*.config.js
+
+# Ignore a subfolder
+public/

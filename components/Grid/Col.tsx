@@ -30,6 +30,6 @@ const Col = styled(Component)<ColProps>`
       css`
         width: ${100 / (12 / props.xl)}% !important;
       `}
-  } ;
+  }
 `;
 export default Col;

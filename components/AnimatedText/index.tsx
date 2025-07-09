@@ -5,7 +5,7 @@ import { AnimatedTextProps } from "motion";
 import AnimatedCharacters from "./AnimatedCharacters";
 
 const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {
-  const [replay, setReplay] = useState(true);
+  const [replay] = useState(true);
   const hideDuration = 0.85;
   const showDuration = 0.85;
   const childrenDuration = 0.01;
@@ -13,14 +13,7 @@ const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {
   useEffect(() => {
     if (replay && finished)
       setTimeout(() => finished(true), showDuration * 1000);
-  }, [replay]);
-
-  const placeholderText = [
-    {
-      type: type,
-      text: text,
-    },
-  ];
+  }, [finished, replay]);
 
   const container = {
     visible: {
@@ -29,13 +22,7 @@ const AnimatedText = ({ text, type, finished, ...rest }: AnimatedTextProps) => {
       },
     },
   };
-  // Quick and dirt for the example
-  const handleReplay = () => {
-    setReplay(!replay);
-    setTimeout(() => {
-      setReplay(true);
-    }, 600);
-  };
+
   return (
     <motion.div
       initial="hidden"

@@ -1,18 +1,24 @@
 import Blog, { getStaticProps } from "./index";
 
+type CategoryParams = {
+  params: {
+    slug: string;
+  };
+};
+
 export const getStaticPaths = async () => {
   const { props } = await getStaticProps();
 
-  const categories = new Map();
+  const categories = new Map<string, CategoryParams>();
   props.posts?.map((post) => {
-    categories.set((post as any).category, {
+    categories.set(post.category, {
       params: {
-        slug: (post as any).category.toLowerCase(),
+        slug: post.category.toLowerCase(),
       },
     });
   });
-  const paths: any[] = [];
-  categories.forEach(function (value, key) {
+  const paths: CategoryParams[] = [];
+  categories.forEach(function (value) {
     paths.push(value);
   });
 

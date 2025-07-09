@@ -9,7 +9,7 @@ declare module "motion" {
     h6: "h6";
   };
 
-  interface AnimatedCharachtersProps
+  interface AnimatedCharactersProps
     extends React.PropsWithChildren<HTMLMotionProps<"div">> {
     children?: ReactElement;
     text: string;

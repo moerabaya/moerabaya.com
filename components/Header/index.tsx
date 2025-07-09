@@ -7,7 +7,7 @@ const Header = styled(FlexComponent).attrs({
   padding-top: 60px;
   @media (min-width: ${(props) => props.theme.breakpoints.medium}) {
     padding-top: 75px;
-  } ;
+  }
 `;
 
 export default Header;

@@ -18,10 +18,10 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
   const { getLocalizedString } = useGlobalization();
 
   function WorkItems() {
-    var list: any = [];
+    const list: Array<JSX.Element> = [];
 
     projects
-      ?.sort((a: any, b: any) => a.index - b.index)
+      ?.sort((a, b) => (a.index ?? 0) - (b.index ?? 1))
       .map((project: Project, index: number) => {
         if (index !== 1)
           list.push(
@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
               >
                 {index === 0 && (
                   <Text
-                    className="mt-9 ms-9 px-3 pb-4 py-3 text-xl absolute leading-4 font-medium bg-amber-500 text-white rounded-3xl max-sm:text-[0.85em] max-sm:px-2 max-sm:py-1 max-sm:mt-5 max-sm:ms-5"
+                    className="absolute ms-9 mt-9 rounded-3xl bg-amber-500 px-3 py-3 pb-4 text-xl font-medium leading-4 text-white max-sm:ms-5 max-sm:mt-5 max-sm:px-2 max-sm:py-1 max-sm:text-[0.85em]"
                     style={{ fontVariant: "all-small-caps" }}
                   >
                     {getLocalizedString("home", "featured")}
@@ -53,14 +53,14 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
                     project.cover_photo &&
                     require("@/assets/images/projects/" + project.cover_photo)
                   }
-                  className="overflow-hidden rounded-3xl transition ease-in-out duration-500 hover:shadow-stone-200 hover:shadow-lg cursor-pointer m-0 border-solid border-[1px] border-stone-200 dark:hover:shadow-stone-600 dark:border-stone-600"
+                  className="m-0 cursor-pointer overflow-hidden rounded-3xl border-[1px] border-solid border-stone-200 transition duration-500 ease-in-out hover:shadow-lg hover:shadow-stone-200 dark:border-stone-600 dark:hover:shadow-stone-600"
                 />
               </AnimatedView>
             </Link>
           );
       });
     return (
-      <ul className="grid grid-cols-2 gap-4 pb-24 m-0 max-md:pb-10">{list}</ul>
+      <ul className="m-0 grid grid-cols-2 gap-4 pb-24 max-md:pb-10">{list}</ul>
     );
   }
   return (
@@ -100,7 +100,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         />
       </Head>
 
-      <div className="container max-w-2xl mx-auto py-40 px-9 max-md:py-28 max-sm:px-5">
+      <div className="container mx-auto max-w-2xl px-9 py-40 max-md:py-28 max-sm:px-5">
         <AnimatedView>
           <Image
             src={
@@ -111,7 +111,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             blurDataURL='"https://en.gravatar.com/userimage/201100235/e812a2bff97470caf6299b1a96e5cc1e.png?size=1"'
             width={70}
             height={70}
-            className="rounded-3xl overflow-hidden"
+            className="overflow-hidden rounded-3xl"
           />
         </AnimatedView>
 
@@ -119,15 +119,13 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           <AnimatedText
             text={getLocalizedString("home", "pretitle")}
             type="h2"
-            className="inline-block my-1 max-sm:text-2xl"
+            className="my-1 inline-block max-sm:text-2xl"
           />
           &nbsp;&nbsp;
           <AnimatedView delay={0.6} duration={0.25} vertical="25%">
             <Animate
-              as={Text}
               name="wave"
               origin="70% 70%"
-              size="1.85em"
               className="-mt-2 max-sm:!text-[1.7em]"
               duration={1500}
             >
@@ -141,15 +139,15 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           className="m-0 max-sm:text-2xl"
         />
       </div>
-      <div className="container max-w-5xl mx-auto px-5">{WorkItems()}</div>
-      <div className="py-20 bg-stone-100 dark:bg-neutral-950 px-5 max-md:py-12">
-        <div className="container mx-auto max-w-2xl flex items-center justify-between max-sm:flex-col max-sm:w-full">
+      <div className="container mx-auto max-w-5xl px-5">{WorkItems()}</div>
+      <div className="bg-stone-100 px-5 py-20 dark:bg-neutral-950 max-md:py-12">
+        <div className="container mx-auto flex max-w-2xl items-center justify-between max-sm:w-full max-sm:flex-col">
           <h2 className="font-medium text-stone-800 dark:text-neutral-50 max-md:text-2xl">
             {getLocalizedString("home", "contact-title")}
           </h2>
           <a
             href="mail:contact@moerabaya.com"
-            className="px-8 py-3 ms-5 max-md:py-2 max-md:px-6 font-medium text-lg bg-stone-200 hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:text-neutral-950 dark:hover:bg-neutral-50 rounded-full max-sm:w-full max-sm:text-center max-sm:mt-5 max-sm:py-3"
+            className="ms-5 rounded-full bg-stone-200 px-8 py-3 text-lg font-medium hover:bg-neutral-950 hover:text-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-950 max-md:px-6 max-md:py-2 max-sm:mt-5 max-sm:w-full max-sm:py-3 max-sm:text-center"
           >
             {getLocalizedString("home", "contact-button")}
           </a>
@@ -177,7 +175,7 @@ export const getProjects = async (): Promise<Project[]> => {
   const filenames = await fs.readdir(projectsDirectory);
 
   const files = await Promise.all(
-    filenames.map(async (filename: any) => {
+    filenames.map(async (filename) => {
       const filePath = path.join(projectsDirectory, filename);
       const content = await fs.readFile(filePath, "utf8");
       const matter = grayMatter(content);

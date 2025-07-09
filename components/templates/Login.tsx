@@ -13,17 +13,17 @@ const Login = ({
   const [password, setPassword] = useState("");
   const { translate } = useGlobalization();
   return (
-    <form className="pt-[75px] max-sm:pt-[60px] h-[100vh] flex  flex-col min-h-[320px]:">
+    <form className="min-h-[320px]: flex h-[100vh] flex-col pt-[75px] max-sm:pt-[60px]">
       <input
         type="text"
         placeholder={translate("login.password", "Enter password")}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="flex-1 text-center text-[3rem] bg-[--background-color] text-neutral-950 dark:text-white placeholder-neutral-600 focus:bg-neutral-100 dark:focus:bg-neutral-900"
+        className="flex-1 bg-[--background-color] text-center text-[3rem] text-neutral-950 placeholder-neutral-600 focus:bg-neutral-100 dark:text-white dark:focus:bg-neutral-900"
       />
       <button
         type="submit"
-        className="py-5 bg-amber-500 hover:bg-amber-600 text-white font-semibold text-[1.4rem]"
+        className="bg-amber-500 py-5 text-[1.4rem] font-semibold text-white hover:bg-amber-600"
         style={{ fontVariant: "all-small-caps" }}
         onClick={(e) => {
           e.preventDefault();

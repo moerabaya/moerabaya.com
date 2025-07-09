@@ -1,5 +1,6 @@
-import { Button, Component } from "components";
 import styled from "styled-components";
+
+import Component from "@/components/Component";
 
 const ButtonGroup = styled(Component)`
   display: flex;

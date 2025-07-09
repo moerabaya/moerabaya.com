@@ -13,7 +13,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
   const { asPath } = useRouter();
 
   React.useEffect(() => {
-    const handleScroll = (event: Event) => {
+    const handleScroll = () => {
       const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
         ?.clientHeight;
       const contentHeight = document.body.clientHeight + footerHeight!;
@@ -56,19 +56,19 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
             />
           </Col>
         </Row>
-        <div className="grid grid-cols-6 max-md:grid-cols-11 max-sm:grid-cols-3 max-[380px]:grid-cols-2 pb-8 ">
-          <div className="col-span-2 px-2 max-xl:pe-16 max-xl:col-span-3 max-lg:pe-2 max-md:col-span-5 max-sm:col-span-3 max-[380px]:col-span-2 max-sm:max-w-[430px] pt-3 pb-5">
-            <Text className="text-xl max-md:text-lg block max-sm:text-xl">
+        <div className="grid grid-cols-6 pb-8 max-md:grid-cols-11 max-sm:grid-cols-3 max-[380px]:grid-cols-2">
+          <div className="col-span-2 px-2 pb-5 pt-3 max-xl:col-span-3 max-xl:pe-16 max-lg:pe-2 max-md:col-span-5 max-sm:col-span-3 max-sm:max-w-[430px] max-[380px]:col-span-2">
+            <Text className="block text-xl max-md:text-lg max-sm:text-xl">
               {getLocalizedString("footer", "title")}
             </Text>
-            <Text className="text-xl max-md:text-xl block mt-4 max-sm:text-xl">
+            <Text className="mt-4 block text-xl max-md:text-xl max-sm:text-xl">
               <Link animated={true} href="mail:contact@moerabaya.com">
                 contact@moerabaya.com
               </Link>
             </Text>
           </div>
           <div className="col-span-1 max-xl:hidden"></div>
-          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2 max-[380px]:col-span-2">
+          <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1 max-[380px]:col-span-2">
             <List>
               <List.Header>
                 <Text smallCaps className="text-lg max-xl:text-base">
@@ -99,7 +99,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
               </List.Item>
             </List>
           </div>
-          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2">
+          <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1">
             <List>
               <List.Header>
                 <Text smallCaps className="text-lg max-xl:text-base">
@@ -148,7 +148,7 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
               </List.Item>
             </List>
           </div>
-          <div className="col-span-1  max-md:col-span-2 max-sm:col-span-1 px-2">
+          <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1">
             <List
               style={{ paddingTop: "0.75em" }}
               className="max-xs:flex max-xs:space-x-4 max-xs:mt-4 max-xs:!pb-5"
@@ -160,13 +160,13 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
         <div className="flex justify-between max-[500px]:flex-col">
           <div className="!p-2 max-[500px]:text-center">
             <Link
-              className={`px-4 py-2 bg-neutral-900 hover:text-neutral-50  hover:bg-neutral-800 rounded-2xl text-base inline-block transition ease-in-out hover:rounded-full`}
+              className={`inline-block rounded-2xl bg-neutral-900 px-4 py-2 text-base transition ease-in-out hover:rounded-full hover:bg-neutral-800 hover:text-neutral-50`}
               href={"resume.pdf"}
             >
               {getLocalizedString("footer", "downloadResume")}
             </Link>
           </div>
-          <div className="text-end max-[500px]:text-center max-[500px]:mt-3 !p-2">
+          <div className="!p-2 text-end max-[500px]:mt-3 max-[500px]:text-center">
             ©{new Date().getFullYear()} moerabaya.com
           </div>
         </div>

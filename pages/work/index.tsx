@@ -6,7 +6,6 @@ import React, { useCallback, useState } from "react";
 import Head from "next/head";
 import { Col, Grid, Row, Text } from "components";
 import grayMatter from "gray-matter";
-import useFormatter from "hooks/useFormatter";
 import useGlobalization from "hooks/useGlobalization";
 
 import { Project as ProjectInterface } from "types";
@@ -19,9 +18,9 @@ interface WorkProps {
 const WorkCarousel = ({ projects }: WorkProps) => {
   const [currentProject, setCurrentProject] = useState(1);
   const [itemsScrollTop, setItemsScrollTop] = useState<number[]>([]);
-  const handleScroll = (element: any) => {
+  const handleScroll = (element: React.UIEvent<HTMLDivElement>) => {
     itemsScrollTop.map((item: number, index: number) => {
-      if (element.target.scrollTop >= item) {
+      if (element.currentTarget.scrollTop >= item) {
         setCurrentProject(index + 1);
       }
     });
@@ -45,7 +44,7 @@ const WorkCarousel = ({ projects }: WorkProps) => {
         overflowY: "scroll",
       }}
     >
-      {projects?.map((project: ProjectInterface, index: number) => (
+      {projects?.map((project: ProjectInterface) => (
         <Project
           key={`project-${project.title}`}
           {...project}
@@ -70,7 +69,6 @@ const WorkCarousel = ({ projects }: WorkProps) => {
 };
 
 const Work = ({ projects }: WorkProps) => {
-  const formatter = useFormatter();
   const { getLocalizedString } = useGlobalization();
   return (
     <div>
@@ -102,10 +100,7 @@ const Work = ({ projects }: WorkProps) => {
           property="og:description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
         />
-        <meta
-          property="og:image"
-          content={require("assets/images/metaimage.png")}
-        />
+        <meta property="og:image" content={"assets/images/metaimage.png"} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/blog" />
@@ -122,7 +117,7 @@ const Work = ({ projects }: WorkProps) => {
         />
         <meta
           property="twitter:image"
-          content={require("assets/images/metaimage.png")}
+          content={"assets/images/metaimage.png"}
         />
       </Head>
       <WorkCarousel projects={projects} />

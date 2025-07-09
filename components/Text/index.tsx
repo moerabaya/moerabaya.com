@@ -4,9 +4,10 @@ import { mixins } from "styles";
 
 import Component from "@/components/Component";
 
-const Text = styled((props: any) => (
-  <Component {...props} as={props.as ?? "span"} />
-))<TextProps>`
+const Text = styled(Component).attrs((props) => ({
+  ...props,
+  as: props.as || "span",
+}))<TextProps>`
   padding: ${(props) => props.p};
   margin: ${(props) => props.m};
   ${(props) => props.smallCaps && mixins.smallCaps}

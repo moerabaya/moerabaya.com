@@ -1,15 +1,10 @@
-import fs from "fs";
-import path from "path";
 import Head from "next/head";
 import Image from "next/image";
-import { NextPage } from "next/types";
 import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
+import MetaImage from "@/assets/images/metaimage.png";
 import { AnimatedText } from "components";
-import grayMatter from "gray-matter";
 import useGlobalization, { Globalization } from "hooks/useGlobalization";
-
-import { Project } from "types";
 
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
@@ -91,10 +86,7 @@ const About = () => {
           property="og:description"
           content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
         />
-        <meta
-          property="og:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
+        <meta property="og:image" content={MetaImage.src} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/about" />
@@ -103,14 +95,11 @@ const About = () => {
           property="twitter:description"
           content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
         />
-        <meta
-          property="twitter:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
+        <meta property="twitter:image" content={MetaImage.src} />
       </Head>
       <div className="relative">
-        <div className="h-full absolute w-full">
-          <div className="container mx-auto grid grid-cols-9 gap-7 h-full max-md:gap-4  max-md:grid-cols-5">
+        <div className="absolute h-full w-full">
+          <div className="container mx-auto grid h-full grid-cols-9 gap-7 max-md:grid-cols-5 max-md:gap-4">
             <div className="bg-neutral-100 dark:bg-neutral-900"></div>
             <div className="bg-neutral-100 dark:bg-neutral-900"></div>
             <div className="bg-neutral-100 dark:bg-neutral-900"></div>
@@ -123,8 +112,8 @@ const About = () => {
           </div>
         </div>
         <div className="relative">
-          <div className="container mx-auto max-w-5xl pt-16 max-md:py-12 mb-0 px-5 pb-20 max-md:pb-8 max-sm:grid-cols-1 flex flex-wrap items-center justify-between">
-            <div className="flex-1 min-w-full relative mx-auto hidden max-sm:block p-5">
+          <div className="container mx-auto mb-0 flex max-w-5xl flex-wrap items-center justify-between px-5 pb-20 pt-16 max-md:py-12 max-md:pb-8 max-sm:grid-cols-1">
+            <div className="relative mx-auto hidden min-w-full flex-1 p-5 max-sm:block">
               <Image
                 src={
                   "https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1000"
@@ -134,43 +123,43 @@ const About = () => {
                 blurDataURL='"https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1"'
                 width={400}
                 height={990}
-                className="overflow-hidden mb-0 w-full max-md:w-[340px] inline-block"
+                className="mb-0 inline-block w-full overflow-hidden max-md:w-[340px]"
               />
             </div>
-            <div className="ps-[1rem] flex-1 pe-[2rem] max-w-full max-sm:p-[0]">
+            <div className="max-w-full flex-1 pe-[2rem] ps-[1rem] max-sm:p-[0]">
               <div>
-                <span className="w-[100vw] h-[0.5px] bg-[#FF0000] absolute left-0"></span>
+                <span className="absolute left-0 h-[0.5px] w-[100vw] bg-[#FF0000]"></span>
                 <div className="relative">
-                  <XIcon className="absolute -top-[2px] -left-[0.75px]" />
+                  <XIcon className="absolute -left-[0.75px] -top-[2px]" />
                   <XIcon className="absolute -top-[2px] right-0" />
                 </div>
-                <div className="relative pt-14 pb-12 max-sm:pt-8 max-sm:pb-6">
-                  <XIcon className="absolute -mt-[2px] -left-[0.75px]" />
-                  <span className="absolute left-8 top-7 px-[4px] py-[2px] rounded-[4px] bg-[#ECF0FF] text-[#0038FF] font-mono text-[11px]  max-sm:top-[6%] max-sm:left-3">
+                <div className="relative pb-12 pt-14 max-sm:pb-6 max-sm:pt-8">
+                  <XIcon className="absolute -left-[0.75px] -mt-[2px]" />
+                  <span className="absolute left-8 top-7 rounded-[4px] bg-[#ECF0FF] px-[4px] py-[2px] font-mono text-[11px] text-[#0038FF] max-sm:left-3 max-sm:top-[6%]">
                     font-weight: bolder
                   </span>
-                  <span className="w-[0.5px] h-[100vh] bg-[#FF0000] absolute bottom-0 left-0"></span>
+                  <span className="absolute bottom-0 left-0 h-[100vh] w-[0.5px] bg-[#FF0000]"></span>
                   <AnimatedText
                     text={translate("about.title", "Moe Rabaya")}
                     type="h2"
-                    className={`border-[1px] border-solid border-[#4597F7] max-lg:text-[6.75vw] max-md:text-[3rem]  max-sm:text-[10vw] max-[500px]:text-[12vw] w-[calc(auto + 100px)] ${
+                    className={`w-[calc(auto + 100px)] border-[1px] border-solid border-[#4597F7] max-lg:text-[6.75vw] max-md:text-[3rem] max-sm:text-[10vw] max-[500px]:text-[12vw] ${
                       locale === "ar"
                         ? "text-[5.5rem] leading-[1]"
                         : "text-7xl leading-[0.8]"
-                    } leading-[0.8] m-0 uppercase *:!font-extrabold px-0 text-stone-800 dark:text-neutral-50`}
+                    } m-0 px-0 uppercase leading-[0.8] text-stone-800 *:!font-extrabold dark:text-neutral-50`}
                   />
-                  <XIcon className="absolute -mt-[3px] -left-[0.75px]" />
-                  <span className="absolute -left-5 bottom-9 px-[4px] py-[2px] rounded-[4px] bg-[#FFECEC] text-[#FF0000] font-mono text-[11px] max-sm:bottom-[10%] max-sm:-left-3">
+                  <XIcon className="absolute -left-[0.75px] -mt-[3px]" />
+                  <span className="absolute -left-5 bottom-9 rounded-[4px] bg-[#FFECEC] px-[4px] py-[2px] font-mono text-[11px] text-[#FF0000] max-sm:-left-3 max-sm:bottom-[10%]">
                     margin-left: -10%
                   </span>
 
-                  <span className="absolute -right-7 bottom-20 px-[4px] py-[2px] rounded-[4px] bg-[#FFEFF9] text-[#DA0592] font-mono text-[11px] max-sm:-right-3 max-sm:bottom-[32%]">
+                  <span className="absolute -right-7 bottom-20 rounded-[4px] bg-[#FFEFF9] px-[4px] py-[2px] font-mono text-[11px] text-[#DA0592] max-sm:-right-3 max-sm:bottom-[32%]">
                     padding-top: 2em
                   </span>
-                  <GrabIcon className="absolute top-[62%] left-[45%] -translate-x-1/2 -translate-y-1/2" />
+                  <GrabIcon className="absolute left-[45%] top-[62%] -translate-x-1/2 -translate-y-1/2" />
                   <div className="-mt-1 text-center">
                     <span
-                      className="bg-[#4597F7] px-[2.5px] py-[1.25px] text-[8px] rounded-[1.75px] text-[white]"
+                      className="rounded-[1.75px] bg-[#4597F7] px-[2.5px] py-[1.25px] text-[8px] text-[white]"
                       dir={"ltr"}
                     >
                       531 x 154
@@ -179,7 +168,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-1 relative mx-auto text-center max-sm:hidden">
+            <div className="relative mx-auto flex-1 text-center max-sm:hidden">
               <Image
                 src={
                   "https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1000"
@@ -189,11 +178,11 @@ const About = () => {
                 blurDataURL='"https://en.gravatar.com/userimage/201100235/0e21cbd55417f43fa3f5e687fa8b1fb2.png?size=1"'
                 width={400}
                 height={990}
-                className="overflow-hidden mb-0 w-[292px] max-md:w-[200px] inline-block"
+                className="mb-0 inline-block w-[292px] overflow-hidden max-md:w-[200px]"
               />
             </div>
           </div>
-          <div className="container mx-auto max-w-5xl px-10 text-[1.25em] pb-10 max-md:text-[1.1em] max-sm:px-5 max-[400px]:text-[1.05em]">
+          <div className="container mx-auto max-w-5xl px-10 pb-10 text-[1.25em] max-md:text-[1.1em] max-sm:px-5 max-[400px]:text-[1.05em]">
             <div>
               {translate(
                 "about.about1",
@@ -207,46 +196,46 @@ const About = () => {
               )}
             </div>
           </div>
-          <div className="container mx-auto max-w-5xl px-10 text-[1.25em] pb-10 max-sm:px-5 flex flex-wrap gap-3">
+          <div className="container mx-auto flex max-w-5xl flex-wrap gap-3 px-10 pb-10 text-[1.25em] max-sm:px-5">
             <a
               href="mailto:contact@moerabaya.com"
-              className="py-[10px] w-[206px] text-center inline-block text-white bg-stone-950 dark:bg-stone-50 dark:text-stone-950 text-[1rem] font-medium rounded-sm max-sm:px-[5px] max-sm:w-[170px] max-[400px]:w-full"
+              className="inline-block w-[206px] rounded-sm bg-stone-950 py-[10px] text-center text-[1rem] font-medium text-white dark:bg-stone-50 dark:text-stone-950 max-sm:w-[170px] max-sm:px-[5px] max-[400px]:w-full"
             >
               {translate("about.connect", "Let's connect...")}
             </a>
             <a
               href="/resume.pdf"
-              className="py-[10px] w-[206px] inline-block text-center dark:text-white text-stone-950 text-[1rem] font-medium rounded-sm hover:bg-neutral-200 dark:hover:bg-[rgba(255,255,255,0.15)] max-sm:w-[170px] max-[400px]:w-full"
+              className="inline-block w-[206px] rounded-sm py-[10px] text-center text-[1rem] font-medium text-stone-950 hover:bg-neutral-200 dark:text-white dark:hover:bg-[rgba(255,255,255,0.15)] max-sm:w-[170px] max-[400px]:w-full"
             >
               {translate("footer.downloadResume", "Download Resume")}
             </a>
           </div>
         </div>
-        <div className="container mx-auto relative">
-          <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700" />
+        <div className="container relative mx-auto">
+          <hr className="h-px border-0 bg-gray-200 dark:bg-gray-700" />
         </div>
       </div>
-      <div className="container mx-auto max-w-4xl py-24 max-md:py-14 mb-0 px-5">
-        <h4 className="block dark:text-neutral-100 text-neutral-950 font-semibold max-md:text-[1.1rem]">
+      <div className="container mx-auto mb-0 max-w-4xl px-5 py-24 max-md:py-14">
+        <h4 className="block font-semibold text-neutral-950 dark:text-neutral-100 max-md:text-[1.1rem]">
           {translate("about.experience.title", "Experience")}
         </h4>
         {jobs(globalization).map((item, index) => (
           <div key={`job-${index}`} className="flex flex-wrap pb-8">
-            <h4 className="w-[230px] max-md:w-[180px] dark:text-neutral-100 text-neutral-950 text-[1.15rem] max-md:text-[1rem]">
+            <h4 className="w-[230px] text-[1.15rem] text-neutral-950 dark:text-neutral-100 max-md:w-[180px] max-md:text-[1rem]">
               {item.date}
             </h4>
-            <div className="flex-1 min-w-[270px]">
-              <h4 className="mt-4 m-0 dark:text-neutral-100 text-neutral-950 text-[1.15rem]  max-md:text-[1rem]">
+            <div className="min-w-[270px] flex-1">
+              <h4 className="m-0 mt-4 text-[1.15rem] text-neutral-950 dark:text-neutral-100 max-md:text-[1rem]">
                 {item.title}
               </h4>
-              <h6 className="m-0 uppercase font-semibold dark:text-neutral-400 text-neutral-700 mt-[3px] max-md:text-[0.85rem]">
+              <h6 className="m-0 mt-[3px] font-semibold uppercase text-neutral-700 dark:text-neutral-400 max-md:text-[0.85rem]">
                 {item.company} . {item.role}
               </h6>
-              <h6 className="m-0 uppercase font-semibold dark:text-neutral-100 text-neutral-950 mt-1 self-baseline max-md:text-[0.85rem] hidden max-md:block">
+              <h6 className="m-0 mt-1 hidden self-baseline font-semibold uppercase text-neutral-950 dark:text-neutral-100 max-md:block max-md:text-[0.85rem]">
                 {item.location}
               </h6>
             </div>
-            <h6 className="m-0 uppercase font-semibold dark:text-neutral-100 text-neutral-950 mt-5 self-baseline max-md:text-[0.85rem] max-md:hidden">
+            <h6 className="m-0 mt-5 self-baseline font-semibold uppercase text-neutral-950 dark:text-neutral-100 max-md:hidden max-md:text-[0.85rem]">
               {item.location}
             </h6>
           </div>

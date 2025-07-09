@@ -1,4 +1,4 @@
-import styled, { ComponentProps, css } from "styled-components";
+import styled, { ComponentProps } from "styled-components";
 
 const Component = styled.div<ComponentProps>`
   padding: ${(props) => props.p};

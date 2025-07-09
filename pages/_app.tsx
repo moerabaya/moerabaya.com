@@ -1,6 +1,6 @@
 import "@/styles/app.scss";
 
-import type { AppProps } from "next/app";
+import type { AppContext, AppProps } from "next/app";
 import App from "next/app";
 import Script from "next/script";
 import Layout from "@/templates/Layout";
@@ -34,10 +34,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-MyApp.getInitialProps = async (context: any) => {
+MyApp.getInitialProps = async (context: AppContext) => {
   const appProps = await App.getInitialProps(context);
 
-  const cookies = new Cookies(context.ctx.req.headers.cookie);
+  const cookies = new Cookies(context.ctx.req?.headers.cookie);
   const passwords = cookies.get(consts.SiteReadCookie) ?? {};
 
   const projects = await getProjects();
