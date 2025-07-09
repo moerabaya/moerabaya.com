@@ -2,9 +2,9 @@ import "swiper/css";
 
 import { promises as fs } from "fs";
 import path from "path";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useState } from "react";
 import Head from "next/head";
-import { AnimatedView, Col, Grid, Link, Row, Text } from "components";
+import { Col, Grid, Row, Text } from "components";
 import grayMatter from "gray-matter";
 import useFormatter from "hooks/useFormatter";
 import useGlobalization from "hooks/useGlobalization";
