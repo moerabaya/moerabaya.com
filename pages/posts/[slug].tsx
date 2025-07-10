@@ -1,3 +1,5 @@
+import Prism from "prismjs";
+
 import "prism-themes/themes/prism-vsc-dark-plus.css";
 import "prismjs/components/prism-csharp.js";
 import "prismjs/components/prism-graphql.js";
@@ -18,7 +20,6 @@ import { AnimatedView } from "components";
 import matter from "gray-matter";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Prism from "prismjs";
 
 const ResponsiveImage = (props: ImageProps) => (
   <Image
