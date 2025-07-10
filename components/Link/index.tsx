@@ -1,11 +1,7 @@
 import { default as NextLink } from "next/link";
 import styled, { css, LinkProps } from "styled-components";
 
-import Text from "@/components/Text";
-
-const Link = styled(Text).attrs({
-  as: NextLink,
-})<LinkProps>`
+const Link = styled(NextLink)<LinkProps>`
   text-decoration: none;
   color: var(--text-color);
   &:visited {

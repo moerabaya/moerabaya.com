@@ -2,12 +2,8 @@ import styled, { ButtonComponent, css } from "styled-components";
 import { mixins } from "styles";
 
 import Component from "@/components/Component";
-import Link from "@/components/Link";
 
-const Button = styled(Component).attrs((props) => ({
-  ...props,
-  as: props.href ? Link : "button",
-}))<ButtonComponent>`
+const Button = styled(Component)<ButtonComponent>`
   > a,
   & {
     ${(props) => props.smallCaps && mixins.smallCaps}
