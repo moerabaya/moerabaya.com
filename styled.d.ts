@@ -124,7 +124,6 @@ declare module "styled-components" {
       React.HTMLProps<HTMLAnchorElement> {
     animated?: boolean;
     href: Url;
-    // target?: "_blank" | "_self" | "_parent" | "_top";
     children?: ReactElement | string;
   }
 

@@ -44,7 +44,7 @@ const components = {
       {...props}
       className={`${props.className} copy-to-clipboard`}
       data-prismjs-copy="copy"
-    />
+    ></pre>
   ),
 };
 

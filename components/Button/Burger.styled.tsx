@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Button from "./Button.styled";
 
-export const Burger = styled(Button)`
+export const Burger = styled(Button)<{ isActive?: boolean }>`
   position: relative;
   display: inline-block;
   width: 2.5em;

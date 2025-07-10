@@ -30,12 +30,12 @@ const mediaQueryPreference = getMediaQueryPreference();
 
 const defaultValue: ThemeInterface = {
   theme: "light",
-  setTheme: (theme: Theme) => {},
+  setTheme: () => {},
 };
 
 export const ThemeContext = createContext<ThemeInterface>(defaultValue);
 
-const ThemeProvider: React.FC<{ children: any }> = ({ children, ...rest }) => {
+const ThemeProvider = ({ children }: React.PropsWithChildren<unknown>) => {
   const [theme, setTheme] = useState(
     typeof window !== "undefined"
       ? (document.querySelector("html")?.getAttribute("data-theme") as Theme)

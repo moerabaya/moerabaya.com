@@ -79,7 +79,6 @@ const AnimatedCharacters = ({
           </span>
         );
       })}
-      {/* {} */}
     </StyledAnimatedText>
   );
 };

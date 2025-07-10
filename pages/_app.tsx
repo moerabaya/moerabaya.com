@@ -1,6 +1,6 @@
 import "@/styles/app.scss";
 
-import type { AppContext, AppProps } from "next/app";
+import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import App from "next/app";
 import Script from "next/script";
 import Layout from "@/templates/Layout";
@@ -9,9 +9,9 @@ import { getProjects } from "pages";
 import ThemeProvider from "templates/ThemeProvider";
 import Cookies from "universal-cookie";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<AppInitialProps>) {
   return (
-    <ThemeProvider {...pageProps}>
+    <ThemeProvider>
       <Script
         async
         onError={(e: Error) => {
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS_ID}');
         `}
       </Script>
-      <Layout pageProps={pageProps}>
+      <Layout>
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

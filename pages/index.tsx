@@ -26,6 +26,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
         if (index !== 1)
           list.push(
             <Link
+              key={project.slug}
               href={`work/${project.slug}`}
               className={`${
                 index === 0 ? "col-span-2" : "col-span-1"
