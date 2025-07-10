@@ -1,14 +1,6 @@
-import { AnimatedView } from "components/atoms";
-import fs from "fs";
-import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
-import Image, { ImageProps } from "next/legacy/image";
-import { useRouter } from "next/router";
-import path from "path";
-import "prism-themes/themes/prism-vsc-dark-plus.css";
 import Prism from "prismjs";
+
+import "prism-themes/themes/prism-vsc-dark-plus.css";
 import "prismjs/components/prism-csharp.js";
 import "prismjs/components/prism-graphql.js";
 import "prismjs/components/prism-javascript.js";
@@ -16,22 +8,35 @@ import "prismjs/components/prism-jsx.js";
 import "prismjs/components/prism-typescript.js";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
-import { useEffect } from "react";
+
+import fs from "fs";
+import path from "path";
+import { DetailedHTMLProps, HTMLAttributes, useEffect } from "react";
+import Head from "next/head";
+import Image, { ImageProps } from "next/legacy/image";
+import { useRouter } from "next/router";
+import type { Post } from "@/types";
+import { AnimatedView } from "components";
+import matter from "gray-matter";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 
 const ResponsiveImage = (props: ImageProps) => (
-  // eslint-disable-next-line jsx-a11y/alt-text
-  (<Image
+  <Image
     width="0"
     height="0"
     sizes="100vw"
-    className="w-full h-auto"
+    className="h-auto w-full"
+    alt={props.alt}
     {...props}
-  />)
+  />
 );
 
 const components = {
   Image: ResponsiveImage,
-  code: (props: any) => <code {...props} />,
+  code: (
+    props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+  ) => <code {...props} />,
   pre: (
     props: React.PropsWithChildren<React.HTMLAttributes<HTMLPreElement>>
   ) => (
@@ -39,11 +44,17 @@ const components = {
       {...props}
       className={`${props.className} copy-to-clipboard`}
       data-prismjs-copy="copy"
-    />
+    ></pre>
   ),
 };
 
-const Post = ({ mdxSource, meta }: any) => {
+const Post = ({
+  mdxSource,
+  meta,
+}: {
+  mdxSource: MDXRemoteSerializeResult;
+  meta: Post;
+}) => {
   const { pathname } = useRouter();
   useEffect(() => {
     const highlight = async () => {
@@ -72,7 +83,7 @@ const Post = ({ mdxSource, meta }: any) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
 
@@ -91,16 +102,14 @@ const Post = ({ mdxSource, meta }: any) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
       </Head>
 
-      <div className="container mx-auto max-w-4xl py-10 line-numbers max-sm:py-0">
-        {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
-        <br /> */}
+      <div className="line-numbers container mx-auto max-w-4xl py-10 max-sm:py-0">
         <div className="px-4">
-          <AnimatedView className="w-full overflow-hidden relative h-[350px] max-sm:h-[50vw] max-sm:min-h-[200px]">
+          <AnimatedView className="relative h-[350px] w-full overflow-hidden max-sm:h-[50vw] max-sm:min-h-[200px]">
             <Image
               alt={meta.alt}
               src={meta.image}
@@ -149,7 +158,13 @@ const getStaticPaths = async () => {
   };
 };
 
-const getStaticProps = async ({ params: { slug }, locale }: any) => {
+const getStaticProps = async ({
+  params: { slug },
+  locale,
+}: {
+  params: { slug: string };
+  locale?: string;
+}) => {
   const markdownWithMeta = fs.readFileSync(
     path.join("posts", slug + ".mdx"),
     "utf-8"
@@ -180,4 +195,4 @@ const getStaticProps = async ({ params: { slug }, locale }: any) => {
   };
 };
 
-export { getStaticProps, getStaticPaths };
+export { getStaticPaths, getStaticProps };

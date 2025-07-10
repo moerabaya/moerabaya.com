@@ -1,9 +1,10 @@
-import { Project as ProjectInterface } from "types";
-import { Row, Col, AnimatedView, Text, Link } from "components/atoms";
+import React, { useEffect, useRef } from "react";
 import Image from "next/legacy/image";
+import { AnimatedView, Col, Link, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
-import React from "react";
 import styled from "styled-components";
+
+import { Project as ProjectInterface } from "types";
 
 interface ProjectProps extends ProjectInterface {
   updateScrollTop: (scrollTop: number) => void;
@@ -38,10 +39,12 @@ const StyledProject = styled(Row)`
 
 const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
   const { getLocalizedString } = useGlobalization();
-  const ref = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
     updateScrollTop(ref.current!.offsetTop);
-  }, []);
+  }, [updateScrollTop]);
+
   return (
     <StyledProject
       ref={ref}
@@ -88,7 +91,7 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
             objectFit="cover"
             src={
               project.cover_photo &&
-              require(`assets/images/projects/${project.cover_photo}`)
+              require(`@/assets/images/projects/${project.cover_photo}`)
             }
           />
         </AnimatedView>

@@ -1,15 +1,17 @@
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import fs from "fs/promises";
 import path from "path";
-import { serialize } from "next-mdx-remote/serialize";
-import matter from "gray-matter";
+import React from "react";
+import { GetStaticPropsContext } from "next";
+import Head from "next/head";
 import Image from "next/legacy/image";
+import { useRouter } from "next/router";
+import Login from "@/templates/Login";
+import { AnimatedText } from "components";
+import matter from "gray-matter";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
 import rehypeImgSize from "rehype-img-size";
-import Login from "components/templates/Login";
-import { AnimatedText } from "components/atoms";
+
 import { Project as IProject } from "types";
 
 type ProjectProps = {
@@ -20,18 +22,7 @@ type ProjectProps = {
 };
 
 const components = {
-  // Custom image - here you can customize the image layout: https://nextjs.org/docs/api-reference/next/image#layout
-  img: ({ src, height, width, ...rest }: any) => (
-    // layout="responsive" makes the image fill the container width wise - I find it looks nicer for blog posts
-    // eslint-disable-next-line jsx-a11y/alt-text
-    (<Image
-      layout="responsive"
-      src={src}
-      height={height}
-      width={width}
-      {...rest}
-    />)
-  ),
+  Image,
 };
 const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
   const { pathname, asPath } = useRouter();
@@ -64,7 +55,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
 
@@ -83,15 +74,15 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
           content={
             meta?.metaimage
               ? require(meta?.metaimage)
-              : require("../../assets/images/metaimage.png")
+              : require("@/assets/images/metaimage.png")
           }
         />
       </Head>
 
-      <div className="container mx-auto pt-28 pb-16 px-5">
+      <div className="container mx-auto px-5 pb-16 pt-28">
         <AnimatedText
           text={meta.description as string}
-          className="text-5xl font-[500] leading-[1.15em] max-md:text-[5vw] max-[500px]:text-[8vw] max-md:leading-[1.2]"
+          className="text-5xl font-[500] leading-[1.15em] max-md:text-[5vw] max-md:leading-[1.2] max-[500px]:text-[8vw]"
           type={"h1"}
         />
         <div className="pt-14 max-md:text-[1em]">
@@ -130,18 +121,19 @@ const getStaticPaths = async () => {
   };
 };
 
-const getStaticProps = async ({ params, locale, ...rest }: any) => {
-  const { slug } = params;
+const getStaticProps = async (
+  context: GetStaticPropsContext<{ slug: string }>
+) => {
+  const { params, locale } = context;
   const markdownWithMeta = await fs.readFile(
-    path.join("projects", slug + ".mdx"),
+    path.join("projects", params?.slug + ".mdx"),
     "utf-8"
   );
 
-  const options: any = [[rehypeImgSize, { dir: "public" }]];
   const { data: frontMatter, content } = matter(markdownWithMeta);
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      rehypePlugins: options,
+      rehypePlugins: [[rehypeImgSize, { dir: "public" }]],
     },
   });
 
@@ -150,13 +142,13 @@ const getStaticProps = async ({ params, locale, ...rest }: any) => {
     "projects"
   );
   const filenames = await fs.readdir(projectsDirectory);
-  const current = filenames.indexOf(`${slug}.mdx`);
+  const current = filenames.indexOf(`${params?.slug}.mdx`);
   const next = filenames[current + 1]?.replace(".mdx", "") ?? null;
   const previous = filenames[current - 1]?.replace(".mdx", "") ?? null;
 
   const props = {
     meta: frontMatter as IProject,
-    slug: slug as string,
+    slug: params?.slug,
     mdxSource,
     next,
     previous,
@@ -169,7 +161,7 @@ const getStaticProps = async ({ params, locale, ...rest }: any) => {
       };
     return {
       redirect: {
-        destination: `/work/${slug}`,
+        destination: `/work/${params?.slug}`,
         permanent: false,
       },
       props,
@@ -181,6 +173,4 @@ const getStaticProps = async ({ params, locale, ...rest }: any) => {
   };
 };
 
-export { getStaticProps, getStaticPaths };
-
-//@ts-ignore
+export { getStaticPaths, getStaticProps };

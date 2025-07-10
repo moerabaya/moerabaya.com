@@ -4,12 +4,14 @@ export interface Post {
   title: string;
   author: string;
   description: string;
+  category: string;
   tags: string;
   metaimage: string;
   image: string;
   placeholder: string;
   date: string;
-  contents: any;
+  content: string;
+  alt: string;
 }
 
 export interface Project {
@@ -29,7 +31,7 @@ export interface Project {
   tags?: string;
   metaimage?: string;
   date?: string;
-  contents?: any;
+  content?: string;
   behance?: string;
   website?: string;
   appstore?: string;

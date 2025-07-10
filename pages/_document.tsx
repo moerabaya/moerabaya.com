@@ -16,7 +16,7 @@ function setInitialColorMode() {
     if (hasPreference) {
       return mql.matches ? "dark" : "light";
     }
-    // return default
+
     return "light";
   };
 

@@ -1,7 +1,8 @@
 // import original module declarations
-import { Direction } from "moerabaya-components";
 import { ReactElement } from "react";
 import { LinkProps as NextLinkProps } from "next/link";
+import { Direction } from "moerabaya-components";
+
 import "styled-components";
 
 // and extend them!
@@ -39,6 +40,7 @@ declare module "styled-components" {
     show?: ScreenSizes[] | ScreenSizes;
     p?: string;
     m?: string;
+    as?: string | ReactElement;
   }
 
   export interface GridProps extends ComponentProps {
@@ -53,7 +55,7 @@ declare module "styled-components" {
   }
 
   export interface TextProps extends ComponentProps {
-    opacity?: number = 1;
+    opacity?: number;
     smallCaps?: boolean;
     textTransform?: "uppercase" | "lowercase";
     align?: "center" | "start" | "end" | "left" | "right";
@@ -76,24 +78,24 @@ declare module "styled-components" {
       | "normal"
       | "bold"
       | "bolder";
-    onHover?: {};
+    onHover?: React.EventHandler;
   }
 
   export interface AnimateProps {
-    name: "wave";
+    name?: "wave";
     /**
      * number is in milliseconds
      */
-    duration: number | string;
-    iteration: number | "infinite";
+    duration?: number | string;
+    iteration?: number | "infinite";
     /**
      * number is in milliseconds
      */
-    delay: number | string;
+    delay?: number | string;
     /**
      * transform origin which allows the change the point that transformation occurs
      */
-    origin: string;
+    origin?: string;
   }
 
   export interface IconProps {
@@ -104,30 +106,29 @@ declare module "styled-components" {
   export interface ButtonComponent
     extends ComponentProps,
       React.HTMLProps<HTMLAnchorElement> {
-    size?: "sm" | "md" | "lg" = "sm";
-    isActive?: boolean = false;
-    smallCaps?: boolean = false;
-    alternative?: boolean = false;
+    size?: "sm" | "md" | "lg";
+    isActive?: boolean;
+    smallCaps?: boolean;
+    alternative?: boolean;
     layout?: "full" | "block";
     href?: string;
   }
 
   export interface MenuItemComponent extends ComponentProps {
-    active?: boolean = false;
+    active?: boolean;
   }
 
   export interface LinkProps
     extends TextProps,
       NextLinkProps,
       React.HTMLProps<HTMLAnchorElement> {
-    animated?: boolean = false;
+    animated?: boolean;
     href: Url;
-    // target?: "_blank" | "_self" | "_parent" | "_top";
     children?: ReactElement | string;
   }
 
   export interface RowProps extends FlexComponentProps {
-    wrap?: boolean = true;
+    wrap?: boolean;
   }
 
   export interface ColProps extends ComponentProps {

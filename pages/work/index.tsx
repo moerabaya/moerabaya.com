@@ -1,13 +1,15 @@
-import Head from "next/head";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import "swiper/css";
+
 import { promises as fs } from "fs";
 import path from "path";
+import React, { useCallback, useState } from "react";
+import Head from "next/head";
+import { Col, Grid, Row, Text } from "components";
 import grayMatter from "gray-matter";
-import useFormatter from "hooks/useFormatter";
-import { Text, Grid, Row, Col, Link, AnimatedView } from "components/atoms";
 import useGlobalization from "hooks/useGlobalization";
+
 import { Project as ProjectInterface } from "types";
-import "swiper/css";
+
 import Project from "./project";
 
 interface WorkProps {
@@ -16,20 +18,23 @@ interface WorkProps {
 const WorkCarousel = ({ projects }: WorkProps) => {
   const [currentProject, setCurrentProject] = useState(1);
   const [itemsScrollTop, setItemsScrollTop] = useState<number[]>([]);
-  const handleScroll = (element: any) => {
+  const handleScroll = (element: React.UIEvent<HTMLDivElement>) => {
     itemsScrollTop.map((item: number, index: number) => {
-      if (element.target.scrollTop >= item) {
+      if (element.currentTarget.scrollTop >= item) {
         setCurrentProject(index + 1);
       }
     });
   };
 
-  const updateScrollTop = useCallback((scrollTop: number) => {
-    if (!itemsScrollTop.includes(scrollTop)) {
-      itemsScrollTop.push(scrollTop);
-      setItemsScrollTop(itemsScrollTop);
-    }
-  }, []);
+  const updateScrollTop = useCallback(
+    (scrollTop: number) => {
+      if (!itemsScrollTop.includes(scrollTop)) {
+        itemsScrollTop.push(scrollTop);
+        setItemsScrollTop(itemsScrollTop);
+      }
+    },
+    [itemsScrollTop]
+  );
 
   return (
     <Grid
@@ -42,7 +47,7 @@ const WorkCarousel = ({ projects }: WorkProps) => {
         overflowY: "scroll",
       }}
     >
-      {projects?.map((project: ProjectInterface, index: number) => (
+      {projects?.map((project: ProjectInterface) => (
         <Project
           key={`project-${project.title}`}
           {...project}
@@ -67,7 +72,6 @@ const WorkCarousel = ({ projects }: WorkProps) => {
 };
 
 const Work = ({ projects }: WorkProps) => {
-  const formatter = useFormatter();
   const { getLocalizedString } = useGlobalization();
   return (
     <div>
@@ -99,10 +103,7 @@ const Work = ({ projects }: WorkProps) => {
           property="og:description"
           content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
         />
-        <meta
-          property="og:image"
-          content={require("assets/images/metaimage.png")}
-        />
+        <meta property="og:image" content={"assets/images/metaimage.png"} />
 
         {/* <!-- Twitter --> */}
         <meta property="twitter:url" content="https://moerabaya.com/blog" />
@@ -119,12 +120,10 @@ const Work = ({ projects }: WorkProps) => {
         />
         <meta
           property="twitter:image"
-          content={require("assets/images/metaimage.png")}
+          content={"assets/images/metaimage.png"}
         />
       </Head>
-      {/* <h2>Coming soon</h2> */}
       <WorkCarousel projects={projects} />
-      {/* <pre>{JSON.stringify(projects, null, 2)}</pre> */}
     </div>
   );
 };

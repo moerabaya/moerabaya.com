@@ -1,6 +1,6 @@
-import { Direction } from "moerabaya-components";
-import { useRouter } from "next/router";
 import { useMemo } from "react";
+import { useRouter } from "next/router";
+import { Direction } from "moerabaya-components";
 import ar from "utils/languages/ar.json";
 import enUS from "utils/languages/en-US.json";
 

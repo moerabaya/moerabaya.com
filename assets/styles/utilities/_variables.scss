@@ -69,7 +69,8 @@ $screen-xl: 1440px;
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
-  --bs-font-monospace:  "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --bs-font-monospace: "Fira Mono", Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
 
   --card-background: #ffffff;
   --card-shadow-color: rgba(0, 0, 0, 0.1);
@@ -105,11 +106,12 @@ html.dark {
   --masthead-text: #fff;
   --button-color: #f5e5ca;
   --button-text: #fff;
-  --bs-font-sans-serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif: "Montserrat", system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
-  --bs-font-monospace:  "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --bs-font-monospace: "Fira Mono", Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
 
   --card-background: var(--background-color);
   --card-shadow-color: rgba(var(--text-color-rgb), 0.1);

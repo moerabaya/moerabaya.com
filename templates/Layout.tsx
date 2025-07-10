@@ -1,21 +1,23 @@
-/* eslint-disable @next/next/no-page-custom-font */
-import useGlobalization from "hooks/useGlobalization";
-import dynamic from "next/dynamic";
-import Head from "next/head";
-import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import useGlobalization from "hooks/useGlobalization";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
-import Footer from "../components/organisms/Footer";
+
+import Footer from "@/components/Footer";
+
 import GlobalStyle from "./GlobalStyle";
-const Navigation = dynamic(() => import("../components/organisms/Navigation"), {
+
+const Navigation = dynamic(() => import("@/components/Navigation"), {
   ssr: false,
 });
-export default function Layout({ children, pageProps }: any) {
+export default function Layout({ children }: React.PropsWithChildren<unknown>) {
   const footerRef = useRef<HTMLDivElement>(null);
   const { direction } = useGlobalization();
   const { pathname } = useRouter();
   const [footerHeight, setFooterHeight] = React.useState(0);
+
   useEffect(() => {
     function handleResize() {
       if (footerRef.current?.clientHeight != footerHeight)
@@ -28,13 +30,13 @@ export default function Layout({ children, pageProps }: any) {
     handleResize();
 
     window.addEventListener("resize", handleResize);
-  }, []);
+  }, [footerHeight]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle direction={direction} />
       <div className={`content snappy`}>
-        <Navigation {...pageProps} />
+        <Navigation />
         <main
           style={{
             marginBottom: pathname !== "/work" ? footerHeight : 0,
@@ -46,9 +48,7 @@ export default function Layout({ children, pageProps }: any) {
         >
           {children}
         </main>
-        {/* <AnimatedView> */}
         {pathname !== "/work" && <Footer ref={footerRef} />}
-        {/* </AnimatedView> */}
       </div>
     </ThemeProvider>
   );
