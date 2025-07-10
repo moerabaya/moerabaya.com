@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/legacy/image";
 import { AnimatedView, Col, Link, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
@@ -39,10 +39,12 @@ const StyledProject = styled(Row)`
 
 const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
   const { getLocalizedString } = useGlobalization();
-  const ref = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
     updateScrollTop(ref.current!.offsetTop);
-  }, []);
+  }, [updateScrollTop]);
+
   return (
     <StyledProject
       ref={ref}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Avatar, Col, Link, List, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
@@ -7,12 +7,12 @@ import navigation from "utils/data/navigation.json";
 import { default as StyledFooter } from "./Footer.styled";
 
 const Pages = navigation;
-const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
+const Footer = React.forwardRef<HTMLDivElement>((_props, ref) => {
   const { locale, getLocalizedString, isArabic } = useGlobalization();
   const [opacity, setOpacity] = useState(0);
   const { asPath } = useRouter();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
         ?.clientHeight;
@@ -29,7 +29,8 @@ const Footer = React.forwardRef<HTMLDivElement>((props, ref) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [ref]);
+
   const renderPages = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
       <List.Item key={name} as="h5" style={{ marginTop: "0.5em" }}>

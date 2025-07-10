@@ -26,12 +26,15 @@ const WorkCarousel = ({ projects }: WorkProps) => {
     });
   };
 
-  const updateScrollTop = useCallback((scrollTop: number) => {
-    if (!itemsScrollTop.includes(scrollTop)) {
-      itemsScrollTop.push(scrollTop);
-      setItemsScrollTop(itemsScrollTop);
-    }
-  }, []);
+  const updateScrollTop = useCallback(
+    (scrollTop: number) => {
+      if (!itemsScrollTop.includes(scrollTop)) {
+        itemsScrollTop.push(scrollTop);
+        setItemsScrollTop(itemsScrollTop);
+      }
+    },
+    [itemsScrollTop]
+  );
 
   return (
     <Grid
