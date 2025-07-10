@@ -108,8 +108,6 @@ const Post = ({
       </Head>
 
       <div className="line-numbers container mx-auto max-w-4xl py-10 max-sm:py-0">
-        {/* <Link href="/blog"><a className="posts-back">{"<" + " Back"}</a></Link>
-        <br /> */}
         <div className="px-4">
           <AnimatedView className="relative h-[350px] w-full overflow-hidden max-sm:h-[50vw] max-sm:min-h-[200px]">
             <Image
