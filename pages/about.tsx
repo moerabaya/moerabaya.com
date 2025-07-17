@@ -15,10 +15,29 @@ const jobs = (globalization: Globalization) => {
   };
   return [
     {
-      date: `${new Date(2023, 1, 1).toLocaleDateString(
+      date: `${new Date(2024, 6, 1).toLocaleDateString(
         dateLocale,
         options
       )} - ${translate("about.experience.present", "Present")}`,
+      title: translate(
+        "about.experience.seniorEngineer",
+        "Senior Engineer II"
+      ),
+      location: translate(
+        "about.experience.eindhoven",
+        "Eindhoven, Netherlands"
+      ),
+      company: "Sendcloud",
+      role: translate("about.experience.fullTime", "Full-time"),
+    },
+    {
+      date: `${new Date(2023, 1, 1).toLocaleDateString(
+        dateLocale,
+        options
+      )} - ${new Date(2024, 6, 1).toLocaleDateString(
+        dateLocale,
+        options
+      )}`,
       title: translate(
         "about.experience.seniorSoftwareEngineer",
         "Senior Software Engineer"
