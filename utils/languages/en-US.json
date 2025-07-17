@@ -32,10 +32,12 @@
       "title": "Experience",
       "present": "Present",
       "seniorSoftwareEngineer": "Senior Software Engineer",
+      "seniorEngineer": "Senior Engineer II",
       "seniorFrontendEngineer": "Senior Front-end Engineer",
       "frontendEngineer": "Front-end Engineer",
       "fullTime": "Full-time",
       "amsterdam": "Amsterdam, Netherlands",
+      "eindhoven": "Eindhoven, Netherlands",
       "amman": "Amman, Jordan"
     }
   },
