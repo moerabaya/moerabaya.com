@@ -2,11 +2,11 @@ import Image from "next/image";
 import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
 import { AnimatedText } from "components";
-import useGlobalization, { Globalization } from "hooks/useGlobalization";
+import useGlobalization from "hooks/useGlobalization";
 
 import Meta from "@/components/Meta";
 
-const jobs = (globalization: Globalization) => {
+const jobs = (globalization: ReturnType<typeof useGlobalization>) => {
   const { translate, locale } = globalization;
   const dateLocale = locale === "ar" ? "ar-EG" : locale;
   const options: Intl.DateTimeFormatOptions = {

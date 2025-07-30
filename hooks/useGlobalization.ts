@@ -16,27 +16,18 @@ const languages: LanguageResources<Resource> = {
   "en-US": enUS,
 };
 
-function getter(...args: string[] | object[]) {
-  let current = arguments[0];
-  for (let i = 1; i < arguments.length; i++) {
-    if (current[arguments[i]]) {
-      current = current[arguments[i]];
-    } else {
-      return null;
+function getter(obj: Resource, ...keys: Array<string>) {
+  const result = keys.reduce<unknown>((acc, key) => {
+    if (acc && typeof acc === "object") {
+      return (acc as Record<string | number, unknown>)[key];
     }
-  }
-  return current;
+    return undefined;
+  }, obj);
+
+  return typeof result === "string" ? result : null;
 }
 
-export interface Globalization {
-  locale: string | undefined;
-  direction: Direction;
-  getLocalizedString: (...a: string[]) => string;
-  translate: (key: string, fallback?: string) => string;
-  isArabic: boolean;
-}
-
-const useGlobalization = (): Globalization => {
+const useGlobalization = () => {
   const { locale } = useRouter();
   const direction: Direction = locale === "ar" ? "rtl" : "ltr";
   const isArabic = locale === "ar";
@@ -46,9 +37,9 @@ const useGlobalization = (): Globalization => {
       document.documentElement.dir = direction;
   }, [direction]);
 
-  const getLocalizedString = (...a: string[]): string => {
-    const translateValue = getter(languages[locale as Languages], ...a);
-    return translateValue;
+  const getLocalizedString = (...args: string[]) => {
+    const translateValue = getter(languages[locale as Languages], ...args);
+    return translateValue ?? args[0];
   };
 
   const translate = (key: string, fallback: string = key) => {
