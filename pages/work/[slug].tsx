@@ -2,7 +2,6 @@ import fs from "fs/promises";
 import path from "path";
 import React from "react";
 import { GetStaticPropsContext } from "next";
-import Head from "next/head";
 import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 import Login from "@/templates/Login";
@@ -13,6 +12,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypeImgSize from "rehype-img-size";
 
 import { Project as IProject } from "types";
+import Meta from "@/components/Meta";
 
 type ProjectProps = {
   meta: IProject;
@@ -25,7 +25,7 @@ const components = {
   Image,
 };
 const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
-  const { pathname, asPath } = useRouter();
+  const { asPath } = useRouter();
 
   if (!meta) return;
   if (meta.password && !hasReadPermission?.[meta.slug]) {
@@ -36,54 +36,17 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
 
   return (
     <div className="pt-[75px]">
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>{meta.title} - Moe Rabay&apos;a</title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content={meta.title + " | Moe Rabay'a"} />
-        <meta name="description" content={meta.description} />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content={"https://moerabaya.com/" + pathname} />
-        <meta property="og:title" content={meta.title + " | Moe Rabay'a"} />
-        <meta property="og:description" content={meta.description} />
-        <meta
-          property="og:image"
-          content={
-            meta?.metaimage
-              ? require(meta?.metaimage)
-              : require("@/assets/images/metaimage.png")
-          }
-        />
-
-        {/* <!-- Twitter --> */}
-        <meta
-          property="twitter:url"
-          content={"https://moerabaya.com/" + pathname}
-        />
-        <meta
-          property="twitter:title"
-          content={meta.title + " | Moe Rabay'a"}
-        />
-        <meta property="twitter:description" content={meta.description} />
-        <meta
-          property="twitter:image"
-          content={
-            meta?.metaimage
-              ? require(meta?.metaimage)
-              : require("@/assets/images/metaimage.png")
-          }
-        />
-      </Head>
+      <Meta
+        title={meta.title}
+        description={meta.description}
+        image={meta.metaimage}
+      />
 
       <div className="container mx-auto px-5 pb-16 pt-28">
         <AnimatedText
-          text={meta.description as string}
+          text={meta.description || ""}
           className="text-5xl font-[500] leading-[1.15em] max-md:text-[5vw] max-md:leading-[1.2] max-[500px]:text-[8vw]"
-          type={"h1"}
+          type="h1"
         />
         <div className="pt-14 max-md:text-[1em]">
           <span className="pe-5">{getProjectType()?.[0]}</span>

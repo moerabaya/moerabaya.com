@@ -1,6 +1,5 @@
 import { promises as fs } from "fs";
 import path from "path";
-import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,6 +10,7 @@ import useGlobalization from "hooks/useGlobalization";
 
 import useFormatter from "@/hooks/useFormatter";
 import AnimatedView from "@/components/AnimatedView";
+import Meta from "@/components/Meta";
 
 const Blog = ({ posts }: { posts: Post[] }) => {
   const formatter = useFormatter();
@@ -20,7 +20,7 @@ const Blog = ({ posts }: { posts: Post[] }) => {
         (post) => post.category.toLowerCase() === router.query?.slug
       )
     : posts;
-  const { getLocalizedString } = useGlobalization();
+  const { getLocalizedString, translate } = useGlobalization();
   const getAllCategories = () => {
     const categories = new Map();
     for (const post of posts) {
@@ -63,43 +63,11 @@ const Blog = ({ posts }: { posts: Post[] }) => {
   };
   return (
     <div className="page-content">
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <Meta
+        title={translate("blog.meta-title", "Blog")}
+        description="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
+      />
 
-        <title>Blog - Moe Rabay&apos;a</title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content="Blog | Moe Rabay'a" />
-        <meta
-          name="description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content="https://moerabaya.com/blog" />
-        <meta property="og:title" content="Blog | Moe Rabay'a" />
-        <meta
-          property="og:description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-        <meta
-          property="og:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
-
-        {/* <!-- Twitter --> */}
-        <meta property="twitter:url" content="https://moerabaya.com/blog" />
-        <meta property="twitter:title" content="Blog | Moe Rabay'a" />
-        <meta
-          property="twitter:description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-        <meta
-          property="twitter:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
-      </Head>
       <div className="container mx-auto max-w-4xl px-5 pt-5">
         <AnimatedView>
           <Text

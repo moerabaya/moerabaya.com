@@ -1,10 +1,10 @@
-import Head from "next/head";
 import Image from "next/image";
 import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
-import MetaImage from "@/assets/images/metaimage.png";
 import { AnimatedText } from "components";
 import useGlobalization, { Globalization } from "hooks/useGlobalization";
+
+import Meta from "@/components/Meta";
 
 const jobs = (globalization: Globalization) => {
   const { translate, locale } = globalization;
@@ -19,10 +19,7 @@ const jobs = (globalization: Globalization) => {
         dateLocale,
         options
       )} - ${translate("about.experience.present", "Present")}`,
-      title: translate(
-        "about.experience.seniorEngineer",
-        "Senior Engineer II"
-      ),
+      title: translate("about.experience.seniorEngineer", "Senior Engineer II"),
       location: translate(
         "about.experience.eindhoven",
         "Eindhoven, Netherlands"
@@ -34,10 +31,7 @@ const jobs = (globalization: Globalization) => {
       date: `${new Date(2023, 1, 1).toLocaleDateString(
         dateLocale,
         options
-      )} - ${new Date(2024, 6, 1).toLocaleDateString(
-        dateLocale,
-        options
-      )}`,
+      )} - ${new Date(2024, 6, 1).toLocaleDateString(dateLocale, options)}`,
       title: translate(
         "about.experience.seniorSoftwareEngineer",
         "Senior Software Engineer"
@@ -85,37 +79,10 @@ const About = () => {
 
   return (
     <div className="pt-[70px] max-md:pt-[60px]">
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>About - Moe Rabay&apos;a</title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content="About | Moe Rabay'a" />
-        <meta
-          name="description"
-          content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
-        />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content="https://moerabaya.com/about" />
-        <meta property="og:title" content="About | Moe Rabay'a" />
-        <meta
-          property="og:description"
-          content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
-        />
-        <meta property="og:image" content={MetaImage.src} />
-
-        {/* <!-- Twitter --> */}
-        <meta property="twitter:url" content="https://moerabaya.com/about" />
-        <meta property="twitter:title" content="About | Moe Rabay'a" />
-        <meta
-          property="twitter:description"
-          content="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
-        />
-        <meta property="twitter:image" content={MetaImage.src} />
-      </Head>
+      <Meta
+        title={translate("about.meta-title", "About")}
+        description="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
+      />
       <div className="relative">
         <div className="absolute h-full w-full">
           <div className="container mx-auto grid h-full grid-cols-9 gap-7 max-md:grid-cols-5 max-md:gap-4">

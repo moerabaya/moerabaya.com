@@ -16,9 +16,9 @@ const languages: LanguageResources<Resource> = {
   "en-US": enUS,
 };
 
-function getter(...args: string[] | Object[]) {
-  var current = arguments[0];
-  for (var i = 1; i < arguments.length; i++) {
+function getter(...args: string[] | object[]) {
+  let current = arguments[0];
+  for (let i = 1; i < arguments.length; i++) {
     if (current[arguments[i]]) {
       current = current[arguments[i]];
     } else {
@@ -32,7 +32,7 @@ export interface Globalization {
   locale: string | undefined;
   direction: Direction;
   getLocalizedString: (...a: string[]) => string;
-  translate: (key: string, fallback: string) => any;
+  translate: (key: string, fallback?: string) => string;
   isArabic: boolean;
 }
 
@@ -51,7 +51,7 @@ const useGlobalization = (): Globalization => {
     return translateValue;
   };
 
-  const translate = (key: string, fallback: string) => {
+  const translate = (key: string, fallback: string = key) => {
     const translateValue = getter(
       languages[locale as Languages],
       ...key.split(".")

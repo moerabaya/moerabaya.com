@@ -12,14 +12,14 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.js";
 import fs from "fs";
 import path from "path";
 import { DetailedHTMLProps, HTMLAttributes, useEffect } from "react";
-import Head from "next/head";
 import Image, { ImageProps } from "next/legacy/image";
-import { useRouter } from "next/router";
 import type { Post } from "@/types";
 import { AnimatedView } from "components";
 import matter from "gray-matter";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+
+import Meta from "@/components/Meta";
 
 const ResponsiveImage = (props: ImageProps) => (
   <Image
@@ -55,7 +55,6 @@ const Post = ({
   mdxSource: MDXRemoteSerializeResult;
   meta: Post;
 }) => {
-  const { pathname } = useRouter();
   useEffect(() => {
     const highlight = async () => {
       await Prism.highlightAll();
@@ -64,48 +63,11 @@ const Post = ({
   }, []);
   return (
     <div className="post-content">
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>{meta.title} - Moe Rabay&apos;a</title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content={meta.title + " | Moe Rabay'a"} />
-        <meta name="description" content={meta.description} />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content={"https://moerabaya.com/" + pathname} />
-        <meta property="og:title" content={meta.title + " | Moe Rabay'a"} />
-        <meta property="og:description" content={meta.description} />
-        <meta
-          property="og:image"
-          content={
-            meta?.metaimage
-              ? require(meta?.metaimage)
-              : require("@/assets/images/metaimage.png")
-          }
-        />
-
-        {/* <!-- Twitter --> */}
-        <meta
-          property="twitter:url"
-          content={"https://moerabaya.com/" + pathname}
-        />
-        <meta
-          property="twitter:title"
-          content={meta.title + " | Moe Rabay'a"}
-        />
-        <meta property="twitter:description" content={meta.description} />
-        <meta
-          property="twitter:image"
-          content={
-            meta?.metaimage
-              ? require(meta?.metaimage)
-              : require("@/assets/images/metaimage.png")
-          }
-        />
-      </Head>
+      <Meta
+        title={meta.title}
+        description={meta.description}
+        image={meta.metaimage}
+      />
 
       <div className="line-numbers container mx-auto max-w-4xl py-10 max-sm:py-0">
         <div className="px-4">

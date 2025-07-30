@@ -3,12 +3,12 @@ import "swiper/css";
 import { promises as fs } from "fs";
 import path from "path";
 import React, { useCallback, useState } from "react";
-import Head from "next/head";
 import { Col, Grid, Row, Text } from "components";
 import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
 
 import { Project as ProjectInterface } from "types";
+import Meta from "@/components/Meta";
 
 import Project from "./project";
 
@@ -72,57 +72,13 @@ const WorkCarousel = ({ projects }: WorkProps) => {
 };
 
 const Work = ({ projects }: WorkProps) => {
-  const { getLocalizedString } = useGlobalization();
+  const { translate } = useGlobalization();
   return (
     <div>
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>
-          {getLocalizedString("work", "title")} - {getLocalizedString("name")}
-        </title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta
-          name="title"
-          content={`${getLocalizedString(
-            "work",
-            "title"
-          )} - ${getLocalizedString("name")}`}
-        />
-        <meta
-          name="description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content="https://moerabaya.com/blog" />
-        <meta property="og:title" content="Blog | Moe Rabay'a" />
-        <meta
-          property="og:description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-        <meta property="og:image" content={"assets/images/metaimage.png"} />
-
-        {/* <!-- Twitter --> */}
-        <meta property="twitter:url" content="https://moerabaya.com/blog" />
-        <meta
-          property="twitter:title"
-          content={`${getLocalizedString(
-            "work",
-            "title"
-          )} - ${getLocalizedString("name")}`}
-        />
-        <meta
-          property="twitter:description"
-          content="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
-        />
-        <meta
-          property="twitter:image"
-          content={"assets/images/metaimage.png"}
-        />
-      </Head>
+      <Meta
+        title={translate("work.meta-title")}
+        description="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"
+      />
       <WorkCarousel projects={projects} />
     </div>
   );
