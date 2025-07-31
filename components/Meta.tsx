@@ -52,10 +52,7 @@ const Meta = (props: MetaProps) => {
         content={`${props.title} | ${translate("name")}`}
       />
       <meta name="twitter:description" content={props.description} />
-      <meta
-        name="twitter:image"
-        content={props.image ? require(props.image) : MetaImage.src}
-      />
+      <meta name="twitter:image" content={props.image ?? MetaImage.src} />
     </Head>
   );
 };

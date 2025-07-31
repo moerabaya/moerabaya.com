@@ -66,7 +66,7 @@ const Post = ({
       <Meta
         title={meta.title}
         description={meta.description}
-        image={meta.metaimage}
+        image={require(meta.metaimage)}
       />
 
       <div className="line-numbers container mx-auto max-w-4xl py-10 max-sm:py-0">

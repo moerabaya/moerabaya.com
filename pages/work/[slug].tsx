@@ -39,7 +39,7 @@ const Project = ({ mdxSource, meta, hasReadPermission }: ProjectProps) => {
       <Meta
         title={meta.title}
         description={meta.description}
-        image={meta.metaimage}
+        image={meta.metaimage ? require(meta.metaimage) : undefined}
       />
 
       <div className="container mx-auto px-5 pb-16 pt-28">
