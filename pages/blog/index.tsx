@@ -62,7 +62,7 @@ const Blog = ({ posts }: { posts: Post[] }) => {
     return items;
   };
   return (
-    <div className="page-content">
+    <div className="pt-[75px]">
       <Meta
         title={translate("blog.meta-title", "Blog")}
         description="ux, ui, mobile, apps, web, javascript, html, developer, designer, seo, user experience, user interface, products, social media"

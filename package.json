@@ -27,6 +27,7 @@
     "react-dom": "^19.1.0",
     "react-icons": "^4.4.0",
     "react-moving-text": "^0.0.7",
+    "react-use": "^17.6.0",
     "rehype-img-size": "^1.0.1",
     "styled-components": "^6.1.8",
     "swiper": "^8.4.5",

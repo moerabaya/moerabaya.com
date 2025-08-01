@@ -62,7 +62,7 @@ const Post = ({
     highlight();
   }, []);
   return (
-    <div className="post-content">
+    <div className="pt-[75px]">
       <Meta
         title={meta.title}
         description={meta.description}

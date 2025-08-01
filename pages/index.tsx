@@ -86,7 +86,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           />
         </AnimatedView>
 
-        <div className="flex items-center">
+        <div className="flex items-center pt-5">
           <AnimatedText
             text={getLocalizedString("home", "pretitle")}
             type="h2"
@@ -97,7 +97,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             <Animate
               name="wave"
               origin="70% 70%"
-              className="-mt-2 max-sm:!text-[1.7em]"
+              className="-mt-2 text-[2em] max-sm:!text-[1.7em]"
               duration={1500}
             >
               👋
