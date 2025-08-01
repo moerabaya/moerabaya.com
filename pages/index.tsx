@@ -1,7 +1,6 @@
 import * as fs from "fs/promises";
 import path from "path";
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { Project } from "@/types";
@@ -10,6 +9,7 @@ import grayMatter from "gray-matter";
 import useGlobalization from "hooks/useGlobalization";
 
 import AnimatedView from "@/components/AnimatedView";
+import Meta from "@/components/Meta";
 
 interface Props {
   projects: Project[];
@@ -66,40 +66,10 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
   }
   return (
     <>
-      <Head>
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>{getLocalizedString("title")}</title>
-
-        {/* <!-- Primary Meta Tags --> */}
-        <meta name="title" content={getLocalizedString("title")} />
-        <meta name="description" content={getLocalizedString("description")} />
-
-        {/* <!-- Open Graph / Facebook --> */}
-        <meta property="og:url" content="https://moerabaya.com/" />
-        <meta property="og:title" content={getLocalizedString("title")} />
-        <meta
-          property="og:description"
-          content={getLocalizedString("description")}
-        />
-        <meta
-          property="og:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
-
-        {/* <!-- Twitter --> */}
-        <meta property="twitter:url" content="https://moerabaya.com/" />
-        <meta property="twitter:title" content={getLocalizedString("title")} />
-        <meta
-          property="twitter:description"
-          content={getLocalizedString("description")}
-        />
-        <meta
-          property="twitter:image"
-          content={require("@/assets/images/metaimage.png")}
-        />
-      </Head>
+      <Meta
+        title={getLocalizedString("title")}
+        description={getLocalizedString("description")}
+      />
 
       <div className="container mx-auto max-w-2xl px-9 py-40 max-md:py-28 max-sm:px-5">
         <AnimatedView>
@@ -116,7 +86,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
           />
         </AnimatedView>
 
-        <div className="flex items-center">
+        <div className="flex items-center pt-5">
           <AnimatedText
             text={getLocalizedString("home", "pretitle")}
             type="h2"
@@ -127,7 +97,7 @@ const Home: NextPage<Props> = ({ projects }: Props) => {
             <Animate
               name="wave"
               origin="70% 70%"
-              className="-mt-2 max-sm:!text-[1.7em]"
+              className="-mt-2 text-[2em] max-sm:!text-[1.7em]"
               duration={1500}
             >
               👋

@@ -4,16 +4,9 @@
 
 /* Configuration and helpers */
 @import "@/assets/styles/utilities/variables";
-@import "@/assets/styles/utilities/functions";
-@import "@/assets/styles/utilities/mixins";
 
 // Core Styles
 @import "@/assets/styles/core/reset.scss";
 @import "@/assets/styles/core/base.scss";
-@import "@/assets/styles/core/_typography.scss";
 
 @import "@/assets/styles/layout/_global.scss";
-@import "@/assets/styles/layout/_content.scss";
-@import "@/assets/styles/layout/_post.scss";
-@import "@/assets/styles/layout/_work.scss";
-@import "@/assets/styles/layout/_header.scss";
