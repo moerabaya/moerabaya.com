@@ -80,11 +80,15 @@ const About = () => {
   if (typeof window !== "undefined")
     window.localStorage.setItem("color-theme", "light");
 
+  // Calculate years of experience since 2015
+  const currentYear = new Date().getFullYear();
+  const yearsOfExperience = currentYear - 2015;
+
   return (
     <div className="pt-[70px] max-md:pt-[60px]">
       <Meta
         title={translate("about.meta-title", "About")}
-        description="A passionate problem solver with 7+ years of experience working in the field of ux and traditional development."
+        description={`A passionate problem solver with ${yearsOfExperience}+ years of experience working in the field of ux and traditional development.`}
       />
       <div className="relative">
         <div className="absolute h-full w-full">
