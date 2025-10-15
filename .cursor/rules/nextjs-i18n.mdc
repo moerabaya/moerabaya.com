@@ -1,0 +1,18 @@
+---
+globs: app/**/*.ts,app/**/*.tsx
+---
+### Next.js App Router and i18n Conventions
+
+- **Locales in URL**: Locale segment is `app/[locale]/`. Resolve locale from middleware/i18n helpers in `i18n/`.
+- **Server vs Client**:
+  - Prefer Server Components by default in `app/`.
+  - Add `'use client'` only for stateful, eventful, or browser-only code.
+  - Client components import only client-safe modules.
+- **Metadata**: Use `export const metadata` on pages/layouts for titles and open graph; central images live in `assets/images/site/`.
+- **Not Found**: Use `not-found.tsx` rather than custom 404 page routes.
+- **Static Data**:
+  - Blog/projects MDX sourced from `posts/` and `projects/`.
+  - Use async data functions in Server Components; avoid fetching from Client when possible.
+- **Links and Navigation**:
+  - Use localized routes and helpers from `i18n/routing.ts`.
+  - Keep locale when linking between pages.

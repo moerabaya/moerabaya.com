@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "@/i18n/navigation";
+import { ThemeContext } from "@/templates/ThemeProvider";
 import Logo from "assets/images/logo.svg";
 import { AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { ThemeContext } from "templates/ThemeProvider";
 import navigation from "utils/data/navigation.json";
 
 import { Burger } from "@/components/Button";
@@ -29,11 +29,11 @@ type NavigationProps = {
 
 const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const { translate } = useGlobalization();
   const { theme, setTheme } = useContext(ThemeContext);
   const { locale } = useGlobalization();
-  const isProject = pathname.split("/")?.[1] === "work" && props.slug;
+  const isProject = pathname?.split("/")?.[1] === "work" && props.slug;
 
   const isDark = theme === "dark";
 
@@ -132,7 +132,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
     ));
   if (isProject)
     return (
-      <Nav isOpen={isOpen} className="text-center">
+      <Nav $isOpen={isOpen} className="text-center">
         <AnimatedView vertical={"-75"} className="h-full">
           <div className="container m-auto flex h-full items-center justify-stretch">
             <div className="flex-1 text-start">
@@ -196,41 +196,43 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
       </Nav>
     );
   return (
-    <Nav isOpen={isOpen} className="text-center">
-      <AnimatedView vertical={"-75"} className="h-full">
-        <div className="container m-auto h-full">
-          <div className="grid grid-cols-3 gap-3">
-            <div className="flex items-center">
-              <div className="max-sm:hidden">{renderMenu()}</div>
+    <>
+      <Nav $isOpen={isOpen} className="text-center">
+        <AnimatedView vertical={"-75"} className="h-full">
+          <div className="container m-auto h-full">
+            <div className="grid grid-cols-3 gap-3">
+              <div className="flex items-center">
+                <div className="max-sm:hidden">{renderMenu()}</div>
+              </div>
+              <div className="flex items-center justify-center text-center">
+                <Link href="/">
+                  <Logo width={60} className="dark:fill-neutral-50" />
+                </Link>
+              </div>
+              <div className="flex items-center justify-end">
+                <div className="flex items-stretch justify-end max-sm:hidden">
+                  {Socials}
+                </div>
+                <Burger
+                  $size="md"
+                  $isActive={isOpen}
+                  className="!hidden max-sm:!block"
+                  onClick={() => setIsOpen(!isOpen)}
+                />
+              </div>
             </div>
-            <div className="flex items-center justify-center text-center">
-              <Link href="/">
-                <Logo width={60} className="dark:fill-neutral-50" />
-              </Link>
-            </div>
-            <div className="flex items-center justify-end">
-              <div className="flex items-stretch justify-end max-sm:hidden">
+            <div className="m-0 flex h-full flex-col">
+              <div className="flex flex-1 flex-col items-center justify-center">
+                {renderInnerMenu()}
+              </div>
+              <div className="mt-auto flex items-stretch justify-center pb-10">
                 {Socials}
               </div>
-              <Burger
-                size="md"
-                isActive={isOpen}
-                className="!hidden max-sm:!block"
-                onClick={() => setIsOpen(!isOpen)}
-              />
             </div>
           </div>
-          <div className="m-0 flex h-full flex-col">
-            <div className="flex flex-1 flex-col items-center justify-center">
-              {renderInnerMenu()}
-            </div>
-            <div className="mt-auto flex items-stretch justify-center pb-10">
-              {Socials}
-            </div>
-          </div>
-        </div>
-      </AnimatedView>
-    </Nav>
+        </AnimatedView>
+      </Nav>
+    </>
   );
 };
 

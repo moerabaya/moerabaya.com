@@ -1,0 +1,32 @@
+---
+alwaysApply: true
+---
+### Project Structure Guide
+
+- **App Router**: The main entry lives under `app/` using Next.js App Router.
+  - Localized routes are nested in `app/[locale]/` (e.g., `app/[locale]/page.tsx`, `app/[locale]/blog/page.tsx`).
+  - The layout tree roots at `app/[locale]/layout.tsx` with shared providers (see [`ThemeProvider.tsx`](mdc:app/[locale]/ThemeProvider.tsx) and [`templates/ThemeProvider/index.tsx`](mdc:templates/ThemeProvider/index.tsx)).
+  - 404 is handled by `app/[locale]/not-found.tsx`.
+
+- **Content**:
+  - Blog posts: `posts/*.mdx`
+  - Case studies/projects: `projects/*.mdx`
+
+- **UI Components**: Reusable components live in `components/`.
+  - Styling via styled-components and SCSS modules under `assets/styles/`.
+  - Icons/SVG components in `assets/svg-components/`.
+
+- **Public Assets**: Served from `public/` (images, pdfs, favicons). Project images grouped under `public/projects/*`.
+
+- **Internationalization**:
+  - Routing config in `i18n/` (`routing.ts`, `request.ts`, `navigation.ts`).
+  - Locale files under `utils/languages/*.json`.
+
+- **Utilities**:
+  - Global constants: `consts.ts`
+  - Shared hooks: `hooks/`
+  - Styles theme, mixins: `styles/`
+
+- **Build/Config**: `next.config.js`, `tailwind.config.js`, `eslint.config.mjs`, `tsconfig.json`.
+
+Use code references pointing to the files above when citing existing code.

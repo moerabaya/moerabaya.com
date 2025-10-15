@@ -4,27 +4,31 @@ import { mixins } from "styles";
 
 import Component from "@/components/Component";
 
-const Text = styled(Component).attrs((props) => ({
-  ...props,
-  as: props.as || "span",
-}))<TextProps>`
-  padding: ${(props) => props.p};
-  margin: ${(props) => props.m};
-  ${(props) => props.smallCaps && mixins.smallCaps}
-  font-weight: ${(props) => props.weight};
-  opacity: ${(props) => props.opacity};
-  text-align: ${(props) => props.align};
-  text-transform: ${(props) => props.textTransform};
+const Text = styled(Component)
+  .withConfig({
+    shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
+  })
+  .attrs((props) => ({
+    ...props,
+    as: props.as || "span",
+  }))<TextProps>`
+  padding: ${(props) => props.$p};
+  margin: ${(props) => props.$m};
+  ${(props) => props.$smallCaps && mixins.smallCaps}
+  font-weight: ${(props) => props.$weight};
+  opacity: ${(props) => props.$opacity};
+  text-align: ${(props) => props.$align};
+  text-transform: ${(props) => props.$textTransform};
   ${(props) =>
-    props.size &&
+    props.$size &&
     css`
-      font-size: ${_.isNumber(props.size) ? `${props.size}px` : props.size};
+      font-size: ${_.isNumber(props.$size) ? `${props.$size}px` : props.$size};
     `}
   ${(props) =>
-    props.onHover &&
+    props.$onHover &&
     css`
       &:hover {
-        ${props.onHover}
+        ${props.$onHover}
       }
     `}
 `;

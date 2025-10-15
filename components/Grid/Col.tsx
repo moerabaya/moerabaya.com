@@ -1,34 +1,36 @@
 import Component from "components/Component";
 import styled, { ColProps, css } from "styled-components";
 
-const Col = styled(Component)<ColProps>`
+const Col = styled(Component).withConfig({
+  shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
+})<ColProps>`
   padding-left: ${(props) => props.theme.grid.gutter};
   padding-right: ${(props) => props.theme.grid.gutter};
 
   ${(props) =>
-    props.sm &&
+    props.$sm &&
     css`
-      width: ${100 / (12 / props.sm)}%;
+      width: ${100 / (12 / props.$sm)}%;
     `};
   ${(props) =>
-    props.md &&
+    props.$md &&
     css`
       @media (min-width: ${(props) => props.theme.screens.small}) {
-        width: ${100 / (12 / props.md)}%;
+        width: ${100 / (12 / props.$md)}%;
       }
     `};
   @media (min-width: ${(props) => props.theme.screens.medium}) {
     ${(props) =>
-      props.lg &&
+      props.$lg &&
       css`
-        width: ${100 / (12 / props.lg)}% !important;
+        width: ${100 / (12 / props.$lg)}% !important;
       `}
   }
   @media (min-width: ${(props) => props.theme.screens.large}) {
     ${(props) =>
-      props.xl &&
+      props.$xl &&
       css`
-        width: ${100 / (12 / props.xl)}% !important;
+        width: ${100 / (12 / props.$xl)}% !important;
       `}
   }
 `;

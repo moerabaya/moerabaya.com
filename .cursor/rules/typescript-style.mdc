@@ -1,0 +1,21 @@
+---
+globs: *.ts,*.tsx
+---
+### TypeScript Code Style
+
+- **Naming**:
+  - Use descriptive names; avoid 1–2 letter identifiers.
+  - Functions: verbs; variables: nouns.
+- **Types**:
+  - Explicitly annotate exported APIs and React props.
+  - Avoid `any`; prefer precise types.
+- **React**:
+  - Functional components with typed props: `type Props = { ... }`.
+  - Default to Server Components; put `'use client'` at the top when needed.
+- **Control Flow**:
+  - Use guard clauses; avoid deep nesting and unnecessary try/catch.
+- **Comments**:
+  - Only for non-obvious rationale or invariants; keep concise.
+- **Formatting**:
+  - Match existing style; avoid unrelated reformatting.
+  - Wrap long lines; avoid dense one-liners.

@@ -6,9 +6,9 @@ const Row = styled(FlexComponent)<RowProps>`
   padding-top: ${(props) => props.theme.grid.padding};
   padding-bottom: ${(props) => props.theme.grid.padding};
   display: flex;
-  flex-wrap: ${(props) => (props.wrap ? "wrap" : "nowrap")};
+  flex-wrap: ${(props) => (props.$wrap ? "wrap" : "nowrap")};
   ${(props) =>
-    props.fullHeight &&
+    props.$fullHeight &&
     css`
       min-height: 100%;
     `}

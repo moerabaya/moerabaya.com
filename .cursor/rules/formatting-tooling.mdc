@@ -1,0 +1,21 @@
+---
+alwaysApply: true
+---
+### Formatting and Tooling
+
+- **ESLint/Prettier**:
+  - Respect `eslint.config.mjs` and `prettier.config.js`.
+  - Fix introduced linter errors immediately.
+
+- **Styling**:
+  - SCSS structure lives in `assets/styles/` with `core/`, `layout/`, `utilities/`.
+  - Tailwind config is in `tailwind.config.js` where applicable.
+
+- **Next.js**:
+  - Config in `next.config.js` must remain compatible with App Router.
+
+- **Type Safety**:
+  - Do not introduce `any`; tighten types when touching public APIs.
+
+- **Edits**:
+  - Refer to code changes as "edits" and ensure they compile without new errors.

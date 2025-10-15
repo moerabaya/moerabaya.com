@@ -36,10 +36,10 @@ declare module "styled-components" {
   }
 
   export interface ComponentProps {
-    hide?: ScreenSizes[] | ScreenSizes;
-    show?: ScreenSizes[] | ScreenSizes;
-    p?: string;
-    m?: string;
+    $hide?: ScreenSizes[] | ScreenSizes;
+    $show?: ScreenSizes[] | ScreenSizes;
+    $p?: string;
+    $m?: string;
     as?: string | ReactElement;
   }
 
@@ -48,22 +48,22 @@ declare module "styled-components" {
   }
 
   export interface FlexComponentProps extends ComponentProps {
-    fullHeight?: boolean;
-    alignItems?: "flex-start" | "flex-end" | "center";
-    justifyContent?: "flex-start" | "flex-end" | "center";
-    direction?: "row" | "row-reverse" | "column" | "column-reverse";
+    $fullHeight?: boolean;
+    $alignItems?: "flex-start" | "flex-end" | "center";
+    $justifyContent?: "flex-start" | "flex-end" | "center";
+    $direction?: "row" | "row-reverse" | "column" | "column-reverse";
   }
 
   export interface TextProps extends ComponentProps {
-    opacity?: number;
-    smallCaps?: boolean;
-    textTransform?: "uppercase" | "lowercase";
-    align?: "center" | "start" | "end" | "left" | "right";
+    $opacity?: number;
+    $smallCaps?: boolean;
+    $textTransform?: "uppercase" | "lowercase";
+    $align?: "center" | "start" | "end" | "left" | "right";
     /**
      * number is in pixels
      */
-    size?: number | string | "inherit" | "initial";
-    weight?:
+    $size?: number | string | "inherit" | "initial";
+    $weight?:
       | 100
       | 200
       | 300
@@ -78,7 +78,7 @@ declare module "styled-components" {
       | "normal"
       | "bold"
       | "bolder";
-    onHover?: React.EventHandler;
+    $onHover?: React.EventHandler;
   }
 
   export interface AnimateProps {
@@ -99,42 +99,42 @@ declare module "styled-components" {
   }
 
   export interface IconProps {
-    size: number | string;
-    slot?: "start" | "end" | "left" | "right";
+    $size: number | string;
+    $slot?: "start" | "end" | "left" | "right";
   }
 
   export interface ButtonComponent
     extends ComponentProps,
       React.HTMLProps<HTMLAnchorElement> {
-    size?: "sm" | "md" | "lg";
-    isActive?: boolean;
-    smallCaps?: boolean;
-    alternative?: boolean;
-    layout?: "full" | "block";
+    $size?: "sm" | "md" | "lg";
+    $isActive?: boolean;
+    $smallCaps?: boolean;
+    $alternative?: boolean;
+    $layout?: "full" | "block";
     href?: string;
   }
 
   export interface MenuItemComponent extends ComponentProps {
-    active?: boolean;
+    $active?: boolean;
   }
 
   export interface LinkProps
     extends TextProps,
       NextLinkProps,
       React.HTMLProps<HTMLAnchorElement> {
-    animated?: boolean;
+    $animated?: boolean;
     href: Url;
     children?: ReactElement | string;
   }
 
   export interface RowProps extends FlexComponentProps {
-    wrap?: boolean;
+    $wrap?: boolean;
   }
 
   export interface ColProps extends ComponentProps {
-    sm?: number;
-    md?: number;
-    lg?: number;
-    xl?: number;
+    $sm?: number;
+    $md?: number;
+    $lg?: number;
+    $xl?: number;
   }
 }

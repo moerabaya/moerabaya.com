@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import useGlobalization from "hooks/useGlobalization";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
@@ -15,7 +17,7 @@ const Navigation = dynamic(() => import("@/components/Navigation"), {
 export default function Layout({ children }: React.PropsWithChildren<unknown>) {
   const footerRef = useRef<HTMLDivElement>(null);
   const { direction } = useGlobalization();
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const [footerHeight, setFooterHeight] = React.useState(0);
 
   useEffect(() => {
@@ -48,7 +50,8 @@ export default function Layout({ children }: React.PropsWithChildren<unknown>) {
         >
           {children}
         </main>
-        {pathname !== "/work" && <Footer ref={footerRef} />}
+        <Footer ref={footerRef} />
+        {/* {pathname !== "/work" && <Footer ref={footerRef} />} */}
       </div>
     </ThemeProvider>
   );

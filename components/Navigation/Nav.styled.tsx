@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const Nav = styled.nav<{ isOpen?: boolean }>`
+const Nav = styled.nav<{ $isOpen?: boolean }>`
   backdrop-filter: blur(25px);
   position: fixed;
   width: 100%;
@@ -19,7 +19,7 @@ const Nav = styled.nav<{ isOpen?: boolean }>`
     padding: 15px 35px;
   }
   ${(props) =>
-    props.isOpen &&
+    props.$isOpen &&
     css`
       height: 100% !important;
     `}

@@ -1,7 +1,7 @@
 {
   "hero": "UX, Product Design | Engineer",
   "name": "Moe Rabay'a",
-  "title": "Moe Rabay'a - UX, Product Designer | Senior Engineer",
+  "title": "UX, Product Designer | Senior Engineer",
   "description": "A product-focused engineer based in Amman, Jordan. Highly skilled in designing and developing interactive and data-driven platforms for both web & mobile experiences.",
   "navigation": {
     "about": "About",
@@ -17,9 +17,11 @@
     "featured": "featured"
   },
   "blog": {
+    "meta-title": "Blog",
     "title": "Latest Articles"
   },
   "about": {
+    "meta-title": "About",
     "title": "Moe Rabaya",
     "about1": "A software engineer with over 9+ years of experience, I am currently based in Amsterdam.",
     "about2": "I help companies build intuitive softwares and products using state-of-the-art technologies ensuring best practices are applied for smooth user experience and development process.",
@@ -42,6 +44,7 @@
     }
   },
   "work": {
+    "meta-title": "Work",
     "title": "Work",
     "view": "View Case Study"
   },
