@@ -5,6 +5,7 @@ import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
 import { AnimatedText } from "components";
 import useGlobalization from "hooks/useGlobalization";
+
 import Meta from "@/components/Meta";
 
 const jobs = (globalization: ReturnType<typeof useGlobalization>) => {

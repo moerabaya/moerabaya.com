@@ -2,18 +2,10 @@ import * as fs from "fs/promises";
 import path from "path";
 import { notFound } from "next/navigation";
 import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeImgSize from "rehype-img-size";
-import Image from "next/legacy/image";
-import { Project as IProject } from "types";
-import Meta from "@/components/Meta";
-import { AnimatedText } from "components";
-import WorkProjectClient from "./WorkProjectClient";
 
-const components = {
-  Image,
-};
+import { Project as IProject } from "types";
+
+import WorkProjectClient from "./WorkProjectClient";
 
 interface WorkProjectPageProps {
   params: {
@@ -38,11 +30,8 @@ async function getProject(slug: string) {
     );
 
     const { data: frontMatter, content } = matter(markdownWithMeta);
-    
-    const projectsDirectory = path.join(
-      process.cwd(),
-      "projects"
-    );
+
+    const projectsDirectory = path.join(process.cwd(), "projects");
     const filenames = await fs.readdir(projectsDirectory);
     const current = filenames.indexOf(`${slug}.mdx`);
     const next = filenames[current + 1]?.replace(".mdx", "") ?? null;
@@ -54,12 +43,14 @@ async function getProject(slug: string) {
       next,
       previous,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
 
-export default async function WorkProjectPage({ params }: WorkProjectPageProps) {
+export default async function WorkProjectPage({
+  params,
+}: WorkProjectPageProps) {
   const project = await getProject(params.slug);
 
   if (!project) {

@@ -2,7 +2,6 @@ import Head from "next/head";
 import MetaImage from "@/assets/images/metaimage.png";
 
 import useGlobalization from "@/hooks/useGlobalization";
-import { usePathname } from "next/navigation";
 
 type MetaProps = {
   title: string;
@@ -28,7 +27,10 @@ const Meta = (props: MetaProps) => {
       <meta name="description" content={props.description} />
 
       {/* <!-- Open Graph --> */}
-      <meta property="og:url" content={"https://moerabaya.com" + props.pathname} />
+      <meta
+        property="og:url"
+        content={"https://moerabaya.com" + props.pathname}
+      />
       <meta
         property="og:title"
         content={`${props.title} | ${translate("name")}`}
@@ -46,7 +48,10 @@ const Meta = (props: MetaProps) => {
 
       {/* <!-- X --> */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={"https://moerabaya.com" + props.pathname} />
+      <meta
+        name="twitter:url"
+        content={"https://moerabaya.com" + props.pathname}
+      />
       <meta
         name="twitter:title"
         content={`${props.title} | ${translate("name")}`}

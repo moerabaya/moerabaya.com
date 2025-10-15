@@ -1,9 +1,10 @@
 import * as fs from "fs/promises";
 import path from "path";
+import { AppProps } from "next/app";
 import { Post } from "@/types";
 import grayMatter from "gray-matter";
+
 import BlogClient from "./BlogClient";
-import { AppProps } from "next/app";
 
 export const getPosts = async (): Promise<Post[]> => {
   const postsDirectory = path.join(

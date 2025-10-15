@@ -2,6 +2,7 @@ import * as fs from "fs/promises";
 import path from "path";
 import { Project } from "@/types";
 import grayMatter from "gray-matter";
+
 import HomeClient from "./components/HomeClient";
 
 export const getProjects = async (): Promise<Project[]> => {

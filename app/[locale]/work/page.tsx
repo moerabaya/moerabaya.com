@@ -1,7 +1,9 @@
 import * as fs from "fs/promises";
 import path from "path";
 import grayMatter from "gray-matter";
+
 import { Project as ProjectInterface } from "types";
+
 import WorkClient from "./WorkClient";
 
 export const getProjects = async (): Promise<ProjectInterface[]> => {

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useMouse } from "react-use";
+
 import useGlobalization from "@/hooks/useGlobalization";
 
 const NotFound = () => {

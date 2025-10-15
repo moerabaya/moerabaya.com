@@ -1,8 +1,9 @@
 import * as fs from "fs/promises";
 import path from "path";
 import { notFound } from "next/navigation";
-import matter from "gray-matter";
 import type { Post } from "@/types";
+import matter from "gray-matter";
+
 import PostClient from "./PostClient";
 
 interface PostPageProps {
@@ -33,7 +34,7 @@ async function getPost(slug: string) {
       meta: frontMatter as Post,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

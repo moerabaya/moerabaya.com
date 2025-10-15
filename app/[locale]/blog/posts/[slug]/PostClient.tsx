@@ -16,6 +16,7 @@ import Image, { ImageProps } from "next/legacy/image";
 import type { Post } from "@/types";
 import { AnimatedView } from "components";
 import { MDXRemote } from "next-mdx-remote/rsc";
+
 import Meta from "@/components/Meta";
 
 const ResponsiveImage = (props: ImageProps) => (

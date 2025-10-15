@@ -6,6 +6,7 @@ import { usePathname } from "@/i18n/navigation";
 import Login from "@/templates/Login";
 import { AnimatedText } from "components";
 import { MDXRemote } from "next-mdx-remote/rsc";
+
 import { Project as IProject } from "types";
 import Meta from "@/components/Meta";
 
@@ -19,11 +20,11 @@ type WorkProjectClientProps = {
   slug: string;
 };
 
-const WorkProjectClient = ({ meta, content, slug }: WorkProjectClientProps) => {
+const WorkProjectClient = ({ meta, content }: WorkProjectClientProps) => {
   const pathname = usePathname();
 
   if (!meta) return null;
-  
+
   if (meta.password) {
     return <Login slug={meta.slug} redirectPath={pathname} />;
   }
