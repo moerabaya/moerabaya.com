@@ -33,7 +33,7 @@ export const getProjects = async (): Promise<ProjectInterface[]> => {
     };
   });
 
-  return projects;
+  return projects as ProjectInterface[];
 };
 
 export default async function Work() {

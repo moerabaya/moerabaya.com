@@ -57,6 +57,7 @@ const WorkProjectClient = ({ meta, content }: WorkProjectClientProps) => {
           )}
         </div>
       </div>
+      {/* @ts-expect-error MDXRemote cannot be used as a component */}
       <MDXRemote source={content} components={components} />
     </div>
   );

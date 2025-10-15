@@ -6,7 +6,7 @@ import Component from "@/components/Component";
 const Button = styled(Component)<ButtonComponent>`
   > a,
   & {
-    ${(props) => props.smallCaps && mixins.smallCaps}
+    ${(props) => props.$smallCaps && mixins.smallCaps}
     appearance: none;
     border: none;
     outline: none;
@@ -17,34 +17,35 @@ const Button = styled(Component)<ButtonComponent>`
     text-align: center;
     line-height: 1.1em;
     padding: ${(props) => {
-      if (props.smallCaps)
-        return props.size == "md"
+      if (props.$smallCaps)
+        return props.$size == "md"
           ? "0.75em 1em"
-          : props.size == "lg"
+          : props.$size == "lg"
             ? "1.25em"
             : "0.6em";
-      return props.size == "md"
+      return props.$size == "md"
         ? "0.75em 1em"
-        : props.size == "lg"
+        : props.$size == "lg"
           ? "1.25em"
           : "0.6em";
     }};
     font-size: ${(props) => {
-      if (props.smallCaps)
-        return props.size == "md"
+      if (props.$smallCaps)
+        return props.$size == "md"
           ? "0.9rem"
-          : props.size == "lg"
+          : props.$size == "lg"
             ? "1em"
             : "0.85em";
-      return props.size == "md"
+      return props.$size == "md"
         ? "0.95em"
-        : props.size == "lg"
+        : props.$size == "lg"
           ? "1em"
           : "0.85em";
     }};
     background-color: transparent;
-    display: ${(props) => (props.layout === "full" ? "block" : "inline-block")};
-    width: ${(props) => (props.layout === "full" ? "100%" : "auto")};
+    display: ${(props) =>
+      props.$layout === "full" ? "block" : "inline-block"};
+    width: ${(props) => (props.$layout === "full" ? "100%" : "auto")};
     &:hover {
       background-color: rgba(var(--text-color-rgb), 0.1);
     }
@@ -52,7 +53,7 @@ const Button = styled(Component)<ButtonComponent>`
       background-color: rgba(var(--text-color-rgb), 0.1);
     }
     ${(props) =>
-      props.alternative &&
+      props.$alternative &&
       css`
         background-color: var(--text-color);
         color: var(--background-color) !important;
