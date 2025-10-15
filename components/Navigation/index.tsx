@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "@/i18n/navigation";
+import { ThemeContext } from "@/templates/ThemeProvider";
 import Logo from "assets/images/logo.svg";
 import { AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { ThemeContext } from "templates/ThemeProvider";
 import navigation from "utils/data/navigation.json";
 
 import { Burger } from "@/components/Button";
@@ -29,11 +29,11 @@ type NavigationProps = {
 
 const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const { translate } = useGlobalization();
   const { theme, setTheme } = useContext(ThemeContext);
   const { locale } = useGlobalization();
-  const isProject = pathname.split("/")?.[1] === "work" && props.slug;
+  const isProject = pathname?.split("/")?.[1] === "work" && props.slug;
 
   const isDark = theme === "dark";
 
@@ -132,7 +132,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
     ));
   if (isProject)
     return (
-      <Nav isOpen={isOpen} className="text-center">
+      <Nav $isOpen={isOpen} className="text-center">
         <AnimatedView vertical={"-75"} className="h-full">
           <div className="container m-auto flex h-full items-center justify-stretch">
             <div className="flex-1 text-start">
@@ -197,7 +197,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
     );
   return (
     <>
-      <Nav isOpen={isOpen} className="text-center">
+      <Nav $isOpen={isOpen} className="text-center">
         <AnimatedView vertical={"-75"} className="h-full">
           <div className="container m-auto h-full">
             <div className="grid grid-cols-3 gap-3">
@@ -214,8 +214,8 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
                   {Socials}
                 </div>
                 <Burger
-                  size="md"
-                  isActive={isOpen}
+                  $size="md"
+                  $isActive={isOpen}
                   className="!hidden max-sm:!block"
                   onClick={() => setIsOpen(!isOpen)}
                 />

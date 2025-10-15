@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 import Button from "./Button.styled";
 
-export const Burger = styled(Button)<{ isActive?: boolean }>`
+export const Burger = styled(Button).withConfig({
+  shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
+})<{ $isActive?: boolean }>`
   position: relative;
   display: inline-block;
   width: 2.5em;
@@ -30,13 +32,13 @@ export const Burger = styled(Button)<{ isActive?: boolean }>`
 
   &:before {
     transform: ${(props) =>
-      props.isActive
+      props.$isActive
         ? "rotateZ(45deg) scale(0.9) translate(0.15em,0.15em)"
         : "unset"};
   }
   &:after {
     transform: ${(props) =>
-      props.isActive
+      props.$isActive
         ? "rotateZ(-45deg) scale(0.9) translate(0.25em,-0.225em)"
         : "unset"};
   }

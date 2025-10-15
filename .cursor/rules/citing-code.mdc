@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+### Code Citation and Markdown
+
+- **Existing code references** must use this exact block format:
+
+```12:18:app/components/File.tsx
+// code lines go here
+```
+
+- Include start and end line numbers and the full file path. Do not add language tags.
+
+- **New/proposed code** must use standard fenced blocks with a language tag, e.g. `tsx`, `ts`, `bash`.
+
+- Never include line numbers inside code content and never indent the triple backticks.
+
+- Use backticks for filenames like `templates/Layout.tsx` and `app/[locale]/page.tsx`.

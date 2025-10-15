@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Direction } from "moerabaya-components";
 import ar from "utils/languages/ar.json";
 import enUS from "utils/languages/en-US.json";
+import { useLocale } from "next-intl";
 
 type Languages = "ar" | "en-US";
 type LanguageResources<T> = {
@@ -28,7 +29,7 @@ function getter(obj: Resource, ...keys: Array<string>) {
 }
 
 const useGlobalization = () => {
-  const { locale } = useRouter();
+  const locale = useLocale();
   const direction: Direction = locale === "ar" ? "rtl" : "ltr";
   const isArabic = locale === "ar";
 

@@ -1,17 +1,17 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import MetaImage from "@/assets/images/metaimage.png";
 
 import useGlobalization from "@/hooks/useGlobalization";
+import { usePathname } from "next/navigation";
 
 type MetaProps = {
   title: string;
   description?: string;
   image?: string;
+  pathname?: string;
 };
 
 const Meta = (props: MetaProps) => {
-  const { pathname } = useRouter();
   const { locale, translate } = useGlobalization();
 
   return (
@@ -28,7 +28,7 @@ const Meta = (props: MetaProps) => {
       <meta name="description" content={props.description} />
 
       {/* <!-- Open Graph --> */}
-      <meta property="og:url" content={"https://moerabaya.com" + pathname} />
+      <meta property="og:url" content={"https://moerabaya.com" + props.pathname} />
       <meta
         property="og:title"
         content={`${props.title} | ${translate("name")}`}
@@ -46,7 +46,7 @@ const Meta = (props: MetaProps) => {
 
       {/* <!-- X --> */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={"https://moerabaya.com" + pathname} />
+      <meta name="twitter:url" content={"https://moerabaya.com" + props.pathname} />
       <meta
         name="twitter:title"
         content={`${props.title} | ${translate("name")}`}

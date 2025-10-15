@@ -1,3 +1,6 @@
+
+"use client";
+
 import _ from "lodash";
 import styled, { AnimateProps } from "styled-components";
 

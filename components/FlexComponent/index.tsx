@@ -2,25 +2,27 @@ import styled, { css, FlexComponentProps } from "styled-components";
 
 import Component from "@/components/Component";
 
-const FlexComponent = styled(Component)<FlexComponentProps>`
+const FlexComponent = styled(Component).withConfig({
+  shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
+})<FlexComponentProps>`
   display: flex;
-  flex-direction: ${(props) => props.direction ?? "row"};
+  flex-direction: ${(props) => props.$direction ?? "row"};
   ${(props) =>
-    props.fullHeight &&
+    props.$fullHeight &&
     css`
       min-height: 100vh;
     `}
 
   ${(props) =>
-    props.alignItems &&
+    props.$alignItems &&
     css`
-      align-items: ${props.alignItems};
+      align-items: ${props.$alignItems};
     `}
 
 	${(props) =>
-    props.justifyContent &&
+    props.$justifyContent &&
     css`
-      justify-content: ${props.justifyContent};
+      justify-content: ${props.$justifyContent};
     `}
 `;
 
