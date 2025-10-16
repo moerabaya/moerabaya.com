@@ -33,7 +33,7 @@ const ImageWrapper = styled.div`
 
 const Text = styled.span`
   padding: 5px 0;
-  color: var(--text-color-light);
+  color: var(--mr-text-color-light);
   margin-right: 0.75em;
   margin-top: 0.5em;
   font-size: 0.9em;
@@ -41,7 +41,7 @@ const Text = styled.span`
 `;
 
 const Label = styled(Text)`
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--mr-border-color);
   padding: 5px 10px;
   /* border-radius: 0.3em; */
   margin-right: 0.5em;
@@ -53,24 +53,24 @@ const Category = styled(Text)`
   margin-top: 0;
   font-size: 0.8em;
   font-weight: 500;
-  color: var(--button-color);
+  color: var(--mr-button-color);
 `;
 
 const Article = Object.assign(
   styled.article`
-    border: 1px solid rgba(var(--text-color-rgb), 0.5);
+    border: 1px solid rgba(var(--mr-text-color-rgb), 0.5);
     /* display: inline-block; */
     /* border-radius: 0.5em; */
     overflow: hidden;
     text-decoration: none !important;
-    background-color: var(--card-background);
-    /* box-shadow: 0px 0px 0px 0px var(--card-shadow-color); */
+    background-color: var(--mr-card-background);
+    /* box-shadow: 0px 0px 0px 0px var(--mr-card-shadow-color); */
     transition: 0.25s ease;
     display: flex;
     padding: 0.75em;
     &:hover {
-      /* box-shadow: 0px 0px 5px 0px var(--card-shadow-color); */
-      border: 1px solid rgba(var(--text-color-rgb), 1);
+      /* box-shadow: 0px 0px 5px 0px var(--mr-card-shadow-color); */
+      border: 1px solid rgba(var(--mr-text-color-rgb), 1);
       h5 {
         text-decoration: underline;
       }

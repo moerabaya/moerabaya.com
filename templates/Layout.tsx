@@ -44,7 +44,7 @@ export default function Layout({ children }: React.PropsWithChildren<unknown>) {
             marginBottom: pathname !== "/work" ? footerHeight : 0,
             position: "relative",
             zIndex: 10,
-            backgroundColor: "var(--background-color)",
+            backgroundColor: "var(--mr-background-color)",
             minHeight: "100vh",
           }}
         >

@@ -5,9 +5,9 @@ const Link = styled(NextLink).withConfig({
   shouldForwardProp: () => true,
 })<LinkProps>`
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--mr-text-color);
   &:visited {
-    color: var(--text-color);
+    color: var(--mr-text-color);
   }
   ${({ $animated }) =>
     $animated &&

@@ -7,13 +7,13 @@ body {
     box-sizing: border-box;
   }
 
-  font-family: var(--bs-font-sans-serif);
-  font-size: var(--base-font-size);
+  font-family: var(--mr-bs-font-sans-serif);
+  font-size: var(--mr-base-font-size);
   font-weight: 400;
   line-height: $base-line-height;
   text-size-adjust: 100%;
-  color: var(--text-color);
-  background-color: var(--background-color);
+  color: var(--mr-text-color);
+  background-color: var(--mr-background-color);
   @media (max-width: $on-laptop) {
     font-size: $mobile-font-size;
   }
@@ -21,14 +21,14 @@ body {
     background: inherit;
   }
   ::selection {
-    background: var(--selection-background-color);
+    background: var(--mr-selection-background-color);
     -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: var(--selection-color) !important;
+    -webkit-text-fill-color: var(--mr-selection-color) !important;
   }
 }
 
 hr {
   border: none;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--mr-border-color);
   margin: 1em 0;
 }

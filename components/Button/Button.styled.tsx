@@ -10,7 +10,7 @@ const Button = styled(Component)<ButtonComponent>`
     appearance: none;
     border: none;
     outline: none;
-    color: var(--text-color) !important;
+    color: var(--mr-text-color) !important;
     text-decoration: none;
     border-radius: 0.25em;
     font-weight: 500;
@@ -47,21 +47,21 @@ const Button = styled(Component)<ButtonComponent>`
       props.$layout === "full" ? "block" : "inline-block"};
     width: ${(props) => (props.$layout === "full" ? "100%" : "auto")};
     &:hover {
-      background-color: rgba(var(--text-color-rgb), 0.1);
+      background-color: rgba(var(--mr-text-color-rgb), 0.1);
     }
     &:active {
-      background-color: rgba(var(--text-color-rgb), 0.1);
+      background-color: rgba(var(--mr-text-color-rgb), 0.1);
     }
     ${(props) =>
       props.$alternative &&
       css`
-        background-color: var(--text-color);
-        color: var(--background-color) !important;
+        background-color: var(--mr-text-color);
+        color: var(--mr-background-color) !important;
         &:hover {
-          background-color: var(--primary-color);
+          background-color: var(--mr-primary-color);
         }
         &:active {
-          background-color: var(--primary-color);
+          background-color: var(--mr-primary-color);
         }
       `}
   }

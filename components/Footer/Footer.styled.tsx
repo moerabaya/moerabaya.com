@@ -5,8 +5,8 @@ import { useWindowScroll } from "react-use";
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
-  background: var(--footer-background-color);
-  color: var(--footer-font-color);
+  background: var(--mr-footer-background-color);
+  color: var(--mr-footer-font-color);
   padding: 2rem 0;
   position: fixed;
   z-index: 0;
@@ -19,9 +19,9 @@ export const StyledFooter = styled.footer`
   }
 
   a {
-    color: var(--footer-font-color);
+    color: var(--mr-footer-font-color);
     &:visited {
-      color: var(--footer-font-color);
+      color: var(--mr-footer-font-color);
     }
   }
 `;
