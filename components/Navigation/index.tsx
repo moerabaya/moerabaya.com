@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
 import { ThemeContext } from "@/templates/ThemeProvider";

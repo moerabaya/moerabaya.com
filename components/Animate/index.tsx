@@ -1,17 +1,19 @@
 "use client";
 
-import _ from "lodash";
 import styled, { AnimateProps } from "styled-components";
 
 import Wiggle from "./Wave";
+
+const isNumber = (value: any): value is number =>
+  typeof value === "number" && !isNaN(value);
 
 const Animate = styled.span<AnimateProps>`
   display: inline-block;
   animation-name: ${(props) => (props.name == "wave" ? Wiggle : "none")};
   animation-duration: ${(props) =>
-    _.isNumber(props.duration) ? `${props.duration}ms` : props.duration};
+    isNumber(props.duration) ? `${props.duration}ms` : props.duration};
   animation-delay: ${(props) =>
-    _.isNumber(props.duration) ? `${props.duration}ms` : props.duration};
+    isNumber(props.duration) ? `${props.duration}ms` : props.duration};
   animation-iteration-count: ${(props) => props.iteration};
   animation-timing-function: linear;
   transform-origin: ${(props) => props.origin};

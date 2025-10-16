@@ -1,8 +1,10 @@
-import _ from "lodash";
 import styled, { css, TextProps } from "styled-components";
 import { mixins } from "styles";
 
 import Component from "@/components/Component";
+
+const isNumber = (value: any): value is number =>
+  typeof value === "number" && !isNaN(value);
 
 const Text = styled(Component)
   .withConfig({
@@ -22,7 +24,7 @@ const Text = styled(Component)
   ${(props) =>
     props.$size &&
     css`
-      font-size: ${_.isNumber(props.$size) ? `${props.$size}px` : props.$size};
+      font-size: ${isNumber(props.$size) ? `${props.$size}px` : props.$size};
     `}
   ${(props) =>
     props.$onHover &&

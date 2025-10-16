@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import useGlobalization from "hooks/useGlobalization";
@@ -18,7 +18,7 @@ export default function Layout({ children }: React.PropsWithChildren<unknown>) {
   const footerRef = useRef<HTMLDivElement>(null);
   const { direction } = useGlobalization();
   const pathname = usePathname();
-  const [footerHeight, setFooterHeight] = React.useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
 
   useEffect(() => {
     function handleResize() {

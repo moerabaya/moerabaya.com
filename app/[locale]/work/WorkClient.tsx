@@ -1,8 +1,6 @@
 "use client";
 
-import "swiper/css";
-
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { Col, Grid, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
 
