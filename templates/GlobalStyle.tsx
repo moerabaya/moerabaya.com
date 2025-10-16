@@ -7,8 +7,8 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     &, * {
       font-family: ${(props) =>
         props.direction === "rtl"
-          ? "var(--bs-font-sans-serif-arabic)"
-          : "var(--bs-font-sans-serif)"};}
+          ? "var(--mr-bs-font-sans-serif-arabic)"
+          : "var(--mr-bs-font-sans-serif)"};}
   }
 `;
 

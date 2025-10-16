@@ -20,7 +20,7 @@ export const Burger = styled(Button).withConfig({
     display: block;
     width: calc(100% - 1em);
     height: 2px;
-    background-color: var(--text-color);
+    background-color: var(--mr-text-color);
     transition: 0.15s linear;
   }
   &:before {
