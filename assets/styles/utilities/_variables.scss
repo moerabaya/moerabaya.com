@@ -64,13 +64,14 @@ $screen-xl: 1440px;
   --button-text: #fff;
   --letter-spacing: -0.03em;
   --bs-font-sans-serif:
-    "Montserrat", "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-sans-serif-arabic:
-    "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    var(--font-montserrat, "Montserrat"), var(--font-vazirmatn, "Vazirmatn"),
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-sans-serif-arabic:
+    var(--font-vazirmatn, "Vazirmatn"), system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
   --bs-font-monospace:
     "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
@@ -111,9 +112,10 @@ html.dark {
   --button-color: #f5e5ca;
   --button-text: #fff;
   --bs-font-sans-serif:
-    "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    var(--font-montserrat, "Montserrat"), var(--font-vazirmatn, "Vazirmatn"),
+    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-serif: Georgia, serif;
   --bs-font-monospace:
     "Fira Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
