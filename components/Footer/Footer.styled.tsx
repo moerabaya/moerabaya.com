@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { useWindowScroll } from "react-use";
 import styled from "styled-components";
 
@@ -26,7 +26,7 @@ export const StyledFooter = styled.footer`
   }
 `;
 
-export const FooterWrapper = React.forwardRef<
+export const FooterWrapper = forwardRef<
   HTMLDivElement,
   React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>
 >((props, ref) => {
