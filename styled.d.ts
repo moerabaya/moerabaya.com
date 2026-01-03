@@ -103,15 +103,9 @@ declare module "styled-components" {
     $slot?: "start" | "end" | "left" | "right";
   }
 
-  export interface ButtonComponent
-    extends ComponentProps,
-      React.HTMLProps<HTMLAnchorElement> {
-    $size?: "sm" | "md" | "lg";
-    $isActive?: boolean;
-    $smallCaps?: boolean;
-    $alternative?: boolean;
+  export interface ButtonComponent {
+    $variant?: "primary" | "secondary";
     $layout?: "full" | "block";
-    href?: string;
   }
 
   export interface MenuItemComponent extends ComponentProps {
@@ -119,9 +113,7 @@ declare module "styled-components" {
   }
 
   export interface LinkProps
-    extends TextProps,
-      NextLinkProps,
-      React.HTMLProps<HTMLAnchorElement> {
+    extends TextProps, NextLinkProps, React.HTMLProps<HTMLAnchorElement> {
     $animated?: boolean;
     href: Url;
     children?: ReactElement | string;
