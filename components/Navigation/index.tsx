@@ -40,7 +40,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
       <Button
-        as="a"
+        as={Link}
         href={path}
         key={name}
         variant={index == 0 ? "outline" : "secondary"}
