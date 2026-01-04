@@ -177,18 +177,16 @@ const About = () => {
             </div>
           </div>
           <div className="container mx-auto flex max-w-5xl flex-wrap gap-3 px-10 pb-10 text-[1.25em] max-sm:px-5">
-            <a
+            <Button
+              as="a"
               href="mailto:contact@moerabaya.com"
-              className="inline-block w-[206px] rounded-md bg-stone-950 py-[10px] text-center text-[1rem] font-medium text-white dark:bg-stone-50 dark:text-stone-950 max-sm:w-[170px] max-sm:px-[5px] max-[400px]:w-full"
+              variant="primary"
             >
               {t("about.connect")}
-            </a>
-            <a
-              href="/resume.pdf"
-              className="inline-block w-[206px] rounded-md py-[10px] text-center text-[1rem] font-medium text-stone-950 hover:bg-neutral-200 dark:text-white dark:hover:bg-[rgba(255,255,255,0.15)] max-sm:w-[170px] max-[400px]:w-full"
-            >
+            </Button>
+            <Button as="a" href="/resume.pdf" variant="secondary">
               {t("footer.downloadResume")}
-            </a>
+            </Button>
           </div>
         </div>
         <div className="container relative mx-auto">

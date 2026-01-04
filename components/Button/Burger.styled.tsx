@@ -2,17 +2,19 @@ import styled from "styled-components";
 
 import Button from "./Button.styled";
 
-export const Burger = styled(Button).withConfig({
-  shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
-})<{ $isActive?: boolean }>`
-  position: relative;
-  display: inline-block;
-  width: 2.5em;
-  height: 2.5em;
-  padding: 0.5em;
-  vertical-align: middle;
-  cursor: pointer;
-  position: relative;
+const StyledButton = styled(Button)
+  .withConfig({
+    shouldForwardProp: (prop) => prop !== "variant",
+  })
+  .attrs({
+    variant: "secondary",
+    className:
+      "h-[40px] max-w-[40px] max-sm:px-[7.5px] text-center cursor-pointer relative",
+  })``;
+
+export const Burger = styled(StyledButton)<{
+  $isActive?: boolean;
+}>`
   &:before,
   &:after {
     content: "";
@@ -23,6 +25,7 @@ export const Burger = styled(Button).withConfig({
     background-color: var(--mr-text-color);
     transition: 0.15s linear;
   }
+
   &:before {
     top: 37.5%;
   }

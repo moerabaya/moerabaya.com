@@ -103,9 +103,20 @@ declare module "styled-components" {
     $slot?: "start" | "end" | "left" | "right";
   }
 
-  export interface ButtonComponent {
+  export interface LegacyButtonComponent
+    extends ComponentProps, React.HTMLProps<HTMLAnchorElement> {
+    $size?: "sm" | "md" | "lg";
     $variant?: "primary" | "secondary";
+    $isActive?: boolean;
+    $smallCaps?: boolean;
+    $alternative?: boolean;
     $layout?: "full" | "block";
+    href?: string;
+  }
+
+  export interface ButtonComponent {
+    variant?: "primary" | "secondary" | "outline";
+    layout?: "inline" | "block" | "icon" | "link";
   }
 
   export interface MenuItemComponent extends ComponentProps {

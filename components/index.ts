@@ -2,7 +2,7 @@ export { default as Animate } from "./Animate";
 export { default as AnimatedText } from "./AnimatedText";
 export { default as AnimatedView } from "./AnimatedView";
 export { default as Avatar } from "./Avatar";
-export { default as Button } from "./Button";
+export { Button, LegacyButton } from "./Button";
 export { default as Component } from "./Component";
 export { default as Container } from "./Container";
 export { default as FlexComponent } from "./FlexComponent";

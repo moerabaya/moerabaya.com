@@ -8,7 +8,7 @@ import useGlobalization from "hooks/useGlobalization";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import navigation from "utils/data/navigation.json";
 
-import { Burger } from "@/components/Button";
+import { Burger, Button } from "@/components/Button";
 
 import Nav from "./Nav.styled";
 
@@ -39,16 +39,16 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
 
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
-      <Link
-        className={`px-4 py-2 ${
-          index == 0 &&
-          "border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] dark:border-[#202020] dark:bg-stone-900 dark:hover:border-stone-800 dark:active:bg-stone-800"
-        } font-regular mx-2 rounded-2xl text-stone-800 active:bg-stone-200 dark:text-stone-50 dark:md:active:bg-stone-900`}
+      <Button
+        as="a"
         href={path}
         key={name}
+        variant={index == 0 ? "outline" : "secondary"}
+        className="me-3"
+        layout="link"
       >
         {name}
-      </Link>
+      </Button>
     ));
 
   const Socials = [
@@ -96,22 +96,27 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
         </svg>
       </button>
     </span>,
-    <a
+    <Button
+      as="a"
       target="_blank"
       href="https://github.com/moerabaya/"
       key="github-url"
-      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
+      variant="outline"
+      layout="icon"
+      className="me-2"
     >
       <BsGithub size="26px" />
-    </a>,
-    <a
+    </Button>,
+    <Button
+      as="a"
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
       key="linkedin-url"
-      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
+      variant="outline"
+      layout="icon"
     >
       <BsLinkedin size="26px" className="rounded-md" />
-    </a>,
+    </Button>,
   ];
   const renderInnerMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"].map(({ path, name }, index) => (
@@ -214,8 +219,9 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
                   {Socials}
                 </div>
                 <Burger
-                  $size="md"
                   $isActive={isOpen}
+                  variant="secondary"
+                  layout="block"
                   className="!hidden max-sm:!block"
                   onClick={() => setIsOpen(!isOpen)}
                 />
