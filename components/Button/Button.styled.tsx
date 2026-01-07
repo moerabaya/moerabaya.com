@@ -1,5 +1,7 @@
+import * as React from "react";
+import { PolymorphicProps } from "@/utils/css/polymorphic";
 import { cva } from "class-variance-authority";
-import styled, { ButtonComponent } from "styled-components";
+import { ButtonComponent } from "styled-components";
 import { twMerge } from "tailwind-merge";
 
 const baseClasses =
@@ -30,8 +32,30 @@ const buttonCva = cva(baseClasses, {
   },
 });
 
-const Button = styled.button.attrs<ButtonComponent>(({ variant, layout }) => ({
-  className: twMerge(buttonCva({ variant, layout })),
-}))``;
+type ButtonProps<E extends React.ElementType> = PolymorphicProps<
+  E,
+  ButtonComponent
+> & {
+  className?: string;
+};
+
+const Button = React.forwardRef(
+  <E extends React.ElementType = "button">(
+    { as, variant, layout, className, ...rest }: ButtonProps<E>,
+    ref: React.ForwardedRef<never>
+  ) => {
+    const Component = as ?? "button";
+
+    return (
+      <Component
+        ref={ref}
+        className={twMerge(buttonCva({ variant, layout }), className)}
+        {...rest}
+      />
+    );
+  }
+);
+
+Button.displayName = "Button";
 
 export default Button;

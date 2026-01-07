@@ -2,29 +2,29 @@
 
 import React, { forwardRef, useEffect, useState } from "react";
 import { useWindowScroll } from "react-use";
-import styled from "styled-components";
+import { twMerge } from "tailwind-merge";
 
-export const StyledFooter = styled.footer`
-  background: var(--mr-footer-background-color);
-  color: var(--mr-footer-font-color);
-  padding: 2rem 0;
-  position: fixed;
-  z-index: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+const footerClasses = [
+  "[&_a]:[color:var(--mr-footer-font-color)]",
+  "[&_a:visited]:[color:var(--mr-footer-font-color)]",
+].join(" ");
 
-  > div {
-    transition: 0.25s ease-in-out;
-  }
+export const StyledFooter = forwardRef<
+  HTMLElement,
+  React.ComponentProps<"footer">
+>(({ className, ...props }, ref) => (
+  <footer
+    ref={ref}
+    className={twMerge(
+      "fixed bottom-0 left-0 right-0 z-0 bg-black py-8 text-white",
+      footerClasses,
+      className
+    )}
+    {...props}
+  />
+));
 
-  a {
-    color: var(--mr-footer-font-color);
-    &:visited {
-      color: var(--mr-footer-font-color);
-    }
-  }
-`;
+StyledFooter.displayName = "StyledFooter";
 
 export const FooterWrapper = forwardRef<
   HTMLDivElement,

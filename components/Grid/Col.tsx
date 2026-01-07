@@ -1,3 +1,5 @@
+"use client";
+
 import Component from "components/Component";
 import styled, { ColProps, css } from "styled-components";
 

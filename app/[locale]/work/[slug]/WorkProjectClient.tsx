@@ -1,18 +1,10 @@
-"use client";
-
 import React from "react";
-import Image from "next/legacy/image";
 import { usePathname } from "@/i18n/navigation";
 import Login from "@/templates/Login";
 import { AnimatedText } from "components";
-import { MDXRemote } from "next-mdx-remote/rsc";
 
 import { Project as IProject } from "types";
 import Meta from "@/components/Meta";
-
-const components = {
-  Image,
-};
 
 type WorkProjectClientProps = {
   meta: IProject;
@@ -20,13 +12,11 @@ type WorkProjectClientProps = {
   slug: string;
 };
 
-const WorkProjectClient = ({ meta, content }: WorkProjectClientProps) => {
-  const pathname = usePathname();
-
+const WorkProjectClient = ({ meta, content, slug }: WorkProjectClientProps) => {
   if (!meta) return null;
 
   if (meta.password) {
-    return <Login slug={meta.slug} redirectPath={pathname} />;
+    return <Login slug={meta.slug} redirectPath={slug} />;
   }
 
   const getProjectType = () => meta.project_type?.split(", ");
@@ -57,8 +47,7 @@ const WorkProjectClient = ({ meta, content }: WorkProjectClientProps) => {
           )}
         </div>
       </div>
-      {/* @ts-expect-error MDXRemote cannot be used as a component */}
-      <MDXRemote source={content} components={components} />
+      {content}
     </div>
   );
 };

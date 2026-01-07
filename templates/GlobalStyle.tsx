@@ -1,3 +1,5 @@
+"use client";
+
 // GlobalStyle.js
 import { createGlobalStyle, GlobalStyleProps } from "styled-components";
 

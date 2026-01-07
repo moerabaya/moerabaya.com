@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css, RowProps } from "styled-components";
 
 import FlexComponent from "@/components/FlexComponent";

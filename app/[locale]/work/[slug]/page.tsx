@@ -1,7 +1,9 @@
 import * as fs from "fs/promises";
 import path from "path";
+import Image from "next/legacy/image";
 import { notFound } from "next/navigation";
 import matter from "gray-matter";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 import { Project as IProject } from "types";
 
@@ -47,6 +49,9 @@ async function getProject(slug: string) {
     return null;
   }
 }
+const components = {
+  Image,
+};
 
 export default async function WorkProjectPage({
   params,
@@ -57,7 +62,23 @@ export default async function WorkProjectPage({
     notFound();
   }
 
-  const { meta, content } = project;
+  const { meta, content: source } = project;
+
+  const { content, frontmatter } = await compileMDX<{
+    title?: string;
+    description?: string;
+  }>({
+    source,
+    // Map MDX custom components. Client components can be passed safely; they are not async themselves.
+    components,
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: {
+        remarkPlugins: [],
+        rehypePlugins: [],
+      },
+    },
+  });
 
   return <WorkProjectClient meta={meta} content={content} slug={params.slug} />;
 }

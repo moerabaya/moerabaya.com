@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css, TextProps } from "styled-components";
 import { mixins } from "styles";
 

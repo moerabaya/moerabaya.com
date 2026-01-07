@@ -1,8 +1,9 @@
 import * as fs from "fs/promises";
 import path from "path";
-import { AppProps } from "next/app";
 import { Post } from "@/types";
 import grayMatter from "gray-matter";
+
+import BlogWrapper from "@/app/[locale]/blog/BlogWrapper";
 
 import BlogClient from "./BlogClient";
 
@@ -36,8 +37,17 @@ export const getPosts = async (): Promise<Post[]> => {
   return posts;
 };
 
-export default async function Blog({ pageProps }: AppProps) {
+export default async function Blog({
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { category?: string };
+}) {
   const posts = await getPosts();
 
-  return <BlogClient pageProps={pageProps} posts={posts} />;
+  return (
+    <BlogWrapper posts={posts} category={searchParams.category}>
+      <BlogClient category={searchParams.category} posts={posts} />;
+    </BlogWrapper>
+  );
 }

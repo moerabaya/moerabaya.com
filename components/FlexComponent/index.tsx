@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { css, FlexComponentProps } from "styled-components";
 
 import Component from "@/components/Component";

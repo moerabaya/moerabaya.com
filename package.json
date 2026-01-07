@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@types/prismjs": "^1.26.0",
+    "@vanilla-extract/css": "^1.18.0",
+    "@vanilla-extract/next-plugin": "^2.4.17",
+    "@vanilla-extract/recipes": "^0.5.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^6.5.1",

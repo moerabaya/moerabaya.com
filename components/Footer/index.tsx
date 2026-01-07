@@ -1,9 +1,11 @@
 import React from "react";
 import { Link as NextLink } from "@/i18n/navigation";
 import { clsx } from "@/utils/css/clsx";
-import { Avatar, Col, Link, List, Row, Text } from "components";
+import { Avatar, Col, Link, Row, Text } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import navigation from "utils/data/navigation.json";
+
+import { List, ListHeader, ListItem } from "@/components/List";
 
 import { FooterWrapper } from "./Footer.styled";
 
@@ -16,11 +18,11 @@ const Footer = React.forwardRef<
 
   const renderPages = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }) => (
-      <List.Item key={name} as="h5" style={{ marginTop: "0.5em" }}>
+      <ListItem key={name} as="h5" style={{ marginTop: "0.5em" }}>
         <Link href={path} $opacity={0.5} $onHover={{ opacity: 1 }}>
           {name}
         </Link>
-      </List.Item>
+      </ListItem>
     ));
 
   return (
@@ -53,12 +55,12 @@ const Footer = React.forwardRef<
         <div className="col-span-1 max-xl:hidden"></div>
         <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1 max-[380px]:col-span-2">
           <List>
-            <List.Header>
+            <ListHeader>
               <Text $smallCaps className="text-lg max-xl:text-base">
                 {getLocalizedString("footer", "languages")}
               </Text>
-            </List.Header>
-            <List.Item>
+            </ListHeader>
+            <ListItem>
               <NextLink
                 href="/"
                 locale="en-US"
@@ -88,17 +90,17 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "ar")}
               </NextLink>
-            </List.Item>
+            </ListItem>
           </List>
         </div>
         <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1">
           <List>
-            <List.Header>
+            <ListHeader>
               <Text $smallCaps className="text-lg max-xl:text-base">
                 {getLocalizedString("footer", "follow")}
               </Text>
-            </List.Header>
-            <List.Item>
+            </ListHeader>
+            <ListItem>
               <Link
                 href="https://twitter.com/moerabaya_"
                 target="_blank"
@@ -107,8 +109,8 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "twitter")}
               </Link>
-            </List.Item>
-            <List.Item>
+            </ListItem>
+            <ListItem>
               <Link
                 href="https://www.linkedin.com/in/moerabaya/"
                 target="_blank"
@@ -117,8 +119,8 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "linkedin")}
               </Link>
-            </List.Item>
-            <List.Item>
+            </ListItem>
+            <ListItem>
               <Link
                 href="https://dribbble.com/moerabaya/"
                 target="_blank"
@@ -127,8 +129,8 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "dribbble")}
               </Link>
-            </List.Item>
-            <List.Item>
+            </ListItem>
+            <ListItem>
               <Link
                 href="https://www.behance.net/moerabaya/"
                 target="_blank"
@@ -137,7 +139,7 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "behance")}
               </Link>
-            </List.Item>
+            </ListItem>
           </List>
         </div>
         <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1">

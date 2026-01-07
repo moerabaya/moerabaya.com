@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import consts from "consts";
 import useGlobalization from "hooks/useGlobalization";

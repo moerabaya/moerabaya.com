@@ -1,3 +1,5 @@
+"use client";
+
 import { default as NextLink } from "next/link";
 import styled, { css, LinkProps } from "styled-components";
 
