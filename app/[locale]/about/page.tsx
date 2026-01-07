@@ -170,12 +170,6 @@ const About = () => {
             <div>{t("about.about1", { years: yearsOfExperience })}</div>
             <div className="mt-8 max-[400px]:mt-5">{t("about.about2")}</div>
           </div>
-          <div className="container mx-auto max-w-5xl px-10 pb-10 text-[1.25em] max-md:text-[1.1em] max-sm:px-5 max-[400px]:text-[1.05em]">
-            <div>
-              Outside of work, I enjoy reading, running, cooking, and spending
-              time with my family.
-            </div>
-          </div>
           <div className="container mx-auto flex max-w-5xl flex-wrap gap-3 px-10 pb-10 text-[1.25em] max-sm:px-5">
             <Button
               as="a"
