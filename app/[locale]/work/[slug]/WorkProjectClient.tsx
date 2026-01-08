@@ -1,5 +1,4 @@
-import React from "react";
-import { usePathname } from "@/i18n/navigation";
+import React, { JSXElementConstructor, ReactElement } from "react";
 import Login from "@/templates/Login";
 import { AnimatedText } from "components";
 
@@ -8,7 +7,7 @@ import Meta from "@/components/Meta";
 
 type WorkProjectClientProps = {
   meta: IProject;
-  content: string;
+  content: ReactElement<unknown, string | JSXElementConstructor<unknown>>;
   slug: string;
 };
 

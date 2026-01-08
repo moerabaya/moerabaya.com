@@ -64,7 +64,7 @@ export default async function WorkProjectPage({
 
   const { meta, content: source } = project;
 
-  const { content, frontmatter } = await compileMDX<{
+  const { content } = await compileMDX<{
     title?: string;
     description?: string;
   }>({

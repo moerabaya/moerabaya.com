@@ -1,16 +1,45 @@
-"use client";
+import { PolymorphicProps } from "@/utils/css/polymorphic";
+import { twMerge } from "tailwind-merge";
 
-import styled from "styled-components";
+type ListProps<E extends React.ElementType> = PolymorphicProps<E> & {
+  className?: string;
+};
 
-const Header = styled.h4``;
+const ListHeader = <E extends React.ElementType = "h4">({
+  as,
+  children,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "h4";
+  return <Component {...rest}>{children}</Component>;
+};
 
-const Item = styled.li`
-  margin-bottom: 0.75em;
-`;
+const ListItem = <E extends React.ElementType = "li">({
+  as,
+  children,
+  className,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "li";
+  return (
+    <Component className={twMerge("mb-3", className)} {...rest}>
+      {children}
+    </Component>
+  );
+};
 
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-`;
+const List = <E extends React.ElementType = "ul">({
+  as,
+  children,
+  className,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "ul";
+  return (
+    <Component className={twMerge("m-0 p-0", className)} {...rest}>
+      {children}
+    </Component>
+  );
+};
 
-export { List, Header as ListHeader, Item as ListItem };
+export { List, ListHeader, ListItem };

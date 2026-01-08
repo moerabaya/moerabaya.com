@@ -9,7 +9,7 @@ export { default as FlexComponent } from "./FlexComponent";
 export { default as Grid } from "./Grid";
 export { Col, Row } from "./Grid";
 export { default as Link } from "./Link";
-export { default as List } from "./List";
+export { List, ListItem, ListHeader } from "./List";
 export { default as Text } from "./Text";
 export { default as Footer } from "./Footer";
 export { default as Navigation } from "./Navigation";
