@@ -9,8 +9,9 @@ declare module "motion" {
     h6: "h6";
   };
 
-  interface AnimatedCharactersProps
-    extends React.PropsWithChildren<HTMLMotionProps<"div">> {
+  interface AnimatedCharactersProps extends React.PropsWithChildren<
+    HTMLMotionProps<"div">
+  > {
     children?: ReactElement;
     text: string;
     type: tagMap;
@@ -18,8 +19,9 @@ declare module "motion" {
     hideDuration: number;
   }
 
-  interface AnimatedTextProps
-    extends React.PropsWithChildren<HTMLMotionProps<"div">> {
+  interface AnimatedTextProps extends React.PropsWithChildren<
+    HTMLMotionProps<"div">
+  > {
     children?: ReactElement;
     text: string;
     type: tagMap;

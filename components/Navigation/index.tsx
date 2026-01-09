@@ -1,15 +1,15 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
-import { ThemeContext } from "@/templates/ThemeProvider";
 import Logo from "assets/images/logo.svg";
 import { AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import navigation from "utils/data/navigation.json";
 
+import useTheme from "@/hooks/useTheme";
 import { Burger, Button } from "@/components/Button";
 
 import Nav from "./Nav.styled";
@@ -33,7 +33,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const { translate } = useGlobalization();
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
   const { locale } = useGlobalization();
   const isProject = pathname?.split("/")?.[1] === "work" && props.slug;
 

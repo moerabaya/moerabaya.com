@@ -68,9 +68,6 @@ const About = () => {
   const { locale } = globalization;
   const t = useTranslations();
 
-  if (typeof window !== "undefined")
-    window.localStorage.setItem("color-theme", "light");
-
   // Calculate years of experience since 2015
   const currentYear = new Date().getFullYear();
   const yearsOfExperience = currentYear - 2015;
@@ -112,7 +109,7 @@ const About = () => {
             </div>
             <div className="max-w-full flex-1 pe-[2rem] ps-[1rem] max-sm:p-[0]">
               <div>
-                <span className="absolute left-0 h-[0.5px] w-[100vw] bg-[#FF0000]"></span>
+                <span className="absolute left-0 h-[0.5px] w-full bg-[#FF0000]"></span>
                 <div className="relative">
                   <XIcon className="absolute -left-[0.75px] -top-[2px]" />
                   <XIcon className="absolute -top-[2px] right-0" />
@@ -128,7 +125,7 @@ const About = () => {
                     type="h2"
                     className={`w-[calc(auto + 100px)] border-[1px] border-solid border-[#4597F7] max-lg:text-[6.75vw] max-md:text-[3rem] max-sm:text-[10vw] max-[500px]:text-[12vw] ${
                       locale === "ar"
-                        ? "text-[5.5rem] leading-[1]"
+                        ? "text-[5.5rem] leading-[1.1]"
                         : "text-7xl leading-[0.8]"
                     } m-0 px-0 uppercase leading-[0.8] text-stone-800 *:!font-extrabold dark:text-neutral-50`}
                   />
@@ -168,7 +165,11 @@ const About = () => {
           </div>
           <div className="container mx-auto max-w-5xl px-10 pb-10 text-[1.25em] max-md:text-[1.1em] max-sm:px-5 max-[400px]:text-[1.05em]">
             <div>{t("about.about1", { years: yearsOfExperience })}</div>
-            <div className="mt-8 max-[400px]:mt-5">{t("about.about2")}</div>
+            <div className="mt-8 max-[400px]:mt-5">
+              {t("about.about2", {
+                years: yearsOfExperience.toLocaleString(locale),
+              })}
+            </div>
           </div>
           <div className="container mx-auto flex max-w-5xl flex-wrap gap-3 px-10 pb-10 text-[1.25em] max-sm:px-5">
             <Button
