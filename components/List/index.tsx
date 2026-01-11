@@ -1,20 +1,45 @@
-import styled from "styled-components";
+import { PolymorphicProps } from "@/utils/css/polymorphic";
+import { twMerge } from "tailwind-merge";
 
-const Header = styled.h4``;
+type ListProps<E extends React.ElementType> = PolymorphicProps<E> & {
+  className?: string;
+};
 
-const Item = styled.li`
-  margin-bottom: 0.75em;
-`;
+const ListHeader = <E extends React.ElementType = "h4">({
+  as,
+  children,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "h4";
+  return <Component {...rest}>{children}</Component>;
+};
 
-const List = Object.assign(
-  styled.ul`
-    margin: 0;
-    padding: 0;
-  `,
-  {
-    Header,
-    Item,
-  }
-);
+const ListItem = <E extends React.ElementType = "li">({
+  as,
+  children,
+  className,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "li";
+  return (
+    <Component className={twMerge("mb-3", className)} {...rest}>
+      {children}
+    </Component>
+  );
+};
 
-export default List;
+const List = <E extends React.ElementType = "ul">({
+  as,
+  children,
+  className,
+  ...rest
+}: ListProps<E>) => {
+  const Component = as || "ul";
+  return (
+    <Component className={twMerge("m-0 p-0", className)} {...rest}>
+      {children}
+    </Component>
+  );
+};
+
+export { List, ListHeader, ListItem };

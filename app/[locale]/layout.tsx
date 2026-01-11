@@ -3,7 +3,7 @@ import "@/styles/app.scss";
 import { Montserrat, Vazirmatn } from "next/font/google";
 import Layout from "@/templates/Layout";
 import ThemeProvider from "@/templates/ThemeProvider";
-import { clsx } from "@/utils/css/clsx";
+import clsx from "clsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
@@ -21,11 +21,12 @@ const vazirmatn = Vazirmatn({
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  const { locale } = await params;
   const messages = await getMessages({ locale });
 
   // Conditionally load Vazirmatn only for Arabic locale
@@ -37,7 +38,11 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={bodyClassName}>
+      <body
+        className={bodyClassName}
+        lang={locale}
+        dir={isArabic ? "rtl" : "ltr"}
+      >
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProvider>
             <Layout>{children}</Layout>

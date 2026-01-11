@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "@/i18n/navigation";
-import { ThemeContext } from "@/templates/ThemeProvider";
 import Logo from "assets/images/logo.svg";
 import { AnimatedView } from "components";
 import useGlobalization from "hooks/useGlobalization";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import navigation from "utils/data/navigation.json";
 
-import { Burger } from "@/components/Button";
+import useTheme from "@/hooks/useTheme";
+import { Burger, Button } from "@/components/Button";
 
 import Nav from "./Nav.styled";
 
@@ -31,7 +33,7 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const pathname = usePathname();
   const { translate } = useGlobalization();
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
   const { locale } = useGlobalization();
   const isProject = pathname?.split("/")?.[1] === "work" && props.slug;
 
@@ -39,16 +41,16 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
 
   const renderMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"]?.map(({ path, name }, index) => (
-      <Link
-        className={`px-4 py-2 ${
-          index == 0 &&
-          "border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] dark:border-[#202020] dark:bg-stone-900 dark:hover:border-stone-800 dark:active:bg-stone-800"
-        } font-regular mx-2 rounded-2xl text-stone-800 active:bg-stone-200 dark:text-stone-50 dark:md:active:bg-stone-900`}
+      <Button
+        as={Link}
         href={path}
         key={name}
+        variant={index == 0 ? "outline" : "secondary"}
+        className="me-3"
+        layout="link"
       >
         {name}
-      </Link>
+      </Button>
     ));
 
   const Socials = [
@@ -96,22 +98,27 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
         </svg>
       </button>
     </span>,
-    <a
+    <Button
+      as="a"
       target="_blank"
       href="https://github.com/moerabaya/"
       key="github-url"
-      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
+      variant="outline"
+      layout="icon"
+      className="me-2"
     >
       <BsGithub size="26px" />
-    </a>,
-    <a
+    </Button>,
+    <Button
+      as="a"
       target="_blank"
       href="https://www.linkedin.com/in/moerabaya/"
       key="linkedin-url"
-      className="font-regular mx-2 rounded-2xl border-[1px] border-solid border-[#EEEEEE] bg-[#F1F1F1] px-2 py-2 hover:border-stone-200 active:bg-stone-200 dark:border-[#202020] dark:bg-stone-900 dark:text-gray-50 dark:hover:border-stone-800 dark:active:bg-stone-800"
+      variant="outline"
+      layout="icon"
     >
       <BsLinkedin size="26px" className="rounded-md" />
-    </a>,
+    </Button>,
   ];
   const renderInnerMenu = () =>
     Pages[locale == "ar" ? "ar" : "en"].map(({ path, name }, index) => (
@@ -196,43 +203,40 @@ const Navigation = ({ previous, next, ...props }: NavigationProps) => {
       </Nav>
     );
   return (
-    <>
-      <Nav $isOpen={isOpen} className="text-center">
-        <AnimatedView vertical={"-75"} className="h-full">
-          <div className="container m-auto h-full">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="flex items-center">
-                <div className="max-sm:hidden">{renderMenu()}</div>
-              </div>
-              <div className="flex items-center justify-center text-center">
-                <Link href="/">
-                  <Logo width={60} className="dark:fill-neutral-50" />
-                </Link>
-              </div>
-              <div className="flex items-center justify-end">
-                <div className="flex items-stretch justify-end max-sm:hidden">
-                  {Socials}
-                </div>
-                <Burger
-                  $size="md"
-                  $isActive={isOpen}
-                  className="!hidden max-sm:!block"
-                  onClick={() => setIsOpen(!isOpen)}
-                />
-              </div>
+    <Nav $isOpen={isOpen} className="text-center">
+      <AnimatedView vertical={"-75"} className="h-full">
+        <div className="container m-auto h-full">
+          <div className="grid grid-cols-3 gap-3">
+            <div className="flex items-center">
+              <div className="max-sm:hidden">{renderMenu()}</div>
             </div>
-            <div className="m-0 flex h-full flex-col">
-              <div className="flex flex-1 flex-col items-center justify-center">
-                {renderInnerMenu()}
-              </div>
-              <div className="mt-auto flex items-stretch justify-center pb-10">
+            <div className="flex items-center justify-center text-center">
+              <Link href="/">
+                <Logo width={60} className="dark:fill-neutral-50" />
+              </Link>
+            </div>
+            <div className="flex items-center justify-end">
+              <div className="flex items-stretch justify-end max-sm:hidden">
                 {Socials}
               </div>
+              <Burger
+                isActive={isOpen}
+                className="!hidden max-sm:!block"
+                onClick={() => setIsOpen(!isOpen)}
+              />
             </div>
           </div>
-        </AnimatedView>
-      </Nav>
-    </>
+          <div className="m-0 flex h-full flex-col">
+            <div className="flex flex-1 flex-col items-center justify-center">
+              {renderInnerMenu()}
+            </div>
+            <div className="mt-auto flex items-stretch justify-center pb-10">
+              {Socials}
+            </div>
+          </div>
+        </div>
+      </AnimatedView>
+    </Nav>
   );
 };
 

@@ -23,7 +23,7 @@
   "about": {
     "meta-title": "About",
     "title": "Moe Rabaya",
-    "about1": "A software engineer with over 9+ years of experience, I am currently based in Amsterdam.",
+    "about1": "A software engineer with over {years}+ years of experience, I am currently based in Amsterdam.",
     "about2": "I help companies build intuitive softwares and products using state-of-the-art technologies ensuring best practices are applied for smooth user experience and development process.",
     "work-title": "Recent work",
     "download-resume": "Download resume",
@@ -62,5 +62,9 @@
   },
   "404": {
     "title": "404 - Oh no's! We couldn't find that page"
+  },
+  "login": {
+    "submit": "Login",
+    "password": "Enter password"
   }
 }

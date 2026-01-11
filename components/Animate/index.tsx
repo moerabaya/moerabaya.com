@@ -4,7 +4,7 @@ import styled, { AnimateProps } from "styled-components";
 
 import Wiggle from "./Wave";
 
-const isNumber = (value: any): value is number =>
+const isNumber = (value: unknown): value is number =>
   typeof value === "number" && !isNaN(value);
 
 const Animate = styled.span<AnimateProps>`

@@ -3,13 +3,17 @@
 import Image from "next/image";
 import GrabIcon from "@/assets/icons/grab-icon.svg";
 import XIcon from "@/assets/icons/x-icon.svg";
-import { AnimatedText } from "components";
+import { AnimatedText, Button } from "components";
 import useGlobalization from "hooks/useGlobalization";
+import { useTranslations } from "next-intl";
 
 import Meta from "@/components/Meta";
 
-const jobs = (globalization: ReturnType<typeof useGlobalization>) => {
-  const { translate, locale } = globalization;
+const jobs = (
+  globalization: ReturnType<typeof useGlobalization>,
+  t: ReturnType<typeof useTranslations>
+) => {
+  const { locale } = globalization;
   const dateLocale = locale === "ar" ? "ar-EG" : locale;
   const options: Intl.DateTimeFormatOptions = {
     month: "short",
@@ -20,65 +24,49 @@ const jobs = (globalization: ReturnType<typeof useGlobalization>) => {
       date: `${new Date(2024, 6, 1).toLocaleDateString(
         dateLocale,
         options
-      )} - ${translate("about.experience.present", "Present")}`,
-      title: translate("about.experience.seniorEngineer", "Senior Engineer II"),
-      location: translate(
-        "about.experience.eindhoven",
-        "Eindhoven, Netherlands"
-      ),
+      )} - ${t("about.experience.present")}`,
+      title: t("about.experience.seniorEngineer"),
+      location: t("about.experience.eindhoven"),
       company: "Sendcloud",
-      role: translate("about.experience.fullTime", "Full-time"),
+      role: t("about.experience.fullTime"),
     },
     {
       date: `${new Date(2023, 1, 1).toLocaleDateString(
         dateLocale,
         options
       )} - ${new Date(2024, 6, 1).toLocaleDateString(dateLocale, options)}`,
-      title: translate(
-        "about.experience.seniorSoftwareEngineer",
-        "Senior Software Engineer"
-      ),
-      location: translate(
-        "about.experience.amsterdam",
-        "Amsterdam, Netherlands"
-      ),
+      title: t("about.experience.seniorSoftwareEngineer"),
+      location: t("about.experience.amsterdam"),
       company: "Rodeo Software",
-      role: translate("about.experience.fullTime", "Full-time"),
+      role: t("about.experience.fullTime"),
     },
     {
       date: `${new Date(2017, 11, 1).toLocaleDateString(
         dateLocale,
         options
       )} - ${new Date(2022, 12, 31).toLocaleDateString(dateLocale, options)}`,
-      title: translate(
-        "about.experience.seniorFrontendEngineer",
-        "Senior Front-end Engineer"
-      ),
-      location: translate("about.experience.amman", "Amman, Jordan"),
+      title: t("about.experience.seniorFrontendEngineer"),
+      location: t("about.experience.amman"),
       company: "Cura Healthcare",
-      role: translate("about.experience.fullTime", "Full-time"),
+      role: t("about.experience.fullTime"),
     },
     {
       date: `${new Date(2015, 6, 1).toLocaleDateString(
         dateLocale,
         options
       )} - ${new Date(2017, 11, 1).toLocaleDateString(dateLocale, options)}`,
-      title: translate(
-        "about.experience.frontendEngineer",
-        "Front-end Engineer"
-      ),
-      location: translate("about.experience.amman", "Amman, Jordan"),
+      title: t("about.experience.frontendEngineer"),
+      location: t("about.experience.amman"),
       company: "Plexable",
-      role: translate("about.experience.fullTime", "Full-time"),
+      role: t("about.experience.fullTime"),
     },
   ];
 };
 
 const About = () => {
   const globalization = useGlobalization();
-  const { translate, locale } = globalization;
-  if (typeof window !== "undefined")
-    window.localStorage.setItem("color-theme", "light");
+  const { locale } = globalization;
+  const t = useTranslations();
 
   // Calculate years of experience since 2015
   const currentYear = new Date().getFullYear();
@@ -87,7 +75,7 @@ const About = () => {
   return (
     <div className="pt-[70px] max-md:pt-[60px]">
       <Meta
-        title={translate("about.meta-title", "About")}
+        title={t("about.meta-title")}
         description={`A passionate problem solver with ${yearsOfExperience}+ years of experience working in the field of ux and traditional development.`}
       />
       <div className="relative">
@@ -121,7 +109,7 @@ const About = () => {
             </div>
             <div className="max-w-full flex-1 pe-[2rem] ps-[1rem] max-sm:p-[0]">
               <div>
-                <span className="absolute left-0 h-[0.5px] w-[100vw] bg-[#FF0000]"></span>
+                <span className="absolute left-0 h-[0.5px] w-full bg-[#FF0000]"></span>
                 <div className="relative">
                   <XIcon className="absolute -left-[0.75px] -top-[2px]" />
                   <XIcon className="absolute -top-[2px] right-0" />
@@ -133,11 +121,11 @@ const About = () => {
                   </span>
                   <span className="absolute bottom-0 left-0 h-[100vh] w-[0.5px] bg-[#FF0000]"></span>
                   <AnimatedText
-                    text={translate("about.title", "Moe Rabaya")}
+                    text={t("about.title")}
                     type="h2"
                     className={`w-[calc(auto + 100px)] border-[1px] border-solid border-[#4597F7] max-lg:text-[6.75vw] max-md:text-[3rem] max-sm:text-[10vw] max-[500px]:text-[12vw] ${
                       locale === "ar"
-                        ? "text-[5.5rem] leading-[1]"
+                        ? "text-[5.5rem] leading-[1.1]"
                         : "text-7xl leading-[0.8]"
                     } m-0 px-0 uppercase leading-[0.8] text-stone-800 *:!font-extrabold dark:text-neutral-50`}
                   />
@@ -176,32 +164,24 @@ const About = () => {
             </div>
           </div>
           <div className="container mx-auto max-w-5xl px-10 pb-10 text-[1.25em] max-md:text-[1.1em] max-sm:px-5 max-[400px]:text-[1.05em]">
-            <div>
-              {translate(
-                "about.about1",
-                "A software engineer with over 9+ years of experience, I am currently based in Amsterdam."
-              )}
-            </div>
+            <div>{t("about.about1", { years: yearsOfExperience })}</div>
             <div className="mt-8 max-[400px]:mt-5">
-              {translate(
-                "about.about2",
-                "I help companies build intuitive softwares and products using state-of-the-art technologies ensuring best practices are applied for smooth user experience and development process."
-              )}
+              {t("about.about2", {
+                years: yearsOfExperience.toLocaleString(locale),
+              })}
             </div>
           </div>
           <div className="container mx-auto flex max-w-5xl flex-wrap gap-3 px-10 pb-10 text-[1.25em] max-sm:px-5">
-            <a
+            <Button
+              as="a"
               href="mailto:contact@moerabaya.com"
-              className="inline-block w-[206px] rounded-sm bg-stone-950 py-[10px] text-center text-[1rem] font-medium text-white dark:bg-stone-50 dark:text-stone-950 max-sm:w-[170px] max-sm:px-[5px] max-[400px]:w-full"
+              variant="primary"
             >
-              {translate("about.connect", "Let's connect...")}
-            </a>
-            <a
-              href="/resume.pdf"
-              className="inline-block w-[206px] rounded-sm py-[10px] text-center text-[1rem] font-medium text-stone-950 hover:bg-neutral-200 dark:text-white dark:hover:bg-[rgba(255,255,255,0.15)] max-sm:w-[170px] max-[400px]:w-full"
-            >
-              {translate("footer.downloadResume", "Download Resume")}
-            </a>
+              {t("about.connect")}
+            </Button>
+            <Button as="a" href="/resume.pdf" variant="secondary">
+              {t("footer.downloadResume")}
+            </Button>
           </div>
         </div>
         <div className="container relative mx-auto">
@@ -210,9 +190,9 @@ const About = () => {
       </div>
       <div className="container mx-auto mb-0 max-w-4xl px-5 py-24 max-md:py-14">
         <h4 className="block font-semibold text-neutral-950 dark:text-neutral-100 max-md:text-[1.1rem]">
-          {translate("about.experience.title", "Experience")}
+          {t("about.experience.title")}
         </h4>
-        {jobs(globalization).map((item, index) => (
+        {jobs(globalization, t).map((item, index) => (
           <div key={`job-${index}`} className="flex flex-wrap pb-8">
             <h4 className="w-[230px] text-[1.15rem] text-neutral-950 dark:text-neutral-100 max-md:w-[180px] max-md:text-[1rem]">
               {item.date}

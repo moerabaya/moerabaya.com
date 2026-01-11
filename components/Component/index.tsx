@@ -1,3 +1,5 @@
+"use client";
+
 import styled, { ComponentProps } from "styled-components";
 
 const Component = styled.div.withConfig({

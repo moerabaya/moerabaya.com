@@ -1,58 +1,16 @@
-"use client";
+import React from "react";
+import { Navigation } from "@/components";
 
-import React, { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-import useGlobalization from "hooks/useGlobalization";
-import { ThemeProvider } from "styled-components";
-import { theme } from "styles/theme";
+import Main from "@/components/Main";
+import { StyledComponentsRegistry } from "@/app/[locale]/styled-components-registry";
 
-import Footer from "@/components/Footer";
-
-import GlobalStyle from "./GlobalStyle";
-
-const Navigation = dynamic(() => import("@/components/Navigation"), {
-  ssr: false,
-});
 export default function Layout({ children }: React.PropsWithChildren<unknown>) {
-  const footerRef = useRef<HTMLDivElement>(null);
-  const { direction } = useGlobalization();
-  const pathname = usePathname();
-  const [footerHeight, setFooterHeight] = useState(0);
-
-  useEffect(() => {
-    function handleResize() {
-      if (footerRef.current?.clientHeight != footerHeight)
-        setFooterHeight(footerRef.current?.clientHeight ?? footerHeight);
-    }
-
-    /**
-     * Initial sizing.
-     */
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-  }, [footerHeight]);
-
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle direction={direction} />
+    <StyledComponentsRegistry>
       <div className={`content snappy`}>
         <Navigation />
-        <main
-          style={{
-            marginBottom: pathname !== "/work" ? footerHeight : 0,
-            position: "relative",
-            zIndex: 10,
-            backgroundColor: "var(--mr-background-color)",
-            minHeight: "100vh",
-          }}
-        >
-          {children}
-        </main>
-        <Footer ref={footerRef} />
-        {/* {pathname !== "/work" && <Footer ref={footerRef} />} */}
+        <Main>{children}</Main>
       </div>
-    </ThemeProvider>
+    </StyledComponentsRegistry>
   );
 }

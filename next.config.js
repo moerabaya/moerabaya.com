@@ -1,13 +1,23 @@
 /** @type {import('next').NextConfig} */
-const createNextIntlPlugin = require('next-intl/plugin');
-const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const createNextIntlPlugin = require("next-intl/plugin");
+const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
+
+// next-intl
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+// vanilla-extract
+const withVanillaExtract = createVanillaExtractPlugin({
+  identifiers: process.env.NODE_ENV === "production" ? "short" : "debug",
+});
+
 const nextConfig = {
   reactStrictMode: true,
+
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'en.gravatar.com',
+        protocol: "https",
+        hostname: "en.gravatar.com",
       },
     ],
   },
@@ -15,7 +25,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   trailingSlash: true,
+
   async redirects() {
     return [
       {
@@ -41,36 +53,35 @@ const nextConfig = {
       },
     ];
   },
+
   webpack(config) {
-    // Grab the existing rule that handles SVG imports
+    // --- SVG handling ---
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
     );
 
     config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
+        resourceQuery: /url/,
       },
-      // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: /url/ }, // exclude if *.svg?url
+        resourceQuery: { not: /url/ },
         use: ["@svgr/webpack"],
       }
     );
 
-    // Fixes npm packages that depend on `fs` module
-    config.resolve.fallback = { fs: false };
-
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
+
+    // fs fallback
+    config.resolve.fallback = { fs: false };
 
     return config;
   },
 };
 
-module.exports = withNextIntl(nextConfig);;
+// ✅ plugin composition order matters
+module.exports = withVanillaExtract(withNextIntl(nextConfig));

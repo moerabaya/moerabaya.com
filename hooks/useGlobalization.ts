@@ -1,9 +1,8 @@
 import { useMemo } from "react";
-import { useRouter } from "next/navigation";
 import { Direction } from "moerabaya-components";
+import { useLocale } from "next-intl";
 import ar from "utils/languages/ar.json";
 import enUS from "utils/languages/en-US.json";
-import { useLocale } from "next-intl";
 
 type Languages = "ar" | "en-US";
 type LanguageResources<T> = {

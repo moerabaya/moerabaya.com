@@ -1,45 +1,28 @@
-import styled from "styled-components";
+import React from "react";
+import clsx from "clsx";
 
+import * as styles from "./Burger.css";
 import Button from "./Button.styled";
 
-export const Burger = styled(Button).withConfig({
-  shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
-})<{ $isActive?: boolean }>`
-  position: relative;
-  display: inline-block;
-  width: 2.5em;
-  height: 2.5em;
-  padding: 0.5em;
-  vertical-align: middle;
-  cursor: pointer;
-  position: relative;
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: calc(100% - 1em);
-    height: 2px;
-    background-color: var(--mr-text-color);
-    transition: 0.15s linear;
-  }
-  &:before {
-    top: 37.5%;
-  }
-  &:after {
-    top: 57.5%;
-  }
+export const Burger = ({
+  isActive,
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLButtonElement> & { isActive?: boolean }) => {
+  return (
+    <Button
+      aria-label="Menu Button"
+      className={clsx(
+        "relative h-[40px] max-w-[40px] cursor-pointer text-center max-sm:hidden max-sm:px-[7.5px]",
+        styles.base,
+        isActive && styles.active,
+        className
+      )}
+      variant="secondary"
+      layout="icon"
+      {...props}
+    />
+  );
+};
 
-  &:before {
-    transform: ${(props) =>
-      props.$isActive
-        ? "rotateZ(45deg) scale(0.9) translate(0.15em,0.15em)"
-        : "unset"};
-  }
-  &:after {
-    transform: ${(props) =>
-      props.$isActive
-        ? "rotateZ(-45deg) scale(0.9) translate(0.25em,-0.225em)"
-        : "unset"};
-  }
-`;
+Burger.displayName = "Burger";

@@ -1,9 +1,11 @@
+"use client";
+
 import styled, { css, TextProps } from "styled-components";
 import { mixins } from "styles";
 
 import Component from "@/components/Component";
 
-const isNumber = (value: any): value is number =>
+const isNumber = (value: unknown): value is number =>
   typeof value === "number" && !isNaN(value);
 
 const Text = styled(Component)
