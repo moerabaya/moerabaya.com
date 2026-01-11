@@ -1,24 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import consts from "consts";
-import useGlobalization from "hooks/useGlobalization";
-import Cookies from "universal-cookie";
+import React, { useState } from "react";
+import { Project } from "@/types";
+import { useTranslations } from "next-intl";
+import { useCookie } from "react-use";
 
 const Login = ({
-  redirectPath,
+  children,
+  meta,
   slug,
-}: {
+}: React.PropsWithChildren<{
   slug: string;
-  redirectPath?: string;
-}) => {
+  meta: Project;
+}>) => {
   const [password, setPassword] = useState("");
-  const { translate } = useGlobalization();
+  const [value, setValue] = useCookie(slug);
+  const t = useTranslations();
+  if (!meta.password || value === meta.password) return <>{children}</>;
   return (
     <form className="min-h-[320px]: flex h-[100vh] flex-col pt-[75px] max-sm:pt-[60px]">
       <input
         type="text"
-        placeholder={translate("login.password", "Enter password")}
+        placeholder={t("login.password")}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className="flex-1 bg-[--mr-background-color] text-center text-[3rem] text-neutral-950 placeholder-neutral-600 focus:bg-neutral-100 dark:text-white dark:focus:bg-neutral-900"
@@ -29,21 +32,11 @@ const Login = ({
         style={{ fontVariant: "all-small-caps" }}
         onClick={(e) => {
           e.preventDefault();
-          const cookies = new Cookies();
-          if (slug)
-            cookies.set(
-              consts.SiteReadCookie,
-              {
-                [slug]: password,
-              },
-              {
-                path: "/",
-              }
-            );
-          window.location.href = redirectPath ?? "/";
+          console.log(meta.password);
+          if (password == meta.password) setValue(password);
         }}
       >
-        {translate("login.submit", "Login")}
+        {t("login.submit")}
       </button>
     </form>
   );
