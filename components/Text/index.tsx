@@ -8,14 +8,7 @@ import Component from "@/components/Component";
 const isNumber = (value: unknown): value is number =>
   typeof value === "number" && !isNaN(value);
 
-const Text = styled(Component)
-  .withConfig({
-    shouldForwardProp: (prop) => !prop.toString().startsWith("$"),
-  })
-  .attrs((props) => ({
-    ...props,
-    as: props.as || "span",
-  }))<TextProps>`
+const Text = styled("span")<TextProps>`
   padding: ${(props) => props.$p};
   margin: ${(props) => props.$m};
   ${(props) => props.$smallCaps && mixins.smallCaps}

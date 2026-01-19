@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { AnimatedCharactersProps } from "motion";
 import styled from "styled-components";
 
 import Text from "@/components/Text";
 
 const StyledAnimatedText = styled(Text)`
-  line-height: "0.5em";
+  line-height: 1.1;
   display: flex;
   flex-wrap: wrap;
 `;
@@ -18,7 +18,7 @@ const AnimatedCharacters = ({
   ...rest
 }: AnimatedCharactersProps) => {
   // Framer Motion variant object, for controlling animation
-  const item = {
+  const item: Variants = {
     hidden: {
       y: "200%",
       opacity: 0,

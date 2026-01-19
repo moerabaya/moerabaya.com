@@ -81,6 +81,9 @@ const nextConfig = {
 
     return config;
   },
+  compiler: {
+    styledComponents: true,
+  },
 };
 
 // ✅ plugin composition order matters

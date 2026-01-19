@@ -1,6 +1,12 @@
 "use client";
 
-import React, { forwardRef, useEffect, useState } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useWindowScroll } from "react-use";
 import { twMerge } from "tailwind-merge";
 
@@ -31,18 +37,26 @@ export const FooterWrapper = forwardRef<
   React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>
 >((props, ref) => {
   const { children } = props;
-  const [opacity, setOpacity] = useState(0);
-  const scroll = useWindowScroll();
+  const { y } = useWindowScroll();
+  const [footerHeight, setFooterHeight] = useState<number>(0);
 
   useEffect(() => {
-    const footerHeight = (ref as React.RefObject<HTMLElement>)?.current
-      ?.clientHeight;
-    const contentHeight = document.body.clientHeight + footerHeight!;
-    setOpacity(
+    if (ref && typeof ref !== "function" && ref.current) {
+      setFooterHeight(ref.current.clientHeight);
+    }
+  }, [ref]);
+
+  const opacity = useMemo(() => {
+    if (!footerHeight) return 0;
+
+    const contentHeight = document.body.clientHeight + footerHeight;
+
+    return (
       (window.innerWidth <= 700 ? 2 : 1) -
-        (contentHeight - (scroll.y + window.innerHeight)) / footerHeight!
+      (contentHeight - (y + window.innerHeight)) / footerHeight
     );
-  }, [ref, scroll.y]);
+  }, [y, footerHeight]);
+
   return (
     <StyledFooter ref={ref}>
       <div style={{ opacity }} className="container mx-auto px-5">

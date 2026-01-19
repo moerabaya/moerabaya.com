@@ -10,12 +10,12 @@ body {
   font-family: var(--mr-bs-font-sans-serif);
   font-size: var(--mr-base-font-size);
   font-weight: 400;
-  line-height: $base-line-height;
+  line-height: var(--mr-base-line-height);
   text-size-adjust: 100%;
   color: var(--mr-text-color);
   background-color: var(--mr-background-color);
-  @media (max-width: $on-laptop) {
-    font-size: $mobile-font-size;
+  @media (max-width: 800px) {
+    font-size: var(--mr-mobile-font-size);
   }
   .colored-text::selection {
     background: inherit;

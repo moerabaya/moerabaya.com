@@ -36,8 +36,8 @@ ul,
 ol,
 dl,
 figure {
-  margin-top: calc(#{$spacing-unit} / 2);
-  margin-bottom: calc(#{$spacing-unit} / 2);
+  margin-top: calc(var(--mr-spacing-unit) / 2);
+  margin-bottom: calc(var(--mr-spacing-unit) / 2);
 }
 
 /* Images */
@@ -53,13 +53,13 @@ figure > img {
 }
 
 figcaption {
-  font-size: $small-font-size;
+  font-size: var(--mr-small-font-size);
 }
 
 /* Lists */
 ul,
 ol {
-  margin-left: $spacing-unit;
+  margin-left: var(--mr-spacing-unit);
 }
 
 li {
@@ -79,31 +79,31 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  line-height: 1.3em;
+  line-height: 1.3;
 }
 
 h1 {
   font-size: 3.2rem;
-  line-height: 1.3em;
-  @media screen and (max-width: $screen-lg) {
+  line-height: 1.3;
+  @media screen and (max-width: 1280px) {
     font-size: 2.25rem;
   }
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: 768px) {
     font-size: 2rem;
   }
 }
 
 h2 {
   font-size: 1.75rem;
-  line-height: 1.3em;
+  line-height: 1.3;
 }
 
 h3 {
   font-size: 1.45rem;
-  @media screen and (max-width: $screen-lg) {
+  @media screen and (max-width: 1280px) {
     font-size: 1.35rem;
   }
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: 768px) {
     font-size: 1.25rem;
   }
 }
@@ -131,12 +131,12 @@ a {
 
 /* Blockquotes */
 blockquote {
-  padding-left: calc(#{$spacing-unit} / 2);
+  padding-left: calc(var(--mr-spacing-unit) / 2);
   font-size: 18px;
   font-style: italic;
   letter-spacing: -1px;
-  color: $grey-color;
-  border-left: 4px solid $grey-color-light;
+  color: var(--mr-grey-color);
+  border-left: 4px solid var(--mr-grey-color-light);
   > :last-child {
     margin-bottom: 0;
   }
@@ -184,7 +184,7 @@ pre {
     width: 16px;
     height: 16px;
     path {
-      fill: $grey-color;
+      fill: var(--mr-grey-color);
     }
   }
 }

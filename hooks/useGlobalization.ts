@@ -32,11 +32,6 @@ const useGlobalization = () => {
   const direction: Direction = locale === "ar" ? "rtl" : "ltr";
   const isArabic = locale === "ar";
 
-  useMemo(() => {
-    if (typeof document !== "undefined")
-      document.documentElement.dir = direction;
-  }, [direction]);
-
   const getLocalizedString = (...args: string[]) => {
     const translateValue = getter(languages[locale as Languages], ...args);
     return translateValue ?? args[0];

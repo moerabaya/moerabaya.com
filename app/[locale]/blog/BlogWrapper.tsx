@@ -1,3 +1,4 @@
+import { JSX } from "react";
 import { AnimatedView, Link } from "@/components";
 import { Post } from "@/types";
 import { useTranslations } from "next-intl";

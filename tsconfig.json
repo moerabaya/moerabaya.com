@@ -12,9 +12,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "baseUrl": ".",
     "incremental": true,
+    "ignoreDeprecations": "6.0",
     "plugins": [
       {
         "name": "next"
@@ -24,6 +25,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules", ".next"]
 }

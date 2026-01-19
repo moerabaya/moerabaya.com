@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { HTMLMotionProps, motion } from "framer-motion";
+import { HTMLMotionProps, motion, Variants } from "framer-motion";
 
 interface AnimatedViewProps extends React.PropsWithChildren<
   HTMLMotionProps<"div">
@@ -21,7 +21,7 @@ const AnimatedView = ({
   delay = 0,
   ...rest
 }: AnimatedViewProps) => {
-  const animation = {
+  const animation: Variants = {
     hidden: {
       y: vertical,
       opacity: 0,

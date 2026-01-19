@@ -43,7 +43,7 @@ const Meta = (props: MetaProps) => {
       />
       <meta
         property="og:image"
-        content={props.image ? require(props.image) : MetaImage.src}
+        content={props.image ? props.image : MetaImage.src}
       />
 
       {/* <!-- X --> */}

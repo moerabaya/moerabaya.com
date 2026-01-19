@@ -57,12 +57,7 @@ const Project = ({ updateScrollTop, ...project }: ProjectProps) => {
     >
       <Col $sm={12} $lg={6}>
         <AnimatedView>
-          <Text
-            $smallCaps
-            style={{ margin: 0, marginBottom: "5px" }}
-            as="h1"
-            $weight={700}
-          >
+          <Text as="h1" className="bold m-0 mb-1">
             {project.title}
           </Text>
           <Link

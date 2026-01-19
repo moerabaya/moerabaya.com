@@ -1,44 +1,46 @@
-@use "sass:math";
-
 /* Variables */
 
-$base-font-size: 16px;
-$mobile-font-size: 16px;
-$small-font-size: calc(#{$base-font-size} * 0.875);
-$base-line-height: 1.25;
-
-$spacing-unit: 30px;
-
-$text-color: #dac6a6;
-$background-color: #000000;
-$brand-color: #415144;
-$selection-color: $text-color;
-$selection-background-color: #ffc6c7;
-
-$grey-color: #828282;
-$grey-color-light: color-mod($grey-color lightness($grey-color));
-$grey-color-dark: color-mod($grey-color shade(40%));
-
-$on-palm: 500px;
-$on-laptop: 800px;
-
-$dot-width: 10px;
-$dot-height: 10px;
-$dot-radius: math.div($dot-width, 2);
-
-$dot-color: #dac6a6;
-$dot-bg-color: $dot-color;
-$dot-before-color: $dot-color;
-$dot-after-color: $dot-color;
-
-$dot-spacing: $dot-width + math.div($dot-width, 2);
-
-$screen-sm: 500px;
-$screen-md: 768px;
-$screen-lg: 1280px;
-$screen-xl: 1440px;
-
 :root {
+  /* Typography */
+  --mr-base-font-size-legacy: 16px;
+  --mr-mobile-font-size: 16px;
+  --mr-small-font-size: calc(var(--mr-base-font-size-legacy) * 0.875);
+  --mr-base-line-height: 1.25;
+
+  /* Spacing */
+  --mr-spacing-unit: 30px;
+
+  /* Colors (Legacy) */
+  --mr-text-color-legacy: #dac6a6;
+  --mr-background-color-legacy: #000000;
+  --mr-brand-color: #415144;
+  --mr-selection-color-legacy: var(--mr-text-color-legacy);
+  --mr-selection-background-color-legacy: #ffc6c7;
+
+  /* Grey colors */
+  --mr-grey-color: #828282;
+  --mr-grey-color-light: #b8b8b8;
+  --mr-grey-color-dark: #4f4f4f;
+
+  /* Breakpoints (for reference - use direct values in media queries) */
+  /* --mr-on-palm: 500px; */
+  /* --mr-on-laptop: 800px; */
+  /* --mr-screen-sm: 500px; */
+  /* --mr-screen-md: 768px; */
+  /* --mr-screen-lg: 1280px; */
+  /* --mr-screen-xl: 1440px; */
+
+  /* Dot variables */
+  --mr-dot-width: 10px;
+  --mr-dot-height: 10px;
+  --mr-dot-radius: 5px;
+  --mr-dot-color: #dac6a6;
+  --mr-dot-bg-color: var(--mr-dot-color);
+  --mr-dot-before-color: var(--mr-dot-color);
+  --mr-dot-after-color: var(--mr-dot-color);
+  --mr-dot-spacing: 15px;
+
+  /* Existing CSS variables */
   --mr-base-font-size: 13px;
   --mr-base-small-caps-size: 14px;
   --mr-background-color: #fafafa;
@@ -82,11 +84,11 @@ $screen-xl: 1440px;
   --mr-primary-color: #f9a020;
   --mr-primary-color-context: #000000;
 
-  @media (min-width: $screen-lg) {
+  @media (min-width: 1280px) {
     --mr-base-font-size: 15px;
     --mr-base-small-caps-size: 16px;
   }
-  @media (min-width: $screen-md) {
+  @media (min-width: 768px) {
     --mr-base-font-size: 15px;
     --mr-base-small-caps-size: 16px;
   }
