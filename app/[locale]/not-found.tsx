@@ -9,7 +9,7 @@ import useTheme from "@/hooks/useTheme";
 export default function NotFound() {
   const spotlightSize = 300;
   const t = useTranslations();
-  const titleRef = React.useRef(null);
+  const titleRef = React.useRef<HTMLHeadingElement>(null!);
   const { docX, docY, posX, posY } = useMouse(titleRef);
   const { theme } = useTheme();
 

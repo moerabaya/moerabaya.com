@@ -1,3 +1,4 @@
+import "@/styles/tailwind.scss";
 import "@/styles/app.scss";
 
 import { Montserrat, Vazirmatn } from "next/font/google";

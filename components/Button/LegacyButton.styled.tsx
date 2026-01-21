@@ -17,7 +17,7 @@ const Button = styled(Component)<LegacyButtonComponent>`
     border-radius: 0.25em;
     font-weight: 500;
     text-align: center;
-    line-height: 1.1em;
+    line-height: 1.1;
     padding: ${(props) => {
       if (props.$smallCaps)
         return props.$size == "md"

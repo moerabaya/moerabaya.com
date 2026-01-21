@@ -1,12 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Configuration and helpers */
-@import "@/assets/styles/utilities/variables";
+@use "@/assets/styles/utilities/variables";
 
 // Core Styles
-@import "@/assets/styles/core/reset.scss";
-@import "@/assets/styles/core/base.scss";
+@use "@/assets/styles/core/reset.scss";
+@use "@/assets/styles/core/base.scss";
 
-@import "@/assets/styles/layout/_global.scss";
+@use "@/assets/styles/layout/_global.scss";

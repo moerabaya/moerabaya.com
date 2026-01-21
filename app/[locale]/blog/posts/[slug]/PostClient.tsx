@@ -92,7 +92,6 @@ const PostClient = ({ meta, content }: PostClientProps) => {
           </h5>
 
           <div className="content">
-            {/* @ts-expect-error MDXRemote cannot be used as a component */}npm
             <MDXRemote source={content} components={components} />
           </div>
         </AnimatedView>

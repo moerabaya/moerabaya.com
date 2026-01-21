@@ -56,7 +56,7 @@ const Footer = React.forwardRef<
         <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1 max-[380px]:col-span-2">
           <List>
             <ListHeader>
-              <Text $smallCaps className="text-lg max-xl:text-base">
+              <Text className="text-lg max-xl:text-base">
                 {getLocalizedString("footer", "languages")}
               </Text>
             </ListHeader>
@@ -74,9 +74,7 @@ const Footer = React.forwardRef<
               >
                 {getLocalizedString("footer", "en")}
               </NextLink>
-              <Text $opacity={0.5} style={{ padding: "0 0.5em" }}>
-                .
-              </Text>
+              <Text className="px-2 opacity-50">.</Text>
               <NextLink
                 href="/"
                 locale="ar"
@@ -96,7 +94,7 @@ const Footer = React.forwardRef<
         <div className="col-span-1 px-2 max-md:col-span-2 max-sm:col-span-1">
           <List>
             <ListHeader>
-              <Text $smallCaps className="text-lg max-xl:text-base">
+              <Text className="text-lg max-xl:text-base">
                 {getLocalizedString("footer", "follow")}
               </Text>
             </ListHeader>

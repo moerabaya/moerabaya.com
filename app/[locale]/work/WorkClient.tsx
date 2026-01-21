@@ -61,7 +61,7 @@ const WorkCarousel = ({ projects }: WorkProps) => {
         }}
       >
         <Col style={{ padding: 0, textAlign: "end" }}>
-          <Text as={"h4"} smallCaps="true" style={{ margin: 0 }}>
+          <Text as="h4" className="m-0">
             {currentProject}/{projects.length}
           </Text>
         </Col>
