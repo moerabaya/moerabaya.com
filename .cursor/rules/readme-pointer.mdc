@@ -2,10 +2,10 @@
 alwaysApply: false
 description: Pointers to entry files often referenced in conversations
 ---
+
 ### Frequently Referenced Files
 
 - Layout shell: [`templates/Layout.tsx`](mdc:templates/Layout.tsx)
-- Theme provider: [`templates/ThemeProvider/index.tsx`](mdc:templates/ThemeProvider/index.tsx)
 - App router layout: [`app/[locale]/layout.tsx`](mdc:app/[locale]/layout.tsx)
 - Blog client: [`app/[locale]/blog/BlogClient.tsx`](mdc:app/[locale]/blog/BlogClient.tsx)
 - Work client: [`app/[locale]/work/WorkClient.tsx`](mdc:app/[locale]/work/WorkClient.tsx)
