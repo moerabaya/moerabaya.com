@@ -56,7 +56,8 @@ const components = {
 export default async function WorkProjectPage({
   params,
 }: WorkProjectPageProps) {
-  const project = await getProject(params.slug);
+  const pageParams = await params;
+  const project = await getProject(pageParams.slug);
 
   if (!project) {
     notFound();
