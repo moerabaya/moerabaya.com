@@ -33,7 +33,7 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.39.4",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@next/eslint-plugin-next": "16.1.1",
     "@svgr/webpack": "^8.1.0",
@@ -44,7 +44,7 @@
     "@types/styled-components": "^5.1.36",
     "babel-plugin-styled-components": "^2.1.4",
     "encoding": "^0.1.13",
-    "eslint": "^10.0.3",
+    "eslint": "^9.39.4",
     "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
