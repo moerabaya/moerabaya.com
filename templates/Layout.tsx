@@ -7,10 +7,8 @@ import { StyledComponentsRegistry } from "@/app/[locale]/styled-components-regis
 export default function Layout({ children }: React.PropsWithChildren<unknown>) {
   return (
     <StyledComponentsRegistry>
-      <div className={`content snappy`}>
-        <Navigation />
-        <Main>{children}</Main>
-      </div>
+      <Navigation />
+      <Main>{children}</Main>
     </StyledComponentsRegistry>
   );
 }

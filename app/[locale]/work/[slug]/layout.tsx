@@ -9,7 +9,8 @@ export default async function Layout({
 }: React.PropsWithChildren<{
   params: { slug: string };
 }>) {
-  const project = await getProject(params.slug);
+  const pageProps = await params;
+  const project = await getProject(pageProps.slug);
 
   if (!project) notFound();
 

@@ -2,9 +2,8 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import { useMouse } from "react-use";
-
-import useTheme from "@/hooks/useTheme";
 
 export default function NotFound() {
   const spotlightSize = 300;

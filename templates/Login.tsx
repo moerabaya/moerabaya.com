@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Button } from "@/components";
 import { Project } from "@/types";
 import { useTranslations } from "next-intl";
 import { useCookie } from "react-use";
@@ -21,23 +22,26 @@ const Login = ({
     <form className="min-h-[320px]: flex h-[100vh] flex-col pt-[75px] max-sm:pt-[60px]">
       <input
         type="text"
+        name="password"
+        id="password"
         placeholder={t("login.password")}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="flex-1 bg-[--mr-background-color] text-center text-[3rem] text-neutral-950 placeholder-neutral-600 focus:bg-neutral-100 dark:text-white dark:focus:bg-neutral-900"
+        className="flex-1 border-b-[1px] border-b-neutral-200 bg-[--mr-background-color] text-center text-4xl text-neutral-950 placeholder-neutral-600 focus:bg-neutral-100 dark:border-b-neutral-900 dark:text-white dark:focus:bg-neutral-900"
       />
-      <button
+      <Button
+        key={"all"}
+        href={`/blog`}
+        variant="secondary"
         type="submit"
-        className="bg-amber-500 py-5 text-[1.4rem] font-semibold text-white hover:bg-amber-600"
-        style={{ fontVariant: "all-small-caps" }}
-        onClick={(e) => {
+        className="rounded-none py-5"
+        onClick={(e: MouseEvent) => {
           e.preventDefault();
-          console.log(meta.password);
           if (password == meta.password) setValue(password);
         }}
       >
         {t("login.submit")}
-      </button>
+      </Button>
     </form>
   );
 };

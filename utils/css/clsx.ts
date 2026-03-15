@@ -13,10 +13,10 @@ type ClassValue =
   | ClassArray;
 
 interface ClassDictionary {
-  [key: string]: any; // truthy values will include the key
+  [key: string]: unknown; // truthy values will include the key
 }
 
-interface ClassArray extends Array<ClassValue> {}
+type ClassArray = Array<ClassValue>;
 
 /**
  * clsx(...values) -> string
@@ -34,7 +34,7 @@ export function clsx(...values: ClassValue[]): string {
 
     const type = typeof val;
 
-    if (type === 'string' || type === 'number') {
+    if (type === "string" || type === "number") {
       // For numbers, include only when truthy (non-zero). This mirrors many clsx implementations
       // If you want to include 0, adjust this logic.
       const str = String(val);
@@ -47,7 +47,7 @@ export function clsx(...values: ClassValue[]): string {
       return;
     }
 
-    if (type === 'object') {
+    if (type === "object") {
       for (const key in val as ClassDictionary) {
         if (Object.prototype.hasOwnProperty.call(val, key)) {
           // include key when value is truthy
@@ -62,5 +62,5 @@ export function clsx(...values: ClassValue[]): string {
 
   for (const v of values) push(v);
 
-  return classes.join(' ');
+  return classes.join(" ");
 }

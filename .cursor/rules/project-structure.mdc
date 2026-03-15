@@ -1,11 +1,12 @@
 ---
 alwaysApply: true
 ---
+
 ### Project Structure Guide
 
 - **App Router**: The main entry lives under `app/` using Next.js App Router.
   - Localized routes are nested in `app/[locale]/` (e.g., `app/[locale]/page.tsx`, `app/[locale]/blog/page.tsx`).
-  - The layout tree roots at `app/[locale]/layout.tsx` with shared providers (see [`ThemeProvider.tsx`](mdc:app/[locale]/ThemeProvider.tsx) and [`templates/ThemeProvider/index.tsx`](mdc:templates/ThemeProvider/index.tsx)).
+  - The layout tree roots at `app/[locale]/layout.tsx` with shared providers.
   - 404 is handled by `app/[locale]/not-found.tsx`.
 
 - **Content**:

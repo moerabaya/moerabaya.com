@@ -3,10 +3,10 @@ import "@/styles/app.scss";
 
 import { Montserrat, Vazirmatn } from "next/font/google";
 import Layout from "@/templates/Layout";
-import ThemeProvider from "@/templates/ThemeProvider";
 import clsx from "clsx";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -38,14 +38,14 @@ export default async function RootLayout({
   });
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={bodyClassName}
         lang={locale}
         dir={isArabic ? "rtl" : "ltr"}
       >
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <ThemeProvider>
+          <ThemeProvider attribute="class">
             <Layout>{children}</Layout>
           </ThemeProvider>
         </NextIntlClientProvider>

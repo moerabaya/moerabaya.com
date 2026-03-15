@@ -10,25 +10,10 @@
   /* Spacing */
   --mr-spacing-unit: 30px;
 
-  /* Colors (Legacy) */
-  --mr-text-color-legacy: #dac6a6;
-  --mr-background-color-legacy: #000000;
-  --mr-brand-color: #415144;
-  --mr-selection-color-legacy: var(--mr-text-color-legacy);
-  --mr-selection-background-color-legacy: #ffc6c7;
-
   /* Grey colors */
   --mr-grey-color: #828282;
   --mr-grey-color-light: #b8b8b8;
   --mr-grey-color-dark: #4f4f4f;
-
-  /* Breakpoints (for reference - use direct values in media queries) */
-  /* --mr-on-palm: 500px; */
-  /* --mr-on-laptop: 800px; */
-  /* --mr-screen-sm: 500px; */
-  /* --mr-screen-md: 768px; */
-  /* --mr-screen-lg: 1280px; */
-  /* --mr-screen-xl: 1440px; */
 
   /* Dot variables */
   --mr-dot-width: 10px;
